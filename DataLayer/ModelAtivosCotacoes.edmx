@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelAtivoCotacao.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbAtivos">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssociada' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwOperacoesComRunningSumQtdAssociada">
+          <Key>
+            <PropertyRef Name="OperacaoId" />
+          </Key>
+          <Property Name="OperacaoId" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Data" Type="smalldatetime" Nullable="false" />
+          <Property Name="Qtd" Type="int" />
+          <Property Name="QtdAcumulada" Type="int" />
+          <Property Name="Valor" Type="smallmoney" Nullable="false" />
+          <Property Name="ValorReal" Type="smallmoney" Nullable="false" />
+          <Property Name="QtdVendida" Type="int" />
+        </EntityType>
+        <EntityContainer Name="ModelAtivoCotacaoStoreContainer">
+          <EntitySet Name="tbAtivos" EntityType="Self.tbAtivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwOperacoesComRunningSumQtdAssociada" EntityType="Self.vwOperacoesComRunningSumQtdAssociada" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwOperacoesComRunningSumQtdAssociada].[OperacaoId] AS [OperacaoId], 
+    [vwOperacoesComRunningSumQtdAssociada].[Codigo] AS [Codigo], 
+    [vwOperacoesComRunningSumQtdAssociada].[Tipo] AS [Tipo], 
+    [vwOperacoesComRunningSumQtdAssociada].[Data] AS [Data], 
+    [vwOperacoesComRunningSumQtdAssociada].[Qtd] AS [Qtd], 
+    [vwOperacoesComRunningSumQtdAssociada].[QtdAcumulada] AS [QtdAcumulada], 
+    [vwOperacoesComRunningSumQtdAssociada].[Valor] AS [Valor], 
+    [vwOperacoesComRunningSumQtdAssociada].[ValorReal] AS [ValorReal], 
+    [vwOperacoesComRunningSumQtdAssociada].[QtdVendida] AS [QtdVendida]
+    FROM [dbo].[vwOperacoesComRunningSumQtdAssociada] AS [vwOperacoesComRunningSumQtdAssociada]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelAtivoCotacao" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AtivoCotacao">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Operacoes" Relationship="ModelAtivoCotacao.AtivoCotacaovwOperacoesComRunningSumQtdAssociada" FromRole="AtivoCotacao" ToRole="vwOperacoesComRunningSumQtdAssociada" />
+        </EntityType>
+        <EntityContainer Name="AtivoCotacaoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ativos" EntityType="ModelAtivoCotacao.AtivoCotacao" />
+          <EntitySet Name="Operacoes" EntityType="ModelAtivoCotacao.OperacaoCotacao" />
+          <AssociationSet Name="AtivoCotacaovwOperacoesComRunningSumQtdAssociada" Association="ModelAtivoCotacao.AtivoCotacaovwOperacoesComRunningSumQtdAssociada">
+            <End Role="AtivoCotacao" EntitySet="Ativos" />
+            <End Role="vwOperacoesComRunningSumQtdAssociada" EntitySet="Operacoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="OperacaoCotacao">
+          <Key>
+            <PropertyRef Name="OperacaoId" />
+          </Key>
+          <Property Name="OperacaoId" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Qtd" Type="Int32" Nullable="false" />
+          <Property Name="QtdAcumulada" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="ValorReal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="QtdVendida" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AtivoCotacao" Relationship="ModelAtivoCotacao.AtivoCotacaovwOperacoesComRunningSumQtdAssociada" FromRole="vwOperacoesComRunningSumQtdAssociada" ToRole="AtivoCotacao" />
+        </EntityType>
+        <Association Name="AtivoCotacaovwOperacoesComRunningSumQtdAssociada">
+          <End Type="ModelAtivoCotacao.AtivoCotacao" Role="AtivoCotacao" Multiplicity="1" />
+          <End Type="ModelAtivoCotacao.OperacaoCotacao" Role="vwOperacoesComRunningSumQtdAssociada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AtivoCotacao">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="vwOperacoesComRunningSumQtdAssociada">
+              <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelAtivoCotacaoStoreContainer" CdmEntityContainer="AtivoCotacaoEntities">
+          <EntitySetMapping Name="Ativos">
+            <EntityTypeMapping TypeName="ModelAtivoCotacao.AtivoCotacao">
+              <MappingFragment StoreEntitySet="tbAtivos">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operacoes">
+            <EntityTypeMapping TypeName="ModelAtivoCotacao.OperacaoCotacao">
+              <MappingFragment StoreEntitySet="vwOperacoesComRunningSumQtdAssociada">
+                <ScalarProperty Name="QtdVendida" ColumnName="QtdVendida" />
+                <ScalarProperty Name="ValorReal" ColumnName="ValorReal" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="QtdAcumulada" ColumnName="QtdAcumulada" />
+                <ScalarProperty Name="Qtd" ColumnName="Qtd" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
