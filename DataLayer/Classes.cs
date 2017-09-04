@@ -58,9 +58,9 @@ namespace DataLayer {
     }
 
     public partial class Venda {
-        public DateTime Data => (Compra == null ? DateTime.Today : Compra.Data);
-        public Decimal QtdComprada => Compra == null ? 0 : Compra.Qtd;
-        public Decimal QtdDisponivel => Compra == null ? 0 : QtdComprada - QtdAssociada;
+        public DateTime Data => Compra?.Data ?? DateTime.Today;
+        public decimal QtdComprada => Compra?.Qtd ?? 0;
+        public decimal QtdDisponivel => Compra == null ? 0 : QtdComprada - QtdAssociada;
     }
 
     public partial class CompraDisponivelParaVenda {

@@ -8,29 +8,33 @@ namespace Investimentos {
     public partial class frmAssociarCompraComVenda : Form {
         public int VendaId { get; set; }
         private OperacaoDeSaida _opSaida;
+        private readonly InvestimentosEntities _ctx; // Deve ser mantida global; se for aberta com using em CarregarLista dá erro.
 
         public frmAssociarCompraComVenda() {
             InitializeComponent();
+            _ctx = new InvestimentosEntities();
         }
 
         private void CarregarLista() {
-            using (var ctx = new InvestimentosEntities()) {
-                _opSaida = ctx.OperacoesDeSaida.Find(VendaId);
-                if (_opSaida == null) return;
-                bindingSourceAssociadas.DataSource = _opSaida.Venda;
-                bindingSourceDisponiveis.DataSource = ctx.GetComprasDisponiveisParaVenda(VendaId);
-                labelAtivo.Text = _opSaida.Codigo;
-                labelData.Text = _opSaida.Data.ToString("dd/MM/yyyy");
-                labelValor.Text = _opSaida.Valor.ToString("C2");
-                labelVenda.Text = Math.Abs(_opSaida.Qtd).ToString();
-                labelAssociacoes.Text = _opSaida.QtdComprada.ToString();
-                labelPendente.Text = _opSaida.QtdPendente.ToString();
-                dataGridViewDisponiveis.Enabled = _opSaida.QtdPendente > 0;
-            }
+            _opSaida = _ctx.OperacoesDeSaida.Find(VendaId);
+            if (_opSaida == null) return;
+            bindingSourceAssociadas.DataSource = _opSaida.Venda;
+            bindingSourceDisponiveis.DataSource = _ctx.GetComprasDisponiveisParaVenda(VendaId);
+            labelAtivo.Text = _opSaida.Codigo;
+            labelData.Text = _opSaida.Data.ToString("dd/MM/yyyy");
+            labelValor.Text = _opSaida.Valor.ToString("C2");
+            labelVenda.Text = Math.Abs(_opSaida.Qtd).ToString();
+            labelAssociacoes.Text = _opSaida.QtdComprada.ToString();
+            labelPendente.Text = _opSaida.QtdPendente.ToString();
+            dataGridViewDisponiveis.Enabled = _opSaida.QtdPendente > 0;
         }
 
         private void AssociarCompraComVenda_Load(object sender, EventArgs e) {
             CarregarLista();
+        }
+
+        private void frmAssociarCompraComVenda_FormClosing(object sender, FormClosingEventArgs e) {
+            _ctx.Dispose();
         }
 
         private void dataGridViewAssociadas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
@@ -44,9 +48,7 @@ namespace Investimentos {
                 numericUpDownQtdAssociada.Value = v.QtdAssociada;
             }
             else {
-                using (var ctx = new InvestimentosEntities()) {
-                    ctx.Vendas.Remove(v);
-                }
+                _ctx.Vendas.Remove(v);
                 FinalizarEdicao(true, null);
             }
         }
@@ -57,9 +59,7 @@ namespace Investimentos {
             if (numericUpDownQtdAssociada.Value > 0)
                 v.QtdAssociada = (int)numericUpDownQtdAssociada.Value;
             else
-                using (var ctx = new InvestimentosEntities()) {
-                    ctx.Vendas.Remove(v);
-                }
+                _ctx.Vendas.Remove(v);
             FinalizarEdicao(true, dataGridViewAssociadas);
         }
 
@@ -69,9 +69,7 @@ namespace Investimentos {
 
         private void FinalizarEdicao(bool salvarAlteracoes, DataGridView dgv) {
             if (salvarAlteracoes) {
-                using (var ctx = new InvestimentosEntities()) {
-                    ctx.SaveChanges();
-                }
+                _ctx.SaveChanges();
                 CarregarLista();
             }
             if (dgv == null) return;
@@ -100,6 +98,7 @@ namespace Investimentos {
                 numericUpDownQtdAAssociar.Value = qtd;
             }
         }
+
         private void AssociarCompraAVenda(CompraDisponivelParaVenda compra, int qtd) {
             var venda = _opSaida.Venda.FirstOrDefault(v => v.CompraId == compra.OperacaoId);
             qtd = qtd == 0 ? Math.Min(Math.Abs(_opSaida.Qtd), compra.QtdDisponivel) : qtd;
