@@ -22,7 +22,6 @@ namespace DataLayer {
     }
 
     public partial class AtivoCorrente {
-
         public decimal ValorMedioCompra => _valorMedioCompra(false);
 
         public decimal ValorMedioCompraReal => _valorMedioCompra(true);

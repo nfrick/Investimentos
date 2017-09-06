@@ -27,15 +27,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTestes));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.codigoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entityDataSource1 = new EFWinforms.EntityDataSource(this.components);
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.entityBindingNavigator1 = new EFWinforms.EntityBindingNavigator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.qtdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,9 +36,16 @@
             this.qtdRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.codigoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.entityBindingNavigator1 = new EFWinforms.EntityBindingNavigator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.entityBindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -72,47 +72,6 @@
             this.textBox1.TabIndex = 2;
             this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
-            // textBox2
-            // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Ativos.Nome", true));
-            this.textBox2.Location = new System.Drawing.Point(405, 86);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(259, 30);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox2_Validating);
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AutoGenerateColumns = false;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoDataGridViewTextBoxColumn1,
-            this.nomeDataGridViewTextBoxColumn});
-            this.dataGridView3.DataMember = "Ativos";
-            this.dataGridView3.DataSource = this.entityDataSource1;
-            this.dataGridView3.Location = new System.Drawing.Point(12, 50);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(347, 429);
-            this.dataGridView3.TabIndex = 5;
-            // 
-            // codigoDataGridViewTextBoxColumn1
-            // 
-            this.codigoDataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
-            this.codigoDataGridViewTextBoxColumn1.HeaderText = "Codigo";
-            this.codigoDataGridViewTextBoxColumn1.Name = "codigoDataGridViewTextBoxColumn1";
-            this.codigoDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // entityDataSource1
             // 
             this.entityDataSource1.DbContextType = typeof(DataLayer.InvestimentosEntities);
@@ -137,34 +96,6 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(552, 415);
             this.dataGridView2.TabIndex = 4;
-            // 
-            // entityBindingNavigator1
-            // 
-            this.entityBindingNavigator1.DataMember = "Ativos";
-            this.entityBindingNavigator1.DataSource = this.entityDataSource1;
-            this.entityBindingNavigator1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.entityBindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
-            this.entityBindingNavigator1.Location = new System.Drawing.Point(0, 0);
-            this.entityBindingNavigator1.Name = "entityBindingNavigator1";
-            this.entityBindingNavigator1.Size = new System.Drawing.Size(982, 27);
-            this.entityBindingNavigator1.TabIndex = 1;
-            this.entityBindingNavigator1.Text = "entityBindingNavigator1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.DataMember = "";
             // 
             // dataDataGridViewTextBoxColumn
             // 
@@ -214,6 +145,75 @@
             this.valorRealDataGridViewTextBoxColumn.HeaderText = "ValorReal";
             this.valorRealDataGridViewTextBoxColumn.Name = "valorRealDataGridViewTextBoxColumn";
             // 
+            // textBox2
+            // 
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Ativos.Nome", true));
+            this.textBox2.Location = new System.Drawing.Point(405, 86);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(259, 30);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.textBox2_Validating);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.AutoGenerateColumns = false;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codigoDataGridViewTextBoxColumn1,
+            this.nomeDataGridViewTextBoxColumn});
+            this.dataGridView3.DataMember = "Ativos";
+            this.dataGridView3.DataSource = this.entityDataSource1;
+            this.dataGridView3.Location = new System.Drawing.Point(12, 50);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
+            this.dataGridView3.RowTemplate.Height = 24;
+            this.dataGridView3.Size = new System.Drawing.Size(347, 429);
+            this.dataGridView3.TabIndex = 5;
+            // 
+            // codigoDataGridViewTextBoxColumn1
+            // 
+            this.codigoDataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
+            this.codigoDataGridViewTextBoxColumn1.HeaderText = "Codigo";
+            this.codigoDataGridViewTextBoxColumn1.Name = "codigoDataGridViewTextBoxColumn1";
+            this.codigoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // entityBindingNavigator1
+            // 
+            this.entityBindingNavigator1.DataMember = "Ativos";
+            this.entityBindingNavigator1.DataSource = this.entityDataSource1;
+            this.entityBindingNavigator1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.entityBindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1});
+            this.entityBindingNavigator1.Location = new System.Drawing.Point(0, 0);
+            this.entityBindingNavigator1.Name = "entityBindingNavigator1";
+            this.entityBindingNavigator1.Size = new System.Drawing.Size(982, 27);
+            this.entityBindingNavigator1.TabIndex = 1;
+            this.entityBindingNavigator1.Text = "entityBindingNavigator1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.DataMember = "";
+            // 
             // frmTestes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -233,8 +233,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Validating += new System.ComponentModel.CancelEventHandler(this.frmTestes_Validating);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.entityBindingNavigator1.ResumeLayout(false);
             this.entityBindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

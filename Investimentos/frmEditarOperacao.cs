@@ -6,6 +6,7 @@ using DataLayer;
 namespace Investimentos {
     public partial class frmEditarOperacao : Form {
         public int OperacaoId { get; set; }
+        public int Conta { get; set; }
         private Operacao _operacao;
 
         public frmEditarOperacao() {
@@ -14,7 +15,9 @@ namespace Investimentos {
 
         private void EditarOperacao_Load(object sender, EventArgs e) {
             using (var ctx = new InvestimentosEntities()) {
-                _operacao = OperacaoId == 0 ? new Operacao() : ctx.Operacoes.Find(OperacaoId);
+                _operacao = OperacaoId == 0 ?
+                    new Operacao() { ContaId = Conta }
+                    : ctx.Operacoes.Find(OperacaoId);
                 comboBoxAtivo.DataSource = ctx.Ativos.ToList();
                 comboBoxAtivo.DisplayMember = "Codigo";
                 comboBoxAtivo.ValueMember = "Codigo";
@@ -28,10 +31,12 @@ namespace Investimentos {
                 dateTimePickerData.Value = OperacaoId == 0 ?
                     DateTime.Now : _operacao.Data;
 
-                numericUpDownQtdPrevista.Value = OperacaoId == 0 ? 100 : _operacao.QtdPrevista;
-                numericUpDownQtdReal.Value = OperacaoId == 0 ? 100 : _operacao.QtdReal;
-                numericUpDownValor.Value = _operacao.Valor;
-                numericUpDownValorReal.Value = _operacao.ValorReal;
+                nudQtdPrevista.Value = OperacaoId == 0 ? 1000 : _operacao.QtdPrevista;
+                nudQtdReal.Value = OperacaoId == 0 ? 1000 : _operacao.QtdReal;
+                nudValor.Value = _operacao.Valor;
+                nudValorReal.Value = _operacao.ValorReal;
+
+                Totais();
 
                 buttonOK.Enabled = OperacaoId != 0;
             }
@@ -41,11 +46,13 @@ namespace Investimentos {
             _operacao.Codigo = (string)comboBoxAtivo.SelectedValue;
             _operacao.TipoId = (int)comboBoxOperacao.SelectedValue;
             _operacao.Data = dateTimePickerData.Value;
-            _operacao.QtdPrevista = (int)numericUpDownQtdPrevista.Value;
-            _operacao.QtdReal = (int)numericUpDownQtdReal.Value;
-            _operacao.Valor = numericUpDownValor.Value;
-            _operacao.ValorReal = numericUpDownValorReal.Value;
+            _operacao.QtdPrevista = (int)nudQtdPrevista.Value;
+            _operacao.QtdReal = (int)nudQtdReal.Value;
+            _operacao.Valor = nudValor.Value;
+            _operacao.ValorReal = nudValorReal.Value;
             using (var ctx = new InvestimentosEntities()) {
+                if (_operacao.OperacaoId == 0)
+                    ctx.Operacoes.Add(_operacao);
                 ctx.SaveChanges();
             }
             Close();
@@ -57,11 +64,37 @@ namespace Investimentos {
         }
 
         private void labelQtdReal_Click(object sender, EventArgs e) {
-            numericUpDownQtdReal.Value = numericUpDownQtdPrevista.Value;
+            nudQtdReal.Value = nudQtdPrevista.Value;
         }
 
         private void labelValorReal_Click(object sender, EventArgs e) {
-            numericUpDownValorReal.Value = numericUpDownValor.Value;
+            nudValorReal.Value = nudValor.Value;
+        }
+
+        private void numericUpDown_Enter(object sender, EventArgs e) {
+            var nup = (NumericUpDown)sender;
+            nup.Select(0, nup.Text.Length);
+        }
+
+        private void numericUpDownReal_Validated(object sender, EventArgs e) {
+            var nud = (NumericUpDown)sender;
+            if (nud.Value != 0 && nud.Text != "") return;
+            nud.Value = nud.Name.Contains("Qtd") ?
+                nudQtdPrevista.Value :
+                nudValor.Value;
+            Totais();
+        }
+
+        private void nudPrevista_Validated(object sender, EventArgs e) {
+            Totais();
+        }
+
+        private void Totais() {
+            var total = nudQtdPrevista.Value * nudValor.Value;
+            labelPrevistoTotal.Text = $@"{total:N2}";
+            total = nudQtdReal.Value * nudValorReal.Value;
+            labelRealTotal.Text = $@"{total:N2}";
+
         }
     }
 }

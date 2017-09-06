@@ -66,6 +66,9 @@
     <Compile Include="CompraDisponivelParaVenda.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Conta.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSource.cs">
       <SubType>Component</SubType>
     </Compile>

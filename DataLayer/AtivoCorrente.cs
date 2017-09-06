@@ -23,10 +23,12 @@ namespace DataLayer
     
         public string Codigo { get; set; }
         public int QtdTotal { get; set; }
+        public int ContaId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OperacaoComRunningSum> OperacoesTodas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OperacaoDeSaida> OperacoesDeSaida { get; set; }
+        public virtual Conta Conta { get; set; }
     }
 }
