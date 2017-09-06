@@ -41,16 +41,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvestimentos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvestimentos));
             this.dgvVendas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.OperacaoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +66,22 @@
             this.Lucro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LucroReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dgvOperacoes = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditarOperacao = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dgvAtivos = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvContas = new System.Windows.Forms.DataGridView();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonNovaOperacao = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonResumoVendas = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonNovaConta = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonEditarConta = new System.Windows.Forms.ToolStripButton();
+            this.toolStripComboBoxConta = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.qtdAntesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdCompradaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdPendenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,31 +99,15 @@
             this.tipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ativoCorrenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entityDataSource1 = new EFWinforms.EntityDataSource(this.components);
-            this.dgvOperacoes = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdAcumuladaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEditarOperacao = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dgvAtivos = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorMedioCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorMedioCompraRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonNovaOperacao = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonResumoVendas = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonNovaConta = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonEditarConta = new System.Windows.Forms.ToolStripButton();
-            this.toolStripComboBoxConta = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.dgvContas = new System.Windows.Forms.DataGridView();
             this.contaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,11 +118,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperacoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtivos)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvVendas
@@ -332,6 +332,234 @@
             this.btnEditar.UseColumnTextForButtonValue = true;
             this.btnEditar.Width = 25;
             // 
+            // dgvOperacoes
+            // 
+            this.dgvOperacoes.AllowUserToAddRows = false;
+            this.dgvOperacoes.AllowUserToDeleteRows = false;
+            this.dgvOperacoes.AutoGenerateColumns = false;
+            this.dgvOperacoes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.dataDataGridViewTextBoxColumn,
+            this.Tipo,
+            this.qtdDataGridViewTextBoxColumn,
+            this.qtdAcumuladaDataGridViewTextBoxColumn,
+            this.valorDataGridViewTextBoxColumn,
+            this.valorRealDataGridViewTextBoxColumn,
+            this.btnEditarOperacao});
+            this.dgvOperacoes.DataMember = "Contas.AtivoCorrentes.OperacoesTodas";
+            this.dgvOperacoes.DataSource = this.entityDataSource1;
+            this.dgvOperacoes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvOperacoes.Location = new System.Drawing.Point(333, 3);
+            this.dgvOperacoes.MultiSelect = false;
+            this.dgvOperacoes.Name = "dgvOperacoes";
+            this.dgvOperacoes.ReadOnly = true;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle38;
+            this.dgvOperacoes.RowHeadersWidth = 25;
+            this.dgvOperacoes.RowTemplate.Height = 24;
+            this.dgvOperacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvOperacoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOperacoes.Size = new System.Drawing.Size(568, 294);
+            this.dgvOperacoes.TabIndex = 1;
+            this.dgvOperacoes.Tag = "3";
+            this.dgvOperacoes.CellButtonClick += new DataGridViewWithButtons.VBControls.DataGridViewWithButtons.CellButtonClickEventHandler(this.dataGridViewOperacoes_CellButtonClick);
+            this.dgvOperacoes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewOperacoes_CellFormatting);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "OperacaoId";
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 10;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Operação";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // btnEditarOperacao
+            // 
+            this.btnEditarOperacao.HeaderText = "";
+            this.btnEditarOperacao.Name = "btnEditarOperacao";
+            this.btnEditarOperacao.ReadOnly = true;
+            this.btnEditarOperacao.Text = "…";
+            this.btnEditarOperacao.ToolTipText = "Editar";
+            this.btnEditarOperacao.UseColumnTextForButtonValue = true;
+            this.btnEditarOperacao.Width = 25;
+            // 
+            // dgvAtivos
+            // 
+            this.dgvAtivos.AllowUserToAddRows = false;
+            this.dgvAtivos.AllowUserToDeleteRows = false;
+            this.dgvAtivos.AutoGenerateColumns = false;
+            this.dgvAtivos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.qtdTotalDataGridViewTextBoxColumn,
+            this.valorMedioCompraDataGridViewTextBoxColumn,
+            this.valorMedioCompraRealDataGridViewTextBoxColumn});
+            this.dgvAtivos.DataMember = "Contas.AtivoCorrentes";
+            this.dgvAtivos.DataSource = this.entityDataSource1;
+            this.dgvAtivos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAtivos.Location = new System.Drawing.Point(3, 3);
+            this.dgvAtivos.MultiSelect = false;
+            this.dgvAtivos.Name = "dgvAtivos";
+            this.dgvAtivos.ReadOnly = true;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle42;
+            this.dgvAtivos.RowHeadersWidth = 25;
+            this.dgvAtivos.RowTemplate.Height = 24;
+            this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAtivos.Size = new System.Drawing.Size(324, 294);
+            this.dgvAtivos.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.5881F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.4119F));
+            this.tableLayoutPanel1.Controls.Add(this.dgvVendas, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgvOperacoes, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dgvAtivos, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dgvContas, 0, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(904, 690);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // dgvContas
+            // 
+            this.dgvContas.AutoGenerateColumns = false;
+            this.dgvContas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.contaIdDataGridViewTextBoxColumn,
+            this.nomeDataGridViewTextBoxColumn,
+            this.agenciaDataGridViewTextBoxColumn,
+            this.contaCorrenteDataGridViewTextBoxColumn,
+            this.senhaDataGridViewTextBoxColumn,
+            this.infoDataGridViewTextBoxColumn});
+            this.dgvContas.DataMember = "Contas";
+            this.dgvContas.DataSource = this.entityDataSource1;
+            this.dgvContas.Location = new System.Drawing.Point(3, 603);
+            this.dgvContas.Name = "dgvContas";
+            this.dgvContas.RowTemplate.Height = 24;
+            this.dgvContas.Size = new System.Drawing.Size(240, 150);
+            this.dgvContas.TabIndex = 3;
+            this.dgvContas.Visible = false;
+            // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(904, 690);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(904, 718);
+            this.toolStripContainer1.TabIndex = 6;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonNovaOperacao,
+            this.toolStripButtonResumoVendas,
+            this.toolStripButtonNovaConta,
+            this.toolStripButtonEditarConta,
+            this.toolStripComboBoxConta,
+            this.toolStripSeparator1,
+            this.toolStripLabel1});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(611, 28);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // toolStripButtonNovaOperacao
+            // 
+            this.toolStripButtonNovaOperacao.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonNovaOperacao.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaOperacao.Image")));
+            this.toolStripButtonNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNovaOperacao.Name = "toolStripButtonNovaOperacao";
+            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(117, 25);
+            this.toolStripButtonNovaOperacao.Text = "Nova Operação";
+            this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
+            // 
+            // toolStripButtonResumoVendas
+            // 
+            this.toolStripButtonResumoVendas.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonResumoVendas.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonResumoVendas.Image")));
+            this.toolStripButtonResumoVendas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonResumoVendas.Name = "toolStripButtonResumoVendas";
+            this.toolStripButtonResumoVendas.Size = new System.Drawing.Size(117, 25);
+            this.toolStripButtonResumoVendas.Text = "Resumo Vendas";
+            this.toolStripButtonResumoVendas.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
+            // 
+            // toolStripButtonNovaConta
+            // 
+            this.toolStripButtonNovaConta.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonNovaConta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonNovaConta.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaConta.Image")));
+            this.toolStripButtonNovaConta.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNovaConta.Name = "toolStripButtonNovaConta";
+            this.toolStripButtonNovaConta.Size = new System.Drawing.Size(91, 25);
+            this.toolStripButtonNovaConta.Text = "Nova Conta";
+            this.toolStripButtonNovaConta.ToolTipText = "Nova Conta";
+            this.toolStripButtonNovaConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
+            // 
+            // toolStripButtonEditarConta
+            // 
+            this.toolStripButtonEditarConta.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonEditarConta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonEditarConta.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditarConta.Image")));
+            this.toolStripButtonEditarConta.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEditarConta.Name = "toolStripButtonEditarConta";
+            this.toolStripButtonEditarConta.Size = new System.Drawing.Size(95, 25);
+            this.toolStripButtonEditarConta.Text = "Editar Conta";
+            this.toolStripButtonEditarConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
+            // 
+            // toolStripComboBoxConta
+            // 
+            this.toolStripComboBoxConta.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripComboBoxConta.AutoSize = false;
+            this.toolStripComboBoxConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBoxConta.Name = "toolStripComboBoxConta";
+            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 28);
+            this.toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.AutoSize = false;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(81, 25);
+            this.toolStripLabel1.Text = "Conta:";
+            this.toolStripLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // qtdAntesDataGridViewTextBoxColumn
             // 
             this.qtdAntesDataGridViewTextBoxColumn.DataPropertyName = "QtdAntes";
@@ -448,49 +676,6 @@
             // 
             this.entityDataSource1.DbContextType = typeof(DataLayer.InvestimentosEntities);
             // 
-            // dgvOperacoes
-            // 
-            this.dgvOperacoes.AllowUserToAddRows = false;
-            this.dgvOperacoes.AllowUserToDeleteRows = false;
-            this.dgvOperacoes.AutoGenerateColumns = false;
-            this.dgvOperacoes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.dataDataGridViewTextBoxColumn,
-            this.Tipo,
-            this.qtdDataGridViewTextBoxColumn,
-            this.qtdAcumuladaDataGridViewTextBoxColumn,
-            this.valorDataGridViewTextBoxColumn,
-            this.valorRealDataGridViewTextBoxColumn,
-            this.btnEditarOperacao});
-            this.dgvOperacoes.DataMember = "Contas.AtivoCorrentes.OperacoesTodas";
-            this.dgvOperacoes.DataSource = this.entityDataSource1;
-            this.dgvOperacoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvOperacoes.Location = new System.Drawing.Point(333, 3);
-            this.dgvOperacoes.MultiSelect = false;
-            this.dgvOperacoes.Name = "dgvOperacoes";
-            this.dgvOperacoes.ReadOnly = true;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle38;
-            this.dgvOperacoes.RowHeadersWidth = 25;
-            this.dgvOperacoes.RowTemplate.Height = 24;
-            this.dgvOperacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvOperacoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOperacoes.Size = new System.Drawing.Size(568, 294);
-            this.dgvOperacoes.TabIndex = 1;
-            this.dgvOperacoes.Tag = "3";
-            this.dgvOperacoes.CellButtonClick += new DataGridViewWithButtons.VBControls.DataGridViewWithButtons.CellButtonClickEventHandler(this.dataGridViewOperacoes_CellButtonClick);
-            this.dgvOperacoes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewOperacoes_CellFormatting);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "OperacaoId";
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 10;
-            // 
             // dataDataGridViewTextBoxColumn
             // 
             this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
@@ -500,13 +685,6 @@
             this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
             this.dataDataGridViewTextBoxColumn.ReadOnly = true;
             this.dataDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Operação";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
             // 
             // qtdDataGridViewTextBoxColumn
             // 
@@ -556,43 +734,6 @@
             this.valorRealDataGridViewTextBoxColumn.ReadOnly = true;
             this.valorRealDataGridViewTextBoxColumn.Width = 80;
             // 
-            // btnEditarOperacao
-            // 
-            this.btnEditarOperacao.HeaderText = "";
-            this.btnEditarOperacao.Name = "btnEditarOperacao";
-            this.btnEditarOperacao.ReadOnly = true;
-            this.btnEditarOperacao.Text = "…";
-            this.btnEditarOperacao.ToolTipText = "Editar";
-            this.btnEditarOperacao.UseColumnTextForButtonValue = true;
-            this.btnEditarOperacao.Width = 25;
-            // 
-            // dgvAtivos
-            // 
-            this.dgvAtivos.AllowUserToAddRows = false;
-            this.dgvAtivos.AllowUserToDeleteRows = false;
-            this.dgvAtivos.AutoGenerateColumns = false;
-            this.dgvAtivos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.qtdTotalDataGridViewTextBoxColumn,
-            this.valorMedioCompraDataGridViewTextBoxColumn,
-            this.valorMedioCompraRealDataGridViewTextBoxColumn});
-            this.dgvAtivos.DataMember = "Contas.AtivoCorrentes";
-            this.dgvAtivos.DataSource = this.entityDataSource1;
-            this.dgvAtivos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvAtivos.Location = new System.Drawing.Point(3, 3);
-            this.dgvAtivos.MultiSelect = false;
-            this.dgvAtivos.Name = "dgvAtivos";
-            this.dgvAtivos.ReadOnly = true;
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle42;
-            this.dgvAtivos.RowHeadersWidth = 25;
-            this.dgvAtivos.RowTemplate.Height = 24;
-            this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAtivos.Size = new System.Drawing.Size(324, 294);
-            this.dgvAtivos.TabIndex = 0;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
@@ -636,147 +777,6 @@
             this.valorMedioCompraRealDataGridViewTextBoxColumn.Name = "valorMedioCompraRealDataGridViewTextBoxColumn";
             this.valorMedioCompraRealDataGridViewTextBoxColumn.ReadOnly = true;
             this.valorMedioCompraRealDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.5881F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.4119F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvVendas, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dgvOperacoes, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dgvAtivos, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dgvContas, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(904, 690);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // toolStripContainer1
-            // 
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(904, 690);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(904, 718);
-            this.toolStripContainer1.TabIndex = 6;
-            this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonNovaOperacao,
-            this.toolStripButtonResumoVendas,
-            this.toolStripButtonNovaConta,
-            this.toolStripButtonEditarConta,
-            this.toolStripComboBoxConta,
-            this.toolStripSeparator1,
-            this.toolStripLabel1});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(611, 28);
-            this.toolStrip1.TabIndex = 0;
-            // 
-            // toolStripButtonNovaOperacao
-            // 
-            this.toolStripButtonNovaOperacao.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonNovaOperacao.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaOperacao.Image")));
-            this.toolStripButtonNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNovaOperacao.Name = "toolStripButtonNovaOperacao";
-            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(117, 25);
-            this.toolStripButtonNovaOperacao.Text = "Nova Operação";
-            this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
-            // 
-            // toolStripButtonResumoVendas
-            // 
-            this.toolStripButtonResumoVendas.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonResumoVendas.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonResumoVendas.Image")));
-            this.toolStripButtonResumoVendas.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonResumoVendas.Name = "toolStripButtonResumoVendas";
-            this.toolStripButtonResumoVendas.Size = new System.Drawing.Size(117, 25);
-            this.toolStripButtonResumoVendas.Text = "Resumo Vendas";
-            this.toolStripButtonResumoVendas.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
-            // 
-            // toolStripButtonNovaConta
-            // 
-            this.toolStripButtonNovaConta.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonNovaConta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonNovaConta.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaConta.Image")));
-            this.toolStripButtonNovaConta.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNovaConta.Name = "toolStripButtonNovaConta";
-            this.toolStripButtonNovaConta.Size = new System.Drawing.Size(91, 25);
-            this.toolStripButtonNovaConta.Text = "Nova Conta";
-            this.toolStripButtonNovaConta.ToolTipText = "Nova Conta";
-            this.toolStripButtonNovaConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
-            // 
-            // toolStripButtonEditarConta
-            // 
-            this.toolStripButtonEditarConta.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonEditarConta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonEditarConta.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditarConta.Image")));
-            this.toolStripButtonEditarConta.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonEditarConta.Name = "toolStripButtonEditarConta";
-            this.toolStripButtonEditarConta.Size = new System.Drawing.Size(95, 25);
-            this.toolStripButtonEditarConta.Text = "Editar Conta";
-            this.toolStripButtonEditarConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
-            // 
-            // toolStripComboBoxConta
-            // 
-            this.toolStripComboBoxConta.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripComboBoxConta.AutoSize = false;
-            this.toolStripComboBoxConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBoxConta.Name = "toolStripComboBoxConta";
-            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 28);
-            this.toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.AutoSize = false;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(81, 25);
-            this.toolStripLabel1.Text = "Conta:";
-            this.toolStripLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dgvContas
-            // 
-            this.dgvContas.AutoGenerateColumns = false;
-            this.dgvContas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvContas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.contaIdDataGridViewTextBoxColumn,
-            this.nomeDataGridViewTextBoxColumn,
-            this.agenciaDataGridViewTextBoxColumn,
-            this.contaCorrenteDataGridViewTextBoxColumn,
-            this.senhaDataGridViewTextBoxColumn,
-            this.infoDataGridViewTextBoxColumn});
-            this.dgvContas.DataMember = "Contas";
-            this.dgvContas.DataSource = this.entityDataSource1;
-            this.dgvContas.Location = new System.Drawing.Point(3, 603);
-            this.dgvContas.Name = "dgvContas";
-            this.dgvContas.RowTemplate.Height = 24;
-            this.dgvContas.Size = new System.Drawing.Size(240, 150);
-            this.dgvContas.TabIndex = 3;
-            this.dgvContas.Visible = false;
             // 
             // contaIdDataGridViewTextBoxColumn
             // 
@@ -833,6 +833,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperacoes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtivos)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
@@ -840,7 +841,6 @@
             this.toolStripContainer1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -851,14 +851,6 @@
         private System.Windows.Forms.DataGridView dgvAtivos;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvOperacoes;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvVendas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAcumuladaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn btnEditarOperacao;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -910,6 +902,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn contaCorrenteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn senhaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn infoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAcumuladaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEditarOperacao;
     }
 }
 

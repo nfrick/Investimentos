@@ -16,7 +16,7 @@ namespace Investimentos {
         }
 
         private void CarregarLista() {
-            _opSaida = _ctx.OperacoesDeSaida.Find(VendaId);
+            _opSaida = _ctx.OperacoesDeSaida.FirstOrDefault(o => o.OperacaoId == VendaId);
             if (_opSaida == null) return;
             bindingSourceAssociadas.DataSource = _opSaida.Venda;
             bindingSourceDisponiveis.DataSource = _ctx.GetComprasDisponiveisParaVenda(VendaId);

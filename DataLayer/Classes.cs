@@ -203,15 +203,17 @@ namespace DataLayer {
         private Dictionary<DateTime, decimal> _olderTrades;
         private bool _jaNegociado;
         private int? _qtdTotal;
+        private List<OperacaoCotacao> _operacoes;
 
         public const string TrendUp = "é";
         public const string TrendDown = "ê";
         public const string TrendNeutral = "l";
         public const string TrendNone = "¡";
 
-        public void Initialize(Dictionary<string, Cotacao> cotacoes) {
-            _jaNegociado = Operacoes.Any();
-            _qtdTotal = _jaNegociado ? Operacoes.Last().QtdAcumulada : 0;
+        public void Initialize(Dictionary<string, Cotacao> cotacoes, int contaId) {
+            _operacoes = Operacoes.Where(o => o.ContaId == contaId).ToList();
+            _jaNegociado = _operacoes.Any();
+            _qtdTotal = _jaNegociado ? _operacoes.Last().QtdAcumulada : 0;
             _newerTrades = new Dictionary<DateTime, decimal>();
             _olderTrades = new Dictionary<DateTime, decimal>();
             AtualizarCotacao(cotacoes);
@@ -252,7 +254,7 @@ namespace DataLayer {
 
         public int? QtdTotal => _qtdTotal;
 
-        private IEnumerable<OperacaoCotacao> Vendaveis => Operacoes.Where(o => o.QtdDisponivel > 0 && o.ValorReal < LastTrade);
+        private IEnumerable<OperacaoCotacao> Vendaveis => _operacoes.Where(o => o.QtdDisponivel > 0 && o.ValorReal < LastTrade);
 
         public int QtdVendavel => _qtdTotal == 0 ? 0 : Vendaveis.Sum(o => o.QtdDisponivel);
 
@@ -266,7 +268,7 @@ namespace DataLayer {
 
         private decimal _valorMedioCompra(bool real) =>
             QtdTotal == 0 ? 0 :
-                Operacoes
+                _operacoes
                     .OrderByDescending(o => o.Data)
                     .ThenByDescending(o => o.OperacaoId)
                     .TakeWhile(o => o.QtdAcumulada > 0)
@@ -297,7 +299,7 @@ namespace DataLayer {
 
         public DateTime? LastTradeDate => _cotacao?.LastTradeDate;
 
-        public decimal? PreviousTrade => HasTrades ? (decimal?)_newerTrades.Last().Value : null;
+        public decimal? PreviousTrade => (decimal?)Trades.LastOrDefault().Value;
 
         public double MaxTrade => HasTrades ? (double)Math.Max((decimal)LastTrade, Trades.Max(s => s.Value)) : 0;
 
@@ -305,7 +307,7 @@ namespace DataLayer {
 
         public string Trend {
             get {
-                if (LastTrade == null || PreviousTrade == null)
+                if (LastTrade == null || PreviousTrade == 0)
                     return TrendNone;
                 return LastTrade > PreviousTrade ? TrendUp :
                         (LastTrade < PreviousTrade ? TrendDown :

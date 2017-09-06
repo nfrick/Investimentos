@@ -7,7 +7,6 @@ namespace Investimentos {
     public partial class frmEditarOperacao : Form {
         public int OperacaoId { get; set; }
         public int Conta { get; set; }
-        private Operacao _operacao;
 
         public frmEditarOperacao() {
             InitializeComponent();
@@ -15,44 +14,53 @@ namespace Investimentos {
 
         private void EditarOperacao_Load(object sender, EventArgs e) {
             using (var ctx = new InvestimentosEntities()) {
-                _operacao = OperacaoId == 0 ?
-                    new Operacao() { ContaId = Conta }
-                    : ctx.Operacoes.Find(OperacaoId);
+                var operacao = OperacaoId == 0 ?
+                    new Operacao() { ContaId = Conta } :
+                    ctx.Operacoes.Find(OperacaoId);
+
                 comboBoxAtivo.DataSource = ctx.Ativos.ToList();
                 comboBoxAtivo.DisplayMember = "Codigo";
                 comboBoxAtivo.ValueMember = "Codigo";
-                comboBoxAtivo.SelectedValue = _operacao.Codigo ?? string.Empty;
+                comboBoxAtivo.SelectedValue = operacao.Codigo ?? string.Empty;
 
                 comboBoxOperacao.DataSource = ctx.OperacoesTipos.ToList();
                 comboBoxOperacao.DisplayMember = "Tipo";
                 comboBoxOperacao.ValueMember = "TipoId";
-                comboBoxOperacao.SelectedValue = _operacao.TipoId;
+                comboBoxOperacao.SelectedValue = operacao.TipoId;
 
-                dateTimePickerData.Value = OperacaoId == 0 ?
-                    DateTime.Now : _operacao.Data;
-
-                nudQtdPrevista.Value = OperacaoId == 0 ? 1000 : _operacao.QtdPrevista;
-                nudQtdReal.Value = OperacaoId == 0 ? 1000 : _operacao.QtdReal;
-                nudValor.Value = _operacao.Valor;
-                nudValorReal.Value = _operacao.ValorReal;
-
+                if (OperacaoId == 0) {
+                    dateTimePickerData.Value = DateTime.Now;
+                    nudQtdPrevista.Value = 1000;
+                    nudQtdReal.Value = 1000;
+                }
+                else {
+                    dateTimePickerData.Value = operacao.Data;
+                    nudQtdPrevista.Value = operacao.QtdPrevista;
+                    nudQtdReal.Value = operacao.QtdReal;
+                    nudValor.Value = operacao.Valor;
+                    nudValorReal.Value = operacao.ValorReal;
+                }
                 Totais();
-
                 buttonOK.Enabled = OperacaoId != 0;
             }
         }
 
         private void buttonOK_Click(object sender, EventArgs e) {
-            _operacao.Codigo = (string)comboBoxAtivo.SelectedValue;
-            _operacao.TipoId = (int)comboBoxOperacao.SelectedValue;
-            _operacao.Data = dateTimePickerData.Value;
-            _operacao.QtdPrevista = (int)nudQtdPrevista.Value;
-            _operacao.QtdReal = (int)nudQtdReal.Value;
-            _operacao.Valor = nudValor.Value;
-            _operacao.ValorReal = nudValorReal.Value;
             using (var ctx = new InvestimentosEntities()) {
-                if (_operacao.OperacaoId == 0)
-                    ctx.Operacoes.Add(_operacao);
+                var operacao = OperacaoId == 0 ?
+                    new Operacao() { ContaId = Conta } :
+                    ctx.Operacoes.Find(OperacaoId);
+                operacao.Codigo = (string)comboBoxAtivo.SelectedValue;
+                operacao.TipoId = (int)comboBoxOperacao.SelectedValue;
+                operacao.Data = dateTimePickerData.Value;
+                operacao.QtdPrevista = (int)nudQtdPrevista.Value;
+                operacao.QtdReal = (int)nudQtdReal.Value;
+                operacao.Valor = nudValor.Value;
+                operacao.ValorReal = nudValorReal.Value;
+
+                if (OperacaoId == 0)
+                    ctx.Operacoes.Add(operacao);
+
                 ctx.SaveChanges();
             }
             Close();
@@ -78,10 +86,11 @@ namespace Investimentos {
 
         private void numericUpDownReal_Validated(object sender, EventArgs e) {
             var nud = (NumericUpDown)sender;
-            if (nud.Value != 0 && nud.Text != "") return;
-            nud.Value = nud.Name.Contains("Qtd") ?
-                nudQtdPrevista.Value :
-                nudValor.Value;
+            if (nud.Value == 0 || nud.Text == string.Empty) {
+                nud.Value = nud.Name.Contains("Qtd") ?
+                    nudQtdPrevista.Value :
+                    nudValor.Value;
+            }
             Totais();
         }
 
@@ -90,11 +99,8 @@ namespace Investimentos {
         }
 
         private void Totais() {
-            var total = nudQtdPrevista.Value * nudValor.Value;
-            labelPrevistoTotal.Text = $@"{total:N2}";
-            total = nudQtdReal.Value * nudValorReal.Value;
-            labelRealTotal.Text = $@"{total:N2}";
-
+            groupBoxPrevisto.Text = $@"Previsto: {nudQtdPrevista.Value * nudValor.Value:N2}";
+            groupBoxReal.Text = $@"Real: {nudQtdReal.Value * nudValorReal.Value:N2}";
         }
     }
 }

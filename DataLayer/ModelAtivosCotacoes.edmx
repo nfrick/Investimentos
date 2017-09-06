@@ -17,16 +17,22 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
         <EntityType Name="vwOperacoesComRunningSumQtdAssociada">
           <Key>
             <PropertyRef Name="OperacaoId" />
+            
+            
+            
+            
+            
           </Key>
           <Property Name="OperacaoId" Type="int" Nullable="false" />
           <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="ContaId" Type="int" Nullable="false" />
           <Property Name="Tipo" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Data" Type="smalldatetime" Nullable="false" />
           <Property Name="Qtd" Type="int" />
           <Property Name="QtdAcumulada" Type="int" />
           <Property Name="Valor" Type="smallmoney" Nullable="false" />
           <Property Name="ValorReal" Type="smallmoney" Nullable="false" />
-          <Property Name="QtdVendida" Type="int" />
+          <Property Name="QtdVendida" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ModelAtivoCotacaoStoreContainer">
           <EntitySet Name="tbAtivos" EntityType="Self.tbAtivos" Schema="dbo" store:Type="Tables" />
@@ -34,6 +40,7 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
             <DefiningQuery>SELECT 
     [vwOperacoesComRunningSumQtdAssociada].[OperacaoId] AS [OperacaoId], 
     [vwOperacoesComRunningSumQtdAssociada].[Codigo] AS [Codigo], 
+    [vwOperacoesComRunningSumQtdAssociada].[ContaId] AS [ContaId], 
     [vwOperacoesComRunningSumQtdAssociada].[Tipo] AS [Tipo], 
     [vwOperacoesComRunningSumQtdAssociada].[Data] AS [Data], 
     [vwOperacoesComRunningSumQtdAssociada].[Qtd] AS [Qtd], 
@@ -78,6 +85,7 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
           <Property Name="ValorReal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="QtdVendida" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AtivoCotacao" Relationship="ModelAtivoCotacao.AtivoCotacaovwOperacoesComRunningSumQtdAssociada" FromRole="vwOperacoesComRunningSumQtdAssociada" ToRole="AtivoCotacao" />
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="AtivoCotacaovwOperacoesComRunningSumQtdAssociada">
           <End Type="ModelAtivoCotacao.AtivoCotacao" Role="AtivoCotacao" Multiplicity="1" />
@@ -108,6 +116,7 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
           <EntitySetMapping Name="Operacoes">
             <EntityTypeMapping TypeName="ModelAtivoCotacao.OperacaoCotacao">
               <MappingFragment StoreEntitySet="vwOperacoesComRunningSumQtdAssociada">
+                <ScalarProperty Name="ContaId" ColumnName="ContaId" />
                 <ScalarProperty Name="QtdVendida" ColumnName="QtdVendida" />
                 <ScalarProperty Name="ValorReal" ColumnName="ValorReal" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />

@@ -23,9 +23,8 @@ namespace Cotacoes {
         /// Inicializa a string para o Web Service
         /// e a lista de ativos a serem controlados
         /// </summary>
-        public static bool Initializar() {
-            bool sucessoNoYahoo = true;
-            _ativos = new List<AtivoCotacao>();
+        public static bool Initialize(int contaId) {
+            var sucessoNoYahoo = true;
             using (var ctx = new AtivoCotacaoEntities()) {
                 _yahooString = @"http://finance.yahoo.com/d/quotes.csv?s=" +
                     string.Join("+", ctx.Ativos
@@ -40,7 +39,7 @@ namespace Cotacoes {
                     sucessoNoYahoo = false;
                 }
                 foreach (var ativo in _ativos)
-                    ativo.Initialize(Cotacoes);
+                    ativo.Initialize(Cotacoes, contaId);
                 return sucessoNoYahoo;
             }
         }

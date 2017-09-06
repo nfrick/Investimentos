@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Windows.Forms;
@@ -11,7 +12,6 @@ namespace Cotacoes {
     public partial class frmCotacoes : Form {
         private bool _precisaCarregarListaDeAtivos = true;
         private System.Threading.Timer _updateTimer;
-        private int _erros;
 
         public frmCotacoes() {
             InitializeComponent();
@@ -19,10 +19,17 @@ namespace Cotacoes {
 
         private void frmCotacoes_Load(object sender, EventArgs e) {
             InitializeDataGrid();
-            if (!YahooFinance.Initializar()) {
-                PerguntarSobreFrequencia();
+
+            using (var ctx = new InvestimentosEntities()) {
+                var cbx = toolStripComboBoxConta.ComboBox;
+                var contas = ctx.Contas.ToList();
+                foreach (var conta in contas) {
+                    cbx.Items.Add(conta);
+                }
+                cbx.DisplayMember = "Nome";
+                cbx.ValueMember = "ContaId";
+                cbx.SelectedIndex = 0;
             }
-            bindingSourceCotacoes.DataSource = null;
         }
 
         #region Timer
@@ -60,7 +67,7 @@ namespace Cotacoes {
                     BeginInvoke(new Action(() => {
                         CarregarDados();
                         if (!value) {
-                            _erros++;
+                            Erros++;
                             // PerguntarSobreFrequencia();
                         }
                         else if (DateTime.Now.Hour >= 17 && DateTime.Now.Minute >= 12)
@@ -70,7 +77,7 @@ namespace Cotacoes {
             }
         }
 
-        public int Erros { get => _erros; set => _erros = value; }
+        public int Erros { get; set; }
 
         private void PerguntarSobreFrequencia() {
             AjustarTimer(0);
@@ -136,7 +143,7 @@ namespace Cotacoes {
 
             var total = AtivoCotacaoTotal.New((List<AtivoCotacao>)bindingSourceCotacoes.DataSource);
             bindingSourceTotal.DataSource = total;
-                
+
 
 
             tableLayoutPanel1.RowStyles[0].Height = (25 * Math.Min(10, bindingSourceCotacoes.Count)) + dgvCotacoes.ColumnHeadersHeight + 0;
@@ -145,7 +152,7 @@ namespace Cotacoes {
                      tableLayoutPanel1.GetRowHeights()[1] +
                      tableLayoutPanel1.GetRowHeights()[2];
             toolStripStatusLabelAtualizadoEm.Text = $@"Atualizado em: {DateTime.Now}";
-            toolStripStatusLabelErros.Text = $@"Erros: {_erros}";
+            toolStripStatusLabelErros.Text = $@"Erros: {Erros}";
         }
 
         private void AtualizarGrafico(bool forcePack) {
@@ -208,10 +215,12 @@ namespace Cotacoes {
         }
 
         private void AtivosButtonsClick(object sender, EventArgs e) {
-            ToolStripMenuItem senderButton = (ToolStripMenuItem)sender;
-            foreach (ToolStripItem i in toolStripDropDownButtonAtivos.DropDownItems)
-                if (i is ToolStripMenuItem)
-                    ((ToolStripMenuItem)i).Checked = (i == senderButton);
+            var senderButton = (ToolStripMenuItem)sender;
+            foreach (ToolStripItem i in toolStripDropDownButtonAtivos.DropDownItems) {
+                if (i is ToolStripMenuItem item) {
+                    item.Checked = (i == senderButton);
+                }
+            }
             toolStripDropDownButtonAtivos.Text = senderButton.Text;
             _precisaCarregarListaDeAtivos = true;
         }
@@ -246,6 +255,14 @@ namespace Cotacoes {
 
         private void dgvTotal_SelectionChanged(object sender, EventArgs e) {
             dgvTotal.ClearSelection();
+        }
+
+        private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
+            var conta = (Conta)((ToolStripComboBox) sender).SelectedItem;
+            if (!YahooFinance.Initialize(conta.ContaId)) {
+                PerguntarSobreFrequencia();
+            }
+            bindingSourceCotacoes.DataSource = null;
         }
     }
 }

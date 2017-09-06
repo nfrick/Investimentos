@@ -31,22 +31,20 @@
             this.labelData = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPrevisto = new System.Windows.Forms.GroupBox();
             this.labelValor = new System.Windows.Forms.Label();
             this.labelQtdPrevista = new System.Windows.Forms.Label();
             this.nudValor = new System.Windows.Forms.NumericUpDown();
             this.nudQtdPrevista = new System.Windows.Forms.NumericUpDown();
+            this.groupBoxReal = new System.Windows.Forms.GroupBox();
             this.labelValorReal = new System.Windows.Forms.Label();
             this.labelQtdReal = new System.Windows.Forms.Label();
             this.nudValorReal = new System.Windows.Forms.NumericUpDown();
             this.nudQtdReal = new System.Windows.Forms.NumericUpDown();
-            this.labelPrevistoTotal = new System.Windows.Forms.Label();
-            this.labelRealTotal = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxPrevisto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudValor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdPrevista)).BeginInit();
+            this.groupBoxReal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdReal)).BeginInit();
             this.SuspendLayout();
@@ -140,33 +138,18 @@
             this.buttonCancelar.Text = "û";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // groupBoxPrevisto
             // 
-            this.groupBox1.Controls.Add(this.labelPrevistoTotal);
-            this.groupBox1.Controls.Add(this.labelValor);
-            this.groupBox1.Controls.Add(this.labelQtdPrevista);
-            this.groupBox1.Controls.Add(this.nudValor);
-            this.groupBox1.Controls.Add(this.nudQtdPrevista);
-            this.groupBox1.Location = new System.Drawing.Point(22, 149);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(187, 153);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Previsto";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.labelRealTotal);
-            this.groupBox2.Controls.Add(this.labelValorReal);
-            this.groupBox2.Controls.Add(this.labelQtdReal);
-            this.groupBox2.Controls.Add(this.nudValorReal);
-            this.groupBox2.Controls.Add(this.nudQtdReal);
-            this.groupBox2.Location = new System.Drawing.Point(230, 149);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(187, 153);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Real";
+            this.groupBoxPrevisto.Controls.Add(this.labelValor);
+            this.groupBoxPrevisto.Controls.Add(this.labelQtdPrevista);
+            this.groupBoxPrevisto.Controls.Add(this.nudValor);
+            this.groupBoxPrevisto.Controls.Add(this.nudQtdPrevista);
+            this.groupBoxPrevisto.Location = new System.Drawing.Point(22, 149);
+            this.groupBoxPrevisto.Name = "groupBoxPrevisto";
+            this.groupBoxPrevisto.Size = new System.Drawing.Size(187, 116);
+            this.groupBoxPrevisto.TabIndex = 3;
+            this.groupBoxPrevisto.TabStop = false;
+            this.groupBoxPrevisto.Text = "Previsto";
             // 
             // labelValor
             // 
@@ -228,6 +211,19 @@
             this.nudQtdPrevista.Enter += new System.EventHandler(this.numericUpDown_Enter);
             this.nudQtdPrevista.Validated += new System.EventHandler(this.nudPrevista_Validated);
             // 
+            // groupBoxReal
+            // 
+            this.groupBoxReal.Controls.Add(this.labelValorReal);
+            this.groupBoxReal.Controls.Add(this.labelQtdReal);
+            this.groupBoxReal.Controls.Add(this.nudValorReal);
+            this.groupBoxReal.Controls.Add(this.nudQtdReal);
+            this.groupBoxReal.Location = new System.Drawing.Point(230, 149);
+            this.groupBoxReal.Name = "groupBoxReal";
+            this.groupBoxReal.Size = new System.Drawing.Size(187, 116);
+            this.groupBoxReal.TabIndex = 4;
+            this.groupBoxReal.TabStop = false;
+            this.groupBoxReal.Text = "Real";
+            // 
             // labelValorReal
             // 
             this.labelValorReal.AutoSize = true;
@@ -255,7 +251,7 @@
             // nudValorReal
             // 
             this.nudValorReal.DecimalPlaces = 2;
-            this.nudValorReal.Location = new System.Drawing.Point(67, 71);
+            this.nudValorReal.Location = new System.Drawing.Point(75, 69);
             this.nudValorReal.Name = "nudValorReal";
             this.nudValorReal.Size = new System.Drawing.Size(98, 30);
             this.nudValorReal.TabIndex = 3;
@@ -266,7 +262,7 @@
             // 
             // nudQtdReal
             // 
-            this.nudQtdReal.Location = new System.Drawing.Point(67, 35);
+            this.nudQtdReal.Location = new System.Drawing.Point(75, 33);
             this.nudQtdReal.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -290,30 +286,6 @@
             this.nudQtdReal.Enter += new System.EventHandler(this.numericUpDown_Enter);
             this.nudQtdReal.Validated += new System.EventHandler(this.numericUpDownReal_Validated);
             // 
-            // labelPrevistoTotal
-            // 
-            this.labelPrevistoTotal.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelPrevistoTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrevistoTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelPrevistoTotal.Location = new System.Drawing.Point(75, 114);
-            this.labelPrevistoTotal.Name = "labelPrevistoTotal";
-            this.labelPrevistoTotal.Size = new System.Drawing.Size(82, 30);
-            this.labelPrevistoTotal.TabIndex = 4;
-            this.labelPrevistoTotal.Text = "1.000,00";
-            this.labelPrevistoTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelRealTotal
-            // 
-            this.labelRealTotal.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelRealTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRealTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelRealTotal.Location = new System.Drawing.Point(67, 114);
-            this.labelRealTotal.Name = "labelRealTotal";
-            this.labelRealTotal.Size = new System.Drawing.Size(82, 30);
-            this.labelRealTotal.TabIndex = 5;
-            this.labelRealTotal.Text = "1.000,00";
-            this.labelRealTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // frmEditarOperacao
             // 
             this.AcceptButton = this.buttonOK;
@@ -321,9 +293,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.buttonCancelar;
-            this.ClientSize = new System.Drawing.Size(434, 316);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(434, 278);
+            this.Controls.Add(this.groupBoxReal);
+            this.Controls.Add(this.groupBoxPrevisto);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.labelData);
@@ -342,12 +314,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Operação";
             this.Load += new System.EventHandler(this.EditarOperacao_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBoxPrevisto.ResumeLayout(false);
+            this.groupBoxPrevisto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudValor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdPrevista)).EndInit();
+            this.groupBoxReal.ResumeLayout(false);
+            this.groupBoxReal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdReal)).EndInit();
             this.ResumeLayout(false);
@@ -365,14 +337,12 @@
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancelar;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label labelPrevistoTotal;
+        private System.Windows.Forms.GroupBox groupBoxPrevisto;
         private System.Windows.Forms.Label labelValor;
         private System.Windows.Forms.Label labelQtdPrevista;
         private System.Windows.Forms.NumericUpDown nudValor;
         private System.Windows.Forms.NumericUpDown nudQtdPrevista;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label labelRealTotal;
+        private System.Windows.Forms.GroupBox groupBoxReal;
         private System.Windows.Forms.Label labelValorReal;
         private System.Windows.Forms.Label labelQtdReal;
         private System.Windows.Forms.NumericUpDown nudValorReal;

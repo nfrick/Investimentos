@@ -25,10 +25,10 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCotacoes));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCotacoes));
             this.dgvCotacoes = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,19 +51,6 @@
             this.LucroImediato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceCotacoes = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripDropDownButtonAtivos = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItemCorrentes = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemJaNegociados = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemTodos = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButtonFrequencia = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem5minutos = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1minuto = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem30segundos = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem10segundos = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5segundos = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1segundo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemDesligado = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabelAtualizadoEm = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelErros = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
@@ -90,17 +77,35 @@
             this.col18DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceTotal = new System.Windows.Forms.BindingSource(this.components);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripComboBoxConta = new System.Windows.Forms.ToolStripComboBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.toolStripDropDownButtonAtivos = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItemCorrentes = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemJaNegociados = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemTodos = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButtonFrequencia = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem5minutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1minuto = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem30segundos = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10segundos = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5segundos = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1segundo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemDesligado = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotacoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
+            this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvCotacoes
@@ -136,7 +141,7 @@
             this.dgvCotacoes.ReadOnly = true;
             this.dgvCotacoes.RowTemplate.Height = 24;
             this.dgvCotacoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCotacoes.Size = new System.Drawing.Size(1247, 294);
+            this.dgvCotacoes.Size = new System.Drawing.Size(1253, 294);
             this.dgvCotacoes.TabIndex = 0;
             this.dgvCotacoes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCotacoes_CellFormatting);
             this.dgvCotacoes.SelectionChanged += new System.EventHandler(this.dgvCotacoes_SelectionChanged);
@@ -288,137 +293,24 @@
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButtonAtivos,
-            this.toolStripDropDownButtonFrequencia,
             this.toolStripStatusLabelAtualizadoEm,
             this.toolStripStatusLabelErros});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1255, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1255, 25);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripDropDownButtonAtivos
-            // 
-            this.toolStripDropDownButtonAtivos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButtonAtivos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemCorrentes,
-            this.ToolStripMenuItemJaNegociados,
-            this.toolStripMenuItemTodos});
-            this.toolStripDropDownButtonAtivos.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonAtivos.Image")));
-            this.toolStripDropDownButtonAtivos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonAtivos.Name = "toolStripDropDownButtonAtivos";
-            this.toolStripDropDownButtonAtivos.Size = new System.Drawing.Size(131, 24);
-            this.toolStripDropDownButtonAtivos.Text = "Ativos Correntes";
-            // 
-            // toolStripMenuItemCorrentes
-            // 
-            this.toolStripMenuItemCorrentes.Checked = true;
-            this.toolStripMenuItemCorrentes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemCorrentes.Name = "toolStripMenuItemCorrentes";
-            this.toolStripMenuItemCorrentes.Size = new System.Drawing.Size(192, 26);
-            this.toolStripMenuItemCorrentes.Tag = "o";
-            this.toolStripMenuItemCorrentes.Text = "Ativos Correntes";
-            // 
-            // ToolStripMenuItemJaNegociados
-            // 
-            this.ToolStripMenuItemJaNegociados.Name = "ToolStripMenuItemJaNegociados";
-            this.ToolStripMenuItemJaNegociados.Size = new System.Drawing.Size(192, 26);
-            this.ToolStripMenuItemJaNegociados.Tag = "1";
-            this.ToolStripMenuItemJaNegociados.Text = "Já Negociados";
-            // 
-            // toolStripMenuItemTodos
-            // 
-            this.toolStripMenuItemTodos.Name = "toolStripMenuItemTodos";
-            this.toolStripMenuItemTodos.Size = new System.Drawing.Size(192, 26);
-            this.toolStripMenuItemTodos.Tag = "2";
-            this.toolStripMenuItemTodos.Text = "Todos os Ativos";
-            // 
-            // toolStripDropDownButtonFrequencia
-            // 
-            this.toolStripDropDownButtonFrequencia.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButtonFrequencia.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5minutos,
-            this.toolStripMenuItem1minuto,
-            this.toolStripMenuItem30segundos,
-            this.toolStripMenuItem10segundos,
-            this.toolStripMenuItem5segundos,
-            this.toolStripMenuItem1segundo,
-            this.toolStripSeparator1,
-            this.toolStripMenuItemDesligado});
-            this.toolStripDropDownButtonFrequencia.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonFrequencia.Image")));
-            this.toolStripDropDownButtonFrequencia.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonFrequencia.Name = "toolStripDropDownButtonFrequencia";
-            this.toolStripDropDownButtonFrequencia.Size = new System.Drawing.Size(177, 24);
-            this.toolStripDropDownButtonFrequencia.Text = "Frequência: 5 segundos";
-            this.toolStripDropDownButtonFrequencia.ToolTipText = "Frequência de atualização";
-            // 
-            // toolStripMenuItem5minutos
-            // 
-            this.toolStripMenuItem5minutos.Name = "toolStripMenuItem5minutos";
-            this.toolStripMenuItem5minutos.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem5minutos.Tag = "300";
-            this.toolStripMenuItem5minutos.Text = "5 minutos";
-            // 
-            // toolStripMenuItem1minuto
-            // 
-            this.toolStripMenuItem1minuto.Name = "toolStripMenuItem1minuto";
-            this.toolStripMenuItem1minuto.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem1minuto.Tag = "60";
-            this.toolStripMenuItem1minuto.Text = "1 minuto";
-            // 
-            // toolStripMenuItem30segundos
-            // 
-            this.toolStripMenuItem30segundos.Name = "toolStripMenuItem30segundos";
-            this.toolStripMenuItem30segundos.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem30segundos.Tag = "60";
-            this.toolStripMenuItem30segundos.Text = "30 segundos";
-            // 
-            // toolStripMenuItem10segundos
-            // 
-            this.toolStripMenuItem10segundos.Name = "toolStripMenuItem10segundos";
-            this.toolStripMenuItem10segundos.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem10segundos.Tag = "10";
-            this.toolStripMenuItem10segundos.Text = "10 segundos";
-            // 
-            // toolStripMenuItem5segundos
-            // 
-            this.toolStripMenuItem5segundos.Checked = true;
-            this.toolStripMenuItem5segundos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItem5segundos.Name = "toolStripMenuItem5segundos";
-            this.toolStripMenuItem5segundos.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem5segundos.Tag = "5";
-            this.toolStripMenuItem5segundos.Text = "5 segundos";
-            // 
-            // toolStripMenuItem1segundo
-            // 
-            this.toolStripMenuItem1segundo.Name = "toolStripMenuItem1segundo";
-            this.toolStripMenuItem1segundo.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem1segundo.Tag = "1";
-            this.toolStripMenuItem1segundo.Text = "1 segundo";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
-            // 
-            // toolStripMenuItemDesligado
-            // 
-            this.toolStripMenuItemDesligado.Name = "toolStripMenuItemDesligado";
-            this.toolStripMenuItemDesligado.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItemDesligado.Tag = "0";
-            this.toolStripMenuItemDesligado.Text = "Desligado";
             // 
             // toolStripStatusLabelAtualizadoEm
             // 
             this.toolStripStatusLabelAtualizadoEm.Name = "toolStripStatusLabelAtualizadoEm";
-            this.toolStripStatusLabelAtualizadoEm.Size = new System.Drawing.Size(109, 21);
+            this.toolStripStatusLabelAtualizadoEm.Size = new System.Drawing.Size(109, 20);
             this.toolStripStatusLabelAtualizadoEm.Text = "Atualizado em:";
             // 
             // toolStripStatusLabelErros
             // 
             this.toolStripStatusLabelErros.Name = "toolStripStatusLabelErros";
-            this.toolStripStatusLabelErros.Size = new System.Drawing.Size(57, 21);
+            this.toolStripStatusLabelErros.Size = new System.Drawing.Size(57, 20);
             this.toolStripStatusLabelErros.Text = "Erros: 0";
             // 
             // toolStripContainer1
@@ -432,7 +324,7 @@
             // 
             this.toolStripContainer1.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1255, 750);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1255, 748);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -443,13 +335,14 @@
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Black;
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1196F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1259F));
             this.tableLayoutPanel1.Controls.Add(this.dgvTotal, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.chart1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.dgvCotacoes, 0, 0);
@@ -461,7 +354,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 143F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1255, 750);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1255, 748);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dgvTotal
@@ -499,7 +392,7 @@
             this.dgvTotal.RowHeadersWidth = 25;
             this.dgvTotal.RowTemplate.Height = 24;
             this.dgvTotal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvTotal.Size = new System.Drawing.Size(1247, 25);
+            this.dgvTotal.Size = new System.Drawing.Size(1253, 25);
             this.dgvTotal.TabIndex = 2;
             this.dgvTotal.SelectionChanged += new System.EventHandler(this.dgvTotal_SelectionChanged);
             // 
@@ -684,9 +577,36 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1247, 409);
+            this.chart1.Size = new System.Drawing.Size(1253, 407);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.toolStripComboBoxConta,
+            this.toolStripDropDownButtonAtivos,
+            this.toolStripDropDownButtonFrequencia});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(502, 28);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(51, 25);
+            this.toolStripLabel1.Text = "Conta:";
+            // 
+            // toolStripComboBoxConta
+            // 
+            this.toolStripComboBoxConta.AutoSize = false;
+            this.toolStripComboBoxConta.Name = "toolStripComboBoxConta";
+            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 28);
+            this.toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
             // 
             // notifyIcon1
             // 
@@ -697,6 +617,117 @@
             this.notifyIcon1.Text = "Cotações";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            // 
+            // toolStripDropDownButtonAtivos
+            // 
+            this.toolStripDropDownButtonAtivos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButtonAtivos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemCorrentes,
+            this.ToolStripMenuItemJaNegociados,
+            this.toolStripMenuItemTodos});
+            this.toolStripDropDownButtonAtivos.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonAtivos.Image")));
+            this.toolStripDropDownButtonAtivos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonAtivos.Name = "toolStripDropDownButtonAtivos";
+            this.toolStripDropDownButtonAtivos.Size = new System.Drawing.Size(131, 25);
+            this.toolStripDropDownButtonAtivos.Text = "Ativos Correntes";
+            // 
+            // toolStripMenuItemCorrentes
+            // 
+            this.toolStripMenuItemCorrentes.Checked = true;
+            this.toolStripMenuItemCorrentes.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemCorrentes.Name = "toolStripMenuItemCorrentes";
+            this.toolStripMenuItemCorrentes.Size = new System.Drawing.Size(192, 26);
+            this.toolStripMenuItemCorrentes.Tag = "o";
+            this.toolStripMenuItemCorrentes.Text = "Ativos Correntes";
+            // 
+            // ToolStripMenuItemJaNegociados
+            // 
+            this.ToolStripMenuItemJaNegociados.Name = "ToolStripMenuItemJaNegociados";
+            this.ToolStripMenuItemJaNegociados.Size = new System.Drawing.Size(192, 26);
+            this.ToolStripMenuItemJaNegociados.Tag = "1";
+            this.ToolStripMenuItemJaNegociados.Text = "Já Negociados";
+            // 
+            // toolStripMenuItemTodos
+            // 
+            this.toolStripMenuItemTodos.Name = "toolStripMenuItemTodos";
+            this.toolStripMenuItemTodos.Size = new System.Drawing.Size(192, 26);
+            this.toolStripMenuItemTodos.Tag = "2";
+            this.toolStripMenuItemTodos.Text = "Todos os Ativos";
+            // 
+            // toolStripDropDownButtonFrequencia
+            // 
+            this.toolStripDropDownButtonFrequencia.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButtonFrequencia.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5minutos,
+            this.toolStripMenuItem1minuto,
+            this.toolStripMenuItem30segundos,
+            this.toolStripMenuItem10segundos,
+            this.toolStripMenuItem5segundos,
+            this.toolStripMenuItem1segundo,
+            this.toolStripSeparator1,
+            this.toolStripMenuItemDesligado});
+            this.toolStripDropDownButtonFrequencia.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonFrequencia.Image")));
+            this.toolStripDropDownButtonFrequencia.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonFrequencia.Name = "toolStripDropDownButtonFrequencia";
+            this.toolStripDropDownButtonFrequencia.Size = new System.Drawing.Size(177, 25);
+            this.toolStripDropDownButtonFrequencia.Text = "Frequência: 5 segundos";
+            this.toolStripDropDownButtonFrequencia.ToolTipText = "Frequência de atualização";
+            // 
+            // toolStripMenuItem5minutos
+            // 
+            this.toolStripMenuItem5minutos.Name = "toolStripMenuItem5minutos";
+            this.toolStripMenuItem5minutos.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem5minutos.Tag = "300";
+            this.toolStripMenuItem5minutos.Text = "5 minutos";
+            // 
+            // toolStripMenuItem1minuto
+            // 
+            this.toolStripMenuItem1minuto.Name = "toolStripMenuItem1minuto";
+            this.toolStripMenuItem1minuto.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem1minuto.Tag = "60";
+            this.toolStripMenuItem1minuto.Text = "1 minuto";
+            // 
+            // toolStripMenuItem30segundos
+            // 
+            this.toolStripMenuItem30segundos.Name = "toolStripMenuItem30segundos";
+            this.toolStripMenuItem30segundos.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem30segundos.Tag = "60";
+            this.toolStripMenuItem30segundos.Text = "30 segundos";
+            // 
+            // toolStripMenuItem10segundos
+            // 
+            this.toolStripMenuItem10segundos.Name = "toolStripMenuItem10segundos";
+            this.toolStripMenuItem10segundos.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem10segundos.Tag = "10";
+            this.toolStripMenuItem10segundos.Text = "10 segundos";
+            // 
+            // toolStripMenuItem5segundos
+            // 
+            this.toolStripMenuItem5segundos.Checked = true;
+            this.toolStripMenuItem5segundos.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItem5segundos.Name = "toolStripMenuItem5segundos";
+            this.toolStripMenuItem5segundos.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem5segundos.Tag = "5";
+            this.toolStripMenuItem5segundos.Text = "5 segundos";
+            // 
+            // toolStripMenuItem1segundo
+            // 
+            this.toolStripMenuItem1segundo.Name = "toolStripMenuItem1segundo";
+            this.toolStripMenuItem1segundo.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem1segundo.Tag = "1";
+            this.toolStripMenuItem1segundo.Text = "1 segundo";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            // 
+            // toolStripMenuItemDesligado
+            // 
+            this.toolStripMenuItemDesligado.Name = "toolStripMenuItemDesligado";
+            this.toolStripMenuItemDesligado.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemDesligado.Tag = "0";
+            this.toolStripMenuItemDesligado.Text = "Desligado";
             // 
             // frmCotacoes
             // 
@@ -718,12 +749,16 @@
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
+            this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
+            this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -734,20 +769,7 @@
         private System.Windows.Forms.DataGridView dgvCotacoes;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonFrequencia;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10segundos;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5segundos;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDesligado;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1minuto;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem30segundos;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1segundo;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonAtivos;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCorrentes;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTodos;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5minutos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemJaNegociados;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelAtualizadoEm;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
@@ -792,6 +814,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col17DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn col18DataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelErros;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxConta;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonAtivos;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCorrentes;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemJaNegociados;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTodos;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonFrequencia;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5minutos;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1minuto;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem30segundos;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10segundos;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5segundos;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1segundo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDesligado;
     }
 }
 

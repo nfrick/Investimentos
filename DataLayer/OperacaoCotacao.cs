@@ -23,6 +23,7 @@ namespace DataLayer
         public decimal Valor { get; set; }
         public decimal ValorReal { get; set; }
         public int QtdVendida { get; set; }
+        public int ContaId { get; set; }
     
         public virtual AtivoCotacao AtivoCotacao { get; set; }
     }
