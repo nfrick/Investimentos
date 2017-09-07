@@ -1,48 +1,56 @@
 ﻿using GridAndChartStyleLibrary;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Investimentos {
     public partial class frmVendas : Form {
+        public int Conta { get; set; }
         public frmVendas() {
             InitializeComponent();
         }
 
         private void Vendas_Load(object sender, EventArgs e) {
-            GridStyles.FormatGrid(dgvVendas);
-
+            GridStyles.FormatGrid(dgvVendas, 11);
             dgvVendas.Columns[0].Visible = false;
             dgvVendas.Columns[1].Width = 45;
-            dgvVendas.Columns[2].DefaultCellStyle = GridStyles.StyleDate;
+            GridStyles.FormatColumn(dgvVendas.Columns[2], GridStyles.StyleDate, 90);
+            GridStyles.FormatColumns(dgvVendas, 3, 8, GridStyles.StyleCurrency, 80);
+            GridStyles.FormatColumns(dgvVendas, 9, 10, GridStyles.StyleCurrency, 90);
 
-            GridStyles.FormatColumns(dgvVendas, 3, 0, GridStyles.StyleCurrency, 60);
+            GridStyles.FormatGrid(dgvContas, 11);
+            GridStyles.CloneGrid(dgvVendas, dgvContas);
+            dgvContas.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
 
-            // 50 = vertical scroll bar width
-            tableLayoutPanel1.ColumnStyles[2].Width = dgvVendas.Columns[9].Width;
-            tableLayoutPanel1.ColumnStyles[3].Width = dgvVendas.Columns[10].Width;
-            var w0 = 30 + dgvVendas.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
-            Width = w0;
+            var row = (dgvContas.Rows
+                .Cast<DataGridViewRow>()
+                .First(r => (int)r.Cells[0].Value == Conta)).Index;
+
+            dgvContas.CurrentCell = dgvContas.Rows[row].Cells[10];
+
+            Width = 30 + dgvVendas.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
+            Height = dgvVendas.ColumnHeadersHeight +
+                     (dgvVendas.Rows.Count * dgvVendas.RowTemplate.Height) +
+                     (int)tableLayoutPanel1.RowStyles[1].Height + 48;
         }
 
-        private void dataGridViewVendas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+        private void dgvVendas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             var dgv = (DataGridView)sender;
             var col = Convert.ToInt32(dgv.Tag);
-            dgv.Rows[e.RowIndex].DefaultCellStyle.ForeColor =
-                (Convert.ToDecimal(dgv.Rows[e.RowIndex].Cells[col].Value) < 0) ? Color.LightYellow : Color.LightSkyBlue;
+            if (Convert.ToDecimal(dgv.Rows[e.RowIndex].Cells[col].Value) < 0)
+                dgv.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Orange;
         }
 
-        private void dgvVendas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
-            double sumLucro = 0;
-            double sumLucroReal = 0;
-            foreach (DataGridViewRow row in dgvVendas.Rows) {
-                sumLucro += Convert.ToDouble(row.Cells[9].Value);
-                sumLucroReal += Convert.ToDouble(row.Cells[10].Value);
+        private void dgvContas_SelectionChanged(object sender, EventArgs e) {
+            dgvContas.ClearSelection();
+        }
+
+        private void dgvContas_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) {
+            for (var i = 0; i < e.RowCount; i++) {
+                var row = dgvContas.Rows[e.RowIndex + i];
+                row.Cells[8].Value = "TOTAL";
             }
-            labelTotal.Text = sumLucro.ToString("N2");
-            labelTotal.ForeColor = sumLucro > 0 ? Color.Blue : Color.Red;
-            labelTotalReal.Text = sumLucro.ToString("N2");
-            labelTotalReal.ForeColor = sumLucroReal > 0 ? Color.Blue : Color.Red;
         }
     }
 }

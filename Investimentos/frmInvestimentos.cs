@@ -12,11 +12,6 @@ namespace Investimentos {
         }
 
         private void frmInvestimentos_Load(object sender, EventArgs e) {
-            // Remove extra columns that "magically" appears in dgvVendas
-            while (dgvVendas.ColumnCount > 14) {
-                dgvVendas.Columns.RemoveAt(dgvVendas.ColumnCount - 1);
-            }
-
             dgvOperacoes.Columns[0].Visible = false;
             dgvVendas.Columns[0].Visible = false;
             GridStyles.FormatGrid(dgvAtivos);
@@ -28,7 +23,7 @@ namespace Investimentos {
             GridStyles.FormatColumns(dgvOperacoes, 3, 4, GridStyles.StyleInteger, 70);
             GridStyles.FormatColumns(dgvOperacoes, 5, 6, GridStyles.StyleCurrency, 70);
 
-            GridStyles.FormatGrid(dgvVendas);
+            GridStyles.FormatGrid(dgvVendas, 14);
             dgvVendas.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
             GridStyles.FormatColumns(dgvVendas, new[] {2, 3, 4, 6, 7}, GridStyles.StyleInteger, 69);
             GridStyles.FormatColumns(dgvVendas, new[] {5, 8, 9, 10, 11, 12}, GridStyles.StyleCurrency, 69);
@@ -112,7 +107,7 @@ namespace Investimentos {
         }
 
         private void toolStripButtonResumoVendas_Click(object sender, EventArgs e) {
-            var frm = new frmVendas();
+            var frm = new frmVendas() {Conta = (int)toolStripComboBoxConta.ComboBox.SelectedValue };
             frm.ShowDialog();
         }
 

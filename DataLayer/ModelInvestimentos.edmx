@@ -320,6 +320,10 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
             <End Role="Conta" EntitySet="Contas" />
             <End Role="AtivoCorrente" EntitySet="AtivosCorrentes" />
           </AssociationSet>
+          <AssociationSet Name="ContaOperacaoDeSaida" Association="InvestimentosModel.ContaOperacaoDeSaida">
+            <End Role="Conta" EntitySet="Contas" />
+            <End Role="OperacaoDeSaida" EntitySet="OperacoesDeSaida" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="AtivoCorrente">
           <Key>
@@ -403,6 +407,7 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
           <NavigationProperty Name="Venda" Relationship="InvestimentosModel.OperacaoDeSaidaVenda" FromRole="OperacaoDeSaida" ToRole="Venda" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="ContaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Conta" Relationship="InvestimentosModel.ContaOperacaoDeSaida" FromRole="OperacaoDeSaida" ToRole="Conta" />
         </EntityType>
         <Association Name="AtivoCorrenteOperacaoDeSaida">
           <End Type="InvestimentosModel.AtivoCorrente" Role="AtivoCorrente" Multiplicity="1" />
@@ -498,7 +503,8 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
           <Property Name="ContaCorrente" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
           <Property Name="Senha" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="Info" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AtivoCorrentes" Relationship="InvestimentosModel.ContaAtivoCorrente" FromRole="Conta" ToRole="AtivoCorrente" />
+          <NavigationProperty Name="AtivosCorrentes" Relationship="InvestimentosModel.ContaAtivoCorrente" FromRole="Conta" ToRole="AtivoCorrente" />
+          <NavigationProperty Name="OperacoesDeSaida" Relationship="InvestimentosModel.ContaOperacaoDeSaida" FromRole="Conta" ToRole="OperacaoDeSaida" />
         </EntityType>
         <Association Name="ContaAtivoCorrente">
           <End Type="InvestimentosModel.Conta" Role="Conta" Multiplicity="1" />
@@ -508,6 +514,18 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
               <PropertyRef Name="ContaId" />
             </Principal>
             <Dependent Role="AtivoCorrente">
+              <PropertyRef Name="ContaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContaOperacaoDeSaida">
+          <End Type="InvestimentosModel.Conta" Role="Conta" Multiplicity="1" />
+          <End Type="InvestimentosModel.OperacaoDeSaida" Role="OperacaoDeSaida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conta">
+              <PropertyRef Name="ContaId" />
+            </Principal>
+            <Dependent Role="OperacaoDeSaida">
               <PropertyRef Name="ContaId" />
             </Dependent>
           </ReferentialConstraint>

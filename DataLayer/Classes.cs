@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace DataLayer {
+
+    public partial class Conta {
+        public decimal LucroTotal => OperacoesDeSaida.Sum(o => o.Lucro);
+        public decimal LucroTotalReal => OperacoesDeSaida.Sum(o => o.LucroReal);
+    }
+
     public partial class Ativo {
         public override string ToString() {
             return Codigo;

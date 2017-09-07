@@ -33,5 +33,6 @@ namespace DataLayer
         public virtual AtivoCorrente AtivoCorrente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venda> Venda { get; set; }
+        public virtual Conta Conta { get; set; }
     }
 }

@@ -22,6 +22,7 @@
         <AssociationConnector Association="InvestimentosModel.FK_tbSerieHistorica_tbAtivos" />
         <EntityTypeShape EntityType="InvestimentosModel.Conta" Width="1.5" PointX="0.5" PointY="4.625" FillColor="128, 255, 128" />
         <AssociationConnector Association="InvestimentosModel.ContaAtivoCorrente" />
+        <AssociationConnector Association="InvestimentosModel.ContaOperacaoDeSaida" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,7 +14,7 @@ namespace GridAndChartStyleLibrary {
             BackColor = Color.DimGray,
             WrapMode = DataGridViewTriState.True
         };
-        
+
 
         private static DataGridViewCellStyle _styleBase = new DataGridViewCellStyle(_styleFont) {
             ForeColor = Color.LightBlue,
@@ -92,7 +92,14 @@ namespace GridAndChartStyleLibrary {
         public static DataGridViewCellStyle StylePercent => _stylePercent;
         public static DataGridViewCellStyle StyleTrend => _styleTrend;
         public static DataGridViewCellStyle StyleTrendAlternate => _styleTrendAlternate;
-        public static void FormatGrid(DataGridView dgv) {
+
+        public static void FormatGrid(DataGridView dgv, int cols = 0) {
+            if (cols > 0) {
+                // Remove extra columns that "magically" appears in dgvVendas
+                while (dgv.ColumnCount > cols) {
+                    dgv.Columns.RemoveAt(dgv.ColumnCount - 1);
+                }
+            }
             dgv.AlternatingRowsDefaultCellStyle = _styleAlternate;
             dgv.BackgroundColor = Color.Black;
             dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -105,7 +112,7 @@ namespace GridAndChartStyleLibrary {
             dgv.RowHeadersWidth = 20;
             dgv.DefaultCellStyle = _styleBase;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            foreach(DataGridViewColumn col in dgv.Columns) {
+            foreach (DataGridViewColumn col in dgv.Columns) {
                 col.Width = col.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
             }
         }
@@ -122,17 +129,29 @@ namespace GridAndChartStyleLibrary {
         }
 
         public static void FormatColumns(DataGridView dgv, int colStart, int colEnd, DataGridViewCellStyle style, int width) {
-            colEnd = colEnd == 0 ? dgv.ColumnCount-1 : colEnd;
+            colEnd = colEnd == 0 ? dgv.ColumnCount - 1 : colEnd;
             for (int col = colStart; col <= colEnd; col++) {
                 FormatColumn(dgv.Columns[col], style, width);
             }
         }
 
         public static void FormatColumns(DataGridView dgv, int[] cols, DataGridViewCellStyle style, int width) {
-            foreach(var col in cols) {
+            foreach (var col in cols) {
                 dgv.Columns[col].DefaultCellStyle = style;
                 dgv.Columns[col].Width = width;
             }
+        }
+
+        public static void CloneGrid(DataGridView dgv1, DataGridView dgv2) {
+            if (dgv1.ColumnCount != dgv2.ColumnCount) return;
+            for (var col = 0; col < dgv1.ColumnCount; col++) {
+                dgv2.Columns[col].DefaultCellStyle = dgv1.Columns[col].DefaultCellStyle;
+                dgv2.Columns[col].Width = dgv1.Columns[col].Width;
+                dgv2.Columns[col].AutoSizeMode = dgv1.Columns[col].AutoSizeMode;
+                dgv2.Columns[col].Visible = dgv1.Columns[col].Visible;
+            }
+            dgv2.RowHeadersWidth = dgv1.RowHeadersWidth;
+            dgv2.GridColor = dgv1.GridColor;
         }
     }
 }

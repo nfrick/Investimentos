@@ -162,7 +162,7 @@
             this.tipoDataGridViewTextBoxColumn,
             this.ativoCorrenteDataGridViewTextBoxColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvVendas, 2);
-            this.dgvVendas.DataMember = "Contas.AtivoCorrentes.OperacoesDeSaida";
+            this.dgvVendas.DataMember = "Contas.AtivosCorrentes.OperacoesDeSaida";
             this.dgvVendas.DataSource = this.entityDataSource1;
             this.dgvVendas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVendas.Location = new System.Drawing.Point(3, 303);
@@ -346,7 +346,7 @@
             this.valorDataGridViewTextBoxColumn,
             this.valorRealDataGridViewTextBoxColumn,
             this.btnEditarOperacao});
-            this.dgvOperacoes.DataMember = "Contas.AtivoCorrentes.OperacoesTodas";
+            this.dgvOperacoes.DataMember = "Contas.AtivosCorrentes.OperacoesTodas";
             this.dgvOperacoes.DataSource = this.entityDataSource1;
             this.dgvOperacoes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOperacoes.Location = new System.Drawing.Point(333, 3);
@@ -402,7 +402,7 @@
             this.qtdTotalDataGridViewTextBoxColumn,
             this.valorMedioCompraDataGridViewTextBoxColumn,
             this.valorMedioCompraRealDataGridViewTextBoxColumn});
-            this.dgvAtivos.DataMember = "Contas.AtivoCorrentes";
+            this.dgvAtivos.DataMember = "Contas.AtivosCorrentes";
             this.dgvAtivos.DataSource = this.entityDataSource1;
             this.dgvAtivos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAtivos.Location = new System.Drawing.Point(3, 3);

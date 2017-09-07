@@ -17,7 +17,8 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Conta()
         {
-            this.AtivoCorrentes = new HashSet<AtivoCorrente>();
+            this.AtivosCorrentes = new HashSet<AtivoCorrente>();
+            this.OperacoesDeSaida = new HashSet<OperacaoDeSaida>();
         }
     
         public int ContaId { get; set; }
@@ -28,6 +29,8 @@ namespace DataLayer
         public string Info { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AtivoCorrente> AtivoCorrentes { get; set; }
+        public virtual ICollection<AtivoCorrente> AtivosCorrentes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OperacaoDeSaida> OperacoesDeSaida { get; set; }
     }
 }
