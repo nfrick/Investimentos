@@ -25,10 +25,10 @@
         private void InitializeComponent() {
             this.dateTimePickerData = new System.Windows.Forms.DateTimePicker();
             this.comboBoxAtivo = new System.Windows.Forms.ComboBox();
-            this.numericUpDownQtdPrevista = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownQtdReal = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownValor = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownValorReal = new System.Windows.Forms.NumericUpDown();
+            this.nudQtdPrevista = new System.Windows.Forms.NumericUpDown();
+            this.nudQtdReal = new System.Windows.Forms.NumericUpDown();
+            this.nudValor = new System.Windows.Forms.NumericUpDown();
+            this.nudValorReal = new System.Windows.Forms.NumericUpDown();
             this.comboBoxOperacao = new System.Windows.Forms.ComboBox();
             this.labelAtivo = new System.Windows.Forms.Label();
             this.labelOperacao = new System.Windows.Forms.Label();
@@ -39,10 +39,10 @@
             this.labelValorReal = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQtdPrevista)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQtdReal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownValor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownValorReal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtdPrevista)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtdReal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePickerData
@@ -65,73 +65,73 @@
             this.comboBoxAtivo.TabIndex = 0;
             this.comboBoxAtivo.TextChanged += new System.EventHandler(this.combos_TextChanged);
             // 
-            // numericUpDownQtdPrevista
+            // nudQtdPrevista
             // 
-            this.numericUpDownQtdPrevista.Location = new System.Drawing.Point(108, 129);
-            this.numericUpDownQtdPrevista.Maximum = new decimal(new int[] {
+            this.nudQtdPrevista.Location = new System.Drawing.Point(108, 129);
+            this.nudQtdPrevista.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.numericUpDownQtdPrevista.Minimum = new decimal(new int[] {
+            this.nudQtdPrevista.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDownQtdPrevista.Name = "numericUpDownQtdPrevista";
-            this.numericUpDownQtdPrevista.Size = new System.Drawing.Size(118, 30);
-            this.numericUpDownQtdPrevista.TabIndex = 3;
-            this.numericUpDownQtdPrevista.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownQtdPrevista.ThousandsSeparator = true;
-            this.numericUpDownQtdPrevista.Value = new decimal(new int[] {
+            this.nudQtdPrevista.Name = "nudQtdPrevista";
+            this.nudQtdPrevista.Size = new System.Drawing.Size(118, 30);
+            this.nudQtdPrevista.TabIndex = 3;
+            this.nudQtdPrevista.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudQtdPrevista.ThousandsSeparator = true;
+            this.nudQtdPrevista.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // numericUpDownQtdReal
+            // nudQtdReal
             // 
-            this.numericUpDownQtdReal.Location = new System.Drawing.Point(299, 130);
-            this.numericUpDownQtdReal.Maximum = new decimal(new int[] {
+            this.nudQtdReal.Location = new System.Drawing.Point(299, 130);
+            this.nudQtdReal.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.numericUpDownQtdReal.Minimum = new decimal(new int[] {
+            this.nudQtdReal.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDownQtdReal.Name = "numericUpDownQtdReal";
-            this.numericUpDownQtdReal.Size = new System.Drawing.Size(118, 30);
-            this.numericUpDownQtdReal.TabIndex = 4;
-            this.numericUpDownQtdReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownQtdReal.ThousandsSeparator = true;
-            this.numericUpDownQtdReal.Value = new decimal(new int[] {
+            this.nudQtdReal.Name = "nudQtdReal";
+            this.nudQtdReal.Size = new System.Drawing.Size(118, 30);
+            this.nudQtdReal.TabIndex = 4;
+            this.nudQtdReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudQtdReal.ThousandsSeparator = true;
+            this.nudQtdReal.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // numericUpDownValor
+            // nudValor
             // 
-            this.numericUpDownValor.DecimalPlaces = 2;
-            this.numericUpDownValor.Location = new System.Drawing.Point(108, 165);
-            this.numericUpDownValor.Name = "numericUpDownValor";
-            this.numericUpDownValor.Size = new System.Drawing.Size(118, 30);
-            this.numericUpDownValor.TabIndex = 5;
-            this.numericUpDownValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownValor.ThousandsSeparator = true;
+            this.nudValor.DecimalPlaces = 2;
+            this.nudValor.Location = new System.Drawing.Point(108, 165);
+            this.nudValor.Name = "nudValor";
+            this.nudValor.Size = new System.Drawing.Size(118, 30);
+            this.nudValor.TabIndex = 5;
+            this.nudValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudValor.ThousandsSeparator = true;
             // 
-            // numericUpDownValorReal
+            // nudValorReal
             // 
-            this.numericUpDownValorReal.DecimalPlaces = 2;
-            this.numericUpDownValorReal.Location = new System.Drawing.Point(299, 166);
-            this.numericUpDownValorReal.Name = "numericUpDownValorReal";
-            this.numericUpDownValorReal.Size = new System.Drawing.Size(118, 30);
-            this.numericUpDownValorReal.TabIndex = 6;
-            this.numericUpDownValorReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownValorReal.ThousandsSeparator = true;
+            this.nudValorReal.DecimalPlaces = 2;
+            this.nudValorReal.Location = new System.Drawing.Point(299, 166);
+            this.nudValorReal.Name = "nudValorReal";
+            this.nudValorReal.Size = new System.Drawing.Size(118, 30);
+            this.nudValorReal.TabIndex = 6;
+            this.nudValorReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudValorReal.ThousandsSeparator = true;
             // 
             // comboBoxOperacao
             // 
@@ -146,7 +146,8 @@
             // labelAtivo
             // 
             this.labelAtivo.AutoSize = true;
-            this.labelAtivo.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelAtivo.BackColor = System.Drawing.Color.Transparent;
+            this.labelAtivo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelAtivo.Location = new System.Drawing.Point(18, 22);
             this.labelAtivo.Name = "labelAtivo";
             this.labelAtivo.Size = new System.Drawing.Size(49, 23);
@@ -156,7 +157,8 @@
             // labelOperacao
             // 
             this.labelOperacao.AutoSize = true;
-            this.labelOperacao.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelOperacao.BackColor = System.Drawing.Color.Transparent;
+            this.labelOperacao.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelOperacao.Location = new System.Drawing.Point(18, 59);
             this.labelOperacao.Name = "labelOperacao";
             this.labelOperacao.Size = new System.Drawing.Size(84, 23);
@@ -166,7 +168,8 @@
             // labelData
             // 
             this.labelData.AutoSize = true;
-            this.labelData.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelData.BackColor = System.Drawing.Color.Transparent;
+            this.labelData.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelData.Location = new System.Drawing.Point(18, 99);
             this.labelData.Name = "labelData";
             this.labelData.Size = new System.Drawing.Size(46, 23);
@@ -176,7 +179,8 @@
             // labelQtdPrevista
             // 
             this.labelQtdPrevista.AutoSize = true;
-            this.labelQtdPrevista.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelQtdPrevista.BackColor = System.Drawing.Color.Transparent;
+            this.labelQtdPrevista.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelQtdPrevista.Location = new System.Drawing.Point(18, 134);
             this.labelQtdPrevista.Name = "labelQtdPrevista";
             this.labelQtdPrevista.Size = new System.Drawing.Size(103, 23);
@@ -186,7 +190,8 @@
             // labelQtdReal
             // 
             this.labelQtdReal.AutoSize = true;
-            this.labelQtdReal.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelQtdReal.BackColor = System.Drawing.Color.Transparent;
+            this.labelQtdReal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelQtdReal.Location = new System.Drawing.Point(255, 134);
             this.labelQtdReal.Name = "labelQtdReal";
             this.labelQtdReal.Size = new System.Drawing.Size(42, 23);
@@ -197,7 +202,8 @@
             // labelValor
             // 
             this.labelValor.AutoSize = true;
-            this.labelValor.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelValor.BackColor = System.Drawing.Color.Transparent;
+            this.labelValor.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelValor.Location = new System.Drawing.Point(18, 167);
             this.labelValor.Name = "labelValor";
             this.labelValor.Size = new System.Drawing.Size(49, 23);
@@ -207,7 +213,8 @@
             // labelValorReal
             // 
             this.labelValorReal.AutoSize = true;
-            this.labelValorReal.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelValorReal.BackColor = System.Drawing.Color.Transparent;
+            this.labelValorReal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.labelValorReal.Location = new System.Drawing.Point(254, 167);
             this.labelValorReal.Name = "labelValorReal";
             this.labelValorReal.Size = new System.Drawing.Size(42, 23);
@@ -244,7 +251,7 @@
             this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.buttonCancelar;
             this.ClientSize = new System.Drawing.Size(434, 209);
             this.Controls.Add(this.buttonCancelar);
@@ -257,10 +264,10 @@
             this.Controls.Add(this.labelOperacao);
             this.Controls.Add(this.labelAtivo);
             this.Controls.Add(this.comboBoxOperacao);
-            this.Controls.Add(this.numericUpDownValorReal);
-            this.Controls.Add(this.numericUpDownValor);
-            this.Controls.Add(this.numericUpDownQtdReal);
-            this.Controls.Add(this.numericUpDownQtdPrevista);
+            this.Controls.Add(this.nudValorReal);
+            this.Controls.Add(this.nudValor);
+            this.Controls.Add(this.nudQtdReal);
+            this.Controls.Add(this.nudQtdPrevista);
             this.Controls.Add(this.comboBoxAtivo);
             this.Controls.Add(this.dateTimePickerData);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -272,10 +279,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Operação";
             this.Load += new System.EventHandler(this.EditarOperacao_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQtdPrevista)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQtdReal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownValor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownValorReal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtdPrevista)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtdReal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,10 +292,10 @@
 
         private System.Windows.Forms.DateTimePicker dateTimePickerData;
         private System.Windows.Forms.ComboBox comboBoxAtivo;
-        private System.Windows.Forms.NumericUpDown numericUpDownQtdPrevista;
-        private System.Windows.Forms.NumericUpDown numericUpDownQtdReal;
-        private System.Windows.Forms.NumericUpDown numericUpDownValor;
-        private System.Windows.Forms.NumericUpDown numericUpDownValorReal;
+        private System.Windows.Forms.NumericUpDown nudQtdPrevista;
+        private System.Windows.Forms.NumericUpDown nudQtdReal;
+        private System.Windows.Forms.NumericUpDown nudValor;
+        private System.Windows.Forms.NumericUpDown nudValorReal;
         private System.Windows.Forms.ComboBox comboBoxOperacao;
         private System.Windows.Forms.Label labelAtivo;
         private System.Windows.Forms.Label labelOperacao;

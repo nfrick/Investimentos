@@ -52,7 +52,6 @@ namespace Investimentos {
             var frm = new frmEditarOperacao();
             frm.OperacaoId = (int)dgvOperacoes.SelectedRows[0].Cells[0].Value;
             frm.ShowDialog();
-            entityDataSource1.SaveChanges();
             entityDataSource1.Refresh();
             dgvOperacoes.Refresh();
         }
