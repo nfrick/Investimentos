@@ -14,19 +14,13 @@ namespace Investimentos {
 
         private void EditarOperacao_Load(object sender, EventArgs e) {
             using (var ctx = new InvestimentosEntities()) {
-                var operacao = OperacaoId == 0 ?
-                    new Operacao() { ContaId = Conta } :
-                    ctx.Operacoes.Find(OperacaoId);
-
                 comboBoxAtivo.DataSource = ctx.Ativos.ToList();
                 comboBoxAtivo.DisplayMember = "Codigo";
                 comboBoxAtivo.ValueMember = "Codigo";
-                comboBoxAtivo.SelectedValue = operacao.Codigo ?? string.Empty;
 
                 comboBoxOperacao.DataSource = ctx.OperacoesTipos.ToList();
                 comboBoxOperacao.DisplayMember = "Tipo";
                 comboBoxOperacao.ValueMember = "TipoId";
-                comboBoxOperacao.SelectedValue = operacao.TipoId;
 
                 if (OperacaoId == 0) {
                     dateTimePickerData.Value = DateTime.Now;
@@ -34,6 +28,9 @@ namespace Investimentos {
                     nudQtdReal.Value = 1000;
                 }
                 else {
+                    var operacao = ctx.Operacoes.Find(OperacaoId);
+                    comboBoxAtivo.SelectedValue = operacao.Codigo;
+                    comboBoxOperacao.SelectedValue = operacao.TipoId;
                     dateTimePickerData.Value = operacao.Data;
                     nudQtdPrevista.Value = operacao.QtdPrevista;
                     nudQtdReal.Value = operacao.QtdReal;
