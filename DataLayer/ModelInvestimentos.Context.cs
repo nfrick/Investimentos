@@ -37,13 +37,17 @@ namespace DataLayer
         public virtual DbSet<SerieHistorica> SeriesHistoricas { get; set; }
         public virtual DbSet<Conta> Contas { get; set; }
     
-        public virtual ObjectResult<CompraDisponivelParaVenda> GetComprasDisponiveisParaVenda(Nullable<int> vendaId)
+        public virtual ObjectResult<CompraDisponivelParaVenda> GetComprasDisponiveisParaVenda(Nullable<int> vendaId, Nullable<int> contaId)
         {
             var vendaIdParameter = vendaId.HasValue ?
                 new ObjectParameter("VendaId", vendaId) :
                 new ObjectParameter("VendaId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompraDisponivelParaVenda>("GetComprasDisponiveisParaVenda", vendaIdParameter);
+            var contaIdParameter = contaId.HasValue ?
+                new ObjectParameter("ContaId", contaId) :
+                new ObjectParameter("ContaId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompraDisponivelParaVenda>("GetComprasDisponiveisParaVenda", vendaIdParameter, contaIdParameter);
         }
     }
 }

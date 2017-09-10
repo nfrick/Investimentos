@@ -175,6 +175,7 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
         </Association>
         <Function Name="spComprasDisponiveisParaVenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="VendaId" Type="int" Mode="In" />
+          <Parameter Name="ContaId" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="InvestimentosModelStoreContainer">
           <EntitySet Name="tbAtivos" EntityType="Self.tbAtivos" Schema="dbo" store:Type="Tables" />
@@ -304,6 +305,7 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
           </AssociationSet>
           <FunctionImport Name="GetComprasDisponiveisParaVenda" ReturnType="Collection(InvestimentosModel.CompraDisponivelParaVenda)">
           <Parameter Name="VendaId" Mode="In" Type="Int32" />
+            <Parameter Name="ContaId" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Ativos" EntityType="InvestimentosModel.Ativo" />
           <AssociationSet Name="FK_tbOperacoes_tbAtivos" Association="InvestimentosModel.FK_tbOperacoes_tbAtivos">
