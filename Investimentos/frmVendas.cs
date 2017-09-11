@@ -19,17 +19,14 @@ namespace Investimentos {
             GridStyles.FormatColumns(dgvVendas, 3, 8, GridStyles.StyleCurrency, 80);
             GridStyles.FormatColumns(dgvVendas, 9, 10, GridStyles.StyleCurrency, 90);
 
-            GridStyles.FormatGrid(dgvContas, 11);
-            GridStyles.CloneGrid(dgvVendas, dgvContas);
-            dgvContas.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            GridStyles.FormatGridAsTotal(dgvTotal, dgvVendas);
 
-            var row = (dgvContas.Rows
+            var row = (dgvTotal.Rows
                 .Cast<DataGridViewRow>()
                 .First(r => (int)r.Cells[0].Value == Conta)).Index;
+            dgvTotal.CurrentCell = dgvTotal.Rows[row].Cells[10];
 
-            dgvContas.CurrentCell = dgvContas.Rows[row].Cells[10];
-
-            Width = 30 + dgvVendas.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
+            Width = 25 + GridStyles.GridVisibleWidth(dgvVendas);
             Height = dgvVendas.ColumnHeadersHeight +
                      (dgvVendas.Rows.Count * dgvVendas.RowTemplate.Height) +
                      (int)tableLayoutPanel1.RowStyles[1].Height + 48;
@@ -43,12 +40,12 @@ namespace Investimentos {
         }
 
         private void dgvContas_SelectionChanged(object sender, EventArgs e) {
-            dgvContas.ClearSelection();
+            dgvTotal.ClearSelection();
         }
 
         private void dgvContas_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e) {
             for (var i = 0; i < e.RowCount; i++) {
-                var row = dgvContas.Rows[e.RowIndex + i];
+                var row = dgvTotal.Rows[e.RowIndex + i];
                 row.Cells[8].Value = "TOTAL";
             }
         }

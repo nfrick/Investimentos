@@ -70,7 +70,7 @@
             this.contaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entityDataSource1 = new EFWinforms.EntityDataSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvContas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
+            this.dgvTotal = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,7 +92,7 @@
             this.infoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvVendas
@@ -404,7 +404,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvContas, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgvTotal, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.dgvVendas, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -415,14 +415,14 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(799, 506);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // dgvContas
+            // dgvTotal
             // 
-            this.dgvContas.AllowUserToAddRows = false;
-            this.dgvContas.AllowUserToDeleteRows = false;
-            this.dgvContas.AutoGenerateColumns = false;
-            this.dgvContas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvContas.ColumnHeadersVisible = false;
-            this.dgvContas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvTotal.AllowUserToAddRows = false;
+            this.dgvTotal.AllowUserToDeleteRows = false;
+            this.dgvTotal.AutoGenerateColumns = false;
+            this.dgvTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTotal.ColumnHeadersVisible = false;
+            this.dgvTotal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
@@ -442,15 +442,15 @@
             this.contaCorrenteDataGridViewTextBoxColumn,
             this.senhaDataGridViewTextBoxColumn,
             this.infoDataGridViewTextBoxColumn});
-            this.dgvContas.DataMember = "Contas";
-            this.dgvContas.DataSource = this.entityDataSource1;
-            this.dgvContas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvContas.Enabled = false;
-            this.dgvContas.EnableHeadersVisualStyles = false;
-            this.dgvContas.Location = new System.Drawing.Point(3, 476);
-            this.dgvContas.MultiSelect = false;
-            this.dgvContas.Name = "dgvContas";
-            this.dgvContas.ReadOnly = true;
+            this.dgvTotal.DataMember = "Contas";
+            this.dgvTotal.DataSource = this.entityDataSource1;
+            this.dgvTotal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTotal.Enabled = false;
+            this.dgvTotal.EnableHeadersVisualStyles = false;
+            this.dgvTotal.Location = new System.Drawing.Point(3, 476);
+            this.dgvTotal.MultiSelect = false;
+            this.dgvTotal.Name = "dgvTotal";
+            this.dgvTotal.ReadOnly = true;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -458,15 +458,15 @@
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvContas.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.dgvContas.RowHeadersWidth = 25;
-            this.dgvContas.RowTemplate.Height = 24;
-            this.dgvContas.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dgvContas.Size = new System.Drawing.Size(793, 27);
-            this.dgvContas.TabIndex = 4;
-            this.dgvContas.Tag = "9";
-            this.dgvContas.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvContas_RowsAdded);
-            this.dgvContas.SelectionChanged += new System.EventHandler(this.dgvContas_SelectionChanged);
+            this.dgvTotal.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvTotal.RowHeadersWidth = 25;
+            this.dgvTotal.RowTemplate.Height = 24;
+            this.dgvTotal.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dgvTotal.Size = new System.Drawing.Size(793, 27);
+            this.dgvTotal.TabIndex = 4;
+            this.dgvTotal.Tag = "9";
+            this.dgvTotal.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvContas_RowsAdded);
+            this.dgvTotal.SelectionChanged += new System.EventHandler(this.dgvContas_SelectionChanged);
             // 
             // Column5
             // 
@@ -630,7 +630,7 @@
             this.Load += new System.EventHandler(this.Vendas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -640,7 +640,7 @@
         private EFWinforms.EntityDataSource entityDataSource1;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvVendas;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvContas;
+        private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn OperacaoId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;

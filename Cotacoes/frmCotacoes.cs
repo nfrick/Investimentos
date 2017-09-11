@@ -19,18 +19,25 @@ namespace Cotacoes {
 
         private void frmCotacoes_Load(object sender, EventArgs e) {
             InitializeDataGrid();
+            chart1.ChartAreas[0].AxisX.MajorGrid.LineColor =
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = dgvCotacoes.GridColor;
 
+            var cbx = toolStripComboBoxConta.ComboBox;
             using (var ctx = new InvestimentosEntities()) {
-                var cbx = toolStripComboBoxConta.ComboBox;
-                var contas = ctx.Contas.ToList();
-                foreach (var conta in contas) {
-                    cbx.Items.Add(conta);
-                }
-                cbx.DisplayMember = "Nome";
-                cbx.ValueMember = "ContaId";
-                cbx.SelectedIndex = 0;
+                cbx.Items.AddRange(ctx.Contas.ToArray());
             }
-            Width = 20 + GridStyles.GridVisibleWidth(dgvCotacoes);
+            cbx.DisplayMember = "Nome";
+            cbx.ValueMember = "ContaId";
+            cbx.SelectedIndex = 0;
+
+            Width = 25 + GridStyles.GridVisibleWidth(dgvCotacoes);
+        }
+
+        private void frmCotacoes_Resize(object sender, EventArgs e) {
+            if (WindowState != FormWindowState.Minimized) return;
+            notifyIcon1.Visible = true;
+            notifyIcon1.ShowBalloonTip(3000);
+            ShowInTaskbar = false;
         }
 
         #region Timer
@@ -94,29 +101,16 @@ namespace Cotacoes {
         private void InitializeDataGrid() {
             GridStyles.FormatGrid(dgvCotacoes);
             GridStyles.FormatColumns(dgvCotacoes, 5, 0, GridStyles.StyleCurrency, 65);
-            GridStyles.FormatColumns(dgvCotacoes, new[] { 2, 16, 18 }, GridStyles.StyleCurrency, 80);
+            GridStyles.FormatColumns(dgvCotacoes, new[] { 2, 16, 18 }, GridStyles.StyleCurrency, 85);
             GridStyles.FormatColumns(dgvCotacoes, new[] { 1, 17 }, GridStyles.StyleInteger, 65);
             GridStyles.FormatColumn(dgvCotacoes.Columns[3], GridStyles.StyleDayAndTime, 90);
             GridStyles.FormatColumn(dgvCotacoes.Columns[4], GridStyles.StyleTrend, 20);
             GridStyles.FormatColumn(dgvCotacoes.Columns[9], GridStyles.StylePercent, 65);
 
-            GridStyles.FormatGrid(dgvTotal);
-            dgvTotal.RowHeadersWidth = dgvCotacoes.RowHeadersWidth;
-            for (var i = 0; i < dgvCotacoes.ColumnCount; i++) {
-                dgvTotal.Columns[i].Width = dgvCotacoes.Columns[i].Width;
-                dgvTotal.Columns[i].Visible = dgvCotacoes.Columns[i].Visible;
-                dgvTotal.Columns[i].DefaultCellStyle = GridStyles.StyleTotal;
-                if (i == 2 || i == 16 || i == 18) {
-                    GridStyles.FormatColumn(dgvTotal.Columns[i], GridStyles.StyleCurrency, 80);
-                }
-            }
-
-            var w = Math.Max(chart1.Width, 50 + dgvCotacoes.Columns.GetColumnsWidth(DataGridViewElementStates.Visible));
-            Width = 30 + w;
+            GridStyles.FormatGridAsTotal(dgvTotal, dgvCotacoes);
 
             foreach (ToolStripItem i in toolStripDropDownButtonFrequencia.DropDownItems)
                 i.Click += FrequenciaButtonsClick;
-
             foreach (ToolStripItem i in toolStripDropDownButtonAtivos.DropDownItems)
                 i.Click += AtivosButtonsClick;
         }
@@ -149,10 +143,9 @@ namespace Cotacoes {
             toolStripStatusLabelErros.Text = $@"Erros: {Erros}";
 
             // Resize if number of Ativos changes
-            var oldHeight = (int)tableLayoutPanel1.RowStyles[0].Height;  
-            // tableLayoutPanel1.GetRowHeights()[0];
-            var newHeight = dgvCotacoes.ColumnHeadersHeight + 
-                (dgvCotacoes.RowTemplate.Height + 2) * 
+            var oldHeight = (int)tableLayoutPanel1.RowStyles[0].Height;
+            var newHeight = dgvCotacoes.ColumnHeadersHeight +
+                (dgvCotacoes.RowTemplate.Height + 2) *
                 Math.Min(10, bindingSourceCotacoes.Count);
 
             if (oldHeight == newHeight) return;
@@ -245,13 +238,6 @@ namespace Cotacoes {
             AtualizarGrafico(false);
         }
 
-        private void frmCotacoes_Resize(object sender, EventArgs e) {
-            if (WindowState != FormWindowState.Minimized) return;
-            notifyIcon1.Visible = true;
-            notifyIcon1.ShowBalloonTip(3000);
-            ShowInTaskbar = false;
-        }
-
         private void notifyIcon1_DoubleClick(object sender, EventArgs e) {
             WindowState = FormWindowState.Normal;
             ShowInTaskbar = true;
@@ -268,10 +254,7 @@ namespace Cotacoes {
                 PerguntarSobreFrequencia();
             }
             _precisaCarregarListaDeAtivos = true;
-        }
-
-        private void frmCotacoes_SizeChanged(object sender, EventArgs e) {
-            chart1.Width = Width - 5;
+            CarregarDados();
         }
     }
 }
