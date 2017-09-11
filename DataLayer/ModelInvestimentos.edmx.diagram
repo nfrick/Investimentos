@@ -9,11 +9,11 @@
         <EntityTypeShape EntityType="InvestimentosModel.OperacaoTipo" Width="1.5" PointX="7.25" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="InvestimentosModel.FK_tbOperacoes_tbOperacoesTipos" ManuallyRouted="false" />
         <EntityTypeShape EntityType="InvestimentosModel.AtivoCorrente" Width="1.5" PointX="5.125" PointY="4.625" FillColor="255, 255, 192" />
-        <EntityTypeShape EntityType="InvestimentosModel.Venda" Width="1.5" PointX="9.375" PointY="4.625" />
-        <EntityTypeShape EntityType="InvestimentosModel.OperacaoComRunningSum" Width="1.5" PointX="3" PointY="4.625" FillColor="255, 255, 192" />
+        <EntityTypeShape EntityType="InvestimentosModel.Venda" Width="1.5" PointX="9.5" PointY="4.625" />
+        <EntityTypeShape EntityType="InvestimentosModel.OperacaoComRunningSum" Width="1.625" PointX="2.875" PointY="4.625" FillColor="255, 255, 192" />
         <AssociationConnector Association="InvestimentosModel.AtivoCorrentevwOperacoesComRunningSum" />
         <AssociationConnector Association="InvestimentosModel.FK_tbVendas_tbOperacoes" />
-        <EntityTypeShape EntityType="InvestimentosModel.OperacaoDeSaida" Width="1.5" PointX="7.25" PointY="4.625" FillColor="255, 255, 192" />
+        <EntityTypeShape EntityType="InvestimentosModel.OperacaoDeSaida" Width="1.625" PointX="7.25" PointY="4.625" FillColor="255, 255, 192" />
         <AssociationConnector Association="InvestimentosModel.AtivoCorrenteOperacaoDeSaida" />
         <AssociationConnector Association="InvestimentosModel.OperacaoDeSaidaVenda" />
         <EntityTypeShape EntityType="InvestimentosModel.Ativo" Width="1.5" PointX="3" PointY="0.5" />

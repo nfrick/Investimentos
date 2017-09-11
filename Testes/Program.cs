@@ -7,21 +7,22 @@ using DataLayer;
 using System.IO;
 using System.Globalization;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace Testes {
     class Program {
         static void Main(string[] args) {
 
 
-            using (var ctx = new AtivoCotacaoEntities()) {
-                List<AtivoCotacao> ativos = ctx.Ativos.ToList();
-                ativos.Reverse();
-                foreach (AtivoCotacao ativo in ativos)
-                    if (ativo.ValorMedioCompra > 0)
-                        Console.WriteLine("{0} {1} {2}",
-                            ativo.Nome,
-                            ativo.ValorMedioCompra,
-                            ativo.ValorMedioCompraReal);
+            using (var ctx = new InvestimentosEntities()) {
+                var conta = ctx.Contas.Find(3);
+                foreach (var ativoCorrente in conta.AtivosCorrentes) {
+                    Console.WriteLine(ativoCorrente.Codigo);
+                    foreach (var opSaida in ativoCorrente.OperacoesDeSaida) {
+                        Console.WriteLine($"\t{opSaida.Data:dd/MM/yy}\t{opSaida.Qtd}\t{opSaida.Valor}\t{opSaida.Venda.FirstOrDefault().Compra.Valor}");
+                    }
+                    
+                }
             }
 
 

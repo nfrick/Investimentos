@@ -30,6 +30,7 @@ namespace Cotacoes {
                 cbx.ValueMember = "ContaId";
                 cbx.SelectedIndex = 0;
             }
+            Width = 20 + GridStyles.GridVisibleWidth(dgvCotacoes);
         }
 
         #region Timer
@@ -144,15 +145,19 @@ namespace Cotacoes {
             var total = AtivoCotacaoTotal.New((List<AtivoCotacao>)bindingSourceCotacoes.DataSource);
             bindingSourceTotal.DataSource = total;
 
-
-
-            tableLayoutPanel1.RowStyles[0].Height = (25 * Math.Min(10, bindingSourceCotacoes.Count)) + dgvCotacoes.ColumnHeadersHeight + 0;
-            Height = 40 + statusStrip1.Height +
-                     tableLayoutPanel1.GetRowHeights()[0] +
-                     tableLayoutPanel1.GetRowHeights()[1] +
-                     tableLayoutPanel1.GetRowHeights()[2];
             toolStripStatusLabelAtualizadoEm.Text = $@"Atualizado em: {DateTime.Now}";
             toolStripStatusLabelErros.Text = $@"Erros: {Erros}";
+
+            // Resize if number of Ativos changes
+            var oldHeight = (int)tableLayoutPanel1.RowStyles[0].Height;  
+            // tableLayoutPanel1.GetRowHeights()[0];
+            var newHeight = dgvCotacoes.ColumnHeadersHeight + 
+                (dgvCotacoes.RowTemplate.Height + 2) * 
+                Math.Min(10, bindingSourceCotacoes.Count);
+
+            if (oldHeight == newHeight) return;
+            tableLayoutPanel1.RowStyles[0].Height = newHeight;
+            Height = Height - oldHeight + newHeight;
         }
 
         private void AtualizarGrafico(bool forcePack) {
@@ -258,11 +263,15 @@ namespace Cotacoes {
         }
 
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
-            var conta = (Conta)((ToolStripComboBox) sender).SelectedItem;
+            var conta = (Conta)((ToolStripComboBox)sender).SelectedItem;
             if (!YahooFinance.Initialize(conta.ContaId)) {
                 PerguntarSobreFrequencia();
             }
-            bindingSourceCotacoes.DataSource = null;
+            _precisaCarregarListaDeAtivos = true;
+        }
+
+        private void frmCotacoes_SizeChanged(object sender, EventArgs e) {
+            chart1.Width = Width - 5;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace DataLayer
     
     public partial class OperacaoComRunningSum
     {
+        public int ContaId { get; set; }
         public int OperacaoId { get; set; }
         public string Codigo { get; set; }
         public System.DateTime Data { get; set; }
@@ -22,7 +23,6 @@ namespace DataLayer
         public decimal Valor { get; set; }
         public decimal ValorReal { get; set; }
         public string Tipo { get; set; }
-        public int ContaId { get; set; }
     
         public virtual AtivoCorrente AtivoCorrente { get; set; }
     }

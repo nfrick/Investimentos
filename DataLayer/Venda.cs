@@ -14,10 +14,10 @@ namespace DataLayer
     
     public partial class Venda
     {
+        public int ContaId { get; set; }
         public int VendaId { get; set; }
         public int CompraId { get; set; }
         public int QtdAssociada { get; set; }
-        public int ContaId { get; set; }
     
         public virtual Operacao Compra { get; set; }
         public virtual OperacaoDeSaida OperacaoDeSaida { get; set; }

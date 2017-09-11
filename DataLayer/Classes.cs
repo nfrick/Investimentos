@@ -218,12 +218,16 @@ namespace DataLayer {
         public const string TrendNone = "¡";
 
         public void Initialize(Dictionary<string, Cotacao> cotacoes, int contaId) {
-            _operacoes = Operacoes.Where(o => o.ContaId == contaId).ToList();
-            _jaNegociado = _operacoes.Any();
-            _qtdTotal = _jaNegociado ? _operacoes.Last().QtdAcumulada : 0;
+            SetarConta(contaId);
             _newerTrades = new Dictionary<DateTime, decimal>();
             _olderTrades = new Dictionary<DateTime, decimal>();
             AtualizarCotacao(cotacoes);
+        }
+
+        public void SetarConta(int contaId) {
+            _operacoes = Operacoes.Where(o => o.ContaId == contaId).ToList();
+            _jaNegociado = _operacoes.Any();
+            _qtdTotal = _jaNegociado ? _operacoes.Last().QtdAcumulada : 0;
         }
 
         public void AtualizarCotacao(Dictionary<string, Cotacao> cotacoes) {

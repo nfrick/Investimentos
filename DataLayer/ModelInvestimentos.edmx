@@ -332,11 +332,11 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
             <PropertyRef Name="Codigo" />
             <PropertyRef Name="ContaId" />
           </Key>
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
           <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="QtdTotal" Type="Int32" Nullable="false" />
           <NavigationProperty Name="OperacoesTodas" Relationship="InvestimentosModel.AtivoCorrentevwOperacoesComRunningSum" FromRole="AtivoCorrente" ToRole="vwOperacoesComRunningSum" />
           <NavigationProperty Name="OperacoesDeSaida" Relationship="InvestimentosModel.AtivoCorrenteOperacaoDeSaida" FromRole="AtivoCorrente" ToRole="OperacaoDeSaida" />
-          <Property Name="ContaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Conta" Relationship="InvestimentosModel.ContaAtivoCorrente" FromRole="AtivoCorrente" ToRole="Conta" />
         </EntityType>
         <EntityType Name="Venda">
@@ -344,18 +344,19 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
             <PropertyRef Name="VendaId" />
             <PropertyRef Name="CompraId" />
           </Key>
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
           <Property Name="VendaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="CompraId" Type="Int32" Nullable="false" />
           <Property Name="QtdAssociada" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Compra" Relationship="InvestimentosModel.FK_tbVendas_tbOperacoes" FromRole="Venda" ToRole="Operacao" />
           <NavigationProperty Name="OperacaoDeSaida" Relationship="InvestimentosModel.OperacaoDeSaidaVenda" FromRole="Venda" ToRole="OperacaoDeSaida" />
-          <Property Name="ContaId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="OperacaoComRunningSum">
           <Key>
             <PropertyRef Name="OperacaoId" />
             <PropertyRef Name="ContaId" />
           </Key>
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
           <Property Name="OperacaoId" Type="Int32" Nullable="false" />
           <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
@@ -365,7 +366,6 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
           <Property Name="ValorReal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <NavigationProperty Name="AtivoCorrente" Relationship="InvestimentosModel.AtivoCorrentevwOperacoesComRunningSum" FromRole="vwOperacoesComRunningSum" ToRole="AtivoCorrente" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="ContaId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="AtivoCorrentevwOperacoesComRunningSum">
           <End Type="InvestimentosModel.AtivoCorrente" Role="AtivoCorrente" Multiplicity="1" />
@@ -398,6 +398,7 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
             <PropertyRef Name="OperacaoId" />
             <PropertyRef Name="ContaId" />
           </Key>
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
           <Property Name="OperacaoId" Type="Int32" Nullable="false" />
           <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
@@ -408,7 +409,6 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesDeSaida' does not hav
           <NavigationProperty Name="AtivoCorrente" Relationship="InvestimentosModel.AtivoCorrenteOperacaoDeSaida" FromRole="OperacaoDeSaida" ToRole="AtivoCorrente" />
           <NavigationProperty Name="Venda" Relationship="InvestimentosModel.OperacaoDeSaidaVenda" FromRole="OperacaoDeSaida" ToRole="Venda" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="ContaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Conta" Relationship="InvestimentosModel.ContaOperacaoDeSaida" FromRole="OperacaoDeSaida" ToRole="Conta" />
         </EntityType>
         <Association Name="AtivoCorrenteOperacaoDeSaida">

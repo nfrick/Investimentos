@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GridAndChartStyleLibrary {
@@ -152,6 +153,12 @@ namespace GridAndChartStyleLibrary {
             }
             dgv2.RowHeadersWidth = dgv1.RowHeadersWidth;
             dgv2.GridColor = dgv1.GridColor;
+        }
+
+        public static int GridVisibleWidth(DataGridView dgv1) {
+            return dgv1.Columns.Cast<DataGridViewColumn>()
+                .Where(c => c.Visible).Sum(x => x.Width)
+                + (dgv1.RowHeadersVisible ? dgv1.RowHeadersWidth : 0) + 3;
         }
     }
 }

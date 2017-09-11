@@ -26,22 +26,29 @@ namespace Cotacoes {
         public static bool Initialize(int contaId) {
             var sucessoNoYahoo = true;
             using (var ctx = new AtivoCotacaoEntities()) {
-                _yahooString = @"http://finance.yahoo.com/d/quotes.csv?s=" +
-                    string.Join("+", ctx.Ativos
-                    .Select(x => x.Codigo + ".SA").OrderBy(x => x).ToArray()) +
-                    @"&f=snbb3ab2opl1d1t1ghc1c6p2k2jk";
+                if (_ativos == null) {
 
-                _ativos = ctx.Ativos.ToList();
-                try {
-                    ObterCotacoes();
+                    _yahooString = @"http://finance.yahoo.com/d/quotes.csv?s=" +
+                                   string.Join("+", ctx.Ativos
+                                       .Select(x => x.Codigo + ".SA").OrderBy(x => x).ToArray()) +
+                                   @"&f=snbb3ab2opl1d1t1ghc1c6p2k2jk";
+
+                    _ativos = ctx.Ativos.ToList();
+                    try {
+                        ObterCotacoes();
+                    }
+                    catch (WebException) {
+                        sucessoNoYahoo = false;
+                    }
+                    foreach (var ativo in _ativos)
+                        ativo.Initialize(Cotacoes, contaId);
                 }
-                catch (WebException) {
-                    sucessoNoYahoo = false;
+                else {
+                    foreach (var ativo in _ativos)
+                        ativo.SetarConta(contaId);
                 }
-                foreach (var ativo in _ativos)
-                    ativo.Initialize(Cotacoes, contaId);
-                return sucessoNoYahoo;
             }
+            return sucessoNoYahoo;
         }
 
         /// <summary>
