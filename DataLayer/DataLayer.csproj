@@ -62,7 +62,11 @@
     <Compile Include="AtivoCotacao.cs">
       <DependentUpon>ModelAtivosCotacoes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Classes.cs" />
+    <Compile Include="PartialClasses\Ativo.cs" />
+    <Compile Include="PartialClasses\AtivoCorrente.cs" />
+    <Compile Include="PartialClasses\AtivoCotacao.cs" />
+    <Compile Include="PartialClasses\AtivoCotacaoTotal.cs" />
+    <Compile Include="PartialClasses\Conta.cs" />
     <Compile Include="CompraDisponivelParaVenda.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
@@ -120,6 +124,15 @@
     <Compile Include="OperacaoTipo.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
+    <Compile Include="PartialClasses\CompraDisponivelParaVenda.cs" />
+    <Compile Include="PartialClasses\Cotacao.cs" />
+    <Compile Include="PartialClasses\Extensions.cs" />
+    <Compile Include="PartialClasses\Operacao.cs" />
+    <Compile Include="PartialClasses\OperacaoCotacao.cs" />
+    <Compile Include="PartialClasses\OperacaoDeSaida.cs" />
+    <Compile Include="PartialClasses\OperacaoTipo.cs" />
+    <Compile Include="PartialClasses\SerieHistorica.cs" />
+    <Compile Include="PartialClasses\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerieHistorica.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
@@ -179,6 +192,7 @@
       <Name>EF6Winforms</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
