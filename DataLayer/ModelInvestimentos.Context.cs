@@ -27,27 +27,25 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Operacao> Operacoes { get; set; }
         public virtual DbSet<OperacaoTipo> OperacoesTipos { get; set; }
-        public virtual DbSet<AtivoCorrente> AtivosCorrentes { get; set; }
-        public virtual DbSet<Venda> Vendas { get; set; }
-        public virtual DbSet<OperacaoComRunningSum> OperacoesComRunningSum { get; set; }
-        public virtual DbSet<OperacaoDeSaida> OperacoesDeSaida { get; set; }
-        public virtual DbSet<Ativo> Ativos { get; set; }
-        public virtual DbSet<SerieHistorica> SeriesHistoricas { get; set; }
         public virtual DbSet<Conta> Contas { get; set; }
+        public virtual DbSet<Associacao> Associacaos { get; set; }
+        public virtual DbSet<Entrada> Entradas { get; set; }
+        public virtual DbSet<Saida> Saidas { get; set; }
+        public virtual DbSet<AtivoDaConta> AtivosDaConta { get; set; }
+        public virtual DbSet<OperacaoComQtdAcumulada> OperacaoComQtdAcumuladas { get; set; }
     
-        public virtual ObjectResult<CompraDisponivelParaVenda> GetComprasDisponiveisParaVenda(Nullable<int> vendaId, Nullable<int> contaId)
+        public virtual ObjectResult<CompraDisponivelParaVenda> GetComprasDisponiveisParaVenda(Nullable<int> saidaId, Nullable<int> contaId)
         {
-            var vendaIdParameter = vendaId.HasValue ?
-                new ObjectParameter("VendaId", vendaId) :
-                new ObjectParameter("VendaId", typeof(int));
+            var saidaIdParameter = saidaId.HasValue ?
+                new ObjectParameter("SaidaId", saidaId) :
+                new ObjectParameter("SaidaId", typeof(int));
     
             var contaIdParameter = contaId.HasValue ?
                 new ObjectParameter("ContaId", contaId) :
                 new ObjectParameter("ContaId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompraDisponivelParaVenda>("GetComprasDisponiveisParaVenda", vendaIdParameter, contaIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompraDisponivelParaVenda>("GetComprasDisponiveisParaVenda", saidaIdParameter, contaIdParameter);
         }
     }
 }

@@ -13,18 +13,16 @@ namespace DataLayer {
         /// </summary>
         /// <param name="arquivo"></param>
         /// <returns>List<SerieHistorica></returns>
-        public static List<SerieHistorica> LerArquivo(string arquivo, InvestimentosEntities ctx) {
-            //using (var ctx = new InvestimentosEntities()) {
+        public static List<SerieHistorica> LerArquivo(string arquivo, Investimentos2Entities ctx) {
             //    var maxData = ctx.SeriesHistoricas.Max(c => c.Data).ToString("yyyyMMdd");
-                var serie = from linha in File.ReadLines(arquivo)
-                    join ativo in ctx.Ativos
-                    on linha.Substring(12, 12).Trim() equals ativo.Codigo
-                    where linha.StartsWith("01")
-                          && linha.Substring(24, 3) == "010"
-                          //&& string.Compare(linha.Substring(2, 8), maxData, StringComparison.Ordinal) > 0
-                    select new SerieHistorica(linha);
-                return serie.ToList();
-            //}
+            var serie = from linha in File.ReadLines(arquivo)
+                        join ativo in ctx.Ativos
+                        on linha.Substring(12, 12).Trim() equals ativo.Codigo
+                        where linha.StartsWith("01")
+                              && linha.Substring(24, 3) == "010"
+                        //&& string.Compare(linha.Substring(2, 8), maxData, StringComparison.Ordinal) > 0
+                        select new SerieHistorica(linha);
+            return serie.ToList();
         }
 
         /// <summary>
@@ -34,7 +32,7 @@ namespace DataLayer {
         /// <returns>Número de registros gravados</returns>
         public static long LerArquivoParaDatabase(string arquivo) {
             long recordsAdded;
-            using (var ctx = new InvestimentosEntities()) {
+            using (var ctx = new Investimentos2Entities()) {
                 var serie = LerArquivo(arquivo, ctx);
                 recordsAdded = serie.Count;
                 ctx.SeriesHistoricas.AddRange(serie);

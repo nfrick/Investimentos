@@ -1,13 +1,13 @@
 using System.Linq;
 
 namespace DataLayer {
-    public partial class AtivoCorrente {
+    public partial class AtivoDaConta {
         public decimal ValorMedioCompra => _valorMedioCompra(false);
 
         public decimal ValorMedioCompraReal => _valorMedioCompra(true);
 
         private decimal _valorMedioCompra(bool real) {
-            var compras = OperacoesTodas
+            var compras = OperacoesComQtdAcumulada
                 .OrderByDescending(c => c.Data)
                 .ThenByDescending(c => c.OperacaoId)
                 .TakeWhile(c => c.QtdAcumulada > 0).

@@ -12,7 +12,7 @@ namespace SerieHistorica {
             InitializeComponent();
 
             // Must setup year range selection before loading form
-            using (var ctx = new InvestimentosEntities()) {
+            using (var ctx = new Investimentos2Entities()) {
                 var anos = ctx.SeriesHistoricas.Select(s => s.Data.Year.ToString()).Distinct().OrderBy(a => a).ToArray();
                 toolStripComboBoxInicio.Items.AddRange(anos);
                 toolStripComboBoxInicio.SelectedIndex = 0;
@@ -64,7 +64,7 @@ namespace SerieHistorica {
             chart1.Series.Clear();
             double chartMax = 0;
             double chartMin = 1000;
-            using (var ctx = new InvestimentosEntities()) {
+            using (var ctx = new Investimentos2Entities()) {
                 foreach (DataGridViewRow row in dgvAtivos.SelectedRows) {
                     var ativo = row.Cells[0].Value.ToString();
                     if (!ctx.Ativos.Find(ativo).SeriesHistoricas

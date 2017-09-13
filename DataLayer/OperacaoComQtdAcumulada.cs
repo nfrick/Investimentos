@@ -12,14 +12,18 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Venda
+    public partial class OperacaoComQtdAcumulada
     {
+        public int OperacaoId { get; set; }
         public int ContaId { get; set; }
-        public int VendaId { get; set; }
-        public int CompraId { get; set; }
-        public int QtdAssociada { get; set; }
+        public string Codigo { get; set; }
+        public string Tipo { get; set; }
+        public System.DateTime Data { get; set; }
+        public Nullable<int> Qtd { get; set; }
+        public Nullable<int> QtdAcumulada { get; set; }
+        public decimal Valor { get; set; }
+        public decimal ValorReal { get; set; }
     
-        public virtual Operacao Compra { get; set; }
-        public virtual OperacaoDeSaida OperacaoDeSaida { get; set; }
+        public virtual AtivoDaConta AtivoDaConta { get; set; }
     }
 }

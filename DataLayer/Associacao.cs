@@ -12,18 +12,15 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class OperacaoComRunningSum
+    public partial class Associacao
     {
         public int ContaId { get; set; }
-        public int OperacaoId { get; set; }
-        public string Codigo { get; set; }
-        public System.DateTime Data { get; set; }
-        public int Qtd { get; set; }
-        public int QtdAcumulada { get; set; }
-        public decimal Valor { get; set; }
-        public decimal ValorReal { get; set; }
-        public string Tipo { get; set; }
+        public int SaidaId { get; set; }
+        public int EntradaId { get; set; }
+        public int QtdAssociada { get; set; }
     
-        public virtual AtivoCorrente AtivoCorrente { get; set; }
+        public virtual Conta Conta { get; set; }
+        public virtual Entrada Entrada { get; set; }
+        public virtual Saida Saida { get; set; }
     }
 }

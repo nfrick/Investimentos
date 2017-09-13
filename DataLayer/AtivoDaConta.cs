@@ -12,23 +12,26 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class AtivoCorrente
+    public partial class AtivoDaConta
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AtivoCorrente()
+        public AtivoDaConta()
         {
-            this.OperacoesTodas = new HashSet<OperacaoComRunningSum>();
-            this.OperacoesDeSaida = new HashSet<OperacaoDeSaida>();
+            this.Entradas = new HashSet<Entrada>();
+            this.Saidas = new HashSet<Saida>();
+            this.OperacoesComQtdAcumulada = new HashSet<OperacaoComQtdAcumulada>();
         }
     
         public int ContaId { get; set; }
         public string Codigo { get; set; }
-        public int QtdTotal { get; set; }
+        public Nullable<int> QtdTotal { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OperacaoComRunningSum> OperacoesTodas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OperacaoDeSaida> OperacoesDeSaida { get; set; }
         public virtual Conta Conta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Entrada> Entradas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Saida> Saidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OperacaoComQtdAcumulada> OperacoesComQtdAcumulada { get; set; }
     }
 }

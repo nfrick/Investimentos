@@ -13,22 +13,14 @@ namespace Testes {
     class Program {
         static void Main(string[] args) {
 
-
-            using (var ctx = new InvestimentosEntities()) {
-                var conta = ctx.Contas.Find(3);
-                foreach (var ativoCorrente in conta.AtivosCorrentes) {
-                    Console.WriteLine(ativoCorrente.Codigo);
-                    foreach (var opSaida in ativoCorrente.OperacoesDeSaida) {
-                        Console.WriteLine($"\t{opSaida.Data:dd/MM/yy}\t{opSaida.Qtd}\t{opSaida.Valor}\t{opSaida.Venda.FirstOrDefault().Compra.Valor}");
+            using (var ctx = new Investimentos2Entities()) {
+                foreach (var ativo in ctx.Ativos) {
+                    Console.WriteLine(ativo.Codigo);
+                    foreach (var sh in ativo.SeriesHistoricas) {
+                        Console.WriteLine($"\t{sh.Data:dd/MM/yy}\t{sh.PrecoMedio}");
                     }
-                    
                 }
             }
-
-
-
-
-
 
             Console.ReadLine();
         }

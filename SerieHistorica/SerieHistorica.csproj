@@ -103,7 +103,7 @@
       <Name>EF6Winforms</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataGridViewWithButtons\DataGridViewWithButtons.vbproj">
-      <Project>{B1417376-6B4E-432D-B2C1-911F3362098A}</Project>
+      <Project>{b1417376-6b4e-432d-b2c1-911f3362098a}</Project>
       <Name>DataGridViewWithButtons</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
