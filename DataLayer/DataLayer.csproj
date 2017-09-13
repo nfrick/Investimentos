@@ -57,7 +57,7 @@
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
     <Compile Include="Ativo.cs">
-      <DependentUpon>ModelSerieHistorica.tt</DependentUpon>
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
     <Compile Include="AtivoCotacao.cs">
       <DependentUpon>ModelAtivosCotacoes.tt</DependentUpon>
@@ -144,7 +144,7 @@
     <Compile Include="PartialClasses\OperacaoDeSaida.cs" />
     <Compile Include="PartialClasses\OperacaoTipo.cs" />
     <Compile Include="PartialClasses\SerieHistorica.cs" />
-    <Compile Include="PartialClasses\Venda.cs" />
+    <Compile Include="PartialClasses\Associacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Saida.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>

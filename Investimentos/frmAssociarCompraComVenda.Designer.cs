@@ -439,7 +439,7 @@
             // 
             // bindingSourceAssociadas
             // 
-            this.bindingSourceAssociadas.DataSource = typeof(DataLayer.Venda);
+            this.bindingSourceAssociadas.DataSource = typeof(DataLayer.Saida);
             // 
             // dgvDisponiveis
             // 

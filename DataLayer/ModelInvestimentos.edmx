@@ -15,6 +15,13 @@
           <Property Name="EntradaId" Type="int" Nullable="false" />
           <Property Name="QtdAssociada" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbAtivos">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="tbContas">
           <Key>
             <PropertyRef Name="ContaId" />
@@ -73,8 +80,6 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="QtdTotal" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Investimentos2.dbo.vwOperacoesComRunningSum' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <Association Name="FK_tbAssociacoes_tbContas1">
           <End Role="tbContas" Type="Self.tbContas" Multiplicity="1" />
           <End Role="tbAssociacoes" Type="Self.tbAssociacoes" Multiplicity="*" />
@@ -141,6 +146,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwOperacoesComRunningSum' does 
         </Function>
         <EntityContainer Name="InvestimentosModelStoreContainer">
           <EntitySet Name="tbAssociacoes" EntityType="Self.tbAssociacoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbAtivos" EntityType="Self.tbAtivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbContas" EntityType="Self.tbContas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbEntradas" EntityType="Self.tbEntradas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbOperacoesTipos" EntityType="Self.tbOperacoesTipos" Schema="dbo" store:Type="Tables" />
@@ -230,6 +236,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwOperacoesComRunningSum' does 
             <End Role="AtivoDaConta" EntitySet="AtivosDaConta" />
             <End Role="Saida" EntitySet="Saidas" />
           </AssociationSet>
+          <EntitySet Name="Ativos" EntityType="InvestimentosModel.Ativo" />
           </EntityContainer>
         <ComplexType Name="CompraDisponivelParaVenda">
           <Property Type="Int32" Name="OperacaoId" Nullable="false" />
@@ -410,6 +417,13 @@ warning 6002: The table/view 'Investimentos2.dbo.vwOperacoesComRunningSum' does 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Ativo">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -494,6 +508,14 @@ warning 6002: The table/view 'Investimentos2.dbo.vwOperacoesComRunningSum' does 
                 <ScalarProperty Name="QtdTotal" ColumnName="QtdTotal" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="ContaId" ColumnName="ContaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ativos">
+            <EntityTypeMapping TypeName="InvestimentosModel.Ativo">
+              <MappingFragment StoreEntitySet="tbAtivos">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

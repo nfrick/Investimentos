@@ -26,5 +26,7 @@ namespace DataLayer {
                     ).ToList();
             }
         }
+
+        public List<Operacao> Vendas => Operacoes.Where(o => o.QtdReal < 0).ToList();
     }
 }
