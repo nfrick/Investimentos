@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLayer;
-using System.IO;
-using System.Globalization;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 
 namespace Testes {
     class Program {
         static void Main(string[] args) {
 
-            using (var ctx = new Investimentos2Entities()) {
-                foreach (var ativo in ctx.Ativos) {
-                    Console.WriteLine(ativo.Codigo);
-                    foreach (var sh in ativo.SeriesHistoricas) {
-                        Console.WriteLine($"\t{sh.Data:dd/MM/yy}\t{sh.PrecoMedio}");
+            using (var ctx = new InvestimentosEntities()) {
+                foreach (var ativo in ctx.AtivosDaConta.Where(a=>a.ContaId == 1)) {
+                    Console.WriteLine($"\n{ativo.Codigo}\t{ativo.ValorMedioCompraReal:N2}");
+                    foreach (var op in ativo.Operacoes) {
+                        Console.WriteLine($"\t{op.Data:dd/MM/yy}\t{op.OperacaoTipo.Tipo}\t{op.QtdReal}\t{op.QtdAcumulada}");
                     }
                 }
             }

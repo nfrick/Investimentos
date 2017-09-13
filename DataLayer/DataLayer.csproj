@@ -83,9 +83,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelSerieHistorica.edmx</DependentUpon>
     </Compile>
-    <Compile Include="OperacaoComQtdAcumulada.cs">
-      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
-    </Compile>
     <Compile Include="PartialClasses\Ativo.cs" />
     <Compile Include="PartialClasses\AtivoDaConta.cs" />
     <Compile Include="PartialClasses\AtivoCotacao.cs" />

@@ -19,7 +19,6 @@ namespace DataLayer
         {
             this.Entradas = new HashSet<Entrada>();
             this.Saidas = new HashSet<Saida>();
-            this.OperacoesComQtdAcumulada = new HashSet<OperacaoComQtdAcumulada>();
         }
     
         public int ContaId { get; set; }
@@ -31,7 +30,5 @@ namespace DataLayer
         public virtual ICollection<Entrada> Entradas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Saida> Saidas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OperacaoComQtdAcumulada> OperacoesComQtdAcumulada { get; set; }
     }
 }
