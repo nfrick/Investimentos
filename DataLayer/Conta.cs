@@ -17,7 +17,6 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Conta()
         {
-            this.Associacoes = new HashSet<Associacao>();
             this.AtivosDaConta = new HashSet<AtivoDaConta>();
         }
     
@@ -28,8 +27,6 @@ namespace DataLayer
         public string Senha { get; set; }
         public string Info { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Associacao> Associacoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AtivoDaConta> AtivosDaConta { get; set; }
     }

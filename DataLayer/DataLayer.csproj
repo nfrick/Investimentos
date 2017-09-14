@@ -53,9 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Associacao.cs">
-      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
-    </Compile>
     <Compile Include="Ativo.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
@@ -63,6 +60,12 @@
       <DependentUpon>ModelAtivosCotacoes.tt</DependentUpon>
     </Compile>
     <Compile Include="AtivoDaConta.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompraDisponivelParaVenda.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Conta.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
     <Compile Include="Entrada.cs">
@@ -83,17 +86,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelSerieHistorica.edmx</DependentUpon>
     </Compile>
+    <Compile Include="OperacaoTipo.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
     <Compile Include="PartialClasses\Ativo.cs" />
     <Compile Include="PartialClasses\AtivoDaConta.cs" />
     <Compile Include="PartialClasses\AtivoCotacao.cs" />
     <Compile Include="PartialClasses\AtivoCotacaoTotal.cs" />
     <Compile Include="PartialClasses\Conta.cs" />
-    <Compile Include="CompraDisponivelParaVenda.cs">
-      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Conta.cs">
-      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSource.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -133,9 +133,6 @@
     <Compile Include="OperacaoCotacao.cs">
       <DependentUpon>ModelAtivosCotacoes.tt</DependentUpon>
     </Compile>
-    <Compile Include="OperacaoTipo.cs">
-      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
-    </Compile>
     <Compile Include="PartialClasses\CompraDisponivelParaVenda.cs" />
     <Compile Include="PartialClasses\Cotacao.cs" />
     <Compile Include="PartialClasses\Extensions.cs" />
@@ -143,6 +140,7 @@
     <Compile Include="PartialClasses\OperacaoCotacao.cs" />
     <Compile Include="PartialClasses\OperacaoDeSaida.cs" />
     <Compile Include="PartialClasses\OperacaoTipo.cs" />
+    <Compile Include="PartialClasses\Saida.cs" />
     <Compile Include="PartialClasses\SerieHistorica.cs" />
     <Compile Include="PartialClasses\Associacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

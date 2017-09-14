@@ -14,12 +14,6 @@ namespace DataLayer
     
     public partial class Entrada
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Entrada()
-        {
-            this.Associacoes = new HashSet<Associacao>();
-        }
-    
         public int EntradaId { get; set; }
         public int ContaId { get; set; }
         public string Codigo { get; set; }
@@ -29,10 +23,11 @@ namespace DataLayer
         public int QtdReal { get; set; }
         public decimal Valor { get; set; }
         public decimal ValorReal { get; set; }
+        public Nullable<int> SaidaId { get; set; }
+        public Nullable<int> QtdAssociada { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Associacao> Associacoes { get; set; }
         public virtual OperacaoTipo OperacaoTipo { get; set; }
         public virtual AtivoDaConta AtivoDaConta { get; set; }
+        public virtual Saida Saida { get; set; }
     }
 }

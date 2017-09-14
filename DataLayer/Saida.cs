@@ -17,7 +17,7 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Saida()
         {
-            this.Associacoes = new HashSet<Associacao>();
+            this.Entradas = new HashSet<Entrada>();
         }
     
         public int SaidaId { get; set; }
@@ -30,9 +30,9 @@ namespace DataLayer
         public decimal Valor { get; set; }
         public decimal ValorReal { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Associacao> Associacoes { get; set; }
         public virtual OperacaoTipo OperacaoTipo { get; set; }
         public virtual AtivoDaConta AtivoDaConta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Entrada> Entradas { get; set; }
     }
 }

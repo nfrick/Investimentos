@@ -10,8 +10,8 @@ namespace DataLayer {
         private decimal _valorMedioCompra(bool real) {
             var ops = Operacoes.AsEnumerable().Reverse();
             var compras = ops
-                .TakeWhile(c => c.QtdAcumulada > 0).
-                Where(c => c.QtdReal > 0).ToArray();
+                .TakeWhile(c => c.QtdAcumulada > 0)
+                .Where(c => c.QtdReal > 0).ToArray();
             var qtd = ((decimal)compras.Sum(c => c.QtdReal));
             return qtd == 0 ? 0 : compras.Sum(c => (decimal)c.QtdReal * (real ? c.ValorReal : c.Valor)) / qtd;
         }

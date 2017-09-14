@@ -29,7 +29,6 @@ namespace DataLayer
     
         public virtual DbSet<OperacaoTipo> OperacoesTipos { get; set; }
         public virtual DbSet<Conta> Contas { get; set; }
-        public virtual DbSet<Associacao> Associacaos { get; set; }
         public virtual DbSet<Entrada> Entradas { get; set; }
         public virtual DbSet<Saida> Saidas { get; set; }
         public virtual DbSet<AtivoDaConta> AtivosDaConta { get; set; }
