@@ -1,9 +1,11 @@
 ﻿using GridAndChartStyleLibrary;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DataLayer;
+using EFWinforms;
 
 namespace Investimentos {
     public partial class frmInvestimentos : Form {
@@ -38,7 +40,7 @@ namespace Investimentos {
             tableLayoutPanel1.ColumnStyles[1].Width = w1;
             Width = 10 + Math.Max(w0 + w1, w2);
 
-            tableLayoutPanel1.RowStyles[0].Height = 
+            tableLayoutPanel1.RowStyles[0].Height =
                 8 + dgvAtivos.ColumnHeadersHeight + 11 * dgvAtivos.RowTemplate.Height;
 
             //----------------
@@ -69,9 +71,13 @@ namespace Investimentos {
         }
 
         private void RefreshData() {
-            var row = dgvAtivos.SelectedRows[0].Index;
+            var ativoRow = dgvAtivos.SelectedRows[0].Index;
+            var operacaoRow = dgvOperacoes.SelectedRows[0].Index;
+            var vendaRow = dgvVendas.SelectedRows[0].Index;
             entityDataSource1.Refresh();
-            dgvAtivos.CurrentCell = dgvAtivos.Rows[row].Cells[0];
+            dgvAtivos.CurrentCell = dgvAtivos.Rows[ativoRow].Cells[0];
+            dgvOperacoes.CurrentCell = dgvAtivos.Rows[operacaoRow].Cells[0];
+            dgvVendas.CurrentCell = dgvAtivos.Rows[vendaRow].Cells[0];
         }
 
         private void dataGridViewVendas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
@@ -86,11 +92,15 @@ namespace Investimentos {
         }
 
         private void dataGridViewOperacoes_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
-            var frm = new frmEditarOperacao { OperacaoId = (int)dgvOperacoes.SelectedRows[0].Cells[0].Value };
-            frm.ShowDialog();
-            //entityDataSource1.SaveChanges();
-            //entityDataSource1.Refresh();
-            //dgvOperacoes.Refresh();
+            var op = (Operacao) dgvOperacoes.SelectedRows[0].DataBoundItem;
+            var frm = new frmEditarOperacao { operacao = op };
+
+            if (frm.ShowDialog() == DialogResult.Cancel) return;
+
+            var ativo = op.AtivoDaConta;
+            var entrada = ativo.Entradas.First(en => en.EntradaId == op.OperacaoId);
+            entrada.QtdReal = op.QtdReal;
+            entityDataSource1.SaveChanges();
             RefreshData();
         }
 
@@ -106,10 +116,33 @@ namespace Investimentos {
 
         private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
             var frm = new frmEditarOperacao {
-                OperacaoId = 0,
-                Conta = _conta
-            };
-            frm.ShowDialog();
+                operacao = new Operacao() { ContaId = _conta } };
+            if (frm.ShowDialog() == DialogResult.Cancel)
+                return;
+            if (frm.operacao.OperacaoId == 0) {
+                var tipo = frm.comboBoxOperacao.SelectedItem as OperacaoTipo;
+                if (tipo.SinalPositivo) {
+                    var entrada = new Entrada() {
+                        ContaId = frm.operacao.ContaId,
+                        Codigo = frm.operacao.Codigo,
+                        TipoId = frm.operacao.TipoId,
+                        Data = frm.operacao.Data,
+                        QtdPrevista = frm.operacao.QtdPrevista,
+                        QtdReal = frm.operacao.QtdReal,
+                        Valor = frm.operacao.Valor,
+                        ValorReal = frm.operacao.ValorReal
+                    };
+                    
+                }
+                else {
+                    var saida = new Saida();
+                }
+
+            }
+            else {
+
+            }
+
             //entityDataSource1.SaveChanges();
             //entityDataSource1.Refresh();
             //dgvOperacoes.Refresh();

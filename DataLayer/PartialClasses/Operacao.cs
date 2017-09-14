@@ -20,6 +20,9 @@ namespace DataLayer {
         public OperacaoTipo OperacaoTipo { get; set; }
         public AtivoDaConta AtivoDaConta { get; set; }
 
+        private Entrada _entrada;
+        private Saida _saida;
+
         // Entradas only
         public int? SaidaId { get; set; }
         public int? QtdAssociada { get; set; }

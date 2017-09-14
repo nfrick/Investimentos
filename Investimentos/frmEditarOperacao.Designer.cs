@@ -116,6 +116,7 @@
             // 
             // buttonOK
             // 
+            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Font = new System.Drawing.Font("Wingdings", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.buttonOK.Location = new System.Drawing.Point(362, 19);
@@ -331,7 +332,6 @@
 
         private System.Windows.Forms.DateTimePicker dateTimePickerData;
         private System.Windows.Forms.ComboBox comboBoxAtivo;
-        private System.Windows.Forms.ComboBox comboBoxOperacao;
         private System.Windows.Forms.Label labelAtivo;
         private System.Windows.Forms.Label labelOperacao;
         private System.Windows.Forms.Label labelData;
@@ -347,5 +347,6 @@
         private System.Windows.Forms.Label labelQtdReal;
         private System.Windows.Forms.NumericUpDown nudValorReal;
         private System.Windows.Forms.NumericUpDown nudQtdReal;
+        public System.Windows.Forms.ComboBox comboBoxOperacao;
     }
 }
