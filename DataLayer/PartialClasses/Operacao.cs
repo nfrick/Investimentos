@@ -4,6 +4,12 @@ using System.Linq;
 
 namespace DataLayer {
     public class Operacao {
+        private Entrada _entrada;
+        private Saida _saida;
+
+        public bool IsEntrada => OperacaoTipo.SinalPositivo;
+        public bool IsSaida => !OperacaoTipo.SinalPositivo;
+
         public int OperacaoId { get; set; }
         public int ContaId { get; set; }
         public string Codigo { get; set; }
@@ -11,7 +17,9 @@ namespace DataLayer {
         public System.DateTime Data { get; set; }
         public int QtdPrevista { get; set; }
         public int QtdReal { get; set; }
-        public int QtdAcumulada { get; set; }
+
+        public int QtdAcumulada => AtivoDaConta.Operacoes.Where(o => o.Data <= Data).Sum(o => o.QtdReal);
+
         public decimal Valor { get; set; }
         public decimal ValorReal { get; set; }
 
@@ -19,9 +27,6 @@ namespace DataLayer {
         public ICollection<Associacao> Associacoes { get; set; }
         public OperacaoTipo OperacaoTipo { get; set; }
         public AtivoDaConta AtivoDaConta { get; set; }
-
-        private Entrada _entrada;
-        private Saida _saida;
 
         // Entradas only
         public int? SaidaId { get; set; }
@@ -47,9 +52,12 @@ namespace DataLayer {
         public Operacao() {
             this.Associacoes = new HashSet<Associacao>();
             this.Entradas = new HashSet<Entrada>();
+            _entrada = new Entrada();
+            _saida = new Saida();
         }
 
         public Operacao(Entrada entrada) {
+            _entrada = entrada;
             OperacaoId = entrada.EntradaId;
             ContaId = entrada.ContaId;
             Codigo = entrada.Codigo;
@@ -67,6 +75,7 @@ namespace DataLayer {
         }
 
         public Operacao(Saida saida) {
+            _saida = saida;
             OperacaoId = saida.SaidaId;
             ContaId = saida.ContaId;
             Codigo = saida.Codigo;
@@ -79,25 +88,6 @@ namespace DataLayer {
             OperacaoTipo = saida.OperacaoTipo;
             AtivoDaConta = saida.AtivoDaConta;
             Entradas = saida.Entradas;
-        }
-
-        public Operacao(Operacao operacao, int qtdAcumulada) {
-            OperacaoId = operacao.OperacaoId;
-            ContaId = operacao.ContaId;
-            Codigo = operacao.Codigo;
-            TipoId = operacao.TipoId;
-            Data = operacao.Data;
-            QtdPrevista = operacao.QtdPrevista;
-            QtdReal = operacao.QtdReal;
-            QtdAcumulada = qtdAcumulada;
-            Valor = operacao.Valor;
-            ValorReal = operacao.ValorReal;
-            OperacaoTipo = operacao.OperacaoTipo;
-            AtivoDaConta = operacao.AtivoDaConta;
-            SaidaId = operacao.SaidaId;
-            QtdAssociada = operacao.QtdAssociada;
-            Saida = operacao.Saida;
-            Entradas = operacao.Entradas;
         }
     }
 }

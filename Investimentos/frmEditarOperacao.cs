@@ -44,12 +44,12 @@ namespace Investimentos {
         private void buttonOK_Click(object sender, EventArgs e) {
             operacao.Codigo = (string)comboBoxAtivo.SelectedValue;
             operacao.TipoId = (int)comboBoxOperacao.SelectedValue;
+            operacao.OperacaoTipo = (OperacaoTipo) comboBoxOperacao.SelectedItem;
             operacao.Data = dateTimePickerData.Value;
             operacao.QtdPrevista = (int)nudQtdPrevista.Value;
             operacao.QtdReal = (int)nudQtdReal.Value;
             operacao.Valor = nudValor.Value;
             operacao.ValorReal = nudValorReal.Value;
-            //Close();
         }
 
         private void combos_TextChanged(object sender, EventArgs e) {

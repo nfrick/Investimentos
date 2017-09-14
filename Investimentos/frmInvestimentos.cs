@@ -76,8 +76,8 @@ namespace Investimentos {
             var vendaRow = dgvVendas.SelectedRows[0].Index;
             entityDataSource1.Refresh();
             dgvAtivos.CurrentCell = dgvAtivos.Rows[ativoRow].Cells[0];
-            dgvOperacoes.CurrentCell = dgvAtivos.Rows[operacaoRow].Cells[0];
-            dgvVendas.CurrentCell = dgvAtivos.Rows[vendaRow].Cells[0];
+            dgvOperacoes.CurrentCell = dgvOperacoes.Rows[operacaoRow].Cells[1];
+            dgvVendas.CurrentCell = dgvVendas.Rows[vendaRow].Cells[1];
         }
 
         private void dataGridViewVendas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {

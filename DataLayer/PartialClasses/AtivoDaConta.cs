@@ -18,12 +18,7 @@ namespace DataLayer {
 
         public List<Operacao> Operacoes {
             get {
-                var currentTotal = 0;
-                return Entradas.Select(e => new Operacao(e)).Concat(Saidas.Select(s => new Operacao(s))).OrderBy(o => o.Data).ThenBy(o => o.OperacaoId).Select(o => {
-                    currentTotal += o.QtdReal;
-                    return new Operacao(o, currentTotal);
-                }
-                    ).ToList();
+                return Entradas.Select(e => new Operacao(e)).Concat(Saidas.Select(s => new Operacao(s))).OrderBy(o => o.Data).ThenBy(o => o.OperacaoId).ToList();
             }
         }
 
