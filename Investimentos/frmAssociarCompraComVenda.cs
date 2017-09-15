@@ -6,8 +6,7 @@ using DataLayer;
 
 namespace Investimentos {
     public partial class frmAssociarCompraComVenda : Form {
-        public int VendaId { get; set; }
-        public int ContaId { get; set; }
+        public Saida Saida { get; set; }
         private Saida _opSaida;
         private readonly InvestimentosEntities _ctx; // Deve ser mantida global; se for aberta com using em CarregarLista dá erro.
 
@@ -18,9 +17,10 @@ namespace Investimentos {
         
         private void AssociarCompraComVenda_Load(object sender, EventArgs e) {
             CarregarLista();
-            labelData.Text = _opSaida.Data.ToString("dd/MM/yyyy");
-            labelValor.Text = _opSaida.Valor.ToString("C2");
-            labelVenda.Text = Math.Abs(_opSaida.QtdReal).ToString();
+            labelAtivo.Text = Saida.Codigo;
+            labelData.Text = Saida.Data.ToString("dd/MM/yyyy");
+            labelValor.Text = Saida.Valor.ToString("C2");
+            labelVenda.Text = Math.Abs(Saida.QtdReal).ToString();
         }
 
         private void CarregarLista() {

@@ -12,16 +12,14 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Saida : Operacao
+    public partial class Associacao
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Saida()
-        {
-            this.Associacoes = new HashSet<Associacao>();
-        }
+        public int ContaId { get; set; }
+        public int VendaId { get; set; }
+        public int CompraId { get; set; }
+        public int QtdAssociada { get; set; }
     
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Associacao> Associacoes { get; set; }
+        public virtual Entrada Entrada { get; set; }
+        public virtual Saida Saida { get; set; }
     }
 }

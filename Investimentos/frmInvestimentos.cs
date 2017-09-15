@@ -60,7 +60,6 @@ namespace Investimentos {
             cbx.SelectedIndex = currentIndex == -1 ? 0 : currentIndex;
         }
 
-
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
             _conta = ((Conta)toolStripComboBoxConta.SelectedItem);
             var row = (dgvContas.Rows
@@ -103,14 +102,16 @@ namespace Investimentos {
         }
 
         private void dataGridViewVendas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
+            var ctx = entityDataSource1.DbContext.Set<Associacao>();
             var frm = new frmAssociarCompraComVenda {
-                VendaId = (int)dgvVendas.SelectedRows[0].Cells[0].Value,
-                ContaId = _conta.ContaId
-            };
-            frm.ShowDialog();
+                Saida = (Saida)dgvVendas.SelectedRows[0].DataBoundItem
+        };
+            if (frm.ShowDialog() == DialogResult.Cancel) return;
+            entityDataSource1.SaveChanges();
             RefreshData();
         }
 
+        #region toolstrip
         private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
             var ativo = (AtivoDaConta)dgvAtivos.SelectedRows[0].DataBoundItem;
             var op = new Operacao() { AtivoDaConta = ativo, ContaId = _conta.ContaId };
@@ -125,13 +126,14 @@ namespace Investimentos {
                 dgvAtivos.Rows[row.Index].Selected = true;
 
             var tipo = (OperacaoTipo)frm.comboBoxOperacao.SelectedItem;
+            var ctx = entityDataSource1.DbContext.Set<Operacao>();
             if (tipo.IsEntrada) {
                 //_conta.Operacoes.Add(op.ToEntrada);
-                entityDataSource1.DbContext.Set<Operacao>().Add(op.ToEntrada);
+                ctx.Add(op.ToEntrada);
             }
             else {
                 //_conta.Operacoes.Add(op.ToSaida);
-                entityDataSource1.DbContext.Set<Operacao>().Add(op.ToSaida);
+                ctx.Add(op.ToSaida);
             }
             entityDataSource1.SaveChanges();
             RefreshData();
@@ -152,7 +154,7 @@ namespace Investimentos {
             var frm = new frmConta {
                 Conta = conta
             };
-            if(frm.ShowDialog() != DialogResult.OK) return;
+            if (frm.ShowDialog() != DialogResult.OK) return;
             if (conta.ContaId == 0)
                 entityDataSource1.DbContext.Set<Conta>().Add(conta);
 
@@ -160,5 +162,6 @@ namespace Investimentos {
             RefreshData();
             ContaComboPopulate();
         }
+        #endregion
     }
 }

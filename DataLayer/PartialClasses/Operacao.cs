@@ -5,13 +5,14 @@ using System.Linq;
 namespace DataLayer {
     public partial class Operacao {
         public bool IsEntrada => OperacaoTipo.SinalPositivo;
+
         public bool IsSaida => !OperacaoTipo.SinalPositivo;
 
         public int QtdComSinal => QtdReal * OperacaoTipo.Sinal;
 
-        public int QtdAcumulada => AtivoDaConta.Operacoes.Where(o => o.Data <= Data).Sum(o => o.QtdComSinal);
+        public int QtdAcumulada => AtivoDaConta?.Operacoes.Where(o => o.Data <= Data).Sum(o => o.QtdComSinal) ?? 0;
 
-        public int QtdAntes => QtdAcumulada - QtdComSinal;
+        public int QtdAntes => AtivoDaConta?.Operacoes.Where(o => o.Data < Data).Sum(o => o.QtdComSinal) ?? 0;
 
         public Entrada ToEntrada => new Entrada() {
             OperacaoId = this.OperacaoId,
@@ -22,7 +23,9 @@ namespace DataLayer {
             QtdPrevista = this.QtdPrevista,
             QtdReal = this.QtdReal,
             Valor = this.Valor,
-            ValorReal = this.ValorReal
+            ValorReal = this.ValorReal,
+            OperacaoTipo = this.OperacaoTipo,
+            AtivoDaConta = this.AtivoDaConta
         };
 
         public Saida ToSaida => new Saida() {
@@ -34,7 +37,9 @@ namespace DataLayer {
             QtdPrevista = this.QtdPrevista,
             QtdReal = this.QtdReal,
             Valor = this.Valor,
-            ValorReal = this.ValorReal
+            ValorReal = this.ValorReal,
+            OperacaoTipo = this.OperacaoTipo,
+            AtivoDaConta = this.AtivoDaConta
         };
     }
 }

@@ -32,6 +32,7 @@ namespace DataLayer
         public virtual DbSet<AtivoDaConta> AtivosDaConta { get; set; }
         public virtual DbSet<Ativo> Ativos { get; set; }
         public virtual DbSet<Operacao> Operacoes { get; set; }
+        public virtual DbSet<Associacao> Associacoes { get; set; }
     
         public virtual ObjectResult<CompraDisponivelParaVenda> GetComprasDisponiveisParaVenda(Nullable<int> saidaId, Nullable<int> contaId)
         {

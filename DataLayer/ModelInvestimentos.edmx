@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="InvestimentosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbAssociacoes">
+          <Key>
+            <PropertyRef Name="VendaId" />
+            <PropertyRef Name="CompraId" />
+          </Key>
+          <Property Name="ContaId" Type="int" Nullable="false" />
+          <Property Name="VendaId" Type="int" Nullable="false" />
+          <Property Name="CompraId" Type="int" Nullable="false" />
+          <Property Name="QtdAssociada" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="tbAtivos">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -28,8 +38,6 @@
             <PropertyRef Name="OperacaoId" />
           </Key>
           <Property Name="OperacaoId" Type="int" Nullable="false" />
-          <Property Name="SaidaId" Type="int" />
-          <Property Name="QtdAssociada" Type="int" />
         </EntityType>
         <EntityType Name="tbOperacoes">
           <Key>
@@ -70,6 +78,30 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="QtdTotal" Type="int" />
         </EntityType>
+        <Association Name="FK_tbAssociacoes_tbEntradas">
+          <End Role="tbEntradas" Type="Self.tbEntradas" Multiplicity="1" />
+          <End Role="tbAssociacoes" Type="Self.tbAssociacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEntradas">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="tbAssociacoes">
+              <PropertyRef Name="CompraId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbAssociacoes_tbSaidas">
+          <End Role="tbSaidas" Type="Self.tbSaidas" Multiplicity="1" />
+          <End Role="tbAssociacoes" Type="Self.tbAssociacoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbSaidas">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="tbAssociacoes">
+              <PropertyRef Name="VendaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbEntradas2_tbOperacoes2">
           <End Role="tbOperacoes" Type="Self.tbOperacoes" Multiplicity="1" />
           <End Role="tbEntradas" Type="Self.tbEntradas" Multiplicity="0..1" />
@@ -111,6 +143,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Parameter Name="ContaId" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="InvestimentosModelStoreContainer">
+          <EntitySet Name="tbAssociacoes" EntityType="Self.tbAssociacoes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAtivos" EntityType="Self.tbAtivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbContas" EntityType="Self.tbContas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbEntradas" EntityType="Self.tbEntradas" Schema="dbo" store:Type="Tables" />
@@ -124,6 +157,14 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
     [vwAtivos].[QtdTotal] AS [QtdTotal]
     FROM [dbo].[vwAtivos] AS [vwAtivos]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_tbAssociacoes_tbEntradas" Association="Self.FK_tbAssociacoes_tbEntradas">
+            <End Role="tbEntradas" EntitySet="tbEntradas" />
+            <End Role="tbAssociacoes" EntitySet="tbAssociacoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbAssociacoes_tbSaidas" Association="Self.FK_tbAssociacoes_tbSaidas">
+            <End Role="tbSaidas" EntitySet="tbSaidas" />
+            <End Role="tbAssociacoes" EntitySet="tbAssociacoes" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbEntradas2_tbOperacoes2" Association="Self.FK_tbEntradas2_tbOperacoes2">
             <End Role="tbOperacoes" EntitySet="tbOperacoes" />
             <End Role="tbEntradas" EntitySet="tbEntradas" />
@@ -171,6 +212,15 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <AssociationSet Name="AtivoDaContaOperacao" Association="InvestimentosModel.AtivoDaContaOperacao">
             <End Role="AtivoDaConta" EntitySet="AtivosDaConta" />
             <End Role="Operacao" EntitySet="Operacoes" />
+          </AssociationSet>
+          <EntitySet Name="Associacoes" EntityType="InvestimentosModel.Associacao" />
+          <AssociationSet Name="FK_tbAssociacoes_tbEntradas" Association="InvestimentosModel.FK_tbAssociacoes_tbEntradas">
+            <End Role="Entrada" EntitySet="Operacoes" />
+            <End Role="tbAssociaco" EntitySet="Associacoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbAssociacoes_tbSaidas" Association="InvestimentosModel.FK_tbAssociacoes_tbSaidas">
+            <End Role="Saida" EntitySet="Operacoes" />
+            <End Role="tbAssociaco" EntitySet="Associacoes" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="CompraDisponivelParaVenda">
@@ -251,10 +301,10 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           </ReferentialConstraint>
         </Association>
         <EntityType Name="Entrada" BaseType="InvestimentosModel.Operacao">
-          <Property Name="SaidaId" Type="Int32" />
-          <Property Name="QtdAssociada" Type="Int32" />
+          <NavigationProperty Name="Associacoes" Relationship="InvestimentosModel.FK_tbAssociacoes_tbEntradas" FromRole="Entrada" ToRole="tbAssociaco" />
         </EntityType>
         <EntityType Name="Saida" BaseType="InvestimentosModel.Operacao">
+          <NavigationProperty Name="Associacoes" Relationship="InvestimentosModel.FK_tbAssociacoes_tbSaidas" FromRole="Saida" ToRole="tbAssociaco" />
         </EntityType>
         <Association Name="AtivoDaContaOperacao">
           <End Type="InvestimentosModel.AtivoDaConta" Role="AtivoDaConta" Multiplicity="1" />
@@ -267,6 +317,42 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <Dependent Role="Operacao">
               <PropertyRef Name="ContaId" />
               <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Associacao">
+          <Key>
+            <PropertyRef Name="VendaId" />
+            <PropertyRef Name="CompraId" />
+          </Key>
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
+          <Property Name="VendaId" Type="Int32" Nullable="false" />
+          <Property Name="CompraId" Type="Int32" Nullable="false" />
+          <Property Name="QtdAssociada" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Entrada" Relationship="InvestimentosModel.FK_tbAssociacoes_tbEntradas" FromRole="tbAssociaco" ToRole="Entrada" />
+          <NavigationProperty Name="Saida" Relationship="InvestimentosModel.FK_tbAssociacoes_tbSaidas" FromRole="tbAssociaco" ToRole="Saida" />
+        </EntityType>
+        <Association Name="FK_tbAssociacoes_tbEntradas">
+          <End Type="InvestimentosModel.Entrada" Role="Entrada" Multiplicity="1" />
+          <End Type="InvestimentosModel.Associacao" Role="tbAssociaco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Entrada">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="tbAssociaco">
+              <PropertyRef Name="CompraId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbAssociacoes_tbSaidas">
+          <End Type="InvestimentosModel.Saida" Role="Saida" Multiplicity="1" />
+          <End Type="InvestimentosModel.Associacao" Role="tbAssociaco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Saida">
+              <PropertyRef Name="OperacaoId" />
+            </Principal>
+            <Dependent Role="tbAssociaco">
+              <PropertyRef Name="VendaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -347,8 +433,16 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <EntityTypeMapping TypeName="IsTypeOf(InvestimentosModel.Entrada)">
               <MappingFragment StoreEntitySet="tbEntradas">
                 <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
-                <ScalarProperty Name="SaidaId" ColumnName="SaidaId" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Associacoes">
+            <EntityTypeMapping TypeName="InvestimentosModel.Associacao">
+              <MappingFragment StoreEntitySet="tbAssociacoes">
                 <ScalarProperty Name="QtdAssociada" ColumnName="QtdAssociada" />
+                <ScalarProperty Name="CompraId" ColumnName="CompraId" />
+                <ScalarProperty Name="VendaId" ColumnName="VendaId" />
+                <ScalarProperty Name="ContaId" ColumnName="ContaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

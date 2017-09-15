@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Associacao.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ativo.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>

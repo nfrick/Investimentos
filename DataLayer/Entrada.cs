@@ -14,7 +14,14 @@ namespace DataLayer
     
     public partial class Entrada : Operacao
     {
-        public Nullable<int> SaidaId { get; set; }
-        public Nullable<int> QtdAssociada { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Entrada()
+        {
+            this.Associacoes = new HashSet<Associacao>();
+        }
+    
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Associacao> Associacoes { get; set; }
     }
 }
