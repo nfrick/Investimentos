@@ -86,6 +86,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelSerieHistorica.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Operacao.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
     <Compile Include="OperacaoTipo.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>

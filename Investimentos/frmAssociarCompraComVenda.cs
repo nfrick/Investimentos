@@ -49,7 +49,7 @@ namespace Investimentos {
             //    numericUpDownQtdAssociada.Value = v.QtdAssociada;
             //}
             //else {
-            //    _ctx.Vendas.Remove(v);
+            //    _ctx.Saidas.Remove(v);
             //    FinalizarEdicao(true, null);
             //}
         }
@@ -60,7 +60,7 @@ namespace Investimentos {
             //if (numericUpDownQtdAssociada.Value > 0)
             //    v.QtdAssociada = (int)numericUpDownQtdAssociada.Value;
             //else
-            //    _ctx.Vendas.Remove(v);
+            //    _ctx.Saidas.Remove(v);
             //FinalizarEdicao(true, dgvAssociadas);
         }
 

@@ -626,7 +626,7 @@
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmVendas";
-            this.Text = "Vendas";
+            this.Text = "Saidas";
             this.Load += new System.EventHandler(this.Vendas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -7,25 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataLayer
+namespace Testes
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class AtivoDaConta
+    public partial class tbOperacoesTipos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AtivoDaConta()
+        public tbOperacoesTipos()
         {
-            this.Operacoes = new HashSet<Operacao>();
+            this.tbOperacoes = new HashSet<tbOperacoes>();
         }
     
-        public int ContaId { get; set; }
-        public string Codigo { get; set; }
-        public Nullable<int> QtdTotal { get; set; }
+        public int TipoId { get; set; }
+        public string Tipo { get; set; }
+        public bool SinalPositivo { get; set; }
     
-        public virtual Conta Conta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Operacao> Operacoes { get; set; }
+        public virtual ICollection<tbOperacoes> tbOperacoes { get; set; }
     }
 }

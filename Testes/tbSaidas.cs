@@ -7,14 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataLayer
+namespace Testes
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Entrada : Operacao
+    public partial class tbSaidas : tbOperacoes
     {
-        public Nullable<int> SaidaId { get; set; }
-        public Nullable<int> QtdAssociada { get; set; }
     }
 }

@@ -23,13 +23,14 @@ namespace Investimentos {
             }
 
             if (operacao.OperacaoId == 0) {
+                operacao.Codigo = operacao.AtivoDaConta.Codigo;
+                //comboBoxAtivo.Enabled = false;
                 dateTimePickerData.Value = DateTime.Now;
                 nudQtdPrevista.Value = 1000;
                 nudQtdReal.Value = 1000;
                 Text = @"Nova Operação";
             }
             else {
-                comboBoxAtivo.SelectedValue = operacao.Codigo;
                 comboBoxOperacao.SelectedValue = operacao.TipoId;
                 dateTimePickerData.Value = operacao.Data;
                 nudQtdPrevista.Value = operacao.QtdPrevista;
@@ -37,6 +38,7 @@ namespace Investimentos {
                 nudValor.Value = operacao.Valor;
                 nudValorReal.Value = operacao.ValorReal;
             }
+            comboBoxAtivo.SelectedValue = operacao.Codigo;
             Totais();
             buttonOK.Enabled = operacao.OperacaoId != 0;
         }
@@ -44,7 +46,6 @@ namespace Investimentos {
         private void buttonOK_Click(object sender, EventArgs e) {
             operacao.Codigo = (string)comboBoxAtivo.SelectedValue;
             operacao.TipoId = (int)comboBoxOperacao.SelectedValue;
-            operacao.OperacaoTipo = (OperacaoTipo) comboBoxOperacao.SelectedItem;
             operacao.Data = dateTimePickerData.Value;
             operacao.QtdPrevista = (int)nudQtdPrevista.Value;
             operacao.QtdReal = (int)nudQtdReal.Value;

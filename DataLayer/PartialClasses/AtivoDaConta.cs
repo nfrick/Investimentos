@@ -10,18 +10,13 @@ namespace DataLayer {
         private decimal _valorMedioCompra(bool real) {
             var ops = Operacoes.AsEnumerable().Reverse();
             var compras = ops
-                .TakeWhile(c => c.QtdAcumulada > 0)
-                .Where(c => c.QtdReal > 0).ToArray();
-            var qtd = ((decimal)compras.Sum(c => c.QtdReal));
-            return qtd == 0 ? 0 : compras.Sum(c => (decimal)c.QtdReal * (real ? c.ValorReal : c.Valor)) / qtd;
+                .TakeWhile(o => o.QtdAcumulada > 0)
+                .Where(o => o.IsEntrada).ToArray();
+            var qtd = ((decimal)compras.Sum(c => c.QtdComSinal));
+            return qtd == 0 ? 0 : compras.Sum(c => (decimal)c.QtdComSinal * (real ? c.ValorReal : c.Valor)) / qtd;
         }
 
-        public List<Operacao> Operacoes {
-            get {
-                return Entradas.Select(e => new Operacao(e)).Concat(Saidas.Select(s => new Operacao(s))).OrderBy(o => o.Data).ThenBy(o => o.OperacaoId).ToList();
-            }
-        }
-
-        public List<Operacao> Vendas => Operacoes.Where(o => o.QtdReal < 0).ToList();
+        public List<Operacao> Saidas => Operacoes.Where(o => ! o.OperacaoTipo.IsSaida).ToList();
+        public List<Operacao> Entradas => Operacoes.Where(o => o.OperacaoTipo.IsEntrada).ToList();
     }
 }

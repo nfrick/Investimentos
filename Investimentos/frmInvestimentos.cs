@@ -62,7 +62,6 @@ namespace Investimentos {
 
 
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
-            // _conta = (int) toolStripComboBoxConta.ComboBox.SelectedValue;
             _conta = ((Conta)toolStripComboBoxConta.SelectedItem).ContaId;
             var row = (dgvContas.Rows
                 .Cast<DataGridViewRow>()
@@ -75,31 +74,20 @@ namespace Investimentos {
             var operacaoRow = dgvOperacoes.SelectedRows[0].Index;
             var vendaRow = dgvVendas.SelectedRows[0].Index;
             entityDataSource1.Refresh();
+            // test for decreased number of rows
+            ativoRow -= ativoRow > dgvAtivos.RowCount - 1 ? 1 : 0;
+            operacaoRow -= operacaoRow > dgvOperacoes.RowCount - 1 ? 1 : 0;
+            vendaRow -= vendaRow > dgvVendas.RowCount - 1 ? 1 : 0;
+            // Restore positions
             dgvAtivos.CurrentCell = dgvAtivos.Rows[ativoRow].Cells[0];
             dgvOperacoes.CurrentCell = dgvOperacoes.Rows[operacaoRow].Cells[1];
             dgvVendas.CurrentCell = dgvVendas.Rows[vendaRow].Cells[1];
         }
 
-        private void dataGridViewVendas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
-            var frm = new frmAssociarCompraComVenda {
-                VendaId = (int)dgvVendas.SelectedRows[0].Cells[0].Value,
-                ContaId = (int)toolStripComboBoxConta.ComboBox.SelectedValue
-            };
-            frm.ShowDialog();
-            //entityDataSource1.Refresh();
-            //dgvVendas.Refresh();
-            RefreshData();
-        }
-
         private void dataGridViewOperacoes_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
-            var op = (Operacao) dgvOperacoes.SelectedRows[0].DataBoundItem;
+            var op = (Operacao)dgvOperacoes.SelectedRows[0].DataBoundItem;
             var frm = new frmEditarOperacao { operacao = op };
-
             if (frm.ShowDialog() == DialogResult.Cancel) return;
-
-            var ativo = op.AtivoDaConta;
-            var entrada = ativo.Entradas.First(en => en.EntradaId == op.OperacaoId);
-            entrada.QtdReal = op.QtdReal;
             entityDataSource1.SaveChanges();
             RefreshData();
         }
@@ -110,42 +98,50 @@ namespace Investimentos {
             var row = dgv.Rows[e.RowIndex];
             row.DefaultCellStyle.ForeColor =
                 (Convert.ToDecimal(row.Cells[col].Value) < 0) ? Color.Orange :
-                (e.RowIndex % 2 == 0 ? dgv.DefaultCellStyle.ForeColor :
-                dgv.AlternatingRowsDefaultCellStyle.ForeColor);
+                    (e.RowIndex % 2 == 0 ? dgv.DefaultCellStyle.ForeColor :
+                        dgv.AlternatingRowsDefaultCellStyle.ForeColor);
+        }
+
+        private void dataGridViewVendas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
+            var frm = new frmAssociarCompraComVenda {
+                VendaId = (int)dgvVendas.SelectedRows[0].Cells[0].Value,
+                ContaId = (int)toolStripComboBoxConta.ComboBox.SelectedValue
+            };
+            frm.ShowDialog();
+            RefreshData();
         }
 
         private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
-            var frm = new frmEditarOperacao {
-                operacao = new Operacao() { ContaId = _conta } };
+            var ativo = (AtivoDaConta)dgvAtivos.SelectedRows[0].DataBoundItem;
+            var op = new Operacao() {ContaId = _conta, AtivoDaConta = ativo};
+            var frm = new frmEditarOperacao { operacao = op };
             if (frm.ShowDialog() == DialogResult.Cancel)
                 return;
-            if (frm.operacao.OperacaoId == 0) {
-                var tipo = frm.comboBoxOperacao.SelectedItem as OperacaoTipo;
-                if (tipo.SinalPositivo) {
-                    var entrada = new Entrada() {
-                        ContaId = frm.operacao.ContaId,
-                        Codigo = frm.operacao.Codigo,
-                        TipoId = frm.operacao.TipoId,
-                        Data = frm.operacao.Data,
-                        QtdPrevista = frm.operacao.QtdPrevista,
-                        QtdReal = frm.operacao.QtdReal,
-                        Valor = frm.operacao.Valor,
-                        ValorReal = frm.operacao.ValorReal
-                    };
-                    
-                }
-                else {
-                    var saida = new Saida();
-                }
 
-            }
-            else {
-
+            foreach (var r in dgvAtivos.Rows
+                .Cast<DataGridViewRow>()) {
+                Console.WriteLine(r.Cells["Codigo"].Value.ToString());
             }
 
+            var rowIndex = -1;
+            var row = dgvAtivos.Rows
+                .Cast<DataGridViewRow>()
+                .FirstOrDefault(r => r.Cells["Codigo"].Value.ToString().Equals(op.Codigo));
+
+            rowIndex = row.Index;
+            dgvAtivos.Rows[rowIndex].Selected = true;
+
+
+            //var tipo = (OperacaoTipo) frm.comboBoxOperacao.SelectedItem;
+
+            //if (tipo.IsEntrada) {
+            //    ativo.Operacoes.Add(op.ToEntrada);
+            //}
+            //else {
+            //    ativo.Operacoes.Add(op.ToSaida);
+            //}
             //entityDataSource1.SaveChanges();
-            //entityDataSource1.Refresh();
-            //dgvOperacoes.Refresh();
+
             RefreshData();
         }
 

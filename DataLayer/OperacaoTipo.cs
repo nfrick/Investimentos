@@ -17,8 +17,7 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OperacaoTipo()
         {
-            this.Entradas = new HashSet<Entrada>();
-            this.Saidas = new HashSet<Saida>();
+            this.Operacoes = new HashSet<Operacao>();
         }
     
         public int TipoId { get; set; }
@@ -26,8 +25,6 @@ namespace DataLayer
         public bool SinalPositivo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Entrada> Entradas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Saida> Saidas { get; set; }
+        public virtual ICollection<Operacao> Operacoes { get; set; }
     }
 }
