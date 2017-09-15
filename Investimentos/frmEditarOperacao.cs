@@ -24,7 +24,6 @@ namespace Investimentos {
 
             if (operacao.OperacaoId == 0) {
                 operacao.Codigo = operacao.AtivoDaConta.Codigo;
-                //comboBoxAtivo.Enabled = false;
                 dateTimePickerData.Value = DateTime.Now;
                 nudQtdPrevista.Value = 1000;
                 nudQtdReal.Value = 1000;

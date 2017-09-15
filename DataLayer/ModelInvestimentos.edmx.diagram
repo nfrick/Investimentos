@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="43af98fc1a5541c5afd92cab742ad0e0" Name="Diagram1" ZoomLevel="84">
-        <EntityTypeShape EntityType="InvestimentosModel.OperacaoTipo" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InvestimentosModel.OperacaoTipo" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="InvestimentosModel.Conta" Width="1.5" PointX="3.625" PointY="0.5" FillColor="128, 255, 128" />
         <EntityTypeShape EntityType="InvestimentosModel.AtivoDaConta" Width="1.5" PointX="0.875" PointY="0.625" />
         <AssociationConnector Association="InvestimentosModel.ContaAtivo" />
         <EntityTypeShape EntityType="InvestimentosModel.Ativo" Width="1.5" PointX="6.125" PointY="0.5" />
-        <EntityTypeShape EntityType="InvestimentosModel.Operacao" Width="1.5" PointX="3.625" PointY="3.375" />
+        <EntityTypeShape EntityType="InvestimentosModel.Operacao" Width="1.5" PointX="3.625" PointY="4" />
         <AssociationConnector Association="InvestimentosModel.FK_tbOperacoes_tbOperacoesTipos" />
-        <EntityTypeShape EntityType="InvestimentosModel.Entrada" Width="1.5" PointX="6.125" PointY="5.125" />
-        <EntityTypeShape EntityType="InvestimentosModel.Saida" Width="1.5" PointX="6.125" PointY="3.375" />
+        <EntityTypeShape EntityType="InvestimentosModel.Entrada" Width="1.5" PointX="6.125" PointY="5.875" />
+        <EntityTypeShape EntityType="InvestimentosModel.Saida" Width="1.5" PointX="6.125" PointY="4" />
         <InheritanceConnector EntityType="InvestimentosModel.Saida" />
         <InheritanceConnector EntityType="InvestimentosModel.Entrada" />
         <AssociationConnector Association="InvestimentosModel.AtivoDaContaOperacao" />

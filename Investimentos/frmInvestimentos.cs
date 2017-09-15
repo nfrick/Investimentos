@@ -9,7 +9,7 @@ using EFWinforms;
 
 namespace Investimentos {
     public partial class frmInvestimentos : Form {
-        private int _conta;
+        private Conta _conta;
         public frmInvestimentos() {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace Investimentos {
             GridStyles.FormatGrid(dgvVendas, 14);
             dgvVendas.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
             GridStyles.FormatColumns(dgvVendas, new[] { 2, 3, 4, 6, 7 }, GridStyles.StyleInteger, 69);
-            GridStyles.FormatColumns(dgvVendas, new[] { 5, 8, 9, 10, 11, 12 }, GridStyles.StyleCurrency, 69);
+            GridStyles.FormatColumns(dgvVendas, new[] { 5, 8, 9, 10, 11, 12 }, GridStyles.StyleCurrency, 70);
 
             // 50 = vertical scroll bar width
             var w0 = 50 + dgvAtivos.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
@@ -47,7 +47,7 @@ namespace Investimentos {
             ContaComboPopulate();
             using (var ctx = new InvestimentosEntities()) {
                 if (!ctx.Contas.ToList().Any())
-                    OpenFrmConta(0);
+                    OpenFrmConta(new Conta());
             }
         }
 
@@ -62,10 +62,10 @@ namespace Investimentos {
 
 
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
-            _conta = ((Conta)toolStripComboBoxConta.SelectedItem).ContaId;
+            _conta = ((Conta)toolStripComboBoxConta.SelectedItem);
             var row = (dgvContas.Rows
                 .Cast<DataGridViewRow>()
-                .First(r => (int)r.Cells[0].Value == _conta)).Index;
+                .First(r => (int)r.Cells[0].Value == _conta.ContaId)).Index;
             dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
         }
 
@@ -105,7 +105,7 @@ namespace Investimentos {
         private void dataGridViewVendas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
             var frm = new frmAssociarCompraComVenda {
                 VendaId = (int)dgvVendas.SelectedRows[0].Cells[0].Value,
-                ContaId = (int)toolStripComboBoxConta.ComboBox.SelectedValue
+                ContaId = _conta.ContaId
             };
             frm.ShowDialog();
             RefreshData();
@@ -113,54 +113,51 @@ namespace Investimentos {
 
         private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
             var ativo = (AtivoDaConta)dgvAtivos.SelectedRows[0].DataBoundItem;
-            var op = new Operacao() {ContaId = _conta, AtivoDaConta = ativo};
+            var op = new Operacao() { AtivoDaConta = ativo, ContaId = _conta.ContaId };
             var frm = new frmEditarOperacao { operacao = op };
             if (frm.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            foreach (var r in dgvAtivos.Rows
-                .Cast<DataGridViewRow>()) {
-                Console.WriteLine(r.Cells["Codigo"].Value.ToString());
-            }
-
-            var rowIndex = -1;
             var row = dgvAtivos.Rows
                 .Cast<DataGridViewRow>()
                 .FirstOrDefault(r => r.Cells["Codigo"].Value.ToString().Equals(op.Codigo));
+            if (row != null)
+                dgvAtivos.Rows[row.Index].Selected = true;
 
-            rowIndex = row.Index;
-            dgvAtivos.Rows[rowIndex].Selected = true;
-
-
-            //var tipo = (OperacaoTipo) frm.comboBoxOperacao.SelectedItem;
-
-            //if (tipo.IsEntrada) {
-            //    ativo.Operacoes.Add(op.ToEntrada);
-            //}
-            //else {
-            //    ativo.Operacoes.Add(op.ToSaida);
-            //}
-            //entityDataSource1.SaveChanges();
-
+            var tipo = (OperacaoTipo)frm.comboBoxOperacao.SelectedItem;
+            if (tipo.IsEntrada) {
+                //_conta.Operacoes.Add(op.ToEntrada);
+                entityDataSource1.DbContext.Set<Operacao>().Add(op.ToEntrada);
+            }
+            else {
+                //_conta.Operacoes.Add(op.ToSaida);
+                entityDataSource1.DbContext.Set<Operacao>().Add(op.ToSaida);
+            }
+            entityDataSource1.SaveChanges();
             RefreshData();
         }
 
         private void toolStripButtonResumoVendas_Click(object sender, EventArgs e) {
-            var frm = new frmVendas() { Conta = _conta };
+            var frm = new frmVendas() { Conta = _conta.ContaId };
             frm.ShowDialog();
         }
 
         private void toolStripButtonConta_Click(object sender, EventArgs e) {
             var btn = sender as ToolStripButton;
             OpenFrmConta(btn.Name == "toolStripButtonNovaConta"
-                ? 0 : _conta);
+                ? new Conta() : _conta);
         }
 
-        private void OpenFrmConta(int id) {
+        private void OpenFrmConta(Conta conta) {
             var frm = new frmConta {
-                ContaId = id
+                Conta = conta
             };
-            frm.ShowDialog();
+            if(frm.ShowDialog() != DialogResult.OK) return;
+            if (conta.ContaId == 0)
+                entityDataSource1.DbContext.Set<Conta>().Add(conta);
+
+            entityDataSource1.SaveChanges();
+            RefreshData();
             ContaComboPopulate();
         }
     }

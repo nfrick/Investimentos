@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer {
     public partial class Saida {
-        public int QtdAntes => QtdAcumulada - QtdReal;
+        
         //public int QtdComprada => Entradas == null ? 0 : Entradas.Sum(e => e.QtdAssociada) ?? 0;
         //public int QtdPendente => -1 * (QtdReal - QtdComprada);
         //public decimal ValorMedioCompra => _ValorMedioCompra(false);
