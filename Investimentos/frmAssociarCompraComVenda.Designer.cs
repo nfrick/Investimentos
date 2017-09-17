@@ -37,12 +37,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panelEditarAssociada = new System.Windows.Forms.Panel();
+            this.panelEditar = new System.Windows.Forms.Panel();
             this.nudQtdAssociada = new System.Windows.Forms.NumericUpDown();
-            this.buttonAssociadaEditOK = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panelAssociarDisponivel = new System.Windows.Forms.Panel();
-            this.nudQtdAAssociar = new System.Windows.Forms.NumericUpDown();
             this.buttonAssociarOK = new System.Windows.Forms.Button();
             this.labelSaldo = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -84,95 +80,51 @@
             this.qtdDisponivelDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorRealDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceDisponiveis = new System.Windows.Forms.BindingSource(this.components);
-            this.panelEditarAssociada.SuspendLayout();
+            this.panelEditar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdAssociada)).BeginInit();
-            this.panelAssociarDisponivel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQtdAAssociar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssociadas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAssociadas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponiveis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceDisponiveis)).BeginInit();
             this.SuspendLayout();
             // 
-            // panelEditarAssociada
+            // panelEditar
             // 
-            this.panelEditarAssociada.BackColor = System.Drawing.Color.Silver;
-            this.panelEditarAssociada.Controls.Add(this.nudQtdAssociada);
-            this.panelEditarAssociada.Controls.Add(this.buttonAssociadaEditOK);
-            this.panelEditarAssociada.Controls.Add(this.label5);
-            this.panelEditarAssociada.Location = new System.Drawing.Point(131, 317);
-            this.panelEditarAssociada.Name = "panelEditarAssociada";
-            this.panelEditarAssociada.Size = new System.Drawing.Size(317, 72);
-            this.panelEditarAssociada.TabIndex = 16;
-            this.panelEditarAssociada.Visible = false;
+            this.panelEditar.BackColor = System.Drawing.Color.Silver;
+            this.panelEditar.Controls.Add(this.nudQtdAssociada);
+            this.panelEditar.Controls.Add(this.buttonAssociarOK);
+            this.panelEditar.Controls.Add(this.labelSaldo);
+            this.panelEditar.Controls.Add(this.label4);
+            this.panelEditar.Controls.Add(this.label3);
+            this.panelEditar.Controls.Add(this.labelQtdComprada);
+            this.panelEditar.Controls.Add(this.labelQtdVendida);
+            this.panelEditar.Controls.Add(this.label2);
+            this.panelEditar.Controls.Add(this.label1);
+            this.panelEditar.Location = new System.Drawing.Point(413, 317);
+            this.panelEditar.Name = "panelEditar";
+            this.panelEditar.Size = new System.Drawing.Size(343, 142);
+            this.panelEditar.TabIndex = 17;
+            this.panelEditar.Visible = false;
             // 
             // nudQtdAssociada
             // 
-            this.nudQtdAssociada.Location = new System.Drawing.Point(102, 19);
+            this.nudQtdAssociada.Location = new System.Drawing.Point(182, 63);
+            this.nudQtdAssociada.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudQtdAssociada.Name = "nudQtdAssociada";
-            this.nudQtdAssociada.Size = new System.Drawing.Size(113, 30);
-            this.nudQtdAssociada.TabIndex = 19;
+            this.nudQtdAssociada.Size = new System.Drawing.Size(94, 30);
+            this.nudQtdAssociada.TabIndex = 21;
             this.nudQtdAssociada.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudQtdAssociada.ThousandsSeparator = true;
-            // 
-            // buttonAssociadaEditOK
-            // 
-            this.buttonAssociadaEditOK.Font = new System.Drawing.Font("Wingdings", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonAssociadaEditOK.ForeColor = System.Drawing.Color.Green;
-            this.buttonAssociadaEditOK.Location = new System.Drawing.Point(221, 19);
-            this.buttonAssociadaEditOK.Name = "buttonAssociadaEditOK";
-            this.buttonAssociadaEditOK.Size = new System.Drawing.Size(34, 30);
-            this.buttonAssociadaEditOK.TabIndex = 17;
-            this.buttonAssociadaEditOK.Text = "ü";
-            this.buttonAssociadaEditOK.UseVisualStyleBackColor = true;
-            this.buttonAssociadaEditOK.Click += new System.EventHandler(this.buttonAssociadaEditOK_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 21);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 23);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Associar:";
-            // 
-            // panelAssociarDisponivel
-            // 
-            this.panelAssociarDisponivel.BackColor = System.Drawing.Color.Silver;
-            this.panelAssociarDisponivel.Controls.Add(this.nudQtdAAssociar);
-            this.panelAssociarDisponivel.Controls.Add(this.buttonAssociarOK);
-            this.panelAssociarDisponivel.Controls.Add(this.labelSaldo);
-            this.panelAssociarDisponivel.Controls.Add(this.label4);
-            this.panelAssociarDisponivel.Controls.Add(this.label3);
-            this.panelAssociarDisponivel.Controls.Add(this.labelQtdComprada);
-            this.panelAssociarDisponivel.Controls.Add(this.labelQtdVendida);
-            this.panelAssociarDisponivel.Controls.Add(this.label2);
-            this.panelAssociarDisponivel.Controls.Add(this.label1);
-            this.panelAssociarDisponivel.Location = new System.Drawing.Point(674, 317);
-            this.panelAssociarDisponivel.Name = "panelAssociarDisponivel";
-            this.panelAssociarDisponivel.Size = new System.Drawing.Size(373, 142);
-            this.panelAssociarDisponivel.TabIndex = 17;
-            this.panelAssociarDisponivel.Visible = false;
-            // 
-            // nudQtdAAssociar
-            // 
-            this.nudQtdAAssociar.Location = new System.Drawing.Point(163, 63);
-            this.nudQtdAAssociar.Minimum = new decimal(new int[] {
+            this.nudQtdAssociada.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nudQtdAAssociar.Name = "nudQtdAAssociar";
-            this.nudQtdAAssociar.Size = new System.Drawing.Size(113, 30);
-            this.nudQtdAAssociar.TabIndex = 21;
-            this.nudQtdAAssociar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nudQtdAAssociar.ThousandsSeparator = true;
-            this.nudQtdAAssociar.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudQtdAAssociar.ValueChanged += new System.EventHandler(this.numericUpDownQtdAAssociar_ValueChanged);
+            this.nudQtdAssociada.ValueChanged += new System.EventHandler(this.numericUpDownQtdAAssociar_ValueChanged);
             // 
             // buttonAssociarOK
             // 
@@ -189,7 +141,7 @@
             // labelSaldo
             // 
             this.labelSaldo.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSaldo.Location = new System.Drawing.Point(180, 99);
+            this.labelSaldo.Location = new System.Drawing.Point(182, 99);
             this.labelSaldo.Name = "labelSaldo";
             this.labelSaldo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelSaldo.Size = new System.Drawing.Size(80, 23);
@@ -217,7 +169,7 @@
             // 
             // labelQtdComprada
             // 
-            this.labelQtdComprada.Location = new System.Drawing.Point(180, 43);
+            this.labelQtdComprada.Location = new System.Drawing.Point(182, 43);
             this.labelQtdComprada.Name = "labelQtdComprada";
             this.labelQtdComprada.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelQtdComprada.Size = new System.Drawing.Size(80, 23);
@@ -226,7 +178,7 @@
             // 
             // labelQtdVendida
             // 
-            this.labelQtdVendida.Location = new System.Drawing.Point(180, 21);
+            this.labelQtdVendida.Location = new System.Drawing.Point(182, 21);
             this.labelQtdVendida.Name = "labelQtdVendida";
             this.labelQtdVendida.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelQtdVendida.Size = new System.Drawing.Size(80, 29);
@@ -238,9 +190,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(24, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 23);
+            this.label2.Size = new System.Drawing.Size(158, 23);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Associadas:";
+            this.label2.Text = "Outras associações:";
             // 
             // label1
             // 
@@ -625,7 +577,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1196, 481);
+            this.ClientSize = new System.Drawing.Size(1157, 481);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -637,8 +589,7 @@
             this.Controls.Add(this.labelValor);
             this.Controls.Add(this.labelVenda);
             this.Controls.Add(this.labelData);
-            this.Controls.Add(this.panelAssociarDisponivel);
-            this.Controls.Add(this.panelEditarAssociada);
+            this.Controls.Add(this.panelEditar);
             this.Controls.Add(this.dgvAssociadas);
             this.Controls.Add(this.dgvDisponiveis);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -650,12 +601,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Associar Compra Com Venda";
             this.Load += new System.EventHandler(this.AssociarCompraComVenda_Load);
-            this.panelEditarAssociada.ResumeLayout(false);
-            this.panelEditarAssociada.PerformLayout();
+            this.panelEditar.ResumeLayout(false);
+            this.panelEditar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdAssociada)).EndInit();
-            this.panelAssociarDisponivel.ResumeLayout(false);
-            this.panelAssociarDisponivel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQtdAAssociar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssociadas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAssociadas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponiveis)).EndInit();
@@ -670,11 +618,7 @@
         private System.Windows.Forms.BindingSource bindingSourceDisponiveis;
         private System.Windows.Forms.BindingSource bindingSourceAssociadas;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvAssociadas;
-        private System.Windows.Forms.Panel panelEditarAssociada;
-        private System.Windows.Forms.NumericUpDown nudQtdAssociada;
-        private System.Windows.Forms.Button buttonAssociadaEditOK;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panelAssociarDisponivel;
+        private System.Windows.Forms.Panel panelEditar;
         private System.Windows.Forms.Label labelSaldo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -683,7 +627,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvDisponiveis;
-        private System.Windows.Forms.NumericUpDown nudQtdAAssociar;
+        private System.Windows.Forms.NumericUpDown nudQtdAssociada;
         private System.Windows.Forms.Button buttonAssociarOK;
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Label labelVenda;

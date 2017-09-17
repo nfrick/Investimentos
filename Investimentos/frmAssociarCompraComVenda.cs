@@ -52,15 +52,19 @@ namespace Investimentos {
             dgvDisponiveis.Enabled = enable && Saida.QtdAssociada != Saida.QtdReal;
         }
 
-        private void nudSetup(NumericUpDown nud, int max, int rowToBind, Panel panel) {
-            nud.Maximum = max;
-            nud.Increment = (int)(max / 100) * 10;
-            while (nud.DataBindings.Count > 0)
-                nud.DataBindings.RemoveAt(0);
+        private void nudSetup(int max, int rowToBind) {
+            nudQtdAssociada.Maximum = max;
+            nudQtdAssociada.Increment = (int)(max / 100) * 10;
+            while (nudQtdAssociada.DataBindings.Count > 0)
+                nudQtdAssociada.DataBindings.RemoveAt(0);
             // The code binds column index 5 to the nud control
-            nud.DataBindings.Add(new Binding("Value", dgvAssociadas[5, rowToBind], "Value", false));
-            panel.Visible = true;
-            nud.Focus();
+            nudQtdAssociada.DataBindings.Add(new Binding("Value", dgvAssociadas[5, rowToBind], "Value", false));
+
+            var associacao = (Associacao)dgvAssociadas.Rows[rowToBind].DataBoundItem;
+            labelQtdVendida.Text = $"{Saida.QtdReal:N0}";
+            labelQtdComprada.Text = $"{Saida.QtdAssociada - associacao.QtdAssociada:N0}";
+            panelEditar.Visible = true;
+            nudQtdAssociada.Focus();
         }
 
         #region Associadas
@@ -68,17 +72,12 @@ namespace Investimentos {
             var associacao = (Associacao)dgvAssociadas.Rows[e.RowIndex].DataBoundItem;
             if (e.ColumnIndex == 0) {
                 dgvToggleEnable(false);
-                nudSetup(nudQtdAssociada, associacao.QtdAssociada + Math.Min(Saida.QtdPendente, associacao.QtdDisponivel), e.RowIndex, panelEditarAssociada);
+                nudSetup(associacao.QtdAssociada + Math.Min(Saida.QtdPendente, associacao.QtdDisponivel), e.RowIndex);
             }
             else {
-                //Saida.Associacoes.Remove(associacao);
                 eds.DbContext.Set<Associacao>().Remove(associacao);
                 CarregarBindingSources();
             }
-        }
-
-        private void buttonAssociadaEditOK_Click(object sender, EventArgs e) {
-            FinalizarEdicao(dgvAssociadas);
         }
 
         private void dgvAssociadas_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
@@ -161,14 +160,6 @@ namespace Investimentos {
 
         #endregion
 
-        private void FinalizarEdicao(Control dgv) {
-            dgvToggleEnable(true);
-            dgv.Focus();
-            panelEditarAssociada.Visible = false;
-            panelAssociarDisponivel.Visible = false;
-            AtualizarLabels();
-        }
-
         #region Disponiveis
 
         private Associacao GetAssociacao(Entrada entrada, Saida saida) {
@@ -184,31 +175,29 @@ namespace Investimentos {
             var dgv = (DataGridView)sender;
             var entrada = (Entrada)dgv.Rows[e.RowIndex].DataBoundItem;
             var associacao = Saida.Associacoes.FirstOrDefault(a => a.Entrada.OperacaoId == entrada.OperacaoId) ?? GetAssociacao(entrada, Saida);
-
             associacao.QtdAssociada += Math.Min(entrada.QtdDisponivel, Saida.QtdPendente);
             eds.DbContext.Set<Associacao>().Add(associacao);
             CarregarBindingSources();
+
             if (e.ColumnIndex == 0) return;
 
             dgvToggleEnable(false);
-            labelQtdVendida.Text = $"{Saida.QtdReal:N0}";
-            labelQtdComprada.Text = $"{Saida.QtdAssociada - associacao.QtdAssociada:N0}";
-
             var row = dgvAssociadas.Rows
                 .Cast<DataGridViewRow>()
                 .First(r => (int)r.Cells["CompraId"].Value == associacao.CompraId);
             dgvAssociadas.Rows[row.Index].Selected = true;
 
-            nudSetup(nudQtdAAssociar, associacao.QtdAssociada, row.Index, panelAssociarDisponivel);
+            nudSetup(associacao.QtdAssociada, row.Index);
         }
 
         private void buttonAssociarOK_Click(object sender, EventArgs e) {
-            FinalizarEdicao(dgvDisponiveis);
+            panelEditar.Visible = false;
+            CarregarBindingSources();
         }
 
         private void numericUpDownQtdAAssociar_ValueChanged(object sender, EventArgs e) {
             if (int.TryParse(labelQtdComprada.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out int diferenca))
-                labelSaldo.Text = $"{Saida.QtdReal - diferenca - nudQtdAAssociar.Value:N0}";
+                labelSaldo.Text = $"{Saida.QtdReal - diferenca - nudQtdAssociada.Value:N0}";
         }
 
         #endregion Disponiveis
