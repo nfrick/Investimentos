@@ -23,5 +23,6 @@ namespace DataLayer
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Associacao> Associacoes { get; set; }
+        public virtual Conta Conta { get; set; }
     }
 }

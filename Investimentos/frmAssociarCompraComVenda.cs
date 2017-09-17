@@ -168,6 +168,7 @@ namespace Investimentos {
             newAssociacao.VendaId = saida.OperacaoId;
             newAssociacao.Entrada = entrada;
             newAssociacao.CompraId = entrada.OperacaoId;
+            eds.DbContext.Set<Associacao>().Add(newAssociacao);
             return newAssociacao;
         }
 
@@ -176,7 +177,7 @@ namespace Investimentos {
             var entrada = (Entrada)dgv.Rows[e.RowIndex].DataBoundItem;
             var associacao = Saida.Associacoes.FirstOrDefault(a => a.Entrada.OperacaoId == entrada.OperacaoId) ?? GetAssociacao(entrada, Saida);
             associacao.QtdAssociada += Math.Min(entrada.QtdDisponivel, Saida.QtdPendente);
-            eds.DbContext.Set<Associacao>().Add(associacao);
+//            eds.DbContext.Set<Associacao>().Add(associacao);
             CarregarBindingSources();
 
             if (e.ColumnIndex == 0) return;

@@ -26,6 +26,7 @@
         <AssociationConnector Association="InvestimentosModel.FK_tbAssociacoes_tbSaidas" />
         <AssociationConnector Association="InvestimentosModel.AtivoDaContaSaida" />
         <AssociationConnector Association="InvestimentosModel.AtivoDaContaEntrada" />
+        <AssociationConnector Association="InvestimentosModel.ContaSaida" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

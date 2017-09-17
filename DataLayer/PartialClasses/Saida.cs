@@ -8,8 +8,8 @@ namespace DataLayer {
         public int QtdPendente => QtdReal - QtdAssociada;
         public decimal ValorMedioCompra => _ValorMedioCompra(false);
         public decimal ValorMedioCompraReal => _ValorMedioCompra(true);
-        public decimal Lucro => QtdReal * (ValorMedioCompra - Valor);
-        public decimal LucroReal => QtdReal * (ValorMedioCompraReal - Valor);
+        public decimal Lucro => QtdReal * (Valor - ValorMedioCompra);
+        public decimal LucroReal => QtdReal * (Valor - ValorMedioCompraReal);
 
         private decimal _ValorMedioCompra(bool real) {
             if (QtdAssociada == 0) return 0;

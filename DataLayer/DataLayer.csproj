@@ -138,6 +138,7 @@
     <Compile Include="OperacaoCotacao.cs">
       <DependentUpon>ModelAtivosCotacoes.tt</DependentUpon>
     </Compile>
+    <Compile Include="PartialClasses\Conta.cs" />
     <Compile Include="PartialClasses\Cotacao.cs" />
     <Compile Include="PartialClasses\Extensions.cs" />
     <Compile Include="PartialClasses\Operacao.cs" />

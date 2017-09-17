@@ -230,6 +230,10 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <End Role="AtivoDaConta" EntitySet="AtivosDaConta" />
             <End Role="Entrada" EntitySet="Operacoes" />
           </AssociationSet>
+          <AssociationSet Name="ContaSaida" Association="InvestimentosModel.ContaSaida">
+            <End Role="Conta" EntitySet="Contas" />
+            <End Role="Saida" EntitySet="Operacoes" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="CompraDisponivelParaVenda">
           <Property Type="Int32" Name="OperacaoId" Nullable="false" />
@@ -249,6 +253,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Property Name="Senha" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="Info" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AtivosDaConta" Relationship="InvestimentosModel.ContaAtivo" FromRole="Conta" ToRole="vwAtivo" />
+          <NavigationProperty Name="Saidas" Relationship="InvestimentosModel.ContaSaida" FromRole="Conta" ToRole="Saida" />
           </EntityType>
         <EntityType Name="AtivoDaConta">
           <Key>
@@ -315,6 +320,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
         </EntityType>
         <EntityType Name="Saida" BaseType="InvestimentosModel.Operacao">
           <NavigationProperty Name="Associacoes" Relationship="InvestimentosModel.FK_tbAssociacoes_tbSaidas" FromRole="Saida" ToRole="tbAssociaco" />
+          <NavigationProperty Name="Conta" Relationship="InvestimentosModel.ContaSaida" FromRole="Saida" ToRole="Conta" />
         </EntityType>
         <Association Name="AtivoDaContaOperacao">
           <End Type="InvestimentosModel.AtivoDaConta" Role="AtivoDaConta" Multiplicity="1" />
@@ -391,6 +397,18 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <Dependent Role="Entrada">
               <PropertyRef Name="ContaId" />
               <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContaSaida">
+          <End Type="InvestimentosModel.Conta" Role="Conta" Multiplicity="1" />
+          <End Type="InvestimentosModel.Saida" Role="Saida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conta">
+              <PropertyRef Name="ContaId" />
+            </Principal>
+            <Dependent Role="Saida">
+              <PropertyRef Name="ContaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

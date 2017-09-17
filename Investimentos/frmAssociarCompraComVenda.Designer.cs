@@ -24,19 +24,19 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEditar = new System.Windows.Forms.Panel();
             this.nudQtdAssociada = new System.Windows.Forms.NumericUpDown();
             this.buttonAssociarOK = new System.Windows.Forms.Button();
@@ -70,6 +70,7 @@
             this.CompraId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceAssociadas = new System.Windows.Forms.BindingSource(this.components);
             this.dgvDisponiveis = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
+            this.bindingSourceDisponiveis = new System.Windows.Forms.BindingSource(this.components);
             this.btnAssociarDireto = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnAssociar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.operacaoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,7 +80,6 @@
             this.qtdAssociadaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdDisponivelDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorRealDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceDisponiveis = new System.Windows.Forms.BindingSource(this.components);
             this.panelEditar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdAssociada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssociadas)).BeginInit();
@@ -357,10 +357,10 @@
             // 
             // btnDeletar
             // 
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.Red;
-            this.btnDeletar.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red;
+            this.btnDeletar.DefaultCellStyle = dataGridViewCellStyle1;
             this.btnDeletar.HeaderText = "";
             this.btnDeletar.Name = "btnDeletar";
             this.btnDeletar.ReadOnly = true;
@@ -374,9 +374,9 @@
             // dataDataGridViewTextBoxColumn1
             // 
             this.dataDataGridViewTextBoxColumn1.DataPropertyName = "Data";
-            dataGridViewCellStyle28.Format = "dd/MM/yy";
-            dataGridViewCellStyle28.NullValue = null;
-            this.dataDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle2.Format = "dd/MM/yy";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataDataGridViewTextBoxColumn1.HeaderText = "Data";
             this.dataDataGridViewTextBoxColumn1.Name = "dataDataGridViewTextBoxColumn1";
             this.dataDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -393,9 +393,9 @@
             // qtdEntradaDataGridViewTextBoxColumn
             // 
             this.qtdEntradaDataGridViewTextBoxColumn.DataPropertyName = "QtdEntrada";
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle29.Format = "N0";
-            this.qtdEntradaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            this.qtdEntradaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.qtdEntradaDataGridViewTextBoxColumn.HeaderText = "Qtd";
             this.qtdEntradaDataGridViewTextBoxColumn.Name = "qtdEntradaDataGridViewTextBoxColumn";
             this.qtdEntradaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -404,9 +404,9 @@
             // qtdAssociadaDataGridViewTextBoxColumn
             // 
             this.qtdAssociadaDataGridViewTextBoxColumn.DataPropertyName = "QtdAssociada";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle30.Format = "N0";
-            this.qtdAssociadaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            this.qtdAssociadaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.qtdAssociadaDataGridViewTextBoxColumn.HeaderText = "Associado";
             this.qtdAssociadaDataGridViewTextBoxColumn.Name = "qtdAssociadaDataGridViewTextBoxColumn";
             this.qtdAssociadaDataGridViewTextBoxColumn.Width = 75;
@@ -414,9 +414,9 @@
             // qtdDisponivelDataGridViewTextBoxColumn
             // 
             this.qtdDisponivelDataGridViewTextBoxColumn.DataPropertyName = "QtdDisponivel";
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle31.Format = "N0";
-            this.qtdDisponivelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            this.qtdDisponivelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.qtdDisponivelDataGridViewTextBoxColumn.HeaderText = "Disponível";
             this.qtdDisponivelDataGridViewTextBoxColumn.Name = "qtdDisponivelDataGridViewTextBoxColumn";
             this.qtdDisponivelDataGridViewTextBoxColumn.ReadOnly = true;
@@ -425,9 +425,9 @@
             // valorRealDataGridViewTextBoxColumn
             // 
             this.valorRealDataGridViewTextBoxColumn.DataPropertyName = "ValorReal";
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle32.Format = "N2";
-            this.valorRealDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N2";
+            this.valorRealDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.valorRealDataGridViewTextBoxColumn.HeaderText = "Valor";
             this.valorRealDataGridViewTextBoxColumn.Name = "valorRealDataGridViewTextBoxColumn";
             this.valorRealDataGridViewTextBoxColumn.ReadOnly = true;
@@ -472,11 +472,15 @@
             this.dgvDisponiveis.TabIndex = 0;
             this.dgvDisponiveis.CellButtonClick += new DataGridViewWithButtons.VBControls.DataGridViewWithButtons.CellButtonClickEventHandler(this.dataGridViewDisponiveis_CellButtonClick);
             // 
+            // bindingSourceDisponiveis
+            // 
+            this.bindingSourceDisponiveis.DataSource = typeof(DataLayer.Entrada);
+            // 
             // btnAssociarDireto
             // 
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnAssociarDireto.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnAssociarDireto.DefaultCellStyle = dataGridViewCellStyle7;
             this.btnAssociarDireto.HeaderText = "";
             this.btnAssociarDireto.Name = "btnAssociarDireto";
             this.btnAssociarDireto.ReadOnly = true;
@@ -487,9 +491,9 @@
             // 
             // btnAssociar
             // 
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAssociar.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAssociar.DefaultCellStyle = dataGridViewCellStyle8;
             this.btnAssociar.HeaderText = "";
             this.btnAssociar.Name = "btnAssociar";
             this.btnAssociar.ReadOnly = true;
@@ -509,8 +513,8 @@
             // dataDataGridViewTextBoxColumn
             // 
             this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            dataGridViewCellStyle35.Format = "dd/MM/yy";
-            this.dataDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle9.Format = "dd/MM/yy";
+            this.dataDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
             this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
             this.dataDataGridViewTextBoxColumn.ReadOnly = true;
@@ -527,9 +531,9 @@
             // QtdReal
             // 
             this.QtdReal.DataPropertyName = "QtdReal";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle36.Format = "N0";
-            this.QtdReal.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N0";
+            this.QtdReal.DefaultCellStyle = dataGridViewCellStyle10;
             this.QtdReal.HeaderText = "Qtd";
             this.QtdReal.Name = "QtdReal";
             this.QtdReal.ReadOnly = true;
@@ -538,10 +542,10 @@
             // qtdAssociadaDataGridViewTextBoxColumn2
             // 
             this.qtdAssociadaDataGridViewTextBoxColumn2.DataPropertyName = "QtdAssociada";
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle37.Format = "N0";
-            this.qtdAssociadaDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle37;
-            this.qtdAssociadaDataGridViewTextBoxColumn2.HeaderText = "Associada";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N0";
+            this.qtdAssociadaDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle11;
+            this.qtdAssociadaDataGridViewTextBoxColumn2.HeaderText = "Associado";
             this.qtdAssociadaDataGridViewTextBoxColumn2.Name = "qtdAssociadaDataGridViewTextBoxColumn2";
             this.qtdAssociadaDataGridViewTextBoxColumn2.ReadOnly = true;
             this.qtdAssociadaDataGridViewTextBoxColumn2.Width = 75;
@@ -549,9 +553,9 @@
             // qtdDisponivelDataGridViewTextBoxColumn1
             // 
             this.qtdDisponivelDataGridViewTextBoxColumn1.DataPropertyName = "QtdDisponivel";
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle38.Format = "N0";
-            this.qtdDisponivelDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N0";
+            this.qtdDisponivelDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle12;
             this.qtdDisponivelDataGridViewTextBoxColumn1.HeaderText = "Disponivel";
             this.qtdDisponivelDataGridViewTextBoxColumn1.Name = "qtdDisponivelDataGridViewTextBoxColumn1";
             this.qtdDisponivelDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -560,17 +564,13 @@
             // valorRealDataGridViewTextBoxColumn1
             // 
             this.valorRealDataGridViewTextBoxColumn1.DataPropertyName = "ValorReal";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle39.Format = "N2";
-            this.valorRealDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            this.valorRealDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle13;
             this.valorRealDataGridViewTextBoxColumn1.HeaderText = "Valor";
             this.valorRealDataGridViewTextBoxColumn1.Name = "valorRealDataGridViewTextBoxColumn1";
             this.valorRealDataGridViewTextBoxColumn1.ReadOnly = true;
             this.valorRealDataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // bindingSourceDisponiveis
-            // 
-            this.bindingSourceDisponiveis.DataSource = typeof(DataLayer.Entrada);
             // 
             // frmAssociarCompraComVenda
             // 
@@ -641,17 +641,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn btnAssociarDireto;
-        private System.Windows.Forms.DataGridViewButtonColumn btnAssociar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operacaoIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operacaoTipoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtdReal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDisponivelDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn btnEditar;
         private System.Windows.Forms.DataGridViewButtonColumn btnDeletar;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
@@ -661,5 +650,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn qtdDisponivelDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompraId;
+        private System.Windows.Forms.DataGridViewButtonColumn btnAssociarDireto;
+        private System.Windows.Forms.DataGridViewButtonColumn btnAssociar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operacaoIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operacaoTipoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtdReal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDisponivelDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn1;
     }
 }
