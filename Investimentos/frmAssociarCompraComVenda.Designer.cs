@@ -631,7 +631,7 @@
         private System.Windows.Forms.Button buttonAssociarOK;
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Label labelVenda;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdCompradaDataGridViewTextBoxColumn;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn qtdCompradaDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label labelValor;
         private System.Windows.Forms.Label labelAtivo;
         private System.Windows.Forms.Label label6;
@@ -641,8 +641,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn1;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn btnAssociarDireto;
         private System.Windows.Forms.DataGridViewButtonColumn btnAssociar;
         private System.Windows.Forms.DataGridViewTextBoxColumn operacaoIdDataGridViewTextBoxColumn;

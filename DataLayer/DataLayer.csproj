@@ -99,7 +99,6 @@
     <Compile Include="PartialClasses\AtivoDaConta.cs" />
     <Compile Include="PartialClasses\AtivoCotacao.cs" />
     <Compile Include="PartialClasses\AtivoCotacaoTotal.cs" />
-    <Compile Include="PartialClasses\Conta.cs" />
     <Compile Include="DataSource.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -139,12 +138,10 @@
     <Compile Include="OperacaoCotacao.cs">
       <DependentUpon>ModelAtivosCotacoes.tt</DependentUpon>
     </Compile>
-    <Compile Include="PartialClasses\CompraDisponivelParaVenda.cs" />
     <Compile Include="PartialClasses\Cotacao.cs" />
     <Compile Include="PartialClasses\Extensions.cs" />
     <Compile Include="PartialClasses\Operacao.cs" />
     <Compile Include="PartialClasses\OperacaoCotacao.cs" />
-    <Compile Include="PartialClasses\OperacaoDeSaida.cs" />
     <Compile Include="PartialClasses\OperacaoTipo.cs" />
     <Compile Include="PartialClasses\Saida.cs" />
     <Compile Include="PartialClasses\SerieHistorica.cs" />

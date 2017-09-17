@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvestimentos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvVendas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.entityDataSource1 = new EFWinforms.EntityDataSource(this.components);
@@ -61,16 +61,18 @@
             this.infoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonNovaOperacao = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonResumoVendas = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSalvar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabelSpace = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonNovaConta = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEditarConta = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxConta = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonResumoVendas = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonNovaOperacao = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabelSpace = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonSalvar = new System.Windows.Forms.ToolStripButton();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,8 +96,30 @@
             this.Lucro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LucroReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.qtdAssociadaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdPendenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorMedioCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorMedioCompraRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lucroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lucroRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operacaoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contaIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdPrevistaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operacaoTipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ativoDaContaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isEntradaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.isSaidaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.qtdComSinalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdAcumuladaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdAntesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toEntradaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toSaidaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperacoes)).BeginInit();
@@ -146,7 +170,31 @@
             this.VMCompraReal,
             this.Lucro,
             this.LucroReal,
-            this.btnEditar});
+            this.btnEditar,
+            this.qtdAssociadaDataGridViewTextBoxColumn,
+            this.qtdPendenteDataGridViewTextBoxColumn,
+            this.valorMedioCompraDataGridViewTextBoxColumn,
+            this.valorMedioCompraRealDataGridViewTextBoxColumn,
+            this.lucroDataGridViewTextBoxColumn,
+            this.lucroRealDataGridViewTextBoxColumn,
+            this.operacaoIdDataGridViewTextBoxColumn,
+            this.contaIdDataGridViewTextBoxColumn1,
+            this.codigoDataGridViewTextBoxColumn,
+            this.tipoIdDataGridViewTextBoxColumn,
+            this.dataDataGridViewTextBoxColumn,
+            this.qtdPrevistaDataGridViewTextBoxColumn,
+            this.qtdRealDataGridViewTextBoxColumn,
+            this.valorDataGridViewTextBoxColumn,
+            this.valorRealDataGridViewTextBoxColumn,
+            this.operacaoTipoDataGridViewTextBoxColumn,
+            this.ativoDaContaDataGridViewTextBoxColumn,
+            this.isEntradaDataGridViewCheckBoxColumn,
+            this.isSaidaDataGridViewCheckBoxColumn,
+            this.qtdComSinalDataGridViewTextBoxColumn,
+            this.qtdAcumuladaDataGridViewTextBoxColumn,
+            this.qtdAntesDataGridViewTextBoxColumn,
+            this.toEntradaDataGridViewTextBoxColumn,
+            this.toSaidaDataGridViewTextBoxColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.dgvVendas, 2);
             this.dgvVendas.DataMember = "Contas.AtivosDaConta.Saidas";
             this.dgvVendas.DataSource = this.entityDataSource1;
@@ -189,10 +237,10 @@
             this.dgvOperacoes.MultiSelect = false;
             this.dgvOperacoes.Name = "dgvOperacoes";
             this.dgvOperacoes.ReadOnly = true;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvOperacoes.RowHeadersWidth = 25;
             this.dgvOperacoes.RowTemplate.Height = 24;
             this.dgvOperacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -220,10 +268,10 @@
             this.dgvAtivos.MultiSelect = false;
             this.dgvAtivos.Name = "dgvAtivos";
             this.dgvAtivos.ReadOnly = true;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvAtivos.RowHeadersWidth = 25;
             this.dgvAtivos.RowTemplate.Height = 24;
             this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -351,54 +399,8 @@
             this.toolStripButtonSalvar});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1006, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(912, 28);
             this.toolStrip1.TabIndex = 0;
-            // 
-            // toolStripButtonNovaOperacao
-            // 
-            this.toolStripButtonNovaOperacao.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonNovaOperacao.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaOperacao.Image")));
-            this.toolStripButtonNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonNovaOperacao.Name = "toolStripButtonNovaOperacao";
-            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(117, 25);
-            this.toolStripButtonNovaOperacao.Text = "Nova Operação";
-            this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
-            // 
-            // toolStripButtonResumoVendas
-            // 
-            this.toolStripButtonResumoVendas.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonResumoVendas.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonResumoVendas.Image")));
-            this.toolStripButtonResumoVendas.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonResumoVendas.Name = "toolStripButtonResumoVendas";
-            this.toolStripButtonResumoVendas.Size = new System.Drawing.Size(113, 25);
-            this.toolStripButtonResumoVendas.Text = "Resumo Saidas";
-            this.toolStripButtonResumoVendas.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
-            // 
-            // toolStripButtonSalvar
-            // 
-            this.toolStripButtonSalvar.BackColor = System.Drawing.Color.ForestGreen;
-            this.toolStripButtonSalvar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButtonSalvar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.toolStripButtonSalvar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSalvar.Image")));
-            this.toolStripButtonSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSalvar.Name = "toolStripButtonSalvar";
-            this.toolStripButtonSalvar.Size = new System.Drawing.Size(55, 25);
-            this.toolStripButtonSalvar.Text = "Salvar";
-            this.toolStripButtonSalvar.Visible = false;
-            this.toolStripButtonSalvar.Click += new System.EventHandler(this.toolStripButtonSalvar_Click);
-            // 
-            // toolStripLabelSpace
-            // 
-            this.toolStripLabelSpace.AutoSize = false;
-            this.toolStripLabelSpace.Name = "toolStripLabelSpace";
-            this.toolStripLabelSpace.Size = new System.Drawing.Size(200, 25);
-            this.toolStripLabelSpace.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripButtonNovaConta
             // 
@@ -421,6 +423,14 @@
             this.toolStripButtonEditarConta.Text = "Editar Conta";
             this.toolStripButtonEditarConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.AutoSize = false;
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(60, 25);
+            this.toolStripLabel1.Text = "Conta:";
+            this.toolStripLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // toolStripComboBoxConta
             // 
             this.toolStripComboBoxConta.AutoSize = false;
@@ -434,13 +444,63 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
-            // toolStripLabel1
+            // toolStripLabel3
             // 
-            this.toolStripLabel1.AutoSize = false;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(60, 25);
-            this.toolStripLabel1.Text = "Conta:";
-            this.toolStripLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripLabel3.AutoSize = false;
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(60, 25);
+            // 
+            // toolStripButtonResumoVendas
+            // 
+            this.toolStripButtonResumoVendas.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonResumoVendas.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonResumoVendas.Image")));
+            this.toolStripButtonResumoVendas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonResumoVendas.Name = "toolStripButtonResumoVendas";
+            this.toolStripButtonResumoVendas.Size = new System.Drawing.Size(113, 25);
+            this.toolStripButtonResumoVendas.Text = "Resumo Saidas";
+            this.toolStripButtonResumoVendas.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.AutoSize = false;
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(60, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            // 
+            // toolStripButtonNovaOperacao
+            // 
+            this.toolStripButtonNovaOperacao.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonNovaOperacao.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaOperacao.Image")));
+            this.toolStripButtonNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNovaOperacao.Name = "toolStripButtonNovaOperacao";
+            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(117, 25);
+            this.toolStripButtonNovaOperacao.Text = "Nova Operação";
+            this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
+            // 
+            // toolStripLabelSpace
+            // 
+            this.toolStripLabelSpace.AutoSize = false;
+            this.toolStripLabelSpace.Name = "toolStripLabelSpace";
+            this.toolStripLabelSpace.Size = new System.Drawing.Size(200, 25);
+            this.toolStripLabelSpace.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripButtonSalvar
+            // 
+            this.toolStripButtonSalvar.BackColor = System.Drawing.Color.ForestGreen;
+            this.toolStripButtonSalvar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripButtonSalvar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.toolStripButtonSalvar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSalvar.Image")));
+            this.toolStripButtonSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSalvar.Name = "toolStripButtonSalvar";
+            this.toolStripButtonSalvar.Size = new System.Drawing.Size(55, 25);
+            this.toolStripButtonSalvar.Text = "Salvar";
+            this.toolStripButtonSalvar.Visible = false;
+            this.toolStripButtonSalvar.Click += new System.EventHandler(this.toolStripButtonSalvar_Click);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -457,11 +517,11 @@
             // 
             // dataGridViewTextBoxColumn8
             // 
-            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn8.DataPropertyName = "Data";
             this.dataGridViewTextBoxColumn8.HeaderText = "Data";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 5;
             // 
             // Tipo
             // 
@@ -518,19 +578,19 @@
             // 
             // Data
             // 
-            this.Data.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Data.DataPropertyName = "Data";
             this.Data.HeaderText = "Data";
             this.Data.Name = "Data";
             this.Data.ReadOnly = true;
+            this.Data.Width = 5;
             // 
             // QtdAntes
             // 
             this.QtdAntes.DataPropertyName = "QtdAntes";
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle29.Format = "N0";
-            dataGridViewCellStyle29.NullValue = null;
-            this.QtdAntes.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.QtdAntes.DefaultCellStyle = dataGridViewCellStyle1;
             this.QtdAntes.HeaderText = "Antes";
             this.QtdAntes.Name = "QtdAntes";
             this.QtdAntes.ReadOnly = true;
@@ -539,9 +599,9 @@
             // Qtd
             // 
             this.Qtd.DataPropertyName = "QtdReal";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle30.Format = "N0";
-            this.Qtd.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            this.Qtd.DefaultCellStyle = dataGridViewCellStyle2;
             this.Qtd.HeaderText = "Venda";
             this.Qtd.Name = "Qtd";
             this.Qtd.ReadOnly = true;
@@ -550,9 +610,9 @@
             // QtdAcumulada
             // 
             this.QtdAcumulada.DataPropertyName = "QtdAcumulada";
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle31.Format = "N0";
-            this.QtdAcumulada.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            this.QtdAcumulada.DefaultCellStyle = dataGridViewCellStyle3;
             this.QtdAcumulada.HeaderText = "Depois";
             this.QtdAcumulada.Name = "QtdAcumulada";
             this.QtdAcumulada.ReadOnly = true;
@@ -561,9 +621,9 @@
             // Valor
             // 
             this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle32.Format = "C2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "C2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle4;
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
@@ -572,9 +632,9 @@
             // ValorReal
             // 
             this.ValorReal.DataPropertyName = "ValorReal";
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle33.Format = "C2";
-            this.ValorReal.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "C2";
+            this.ValorReal.DefaultCellStyle = dataGridViewCellStyle5;
             this.ValorReal.HeaderText = "Valor Real";
             this.ValorReal.Name = "ValorReal";
             this.ValorReal.ReadOnly = true;
@@ -584,10 +644,10 @@
             // QtdComprada
             // 
             this.QtdComprada.DataPropertyName = "QtdAssociada";
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle34.Format = "N0";
-            dataGridViewCellStyle34.NullValue = null;
-            this.QtdComprada.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.QtdComprada.DefaultCellStyle = dataGridViewCellStyle6;
             this.QtdComprada.HeaderText = "Compras";
             this.QtdComprada.Name = "QtdComprada";
             this.QtdComprada.ReadOnly = true;
@@ -596,9 +656,9 @@
             // QtdPendente
             // 
             this.QtdPendente.DataPropertyName = "QtdPendente";
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle35.Format = "N0";
-            this.QtdPendente.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N0";
+            this.QtdPendente.DefaultCellStyle = dataGridViewCellStyle7;
             this.QtdPendente.HeaderText = "Pendente";
             this.QtdPendente.Name = "QtdPendente";
             this.QtdPendente.ReadOnly = true;
@@ -607,10 +667,10 @@
             // VMCompra
             // 
             this.VMCompra.DataPropertyName = "ValorMedioCompra";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle36.Format = "C2";
-            dataGridViewCellStyle36.NullValue = null;
-            this.VMCompra.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "C2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.VMCompra.DefaultCellStyle = dataGridViewCellStyle8;
             this.VMCompra.HeaderText = "VM Compra";
             this.VMCompra.Name = "VMCompra";
             this.VMCompra.ReadOnly = true;
@@ -619,10 +679,10 @@
             // VMCompraReal
             // 
             this.VMCompraReal.DataPropertyName = "ValorMedioCompraReal";
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle37.Format = "C2";
-            dataGridViewCellStyle37.NullValue = null;
-            this.VMCompraReal.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "C2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.VMCompraReal.DefaultCellStyle = dataGridViewCellStyle9;
             this.VMCompraReal.HeaderText = "VM Real";
             this.VMCompraReal.Name = "VMCompraReal";
             this.VMCompraReal.ReadOnly = true;
@@ -631,10 +691,10 @@
             // Lucro
             // 
             this.Lucro.DataPropertyName = "Lucro";
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle38.Format = "C2";
-            dataGridViewCellStyle38.NullValue = null;
-            this.Lucro.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "C2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.Lucro.DefaultCellStyle = dataGridViewCellStyle10;
             this.Lucro.HeaderText = "Lucro";
             this.Lucro.Name = "Lucro";
             this.Lucro.ReadOnly = true;
@@ -643,10 +703,10 @@
             // LucroReal
             // 
             this.LucroReal.DataPropertyName = "LucroReal";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle39.Format = "C2";
-            dataGridViewCellStyle39.NullValue = null;
-            this.LucroReal.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "C2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.LucroReal.DefaultCellStyle = dataGridViewCellStyle11;
             this.LucroReal.HeaderText = "Lucro Real";
             this.LucroReal.Name = "LucroReal";
             this.LucroReal.ReadOnly = true;
@@ -662,17 +722,173 @@
             this.btnEditar.UseColumnTextForButtonValue = true;
             this.btnEditar.Width = 25;
             // 
-            // toolStripLabel2
+            // qtdAssociadaDataGridViewTextBoxColumn
             // 
-            this.toolStripLabel2.AutoSize = false;
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(60, 25);
+            this.qtdAssociadaDataGridViewTextBoxColumn.DataPropertyName = "QtdAssociada";
+            this.qtdAssociadaDataGridViewTextBoxColumn.HeaderText = "QtdAssociada";
+            this.qtdAssociadaDataGridViewTextBoxColumn.Name = "qtdAssociadaDataGridViewTextBoxColumn";
+            this.qtdAssociadaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // toolStripLabel3
+            // qtdPendenteDataGridViewTextBoxColumn
             // 
-            this.toolStripLabel3.AutoSize = false;
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(60, 25);
+            this.qtdPendenteDataGridViewTextBoxColumn.DataPropertyName = "QtdPendente";
+            this.qtdPendenteDataGridViewTextBoxColumn.HeaderText = "QtdPendente";
+            this.qtdPendenteDataGridViewTextBoxColumn.Name = "qtdPendenteDataGridViewTextBoxColumn";
+            this.qtdPendenteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorMedioCompraDataGridViewTextBoxColumn
+            // 
+            this.valorMedioCompraDataGridViewTextBoxColumn.DataPropertyName = "ValorMedioCompra";
+            this.valorMedioCompraDataGridViewTextBoxColumn.HeaderText = "ValorMedioCompra";
+            this.valorMedioCompraDataGridViewTextBoxColumn.Name = "valorMedioCompraDataGridViewTextBoxColumn";
+            this.valorMedioCompraDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorMedioCompraRealDataGridViewTextBoxColumn
+            // 
+            this.valorMedioCompraRealDataGridViewTextBoxColumn.DataPropertyName = "ValorMedioCompraReal";
+            this.valorMedioCompraRealDataGridViewTextBoxColumn.HeaderText = "ValorMedioCompraReal";
+            this.valorMedioCompraRealDataGridViewTextBoxColumn.Name = "valorMedioCompraRealDataGridViewTextBoxColumn";
+            this.valorMedioCompraRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lucroDataGridViewTextBoxColumn
+            // 
+            this.lucroDataGridViewTextBoxColumn.DataPropertyName = "Lucro";
+            this.lucroDataGridViewTextBoxColumn.HeaderText = "Lucro";
+            this.lucroDataGridViewTextBoxColumn.Name = "lucroDataGridViewTextBoxColumn";
+            this.lucroDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lucroRealDataGridViewTextBoxColumn
+            // 
+            this.lucroRealDataGridViewTextBoxColumn.DataPropertyName = "LucroReal";
+            this.lucroRealDataGridViewTextBoxColumn.HeaderText = "LucroReal";
+            this.lucroRealDataGridViewTextBoxColumn.Name = "lucroRealDataGridViewTextBoxColumn";
+            this.lucroRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // operacaoIdDataGridViewTextBoxColumn
+            // 
+            this.operacaoIdDataGridViewTextBoxColumn.DataPropertyName = "OperacaoId";
+            this.operacaoIdDataGridViewTextBoxColumn.HeaderText = "OperacaoId";
+            this.operacaoIdDataGridViewTextBoxColumn.Name = "operacaoIdDataGridViewTextBoxColumn";
+            this.operacaoIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contaIdDataGridViewTextBoxColumn1
+            // 
+            this.contaIdDataGridViewTextBoxColumn1.DataPropertyName = "ContaId";
+            this.contaIdDataGridViewTextBoxColumn1.HeaderText = "ContaId";
+            this.contaIdDataGridViewTextBoxColumn1.Name = "contaIdDataGridViewTextBoxColumn1";
+            this.contaIdDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tipoIdDataGridViewTextBoxColumn
+            // 
+            this.tipoIdDataGridViewTextBoxColumn.DataPropertyName = "TipoId";
+            this.tipoIdDataGridViewTextBoxColumn.HeaderText = "TipoId";
+            this.tipoIdDataGridViewTextBoxColumn.Name = "tipoIdDataGridViewTextBoxColumn";
+            this.tipoIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataDataGridViewTextBoxColumn
+            // 
+            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdPrevistaDataGridViewTextBoxColumn
+            // 
+            this.qtdPrevistaDataGridViewTextBoxColumn.DataPropertyName = "QtdPrevista";
+            this.qtdPrevistaDataGridViewTextBoxColumn.HeaderText = "QtdPrevista";
+            this.qtdPrevistaDataGridViewTextBoxColumn.Name = "qtdPrevistaDataGridViewTextBoxColumn";
+            this.qtdPrevistaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdRealDataGridViewTextBoxColumn
+            // 
+            this.qtdRealDataGridViewTextBoxColumn.DataPropertyName = "QtdReal";
+            this.qtdRealDataGridViewTextBoxColumn.HeaderText = "QtdReal";
+            this.qtdRealDataGridViewTextBoxColumn.Name = "qtdRealDataGridViewTextBoxColumn";
+            this.qtdRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorDataGridViewTextBoxColumn
+            // 
+            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
+            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorRealDataGridViewTextBoxColumn
+            // 
+            this.valorRealDataGridViewTextBoxColumn.DataPropertyName = "ValorReal";
+            this.valorRealDataGridViewTextBoxColumn.HeaderText = "ValorReal";
+            this.valorRealDataGridViewTextBoxColumn.Name = "valorRealDataGridViewTextBoxColumn";
+            this.valorRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // operacaoTipoDataGridViewTextBoxColumn
+            // 
+            this.operacaoTipoDataGridViewTextBoxColumn.DataPropertyName = "OperacaoTipo";
+            this.operacaoTipoDataGridViewTextBoxColumn.HeaderText = "OperacaoTipo";
+            this.operacaoTipoDataGridViewTextBoxColumn.Name = "operacaoTipoDataGridViewTextBoxColumn";
+            this.operacaoTipoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ativoDaContaDataGridViewTextBoxColumn
+            // 
+            this.ativoDaContaDataGridViewTextBoxColumn.DataPropertyName = "AtivoDaConta";
+            this.ativoDaContaDataGridViewTextBoxColumn.HeaderText = "AtivoDaConta";
+            this.ativoDaContaDataGridViewTextBoxColumn.Name = "ativoDaContaDataGridViewTextBoxColumn";
+            this.ativoDaContaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isEntradaDataGridViewCheckBoxColumn
+            // 
+            this.isEntradaDataGridViewCheckBoxColumn.DataPropertyName = "IsEntrada";
+            this.isEntradaDataGridViewCheckBoxColumn.HeaderText = "IsEntrada";
+            this.isEntradaDataGridViewCheckBoxColumn.Name = "isEntradaDataGridViewCheckBoxColumn";
+            this.isEntradaDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // isSaidaDataGridViewCheckBoxColumn
+            // 
+            this.isSaidaDataGridViewCheckBoxColumn.DataPropertyName = "IsSaida";
+            this.isSaidaDataGridViewCheckBoxColumn.HeaderText = "IsSaida";
+            this.isSaidaDataGridViewCheckBoxColumn.Name = "isSaidaDataGridViewCheckBoxColumn";
+            this.isSaidaDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // qtdComSinalDataGridViewTextBoxColumn
+            // 
+            this.qtdComSinalDataGridViewTextBoxColumn.DataPropertyName = "QtdComSinal";
+            this.qtdComSinalDataGridViewTextBoxColumn.HeaderText = "QtdComSinal";
+            this.qtdComSinalDataGridViewTextBoxColumn.Name = "qtdComSinalDataGridViewTextBoxColumn";
+            this.qtdComSinalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdAcumuladaDataGridViewTextBoxColumn
+            // 
+            this.qtdAcumuladaDataGridViewTextBoxColumn.DataPropertyName = "QtdAcumulada";
+            this.qtdAcumuladaDataGridViewTextBoxColumn.HeaderText = "QtdAcumulada";
+            this.qtdAcumuladaDataGridViewTextBoxColumn.Name = "qtdAcumuladaDataGridViewTextBoxColumn";
+            this.qtdAcumuladaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdAntesDataGridViewTextBoxColumn
+            // 
+            this.qtdAntesDataGridViewTextBoxColumn.DataPropertyName = "QtdAntes";
+            this.qtdAntesDataGridViewTextBoxColumn.HeaderText = "QtdAntes";
+            this.qtdAntesDataGridViewTextBoxColumn.Name = "qtdAntesDataGridViewTextBoxColumn";
+            this.qtdAntesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // toEntradaDataGridViewTextBoxColumn
+            // 
+            this.toEntradaDataGridViewTextBoxColumn.DataPropertyName = "ToEntrada";
+            this.toEntradaDataGridViewTextBoxColumn.HeaderText = "ToEntrada";
+            this.toEntradaDataGridViewTextBoxColumn.Name = "toEntradaDataGridViewTextBoxColumn";
+            this.toEntradaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // toSaidaDataGridViewTextBoxColumn
+            // 
+            this.toSaidaDataGridViewTextBoxColumn.DataPropertyName = "ToSaida";
+            this.toSaidaDataGridViewTextBoxColumn.HeaderText = "ToSaida";
+            this.toSaidaDataGridViewTextBoxColumn.Name = "toSaidaDataGridViewTextBoxColumn";
+            this.toSaidaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // frmInvestimentos
             // 
@@ -720,26 +936,6 @@
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxConta;
         private System.Windows.Forms.ToolStripButton toolStripButtonNovaConta;
         private System.Windows.Forms.ToolStripButton toolStripButtonEditarConta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAntesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdCompradaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdPendenteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vMCompraDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vMCompraRealDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lucroDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lucroRealDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operacaoIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAcumuladaDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ativoCorrenteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdTotalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorMedioCompraDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorMedioCompraRealDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.DataGridView dgvContas;
@@ -749,23 +945,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn contaCorrenteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn senhaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn infoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAcumuladaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn associacoesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saidaIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saidaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn entradasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
@@ -774,14 +953,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonSalvar;
         private System.Windows.Forms.ToolStripLabel toolStripLabelSpace;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtdReal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewButtonColumn btnEditarOperacao;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn OperacaoId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtdAntes;
@@ -796,8 +969,38 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Lucro;
         private System.Windows.Forms.DataGridViewTextBoxColumn LucroReal;
         private System.Windows.Forms.DataGridViewButtonColumn btnEditar;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdPendenteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorMedioCompraDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorMedioCompraRealDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lucroDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lucroRealDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operacaoIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contaIdDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdPrevistaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdRealDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operacaoTipoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ativoDaContaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isEntradaDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isSaidaDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdComSinalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAcumuladaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAntesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn toEntradaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn toSaidaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtdReal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEditarOperacao;
     }
 }
 
