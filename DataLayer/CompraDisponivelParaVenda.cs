@@ -15,7 +15,7 @@ namespace DataLayer
     {
         public int OperacaoId { get; set; }
         public System.DateTime Data { get; set; }
-        public int QtdComprada { get; set; }
+        public int QtdAssociada { get; set; }
         public int QtdVendida { get; set; }
         public decimal Valor { get; set; }
     }

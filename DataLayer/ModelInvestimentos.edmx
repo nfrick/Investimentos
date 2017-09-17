@@ -222,11 +222,19 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <End Role="Saida" EntitySet="Operacoes" />
             <End Role="tbAssociaco" EntitySet="Associacoes" />
           </AssociationSet>
+          <AssociationSet Name="AtivoDaContaSaida" Association="InvestimentosModel.AtivoDaContaSaida">
+            <End Role="AtivoDaConta" EntitySet="AtivosDaConta" />
+            <End Role="Saida" EntitySet="Operacoes" />
+          </AssociationSet>
+          <AssociationSet Name="AtivoDaContaEntrada" Association="InvestimentosModel.AtivoDaContaEntrada">
+            <End Role="AtivoDaConta" EntitySet="AtivosDaConta" />
+            <End Role="Entrada" EntitySet="Operacoes" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="CompraDisponivelParaVenda">
           <Property Type="Int32" Name="OperacaoId" Nullable="false" />
           <Property Type="DateTime" Name="Data" Nullable="false" Precision="16" />
-          <Property Type="Int32" Name="QtdComprada" Nullable="false" />
+          <Property Type="Int32" Name="QtdAssociada" Nullable="false" />
           <Property Type="Int32" Name="QtdVendida" Nullable="false" />
           <Property Type="Decimal" Name="Valor" Nullable="false" Precision="10" />
         </ComplexType>
@@ -252,6 +260,8 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Property Name="QtdTotal" Type="Int32" />
           <NavigationProperty Name="Conta" Relationship="InvestimentosModel.ContaAtivo" FromRole="vwAtivo" ToRole="Conta" />
           <NavigationProperty Name="Operacoes" Relationship="InvestimentosModel.AtivoDaContaOperacao" FromRole="AtivoDaConta" ToRole="Operacao" />
+          <NavigationProperty Name="Saidas" Relationship="InvestimentosModel.AtivoDaContaSaida" FromRole="AtivoDaConta" ToRole="Saida" />
+          <NavigationProperty Name="Entradas" Relationship="InvestimentosModel.AtivoDaContaEntrada" FromRole="AtivoDaConta" ToRole="Entrada" />
         </EntityType>
         <Association Name="ContaAtivo">
           <End Type="InvestimentosModel.Conta" Role="Conta" Multiplicity="1" />
@@ -356,6 +366,34 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="AtivoDaContaSaida">
+          <End Type="InvestimentosModel.AtivoDaConta" Role="AtivoDaConta" Multiplicity="1" />
+          <End Type="InvestimentosModel.Saida" Role="Saida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AtivoDaConta">
+              <PropertyRef Name="ContaId" />
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Saida">
+              <PropertyRef Name="ContaId" />
+              <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AtivoDaContaEntrada">
+          <End Type="InvestimentosModel.AtivoDaConta" Role="AtivoDaConta" Multiplicity="1" />
+          <End Type="InvestimentosModel.Entrada" Role="Entrada" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AtivoDaConta">
+              <PropertyRef Name="ContaId" />
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="Entrada">
+              <PropertyRef Name="ContaId" />
+              <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -376,7 +414,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
               <ComplexTypeMapping TypeName="InvestimentosModel.CompraDisponivelParaVenda">
                 <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="QtdComprada" ColumnName="QtdComprada" />
+                <ScalarProperty Name="QtdAssociada" ColumnName="QtdAssociada" />
                 <ScalarProperty Name="QtdVendida" ColumnName="QtdVendida" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
               </ComplexTypeMapping>

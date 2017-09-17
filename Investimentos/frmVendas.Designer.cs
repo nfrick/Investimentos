@@ -190,9 +190,9 @@
             this.Qtd.Name = "Qtd";
             this.Qtd.ReadOnly = true;
             // 
-            // QtdComprada
+            // QtdAssociada
             // 
-            this.QtdComprada.DataPropertyName = "QtdComprada";
+            this.QtdComprada.DataPropertyName = "QtdAssociada";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.Format = "N0";
             dataGridViewCellStyle3.NullValue = null;
@@ -276,8 +276,8 @@
             // 
             // qtdCompradaDataGridViewTextBoxColumn
             // 
-            this.qtdCompradaDataGridViewTextBoxColumn.DataPropertyName = "QtdComprada";
-            this.qtdCompradaDataGridViewTextBoxColumn.HeaderText = "QtdComprada";
+            this.qtdCompradaDataGridViewTextBoxColumn.DataPropertyName = "QtdAssociada";
+            this.qtdCompradaDataGridViewTextBoxColumn.HeaderText = "QtdAssociada";
             this.qtdCompradaDataGridViewTextBoxColumn.Name = "qtdCompradaDataGridViewTextBoxColumn";
             this.qtdCompradaDataGridViewTextBoxColumn.ReadOnly = true;
             // 

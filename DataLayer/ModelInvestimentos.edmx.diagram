@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="InvestimentosModel.Conta" Width="1.5" PointX="3.625" PointY="0.5" FillColor="128, 255, 128" />
         <EntityTypeShape EntityType="InvestimentosModel.AtivoDaConta" Width="1.5" PointX="0.875" PointY="0.625" />
         <AssociationConnector Association="InvestimentosModel.ContaAtivo" />
-        <EntityTypeShape EntityType="InvestimentosModel.Ativo" Width="1.5" PointX="6.125" PointY="0.5" />
+        <EntityTypeShape EntityType="InvestimentosModel.Ativo" Width="1.5" PointX="9.375" PointY="0.5" />
         <EntityTypeShape EntityType="InvestimentosModel.Operacao" Width="1.5" PointX="3.625" PointY="4" />
         <AssociationConnector Association="InvestimentosModel.FK_tbOperacoes_tbOperacoesTipos" />
         <EntityTypeShape EntityType="InvestimentosModel.Entrada" Width="1.5" PointX="6.125" PointY="5.875" />
@@ -24,6 +24,8 @@
         <EntityTypeShape EntityType="InvestimentosModel.Associacao" Width="1.5" PointX="8.375" PointY="4.5" />
         <AssociationConnector Association="InvestimentosModel.FK_tbAssociacoes_tbEntradas" />
         <AssociationConnector Association="InvestimentosModel.FK_tbAssociacoes_tbSaidas" />
+        <AssociationConnector Association="InvestimentosModel.AtivoDaContaSaida" />
+        <AssociationConnector Association="InvestimentosModel.AtivoDaContaEntrada" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

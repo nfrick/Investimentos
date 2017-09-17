@@ -5,14 +5,14 @@ namespace DataLayer {
     public partial class OperacaoComQtdAcumulada {
         //public int QtdAntes => QtdAcumulada - Qtd;
 
-        //public int QtdComprada => Venda.Sum(c => c.QtdAssociada);
+        //public int QtdAssociada => Venda.Sum(c => c.QtdAssociada);
 
-        //public int QtdPendente => -1 * (Qtd + QtdComprada);
+        //public int QtdPendente => -1 * (Qtd + QtdAssociada);
 
         //private Decimal _VMCompra(bool real) {
-        //    if (QtdComprada == 0) return 0;
+        //    if (QtdAssociada == 0) return 0;
         //    var total = Venda.Sum(c => c.QtdAssociada * (real ? c.Compra.ValorReal : c.Compra.Valor));
-        //    return total / QtdComprada;
+        //    return total / QtdAssociada;
         //}
 
         //public decimal VMCompra => _VMCompra(false);

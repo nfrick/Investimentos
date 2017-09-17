@@ -12,7 +12,6 @@
         protected override void Dispose(bool disposing) {
             if (disposing && (components != null)) {
                 components.Dispose();
-                _ctx.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -25,26 +24,25 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEditarAssociada = new System.Windows.Forms.Panel();
-            this.numericUpDownQtdAssociada = new System.Windows.Forms.NumericUpDown();
-            this.buttonAssociadaEditCancel = new System.Windows.Forms.Button();
+            this.nudQtdAssociada = new System.Windows.Forms.NumericUpDown();
             this.buttonAssociadaEditOK = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panelAssociarDisponivel = new System.Windows.Forms.Panel();
-            this.numericUpDownQtdAAssociar = new System.Windows.Forms.NumericUpDown();
-            this.buttonAssociarCancel = new System.Windows.Forms.Button();
+            this.nudQtdAAssociar = new System.Windows.Forms.NumericUpDown();
             this.buttonAssociarOK = new System.Windows.Forms.Button();
             this.labelSaldo = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -67,25 +65,29 @@
             this.dgvAssociadas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnDeletar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdEntradaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdAssociadaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdDisponivelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompraId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceAssociadas = new System.Windows.Forms.BindingSource(this.components);
             this.dgvDisponiveis = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.btnAssociarDireto = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnAssociar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.operacaoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdCompradaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdVendidaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtdDisponivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operacaoTipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtdReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdAssociadaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdDisponivelDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorRealDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceDisponiveis = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdAssociadaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdCompradaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEditarAssociada.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQtdAssociada)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtdAssociada)).BeginInit();
             this.panelAssociarDisponivel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQtdAAssociar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtdAAssociar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssociadas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAssociadas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponiveis)).BeginInit();
@@ -95,36 +97,23 @@
             // panelEditarAssociada
             // 
             this.panelEditarAssociada.BackColor = System.Drawing.Color.Silver;
-            this.panelEditarAssociada.Controls.Add(this.numericUpDownQtdAssociada);
-            this.panelEditarAssociada.Controls.Add(this.buttonAssociadaEditCancel);
+            this.panelEditarAssociada.Controls.Add(this.nudQtdAssociada);
             this.panelEditarAssociada.Controls.Add(this.buttonAssociadaEditOK);
             this.panelEditarAssociada.Controls.Add(this.label5);
-            this.panelEditarAssociada.Location = new System.Drawing.Point(86, 317);
+            this.panelEditarAssociada.Location = new System.Drawing.Point(131, 317);
             this.panelEditarAssociada.Name = "panelEditarAssociada";
             this.panelEditarAssociada.Size = new System.Drawing.Size(317, 72);
             this.panelEditarAssociada.TabIndex = 16;
             this.panelEditarAssociada.Visible = false;
             // 
-            // numericUpDownQtdAssociada
+            // nudQtdAssociada
             // 
-            this.numericUpDownQtdAssociada.Location = new System.Drawing.Point(102, 19);
-            this.numericUpDownQtdAssociada.Name = "numericUpDownQtdAssociada";
-            this.numericUpDownQtdAssociada.Size = new System.Drawing.Size(113, 30);
-            this.numericUpDownQtdAssociada.TabIndex = 19;
-            this.numericUpDownQtdAssociada.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownQtdAssociada.ThousandsSeparator = true;
-            // 
-            // buttonAssociadaEditCancel
-            // 
-            this.buttonAssociadaEditCancel.Font = new System.Drawing.Font("Wingdings", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonAssociadaEditCancel.ForeColor = System.Drawing.Color.Red;
-            this.buttonAssociadaEditCancel.Location = new System.Drawing.Point(255, 19);
-            this.buttonAssociadaEditCancel.Name = "buttonAssociadaEditCancel";
-            this.buttonAssociadaEditCancel.Size = new System.Drawing.Size(34, 30);
-            this.buttonAssociadaEditCancel.TabIndex = 18;
-            this.buttonAssociadaEditCancel.Text = "û";
-            this.buttonAssociadaEditCancel.UseVisualStyleBackColor = true;
-            this.buttonAssociadaEditCancel.Click += new System.EventHandler(this.buttonAssociadaEditCancel_Click);
+            this.nudQtdAssociada.Location = new System.Drawing.Point(102, 19);
+            this.nudQtdAssociada.Name = "nudQtdAssociada";
+            this.nudQtdAssociada.Size = new System.Drawing.Size(113, 30);
+            this.nudQtdAssociada.TabIndex = 19;
+            this.nudQtdAssociada.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudQtdAssociada.ThousandsSeparator = true;
             // 
             // buttonAssociadaEditOK
             // 
@@ -150,8 +139,7 @@
             // panelAssociarDisponivel
             // 
             this.panelAssociarDisponivel.BackColor = System.Drawing.Color.Silver;
-            this.panelAssociarDisponivel.Controls.Add(this.numericUpDownQtdAAssociar);
-            this.panelAssociarDisponivel.Controls.Add(this.buttonAssociarCancel);
+            this.panelAssociarDisponivel.Controls.Add(this.nudQtdAAssociar);
             this.panelAssociarDisponivel.Controls.Add(this.buttonAssociarOK);
             this.panelAssociarDisponivel.Controls.Add(this.labelSaldo);
             this.panelAssociarDisponivel.Controls.Add(this.label4);
@@ -160,43 +148,31 @@
             this.panelAssociarDisponivel.Controls.Add(this.labelQtdVendida);
             this.panelAssociarDisponivel.Controls.Add(this.label2);
             this.panelAssociarDisponivel.Controls.Add(this.label1);
-            this.panelAssociarDisponivel.Location = new System.Drawing.Point(553, 317);
+            this.panelAssociarDisponivel.Location = new System.Drawing.Point(674, 317);
             this.panelAssociarDisponivel.Name = "panelAssociarDisponivel";
             this.panelAssociarDisponivel.Size = new System.Drawing.Size(373, 142);
             this.panelAssociarDisponivel.TabIndex = 17;
             this.panelAssociarDisponivel.Visible = false;
             // 
-            // numericUpDownQtdAAssociar
+            // nudQtdAAssociar
             // 
-            this.numericUpDownQtdAAssociar.Location = new System.Drawing.Point(163, 63);
-            this.numericUpDownQtdAAssociar.Minimum = new decimal(new int[] {
+            this.nudQtdAAssociar.Location = new System.Drawing.Point(163, 63);
+            this.nudQtdAAssociar.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDownQtdAAssociar.Name = "numericUpDownQtdAAssociar";
-            this.numericUpDownQtdAAssociar.Size = new System.Drawing.Size(113, 30);
-            this.numericUpDownQtdAAssociar.TabIndex = 21;
-            this.numericUpDownQtdAAssociar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownQtdAAssociar.ThousandsSeparator = true;
-            this.numericUpDownQtdAAssociar.Value = new decimal(new int[] {
+            this.nudQtdAAssociar.Name = "nudQtdAAssociar";
+            this.nudQtdAAssociar.Size = new System.Drawing.Size(113, 30);
+            this.nudQtdAAssociar.TabIndex = 21;
+            this.nudQtdAAssociar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudQtdAAssociar.ThousandsSeparator = true;
+            this.nudQtdAAssociar.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDownQtdAAssociar.ValueChanged += new System.EventHandler(this.numericUpDownQtdAAssociar_ValueChanged);
-            // 
-            // buttonAssociarCancel
-            // 
-            this.buttonAssociarCancel.Font = new System.Drawing.Font("Wingdings", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonAssociarCancel.ForeColor = System.Drawing.Color.Red;
-            this.buttonAssociarCancel.Location = new System.Drawing.Point(313, 63);
-            this.buttonAssociarCancel.Name = "buttonAssociarCancel";
-            this.buttonAssociarCancel.Size = new System.Drawing.Size(34, 30);
-            this.buttonAssociarCancel.TabIndex = 20;
-            this.buttonAssociarCancel.Text = "û";
-            this.buttonAssociarCancel.UseVisualStyleBackColor = true;
-            this.buttonAssociarCancel.Click += new System.EventHandler(this.buttonAssociarCancel_Click);
+            this.nudQtdAAssociar.ValueChanged += new System.EventHandler(this.numericUpDownQtdAAssociar_ValueChanged);
             // 
             // buttonAssociarOK
             // 
@@ -226,9 +202,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(24, 99);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 23);
+            this.label4.Size = new System.Drawing.Size(86, 23);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Saldo:";
+            this.label4.Text = "Pendente:";
             // 
             // label3
             // 
@@ -324,19 +300,19 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(24, 126);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(262, 32);
+            this.label6.Size = new System.Drawing.Size(261, 32);
             this.label6.TabIndex = 22;
-            this.label6.Text = "Compras já associadas";
+            this.label6.Text = "Entradas já associadas";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(472, 126);
+            this.label7.Location = new System.Drawing.Point(593, 126);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(238, 32);
+            this.label7.Size = new System.Drawing.Size(237, 32);
             this.label7.TabIndex = 23;
-            this.label7.Text = "Compras disponíveis";
+            this.label7.Text = "Entradas disponíveis";
             // 
             // labelAssociacoes
             // 
@@ -396,20 +372,26 @@
             this.dgvAssociadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnEditar,
             this.btnDeletar,
-            this.dataDataGridViewTextBoxColumn2,
-            this.qtdCompradaDataGridViewTextBoxColumn2,
-            this.qtdAssociadaDataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn1});
+            this.dataDataGridViewTextBoxColumn1,
+            this.tipoDataGridViewTextBoxColumn,
+            this.qtdEntradaDataGridViewTextBoxColumn,
+            this.qtdAssociadaDataGridViewTextBoxColumn,
+            this.qtdDisponivelDataGridViewTextBoxColumn,
+            this.valorRealDataGridViewTextBoxColumn,
+            this.CompraId});
             this.dgvAssociadas.DataSource = this.bindingSourceAssociadas;
             this.dgvAssociadas.Location = new System.Drawing.Point(30, 161);
             this.dgvAssociadas.Name = "dgvAssociadas";
-            this.dgvAssociadas.ReadOnly = true;
             this.dgvAssociadas.RowHeadersWidth = 25;
-            this.dgvAssociadas.RowTemplate.Height = 24;
-            this.dgvAssociadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAssociadas.Size = new System.Drawing.Size(428, 150);
+            this.dgvAssociadas.RowTemplate.Height = 25;
+            this.dgvAssociadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvAssociadas.Size = new System.Drawing.Size(540, 150);
             this.dgvAssociadas.TabIndex = 10;
             this.dgvAssociadas.CellButtonClick += new DataGridViewWithButtons.VBControls.DataGridViewWithButtons.CellButtonClickEventHandler(this.dataGridViewAssociadas_CellButtonClick);
+            this.dgvAssociadas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAssociadas_CellEndEdit);
+            this.dgvAssociadas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvAssociadas_CellPainting);
+            this.dgvAssociadas.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAssociadas_CellValidated);
+            this.dgvAssociadas.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvAssociadas_CellValidating);
             // 
             // btnEditar
             // 
@@ -423,10 +405,10 @@
             // 
             // btnDeletar
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Red;
-            this.btnDeletar.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.Red;
+            this.btnDeletar.DefaultCellStyle = dataGridViewCellStyle27;
             this.btnDeletar.HeaderText = "";
             this.btnDeletar.Name = "btnDeletar";
             this.btnDeletar.ReadOnly = true;
@@ -437,9 +419,78 @@
             this.btnDeletar.UseColumnTextForButtonValue = true;
             this.btnDeletar.Width = 25;
             // 
+            // dataDataGridViewTextBoxColumn1
+            // 
+            this.dataDataGridViewTextBoxColumn1.DataPropertyName = "Data";
+            dataGridViewCellStyle28.Format = "dd/MM/yy";
+            dataGridViewCellStyle28.NullValue = null;
+            this.dataDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle28;
+            this.dataDataGridViewTextBoxColumn1.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn1.Name = "dataDataGridViewTextBoxColumn1";
+            this.dataDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataDataGridViewTextBoxColumn1.Width = 70;
+            // 
+            // tipoDataGridViewTextBoxColumn
+            // 
+            this.tipoDataGridViewTextBoxColumn.DataPropertyName = "Tipo";
+            this.tipoDataGridViewTextBoxColumn.HeaderText = "Tipo";
+            this.tipoDataGridViewTextBoxColumn.Name = "tipoDataGridViewTextBoxColumn";
+            this.tipoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tipoDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // qtdEntradaDataGridViewTextBoxColumn
+            // 
+            this.qtdEntradaDataGridViewTextBoxColumn.DataPropertyName = "QtdEntrada";
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle29.Format = "N0";
+            this.qtdEntradaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle29;
+            this.qtdEntradaDataGridViewTextBoxColumn.HeaderText = "Qtd";
+            this.qtdEntradaDataGridViewTextBoxColumn.Name = "qtdEntradaDataGridViewTextBoxColumn";
+            this.qtdEntradaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.qtdEntradaDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // qtdAssociadaDataGridViewTextBoxColumn
+            // 
+            this.qtdAssociadaDataGridViewTextBoxColumn.DataPropertyName = "QtdAssociada";
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle30.Format = "N0";
+            this.qtdAssociadaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle30;
+            this.qtdAssociadaDataGridViewTextBoxColumn.HeaderText = "Associado";
+            this.qtdAssociadaDataGridViewTextBoxColumn.Name = "qtdAssociadaDataGridViewTextBoxColumn";
+            this.qtdAssociadaDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // qtdDisponivelDataGridViewTextBoxColumn
+            // 
+            this.qtdDisponivelDataGridViewTextBoxColumn.DataPropertyName = "QtdDisponivel";
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle31.Format = "N0";
+            this.qtdDisponivelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle31;
+            this.qtdDisponivelDataGridViewTextBoxColumn.HeaderText = "Disponível";
+            this.qtdDisponivelDataGridViewTextBoxColumn.Name = "qtdDisponivelDataGridViewTextBoxColumn";
+            this.qtdDisponivelDataGridViewTextBoxColumn.ReadOnly = true;
+            this.qtdDisponivelDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // valorRealDataGridViewTextBoxColumn
+            // 
+            this.valorRealDataGridViewTextBoxColumn.DataPropertyName = "ValorReal";
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle32.Format = "N2";
+            this.valorRealDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle32;
+            this.valorRealDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.valorRealDataGridViewTextBoxColumn.Name = "valorRealDataGridViewTextBoxColumn";
+            this.valorRealDataGridViewTextBoxColumn.ReadOnly = true;
+            this.valorRealDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // CompraId
+            // 
+            this.CompraId.DataPropertyName = "CompraId";
+            this.CompraId.HeaderText = "CompraId";
+            this.CompraId.Name = "CompraId";
+            this.CompraId.Visible = false;
+            // 
             // bindingSourceAssociadas
             // 
-            this.bindingSourceAssociadas.DataSource = typeof(DataLayer.Saida);
+            this.bindingSourceAssociadas.DataSource = typeof(DataLayer.Associacao);
             // 
             // dgvDisponiveis
             // 
@@ -452,12 +503,13 @@
             this.btnAssociar,
             this.operacaoIdDataGridViewTextBoxColumn,
             this.dataDataGridViewTextBoxColumn,
-            this.qtdCompradaDataGridViewTextBoxColumn,
-            this.qtdVendidaDataGridViewTextBoxColumn,
-            this.QtdDisponivel,
-            this.valorDataGridViewTextBoxColumn});
+            this.operacaoTipoDataGridViewTextBoxColumn,
+            this.QtdReal,
+            this.qtdAssociadaDataGridViewTextBoxColumn2,
+            this.qtdDisponivelDataGridViewTextBoxColumn1,
+            this.valorRealDataGridViewTextBoxColumn1});
             this.dgvDisponiveis.DataSource = this.bindingSourceDisponiveis;
-            this.dgvDisponiveis.Location = new System.Drawing.Point(478, 161);
+            this.dgvDisponiveis.Location = new System.Drawing.Point(599, 161);
             this.dgvDisponiveis.MultiSelect = false;
             this.dgvDisponiveis.Name = "dgvDisponiveis";
             this.dgvDisponiveis.ReadOnly = true;
@@ -470,9 +522,9 @@
             // 
             // btnAssociarDireto
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnAssociarDireto.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Wingdings", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnAssociarDireto.DefaultCellStyle = dataGridViewCellStyle33;
             this.btnAssociarDireto.HeaderText = "";
             this.btnAssociarDireto.Name = "btnAssociarDireto";
             this.btnAssociarDireto.ReadOnly = true;
@@ -483,9 +535,9 @@
             // 
             // btnAssociar
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAssociar.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAssociar.DefaultCellStyle = dataGridViewCellStyle34;
             this.btnAssociar.HeaderText = "";
             this.btnAssociar.Name = "btnAssociar";
             this.btnAssociar.ReadOnly = true;
@@ -497,7 +549,7 @@
             // operacaoIdDataGridViewTextBoxColumn
             // 
             this.operacaoIdDataGridViewTextBoxColumn.DataPropertyName = "OperacaoId";
-            this.operacaoIdDataGridViewTextBoxColumn.HeaderText = "OperacaoId";
+            this.operacaoIdDataGridViewTextBoxColumn.HeaderText = "Id";
             this.operacaoIdDataGridViewTextBoxColumn.Name = "operacaoIdDataGridViewTextBoxColumn";
             this.operacaoIdDataGridViewTextBoxColumn.ReadOnly = true;
             this.operacaoIdDataGridViewTextBoxColumn.Visible = false;
@@ -505,115 +557,75 @@
             // dataDataGridViewTextBoxColumn
             // 
             this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            dataGridViewCellStyle16.Format = "dd/MM/yyyy";
-            dataGridViewCellStyle16.NullValue = null;
-            this.dataDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle35.Format = "dd/MM/yy";
+            this.dataDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle35;
             this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
             this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
             this.dataDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dataDataGridViewTextBoxColumn.Width = 90;
+            this.dataDataGridViewTextBoxColumn.Width = 70;
             // 
-            // qtdCompradaDataGridViewTextBoxColumn
+            // operacaoTipoDataGridViewTextBoxColumn
             // 
-            this.qtdCompradaDataGridViewTextBoxColumn.DataPropertyName = "QtdComprada";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Format = "N0";
-            dataGridViewCellStyle17.NullValue = null;
-            this.qtdCompradaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
-            this.qtdCompradaDataGridViewTextBoxColumn.HeaderText = "Compradas";
-            this.qtdCompradaDataGridViewTextBoxColumn.Name = "qtdCompradaDataGridViewTextBoxColumn";
-            this.qtdCompradaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.qtdCompradaDataGridViewTextBoxColumn.Width = 80;
+            this.operacaoTipoDataGridViewTextBoxColumn.DataPropertyName = "OperacaoTipo";
+            this.operacaoTipoDataGridViewTextBoxColumn.HeaderText = "Tipo";
+            this.operacaoTipoDataGridViewTextBoxColumn.Name = "operacaoTipoDataGridViewTextBoxColumn";
+            this.operacaoTipoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.operacaoTipoDataGridViewTextBoxColumn.Width = 60;
             // 
-            // qtdVendidaDataGridViewTextBoxColumn
+            // QtdReal
             // 
-            this.qtdVendidaDataGridViewTextBoxColumn.DataPropertyName = "QtdVendida";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N0";
-            dataGridViewCellStyle18.NullValue = null;
-            this.qtdVendidaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle18;
-            this.qtdVendidaDataGridViewTextBoxColumn.HeaderText = "Associadas";
-            this.qtdVendidaDataGridViewTextBoxColumn.Name = "qtdVendidaDataGridViewTextBoxColumn";
-            this.qtdVendidaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.qtdVendidaDataGridViewTextBoxColumn.Width = 80;
+            this.QtdReal.DataPropertyName = "QtdReal";
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle36.Format = "N0";
+            this.QtdReal.DefaultCellStyle = dataGridViewCellStyle36;
+            this.QtdReal.HeaderText = "Qtd";
+            this.QtdReal.Name = "QtdReal";
+            this.QtdReal.ReadOnly = true;
+            this.QtdReal.Width = 75;
             // 
-            // QtdDisponivel
+            // qtdAssociadaDataGridViewTextBoxColumn2
             // 
-            this.QtdDisponivel.DataPropertyName = "QtdDisponivel";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "N0";
-            dataGridViewCellStyle19.NullValue = null;
-            this.QtdDisponivel.DefaultCellStyle = dataGridViewCellStyle19;
-            this.QtdDisponivel.HeaderText = "Disponíveis";
-            this.QtdDisponivel.Name = "QtdDisponivel";
-            this.QtdDisponivel.ReadOnly = true;
-            this.QtdDisponivel.Width = 80;
+            this.qtdAssociadaDataGridViewTextBoxColumn2.DataPropertyName = "QtdAssociada";
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle37.Format = "N0";
+            this.qtdAssociadaDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle37;
+            this.qtdAssociadaDataGridViewTextBoxColumn2.HeaderText = "Associada";
+            this.qtdAssociadaDataGridViewTextBoxColumn2.Name = "qtdAssociadaDataGridViewTextBoxColumn2";
+            this.qtdAssociadaDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.qtdAssociadaDataGridViewTextBoxColumn2.Width = 75;
             // 
-            // valorDataGridViewTextBoxColumn
+            // qtdDisponivelDataGridViewTextBoxColumn1
             // 
-            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle20.Format = "C2";
-            dataGridViewCellStyle20.NullValue = null;
-            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
-            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
-            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.valorDataGridViewTextBoxColumn.Width = 80;
+            this.qtdDisponivelDataGridViewTextBoxColumn1.DataPropertyName = "QtdDisponivel";
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle38.Format = "N0";
+            this.qtdDisponivelDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle38;
+            this.qtdDisponivelDataGridViewTextBoxColumn1.HeaderText = "Disponivel";
+            this.qtdDisponivelDataGridViewTextBoxColumn1.Name = "qtdDisponivelDataGridViewTextBoxColumn1";
+            this.qtdDisponivelDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.qtdDisponivelDataGridViewTextBoxColumn1.Width = 75;
+            // 
+            // valorRealDataGridViewTextBoxColumn1
+            // 
+            this.valorRealDataGridViewTextBoxColumn1.DataPropertyName = "ValorReal";
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle39.Format = "N2";
+            this.valorRealDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle39;
+            this.valorRealDataGridViewTextBoxColumn1.HeaderText = "Valor";
+            this.valorRealDataGridViewTextBoxColumn1.Name = "valorRealDataGridViewTextBoxColumn1";
+            this.valorRealDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.valorRealDataGridViewTextBoxColumn1.Width = 60;
             // 
             // bindingSourceDisponiveis
             // 
-            this.bindingSourceDisponiveis.DataSource = typeof(DataLayer.CompraDisponivelParaVenda);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "QtdDisponivel";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "N0";
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle13;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Disponíveis";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // qtdAssociadaDataGridViewTextBoxColumn1
-            // 
-            this.qtdAssociadaDataGridViewTextBoxColumn1.DataPropertyName = "QtdAssociada";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "N0";
-            this.qtdAssociadaDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle12;
-            this.qtdAssociadaDataGridViewTextBoxColumn1.HeaderText = "Associadas";
-            this.qtdAssociadaDataGridViewTextBoxColumn1.Name = "qtdAssociadaDataGridViewTextBoxColumn1";
-            this.qtdAssociadaDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.qtdAssociadaDataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // qtdCompradaDataGridViewTextBoxColumn2
-            // 
-            this.qtdCompradaDataGridViewTextBoxColumn2.DataPropertyName = "QtdComprada";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N0";
-            this.qtdCompradaDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle11;
-            this.qtdCompradaDataGridViewTextBoxColumn2.HeaderText = "Compradas";
-            this.qtdCompradaDataGridViewTextBoxColumn2.Name = "qtdCompradaDataGridViewTextBoxColumn2";
-            this.qtdCompradaDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.qtdCompradaDataGridViewTextBoxColumn2.Width = 80;
-            // 
-            // dataDataGridViewTextBoxColumn2
-            // 
-            this.dataDataGridViewTextBoxColumn2.DataPropertyName = "Data";
-            dataGridViewCellStyle10.Format = "dd/MM/yyyy";
-            this.dataDataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataDataGridViewTextBoxColumn2.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn2.Name = "dataDataGridViewTextBoxColumn2";
-            this.dataDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataDataGridViewTextBoxColumn2.Width = 90;
+            this.bindingSourceDisponiveis.DataSource = typeof(DataLayer.Entrada);
             // 
             // frmAssociarCompraComVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1030, 481);
+            this.ClientSize = new System.Drawing.Size(1196, 481);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -637,14 +649,13 @@
             this.Name = "frmAssociarCompraComVenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Associar Compra Com Venda";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAssociarCompraComVenda_FormClosing);
             this.Load += new System.EventHandler(this.AssociarCompraComVenda_Load);
             this.panelEditarAssociada.ResumeLayout(false);
             this.panelEditarAssociada.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQtdAssociada)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtdAssociada)).EndInit();
             this.panelAssociarDisponivel.ResumeLayout(false);
             this.panelAssociarDisponivel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQtdAAssociar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtdAAssociar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssociadas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAssociadas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponiveis)).EndInit();
@@ -660,8 +671,7 @@
         private System.Windows.Forms.BindingSource bindingSourceAssociadas;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvAssociadas;
         private System.Windows.Forms.Panel panelEditarAssociada;
-        private System.Windows.Forms.NumericUpDown numericUpDownQtdAssociada;
-        private System.Windows.Forms.Button buttonAssociadaEditCancel;
+        private System.Windows.Forms.NumericUpDown nudQtdAssociada;
         private System.Windows.Forms.Button buttonAssociadaEditOK;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panelAssociarDisponivel;
@@ -673,19 +683,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvDisponiveis;
-        private System.Windows.Forms.NumericUpDown numericUpDownQtdAAssociar;
-        private System.Windows.Forms.Button buttonAssociarCancel;
+        private System.Windows.Forms.NumericUpDown nudQtdAAssociar;
         private System.Windows.Forms.Button buttonAssociarOK;
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Label labelVenda;
-        private System.Windows.Forms.DataGridViewButtonColumn btnAssociarDireto;
-        private System.Windows.Forms.DataGridViewButtonColumn btnAssociar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operacaoIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtdCompradaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdVendidaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtdDisponivel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label labelValor;
         private System.Windows.Forms.Label labelAtivo;
         private System.Windows.Forms.Label label6;
@@ -695,11 +697,25 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridViewButtonColumn btnEditar;
-        private System.Windows.Forms.DataGridViewButtonColumn btnDeletar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdCompradaDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewButtonColumn btnAssociarDireto;
+        private System.Windows.Forms.DataGridViewButtonColumn btnAssociar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operacaoIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operacaoTipoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtdReal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDisponivelDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEditar;
+        private System.Windows.Forms.DataGridViewButtonColumn btnDeletar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdEntradaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdAssociadaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDisponivelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorRealDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CompraId;
     }
 }

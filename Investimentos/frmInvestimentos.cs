@@ -1,8 +1,10 @@
 ﻿using GridAndChartStyleLibrary;
 using System;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using DataLayer;
 using EFWinforms;
@@ -51,23 +53,6 @@ namespace Investimentos {
             }
         }
 
-        private void ContaComboPopulate() {
-            var cbx = toolStripComboBoxConta.ComboBox;
-            var currentIndex = cbx.SelectedIndex;
-            cbx.DataSource = entityDataSource1.EntitySets["Contas"];
-            cbx.DisplayMember = "Nome";
-            cbx.ValueMember = "ContaId";
-            cbx.SelectedIndex = currentIndex == -1 ? 0 : currentIndex;
-        }
-
-        private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
-            _conta = ((Conta)toolStripComboBoxConta.SelectedItem);
-            var row = (dgvContas.Rows
-                .Cast<DataGridViewRow>()
-                .First(r => (int)r.Cells[0].Value == _conta.ContaId)).Index;
-            dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
-        }
-
         private void RefreshData() {
             var ativoRow = dgvAtivos.SelectedRows[0].Index;
             var operacaoRow = dgvOperacoes.SelectedRows[0].Index;
@@ -81,13 +66,13 @@ namespace Investimentos {
             dgvAtivos.CurrentCell = dgvAtivos.Rows[ativoRow].Cells[0];
             dgvOperacoes.CurrentCell = dgvOperacoes.Rows[operacaoRow].Cells[1];
             dgvVendas.CurrentCell = dgvVendas.Rows[vendaRow].Cells[1];
+            toolStripButtonSalvar.Enabled = entityDataSource1.DbContext.ChangeTracker.HasChanges();
         }
 
         private void dataGridViewOperacoes_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
             var op = (Operacao)dgvOperacoes.SelectedRows[0].DataBoundItem;
-            var frm = new frmEditarOperacao { operacao = op };
+            var frm = GetFrmEditarOperacao(op);
             if (frm.ShowDialog() == DialogResult.Cancel) return;
-            entityDataSource1.SaveChanges();
             RefreshData();
         }
 
@@ -104,18 +89,42 @@ namespace Investimentos {
         private void dataGridViewVendas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
             var ctx = entityDataSource1.DbContext.Set<Associacao>();
             var frm = new frmAssociarCompraComVenda {
-                Saida = (Saida)dgvVendas.SelectedRows[0].DataBoundItem
+                Saida = (Saida)dgvVendas.SelectedRows[0].DataBoundItem,
+                eds = entityDataSource1
         };
-            if (frm.ShowDialog() == DialogResult.Cancel) return;
-            entityDataSource1.SaveChanges();
+            frm.ShowDialog();
             RefreshData();
         }
 
+        private frmEditarOperacao GetFrmEditarOperacao(Operacao op) {
+            var ativos = entityDataSource1.CreateView(entityDataSource1.EntitySets["Ativos"]);
+            var tipos = entityDataSource1.CreateView(entityDataSource1.EntitySets["OperacoesTipos"]);
+            var frm = new frmEditarOperacao { Operacao = op, AtivosLista = ativos, TiposLista = tipos };
+            return frm;
+        }
+
         #region toolstrip
+        private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
+            _conta = ((Conta)toolStripComboBoxConta.SelectedItem);
+            var row = (dgvContas.Rows
+                .Cast<DataGridViewRow>()
+                .First(r => (int)r.Cells[0].Value == _conta.ContaId)).Index;
+            dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
+        }
+
+        private void ContaComboPopulate() {
+            var cbx = toolStripComboBoxConta.ComboBox;
+            var currentIndex = cbx.SelectedIndex;
+            cbx.DataSource = entityDataSource1.EntitySets["Contas"];
+            cbx.DisplayMember = "Nome";
+            cbx.ValueMember = "ContaId";
+            cbx.SelectedIndex = currentIndex == -1 ? 0 : currentIndex;
+        }
+
         private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
             var ativo = (AtivoDaConta)dgvAtivos.SelectedRows[0].DataBoundItem;
             var op = new Operacao() { AtivoDaConta = ativo, ContaId = _conta.ContaId };
-            var frm = new frmEditarOperacao { operacao = op };
+            var frm = GetFrmEditarOperacao(op);
             if (frm.ShowDialog() == DialogResult.Cancel)
                 return;
 
@@ -128,14 +137,11 @@ namespace Investimentos {
             var tipo = (OperacaoTipo)frm.comboBoxOperacao.SelectedItem;
             var ctx = entityDataSource1.DbContext.Set<Operacao>();
             if (tipo.IsEntrada) {
-                //_conta.Operacoes.Add(op.ToEntrada);
                 ctx.Add(op.ToEntrada);
             }
             else {
-                //_conta.Operacoes.Add(op.ToSaida);
                 ctx.Add(op.ToSaida);
             }
-            entityDataSource1.SaveChanges();
             RefreshData();
         }
 
@@ -158,10 +164,39 @@ namespace Investimentos {
             if (conta.ContaId == 0)
                 entityDataSource1.DbContext.Set<Conta>().Add(conta);
 
-            entityDataSource1.SaveChanges();
             RefreshData();
             ContaComboPopulate();
         }
+
+        private void toolStripButtonSalvar_Click(object sender, EventArgs e) {
+            entityDataSource1.CancelChanges();
+            toolStripButtonSalvar.Enabled = false;
+        }
+
         #endregion
+
+        private void frmInvestimentos_FormClosing(object sender, FormClosingEventArgs e) {
+            var tracker = entityDataSource1.DbContext.ChangeTracker;
+            if (!tracker.HasChanges()) return;
+            var adds = tracker.Entries().Count(entry => entry.State == EntityState.Added);
+            var dels = tracker.Entries().Count(entry => entry.State == EntityState.Deleted);
+            var edits = tracker.Entries().Count(entry => entry.State == EntityState.Modified);
+            var sb = new StringBuilder("Alterações pendentes:\n\n");
+            if (adds > 0) sb.Append($"\t* Adições: {adds}\n");
+            if (edits > 0) sb.Append($"\t* Edições: {edits}\n");
+            if (dels > 0) sb.Append($"\t* Deleções: {dels}\n");
+            sb.Append("\nDeseja salvar antes de sair?");
+            switch (MessageBox.Show(sb.ToString(), @"Investimentos", MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Question)) {
+                case DialogResult.Yes:
+                    entityDataSource1.CancelChanges();
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+                default:
+                    break; // do nothing
+            }
+        }
     }
 }

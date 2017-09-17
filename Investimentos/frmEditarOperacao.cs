@@ -1,58 +1,65 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.ComponentModel;
 using DataLayer;
 
 namespace Investimentos {
     public partial class frmEditarOperacao : Form {
-        public Operacao operacao { get; set; }
+        public Operacao Operacao { get; set; }
+        public IBindingList AtivosLista { get; set; }
+        public IBindingList TiposLista { get; set; }
+
 
         public frmEditarOperacao() {
             InitializeComponent();
         }
 
         private void EditarOperacao_Load(object sender, EventArgs e) {
-            using (var ctx = new InvestimentosEntities()) {
-                comboBoxAtivo.DataSource = ctx.Ativos.ToList();
-                comboBoxAtivo.DisplayMember = "Codigo";
-                comboBoxAtivo.ValueMember = "Codigo";
+            comboBoxAtivo.DataSource = AtivosLista;
+            comboBoxAtivo.DisplayMember = "Codigo";
+            comboBoxAtivo.ValueMember = "Codigo";
 
-                comboBoxOperacao.DataSource = ctx.OperacoesTipos.ToList();
-                comboBoxOperacao.DisplayMember = "Tipo";
-                comboBoxOperacao.ValueMember = "TipoId";
-            }
+            comboBoxOperacao.DataSource = TiposLista;
+            comboBoxOperacao.DisplayMember = "Tipo";
+            comboBoxOperacao.ValueMember = "TipoId";
 
-            if (operacao.OperacaoId == 0) {
-                operacao.Codigo = operacao.AtivoDaConta.Codigo;
+            if (Operacao.OperacaoId == 0) {
+                comboBoxOperacao.SelectedIndex = -1;
+                buttonOK.Enabled = false;
+                Operacao.Codigo = Operacao.AtivoDaConta.Codigo;
                 dateTimePickerData.Value = DateTime.Now;
                 nudQtdPrevista.Value = 1000;
                 nudQtdReal.Value = 1000;
                 Text = @"Nova Operação";
             }
             else {
-                comboBoxOperacao.SelectedValue = operacao.TipoId;
-                dateTimePickerData.Value = operacao.Data;
-                nudQtdPrevista.Value = operacao.QtdPrevista;
-                nudQtdReal.Value = operacao.QtdReal;
-                nudValor.Value = operacao.Valor;
-                nudValorReal.Value = operacao.ValorReal;
+                comboBoxOperacao.SelectedValue = Operacao.TipoId;
+                dateTimePickerData.Value = Operacao.Data;
+                nudQtdPrevista.Value = Operacao.QtdPrevista;
+                nudQtdReal.Value = Operacao.QtdReal;
+                nudValor.Value = Operacao.Valor;
+                nudValorReal.Value = Operacao.ValorReal;
+                Text = @"Editar Operação";
             }
-            comboBoxAtivo.SelectedValue = operacao.Codigo;
+            comboBoxAtivo.SelectedValue = Operacao.Codigo;
             Totais();
-            buttonOK.Enabled = operacao.OperacaoId != 0;
+            buttonOK.Enabled = Operacao.OperacaoId != 0;
         }
 
         private void buttonOK_Click(object sender, EventArgs e) {
-            operacao.Codigo = (string)comboBoxAtivo.SelectedValue;
-            operacao.TipoId = (int)comboBoxOperacao.SelectedValue;
-            operacao.Data = dateTimePickerData.Value;
-            operacao.QtdPrevista = (int)nudQtdPrevista.Value;
-            operacao.QtdReal = (int)nudQtdReal.Value;
-            operacao.Valor = nudValor.Value;
-            operacao.ValorReal = nudValorReal.Value;
+            Operacao.Codigo = (string)comboBoxAtivo.SelectedValue;
+            Operacao.OperacaoTipo = (OperacaoTipo)comboBoxOperacao.SelectedItem;
+            Operacao.TipoId = (int)comboBoxOperacao.SelectedValue;
+            Operacao.Data = dateTimePickerData.Value;
+            Operacao.QtdPrevista = (int)nudQtdPrevista.Value;
+            Operacao.QtdReal = (int)nudQtdReal.Value;
+            Operacao.Valor = nudValor.Value;
+            Operacao.ValorReal = nudValorReal.Value;
         }
 
-        private void combos_TextChanged(object sender, EventArgs e) {
+        private void combos_ValueChanged(object sender, EventArgs e) {
             buttonOK.Enabled = (comboBoxAtivo.SelectedValue != null &&
                 comboBoxOperacao.SelectedValue != null);
         }

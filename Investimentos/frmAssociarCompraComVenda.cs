@@ -1,129 +1,216 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Data.Entity;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using DataLayer;
+using EFWinforms;
 
 
 namespace Investimentos {
     public partial class frmAssociarCompraComVenda : Form {
         public Saida Saida { get; set; }
-        private Saida _opSaida;
-        private readonly InvestimentosEntities _ctx; // Deve ser mantida global; se for aberta com using em CarregarLista dá erro.
+        public EntityDataSource eds { get; set; }
+        private Point _cellInError = new Point(-2, -2);
 
         public frmAssociarCompraComVenda() {
             InitializeComponent();
-            _ctx = new InvestimentosEntities();
         }
-        
+
         private void AssociarCompraComVenda_Load(object sender, EventArgs e) {
-            CarregarLista();
+            CarregarBindingSources();
             labelAtivo.Text = Saida.Codigo;
             labelData.Text = Saida.Data.ToString("dd/MM/yyyy");
             labelValor.Text = Saida.Valor.ToString("C2");
-            labelVenda.Text = Math.Abs(Saida.QtdReal).ToString();
+            labelVenda.Text = Saida.QtdReal.ToString("N0");
+            AtualizarLabels();
         }
 
-        private void CarregarLista() {
-            //_opSaida = _ctx.Saidas.FirstOrDefault(o => o.SaidaId == VendaId);
-            //bindingSourceAssociadas.DataSource = null;
-            //bindingSourceAssociadas.DataSource = _opSaida.Associacoes;
-            //bindingSourceDisponiveis.DataSource = _ctx.GetComprasDisponiveisParaVenda(VendaId, ContaId);
-            //labelAtivo.Text = _opSaida.Codigo;
-            //labelAssociacoes.Text = _opSaida.QtdComprada.ToString();
-            //labelPendente.Text = _opSaida.QtdPendente.ToString();
-            //dgvDisponiveis.Enabled = _opSaida.QtdPendente > 0;
+        private void CarregarBindingSources() {
+            bindingSourceAssociadas.DataSource = null;
+            bindingSourceAssociadas.DataSource = Saida.Associacoes;
+            dgvAssociadas.Refresh();
+
+            bindingSourceDisponiveis.DataSource = null;
+            bindingSourceDisponiveis.DataSource = Saida.EntradasDisponiveis;
+            dgvDisponiveis.Refresh();
+
+            dgvToggleEnable(true);
+            AtualizarLabels();
         }
 
-        private void frmAssociarCompraComVenda_FormClosing(object sender, FormClosingEventArgs e) {
-            _ctx.Dispose();
+        private void AtualizarLabels() {
+            labelAssociacoes.Text = Saida.QtdAssociada.ToString("N0");
+            labelPendente.Text = Saida.QtdPendente.ToString("N0");
+            dgvDisponiveis.Enabled = Saida.QtdPendente > 0;
         }
 
+        private void dgvToggleEnable(bool enable) {
+            dgvAssociadas.Enabled = enable && Saida.Associacoes.Count > 0;
+            dgvDisponiveis.Enabled = enable && Saida.QtdAssociada != Saida.QtdReal;
+        }
+
+        private void nudSetup(NumericUpDown nud, int max, int rowToBind, Panel panel) {
+            nud.Maximum = max;
+            nud.Increment = (int)(max / 100) * 10;
+            while (nud.DataBindings.Count > 0)
+                nud.DataBindings.RemoveAt(0);
+            // The code binds column index 5 to the nud control
+            nud.DataBindings.Add(new Binding("Value", dgvAssociadas[5, rowToBind], "Value", false));
+            panel.Visible = true;
+            nud.Focus();
+        }
+
+        #region Associadas
         private void dataGridViewAssociadas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
-            //var v = _opSaida.Venda.ElementAt(e.RowIndex);
-            //if (e.ColumnIndex == 0) {
-            //    panelEditarAssociada.Visible = true;
-            //    numericUpDownQtdAssociada.Focus();
-            //    dgvAssociadas.Enabled = false;
-            //    dgvDisponiveis.Enabled = false;
-            //    numericUpDownQtdAssociada.Maximum = v.QtdComprada;
-            //    numericUpDownQtdAssociada.Value = v.QtdAssociada;
-            //}
-            //else {
-            //    _ctx.Saidas.Remove(v);
-            //    FinalizarEdicao(true, null);
-            //}
+            var associacao = (Associacao)dgvAssociadas.Rows[e.RowIndex].DataBoundItem;
+            if (e.ColumnIndex == 0) {
+                dgvToggleEnable(false);
+                nudSetup(nudQtdAssociada, associacao.QtdAssociada + Math.Min(Saida.QtdPendente, associacao.QtdDisponivel), e.RowIndex, panelEditarAssociada);
+            }
+            else {
+                //Saida.Associacoes.Remove(associacao);
+                eds.DbContext.Set<Associacao>().Remove(associacao);
+                CarregarBindingSources();
+            }
         }
 
         private void buttonAssociadaEditOK_Click(object sender, EventArgs e) {
-            //if (dgvAssociadas.CurrentRow == null) return;
-            //var v = _opSaida.Venda.ElementAt(dgvAssociadas.CurrentRow.Index);
-            //if (numericUpDownQtdAssociada.Value > 0)
-            //    v.QtdAssociada = (int)numericUpDownQtdAssociada.Value;
-            //else
-            //    _ctx.Saidas.Remove(v);
-            //FinalizarEdicao(true, dgvAssociadas);
+            FinalizarEdicao(dgvAssociadas);
         }
 
-        private void buttonAssociadaEditCancel_Click(object sender, EventArgs e) {
-            FinalizarEdicao(false, dgvAssociadas);
-        }
+        private void dgvAssociadas_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
+            if (e.ColumnIndex != 5) return;
 
-        private void FinalizarEdicao(bool salvarAlteracoes, DataGridView dgv) {
-            if (salvarAlteracoes) {
-                _ctx.SaveChanges();
-                CarregarLista();
+            var dgv = (DataGridView)sender;
+            if (!dgv.IsCurrentCellDirty) return;
+
+            var cell = dgv[e.ColumnIndex, e.RowIndex];
+            var qtdEntrada = (int)dgv.Rows[e.RowIndex].Cells[4].Value;
+            var formattedValue = e.FormattedValue.ToString();
+            var oldQtd = (int)cell.Value;
+            var limite = Math.Min(Saida.QtdPendente + oldQtd, qtdEntrada);
+
+            if (cell.Tag == null) {
+                cell.Tag = cell.Style.Padding;
+                cell.Style.Padding = new Padding(0, 0, 18, 0);
+                _cellInError = new Point(e.ColumnIndex, e.RowIndex);
             }
-            dgvDisponiveis.Refresh();
-            if (dgv == null) return;
-            dgvAssociadas.Enabled = true;
-            dgvDisponiveis.Enabled = true;
+
+            // Confirm that the cell is not empty.
+            if (string.IsNullOrEmpty(formattedValue)) {
+                cell.ErrorText = @"Preencha a quantidade associada.";
+                e.Cancel = true;
+            }
+            else if (!int.TryParse(formattedValue, System.Globalization.NumberStyles.Any,
+                CultureInfo.CurrentCulture, out int newQtd)) {
+                cell.ErrorText = @"Quantidade deve ser um número!";
+                e.Cancel = true;
+            }
+            else if (newQtd == 0) {
+                switch (MessageBox.Show(@"Quantidade igual a zero irá remover a associação. Confirma?",
+                    this.Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)) {
+                    case DialogResult.Cancel:
+                        dgv.CancelEdit();
+                        break;
+                    case DialogResult.No:
+                        cell.ErrorText = $"Quantidade deve ser um número entre 1 e {limite}";
+                        e.Cancel = true;
+                        break;
+                }
+            }
+
+            else if (newQtd < 1 || newQtd > limite) {
+                cell.ErrorText = $"Quantidade deve ser um número entre 1 e {limite}";
+                e.Cancel = true;
+            }
+        }
+
+        private void dgvAssociadas_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
+            var dgv = (DataGridView)sender;
+            var cell = dgv[e.ColumnIndex, e.RowIndex];
+            cell.ErrorText = string.Empty;
+            _cellInError = new Point(-2, -2);
+            cell.Style.Padding = (Padding)cell.Tag;
+            cell.Tag = null;
+            CarregarBindingSources();
+        }
+
+        private void dgvAssociadas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e) {
+            var dgv = (DataGridView)sender;
+            if (!dgv.IsCurrentCellDirty || string.IsNullOrEmpty(e.ErrorText)) return;
+            e.Paint(e.ClipBounds, DataGridViewPaintParts.All & ~(DataGridViewPaintParts.ErrorIcon));
+            var container = e.Graphics.BeginContainer();
+            e.Graphics.TranslateTransform(18, 0);
+            e.Paint(ClientRectangle, DataGridViewPaintParts.ErrorIcon);
+            e.Graphics.EndContainer(container);
+            e.Handled = true;
+        }
+
+        private void dgvAssociadas_CellValidated(object sender, DataGridViewCellEventArgs e) {
+            if (Saida.Associacoes.Count == 0) return;
+            var associacao = (Associacao)dgvAssociadas.Rows[e.RowIndex].DataBoundItem;
+            if (associacao.QtdAssociada != 0) return;
+            Saida.Associacoes.Remove(associacao);
+            bindingSourceAssociadas.DataSource = null;
+            bindingSourceAssociadas.DataSource = Saida.Associacoes;
+            dgvAssociadas.Refresh();
+        }
+
+        #endregion
+
+        private void FinalizarEdicao(Control dgv) {
+            dgvToggleEnable(true);
             dgv.Focus();
             panelEditarAssociada.Visible = false;
             panelAssociarDisponivel.Visible = false;
+            AtualizarLabels();
+        }
+
+        #region Disponiveis
+
+        private Associacao GetAssociacao(Entrada entrada, Saida saida) {
+            var newAssociacao = eds.DbContext.Set<Associacao>().Create();
+            newAssociacao.Saida = saida;
+            newAssociacao.VendaId = saida.OperacaoId;
+            newAssociacao.Entrada = entrada;
+            newAssociacao.CompraId = entrada.OperacaoId;
+            return newAssociacao;
         }
 
         private void dataGridViewDisponiveis_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
-            //var compra = (CompraDisponivelParaVenda)bindingSourceDisponiveis[dgvDisponiveis.SelectedRows[0].Index];
-            //if (e.ColumnIndex == 0) {
-            //    AssociarCompraAVenda(compra, 0);
-            //    FinalizarEdicao(true, dgvDisponiveis);
-            //}
-            //else {
-            //    labelQtdVendida.Text = Math.Abs(_opSaida.Qtd).ToString();
-            //    labelQtdComprada.Text = _opSaida.QtdComprada.ToString();
-            //    panelAssociarDisponivel.Visible = true;
-            //    numericUpDownQtdAAssociar.Focus();
-            //    dgvAssociadas.Enabled = false;
-            //    dgvDisponiveis.Enabled = false;
-            //    var qtd = Math.Min(_opSaida.QtdPendente, compra.QtdDisponivel);
-            //    numericUpDownQtdAAssociar.Maximum = qtd;
-            //    numericUpDownQtdAAssociar.Value = qtd;
-            //}
-        }
+            var dgv = (DataGridView)sender;
+            var entrada = (Entrada)dgv.Rows[e.RowIndex].DataBoundItem;
+            var associacao = Saida.Associacoes.FirstOrDefault(a => a.Entrada.OperacaoId == entrada.OperacaoId) ?? GetAssociacao(entrada, Saida);
 
-        private void AssociarCompraAVenda(CompraDisponivelParaVenda compra, int qtd) {
-            //var venda = _opSaida.Venda.FirstOrDefault(v => v.CompraId == compra.OperacaoId);
-            //qtd = qtd == 0 ? Math.Min(Math.Abs(_opSaida.Qtd), compra.QtdDisponivel) : qtd;
-            //if (venda == null) {
-            //    venda = new Venda { CompraId = compra.OperacaoId, QtdAssociada = qtd };
-            //    _opSaida.Venda.Add(venda);
-            //}
-            //else
-            //    venda.QtdAssociada += qtd;
+            associacao.QtdAssociada += Math.Min(entrada.QtdDisponivel, Saida.QtdPendente);
+            eds.DbContext.Set<Associacao>().Add(associacao);
+            CarregarBindingSources();
+            if (e.ColumnIndex == 0) return;
+
+            dgvToggleEnable(false);
+            labelQtdVendida.Text = $"{Saida.QtdReal:N0}";
+            labelQtdComprada.Text = $"{Saida.QtdAssociada - associacao.QtdAssociada:N0}";
+
+            var row = dgvAssociadas.Rows
+                .Cast<DataGridViewRow>()
+                .First(r => (int)r.Cells["CompraId"].Value == associacao.CompraId);
+            dgvAssociadas.Rows[row.Index].Selected = true;
+
+            nudSetup(nudQtdAAssociar, associacao.QtdAssociada, row.Index, panelAssociarDisponivel);
         }
 
         private void buttonAssociarOK_Click(object sender, EventArgs e) {
-            var compra = (CompraDisponivelParaVenda)bindingSourceDisponiveis[dgvDisponiveis.SelectedRows[0].Index];
-            AssociarCompraAVenda(compra, (int)numericUpDownQtdAAssociar.Value);
-            FinalizarEdicao(true, dgvDisponiveis);
+            FinalizarEdicao(dgvDisponiveis);
         }
 
         private void numericUpDownQtdAAssociar_ValueChanged(object sender, EventArgs e) {
-            //labelSaldo.Text = (_opSaida.QtdPendente - numericUpDownQtdAAssociar.Value).ToString();
+            if (int.TryParse(labelQtdComprada.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out int diferenca))
+                labelSaldo.Text = $"{Saida.QtdReal - diferenca - nudQtdAAssociar.Value:N0}";
         }
 
-        private void buttonAssociarCancel_Click(object sender, EventArgs e) {
-            FinalizarEdicao(false, dgvDisponiveis);
-        }
+        #endregion Disponiveis
     }
 }

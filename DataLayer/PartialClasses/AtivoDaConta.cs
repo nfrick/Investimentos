@@ -16,9 +16,9 @@ namespace DataLayer {
             return qtd == 0 ? 0 : compras.Sum(c => (decimal)c.QtdComSinal * (real ? c.ValorReal : c.Valor)) / qtd;
         }
 
-        public List<Saida> Saidas => 
-            Operacoes.Where(o => o.OperacaoTipo.IsSaida).Select(o => o.ToSaida).ToList();
-        public List<Entrada> Entradas => 
-            Operacoes.Where(o => o.OperacaoTipo.IsEntrada).Select(o=>o.ToEntrada).ToList();
+        //public List<Saida> Saidas => 
+        //    Operacoes.Where(o => o.OperacaoTipo.IsSaida).Select(o => o.ToSaida).ToList();
+        //public List<Entrada> Entradas => 
+        //    Operacoes.Where(o => o.OperacaoTipo.IsEntrada).Select(o=>o.ToEntrada).ToList();
     }
 }

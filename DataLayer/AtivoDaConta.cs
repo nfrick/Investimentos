@@ -18,6 +18,8 @@ namespace DataLayer
         public AtivoDaConta()
         {
             this.Operacoes = new HashSet<Operacao>();
+            this.Saidas = new HashSet<Saida>();
+            this.Entradas = new HashSet<Entrada>();
         }
     
         public int ContaId { get; set; }
@@ -27,5 +29,9 @@ namespace DataLayer
         public virtual Conta Conta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Operacao> Operacoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Saida> Saidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Entrada> Entradas { get; set; }
     }
 }

@@ -67,8 +67,8 @@
             this.comboBoxAtivo.Name = "comboBoxAtivo";
             this.comboBoxAtivo.Size = new System.Drawing.Size(119, 31);
             this.comboBoxAtivo.TabIndex = 0;
-            this.comboBoxAtivo.SelectedValueChanged += new System.EventHandler(this.combos_TextChanged);
-            this.comboBoxAtivo.TextChanged += new System.EventHandler(this.combos_TextChanged);
+            this.comboBoxAtivo.SelectedValueChanged += new System.EventHandler(this.combos_ValueChanged);
+            this.comboBoxAtivo.TextChanged += new System.EventHandler(this.combos_ValueChanged);
             // 
             // comboBoxOperacao
             // 
@@ -78,8 +78,8 @@
             this.comboBoxOperacao.Name = "comboBoxOperacao";
             this.comboBoxOperacao.Size = new System.Drawing.Size(119, 31);
             this.comboBoxOperacao.TabIndex = 1;
-            this.comboBoxOperacao.SelectedValueChanged += new System.EventHandler(this.combos_TextChanged);
-            this.comboBoxOperacao.TextChanged += new System.EventHandler(this.combos_TextChanged);
+            this.comboBoxOperacao.SelectedValueChanged += new System.EventHandler(this.combos_ValueChanged);
+            this.comboBoxOperacao.TextChanged += new System.EventHandler(this.combos_ValueChanged);
             // 
             // labelAtivo
             // 
@@ -313,7 +313,7 @@
             this.MinimizeBox = false;
             this.Name = "frmEditarOperacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Editar Operação";
+            this.Text = "Adicionar/Editar Operação";
             this.Load += new System.EventHandler(this.EditarOperacao_Load);
             this.groupBoxPrevisto.ResumeLayout(false);
             this.groupBoxPrevisto.PerformLayout();
