@@ -14,16 +14,7 @@ namespace DataLayer
     
     public partial class Ativo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ativo()
-        {
-            this.SeriesHistoricas = new HashSet<SerieHistorica>();
-        }
-    
         public string Codigo { get; set; }
         public string Nome { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SerieHistorica> SeriesHistoricas { get; set; }
     }
 }

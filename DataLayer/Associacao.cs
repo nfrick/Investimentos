@@ -14,7 +14,6 @@ namespace DataLayer
     
     public partial class Associacao
     {
-        public int ContaId { get; set; }
         public int VendaId { get; set; }
         public int CompraId { get; set; }
         public int QtdAssociada { get; set; }

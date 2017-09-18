@@ -10,7 +10,6 @@
             <PropertyRef Name="VendaId" />
             <PropertyRef Name="CompraId" />
           </Key>
-          <Property Name="ContaId" Type="int" Nullable="false" />
           <Property Name="VendaId" Type="int" Nullable="false" />
           <Property Name="CompraId" Type="int" Nullable="false" />
           <Property Name="QtdAssociada" Type="int" Nullable="false" />
@@ -341,7 +340,6 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <PropertyRef Name="VendaId" />
             <PropertyRef Name="CompraId" />
           </Key>
-          <Property Name="ContaId" Type="Int32" Nullable="false" />
           <Property Name="VendaId" Type="Int32" Nullable="false" />
           <Property Name="CompraId" Type="Int32" Nullable="false" />
           <Property Name="QtdAssociada" Type="Int32" Nullable="false" />
@@ -498,7 +496,6 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
                 <ScalarProperty Name="QtdAssociada" ColumnName="QtdAssociada" />
                 <ScalarProperty Name="CompraId" ColumnName="CompraId" />
                 <ScalarProperty Name="VendaId" ColumnName="VendaId" />
-                <ScalarProperty Name="ContaId" ColumnName="ContaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
