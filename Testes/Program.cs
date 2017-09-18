@@ -6,7 +6,7 @@ namespace Testes {
     class Program {
         static void Main(string[] args) {
 
-            using (var ctx = new SerieHistoricaEntities()) {
+            using (var ctx = new InvestimentosEntities()) {
                 //foreach (var conta in ctx.Contas) {
                 //    Console.WriteLine($"{conta.Nome}");
                 //    foreach (var ativo in conta.AtivosDaConta) {
@@ -38,7 +38,7 @@ namespace Testes {
 
                 foreach (var ativo in ctx.Ativos) {
                     Console.WriteLine(ativo.Codigo);
-                    foreach (var sh in ativo.SeriesHistoricas) {
+                    foreach (var sh in ativo.CotacoesDiarias) {
                         Console.WriteLine($"\t{sh.Data}");
                     }
                 }

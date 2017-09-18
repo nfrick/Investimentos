@@ -5,13 +5,14 @@ using System.IO;
 using System.Linq;
 
 namespace DataLayer {
-    public partial class SerieHistorica {
+    public partial class CotacaoDiaria {
         /// <summary>
         /// Lê arquivo e retorna uma lista
         /// </summary>
         /// <param name="arquivo"></param>
         /// <returns>List<SerieHistorica></returns>
-        public static List<SerieHistorica> LerArquivo(string arquivo, SerieHistoricaEntities ctx) {
+        /// <deprecated></deprecated>
+        public static List<CotacaoDiaria> LerArquivo(string arquivo, InvestimentosEntities ctx) {
             //    var maxData = ctx.SeriesHistoricas.Max(c => c.Data).ToString("yyyyMMdd");
             var serie = from linha in File.ReadLines(arquivo)
                         join ativo in ctx.Ativos
@@ -19,7 +20,7 @@ namespace DataLayer {
                         where linha.StartsWith("01")
                               && linha.Substring(24, 3) == "010"
                         //&& string.Compare(linha.Substring(2, 8), maxData, StringComparison.Ordinal) > 0
-                        select new SerieHistorica(linha);
+                        select new CotacaoDiaria(linha);
             return serie.ToList();
         }
 
@@ -30,18 +31,18 @@ namespace DataLayer {
         /// <returns>Número de registros gravados</returns>
         public static long LerArquivoParaDatabase(string arquivo) {
             long recordsAdded;
-            using (var ctx = new SerieHistoricaEntities()) {
+            using (var ctx = new InvestimentosEntities()) {
                 var serie = LerArquivo(arquivo, ctx);
                 recordsAdded = serie.Count;
-                ctx.SeriesHistoricas.AddRange(serie);
+                ctx.CotacoesDiarias.AddRange(serie);
                 ctx.SaveChanges();
             }
             return recordsAdded;
         }
 
-        public SerieHistorica() {
+        public CotacaoDiaria() {
         }
-        public SerieHistorica(string linha) {
+        public CotacaoDiaria(string linha) {
             Data = DateTime.ParseExact(linha.Substring(2, 8), "yyyyMMdd",
                 CultureInfo.InvariantCulture, DateTimeStyles.None);
             Codigo = linha.Substring(12, 12).Trim();

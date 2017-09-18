@@ -7,7 +7,6 @@ namespace DataLayer {
         public bool IsSaida => !SinalPositivo;
 
         public bool IsEntrada => SinalPositivo;
-
-        public int Sinal => SinalPositivo ? 1 : -1;
+        
     }
 }

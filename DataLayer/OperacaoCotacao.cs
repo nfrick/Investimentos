@@ -15,15 +15,15 @@ namespace DataLayer
     public partial class OperacaoCotacao
     {
         public int OperacaoId { get; set; }
+        public int ContaId { get; set; }
         public string Codigo { get; set; }
         public string Tipo { get; set; }
         public System.DateTime Data { get; set; }
         public int Qtd { get; set; }
         public int QtdAcumulada { get; set; }
+        public int QtdVendida { get; set; }
         public decimal Valor { get; set; }
         public decimal ValorReal { get; set; }
-        public int QtdVendida { get; set; }
-        public int ContaId { get; set; }
     
         public virtual AtivoCotacao AtivoCotacao { get; set; }
     }

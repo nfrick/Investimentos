@@ -165,9 +165,9 @@ namespace Investimentos {
         private Associacao GetAssociacao(Entrada entrada, Saida saida) {
             var newAssociacao = eds.DbContext.Set<Associacao>().Create();
             newAssociacao.Saida = saida;
-            newAssociacao.VendaId = saida.OperacaoId;
+            newAssociacao.SaidaId = saida.OperacaoId;
             newAssociacao.Entrada = entrada;
-            newAssociacao.CompraId = entrada.OperacaoId;
+            newAssociacao.EntradaId = entrada.OperacaoId;
             eds.DbContext.Set<Associacao>().Add(newAssociacao);
             return newAssociacao;
         }
@@ -185,7 +185,7 @@ namespace Investimentos {
             dgvToggleEnable(false);
             var row = dgvAssociadas.Rows
                 .Cast<DataGridViewRow>()
-                .First(r => (int)r.Cells["CompraId"].Value == associacao.CompraId);
+                .First(r => (int)r.Cells["CompraId"].Value == associacao.EntradaId);
             dgvAssociadas.Rows[row.Index].Selected = true;
 
             nudSetup(associacao.QtdAssociada, row.Index);

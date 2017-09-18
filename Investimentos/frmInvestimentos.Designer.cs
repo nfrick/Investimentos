@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvestimentos));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvVendas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
@@ -93,7 +93,7 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEditarOperacao = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dgvAtivos = new System.Windows.Forms.DataGridView();
+            this.dgvAtivos = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,11 +114,11 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxConta = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButtonBalanco = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparatorSalvar = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonNovaOperacao = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparatorSalvar = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonSalvar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonBalanco = new System.Windows.Forms.ToolStripButton();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
@@ -231,10 +231,10 @@
             // QtdAntes
             // 
             this.QtdAntes.DataPropertyName = "QtdAntes";
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle40.Format = "N0";
-            dataGridViewCellStyle40.NullValue = null;
-            this.QtdAntes.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.QtdAntes.DefaultCellStyle = dataGridViewCellStyle1;
             this.QtdAntes.HeaderText = "Antes";
             this.QtdAntes.Name = "QtdAntes";
             this.QtdAntes.ReadOnly = true;
@@ -243,9 +243,9 @@
             // Qtd
             // 
             this.Qtd.DataPropertyName = "QtdReal";
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle41.Format = "N0";
-            this.Qtd.DefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            this.Qtd.DefaultCellStyle = dataGridViewCellStyle2;
             this.Qtd.HeaderText = "Venda";
             this.Qtd.Name = "Qtd";
             this.Qtd.ReadOnly = true;
@@ -254,9 +254,9 @@
             // QtdAcumulada
             // 
             this.QtdAcumulada.DataPropertyName = "QtdAcumulada";
-            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle42.Format = "N0";
-            this.QtdAcumulada.DefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            this.QtdAcumulada.DefaultCellStyle = dataGridViewCellStyle3;
             this.QtdAcumulada.HeaderText = "Depois";
             this.QtdAcumulada.Name = "QtdAcumulada";
             this.QtdAcumulada.ReadOnly = true;
@@ -265,9 +265,9 @@
             // Valor
             // 
             this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle43.Format = "C2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle43;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "C2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle4;
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
@@ -276,9 +276,9 @@
             // ValorReal
             // 
             this.ValorReal.DataPropertyName = "ValorReal";
-            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle44.Format = "C2";
-            this.ValorReal.DefaultCellStyle = dataGridViewCellStyle44;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "C2";
+            this.ValorReal.DefaultCellStyle = dataGridViewCellStyle5;
             this.ValorReal.HeaderText = "Valor Real";
             this.ValorReal.Name = "ValorReal";
             this.ValorReal.ReadOnly = true;
@@ -288,10 +288,10 @@
             // QtdComprada
             // 
             this.QtdComprada.DataPropertyName = "QtdAssociada";
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle45.Format = "N0";
-            dataGridViewCellStyle45.NullValue = null;
-            this.QtdComprada.DefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.QtdComprada.DefaultCellStyle = dataGridViewCellStyle6;
             this.QtdComprada.HeaderText = "Compras";
             this.QtdComprada.Name = "QtdComprada";
             this.QtdComprada.ReadOnly = true;
@@ -300,9 +300,9 @@
             // QtdPendente
             // 
             this.QtdPendente.DataPropertyName = "QtdPendente";
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle46.Format = "N0";
-            this.QtdPendente.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N0";
+            this.QtdPendente.DefaultCellStyle = dataGridViewCellStyle7;
             this.QtdPendente.HeaderText = "Pendente";
             this.QtdPendente.Name = "QtdPendente";
             this.QtdPendente.ReadOnly = true;
@@ -311,10 +311,10 @@
             // VMCompra
             // 
             this.VMCompra.DataPropertyName = "ValorMedioCompra";
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle47.Format = "C2";
-            dataGridViewCellStyle47.NullValue = null;
-            this.VMCompra.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "C2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.VMCompra.DefaultCellStyle = dataGridViewCellStyle8;
             this.VMCompra.HeaderText = "VM Compra";
             this.VMCompra.Name = "VMCompra";
             this.VMCompra.ReadOnly = true;
@@ -323,10 +323,10 @@
             // VMCompraReal
             // 
             this.VMCompraReal.DataPropertyName = "ValorMedioCompraReal";
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle48.Format = "C2";
-            dataGridViewCellStyle48.NullValue = null;
-            this.VMCompraReal.DefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "C2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.VMCompraReal.DefaultCellStyle = dataGridViewCellStyle9;
             this.VMCompraReal.HeaderText = "VM Real";
             this.VMCompraReal.Name = "VMCompraReal";
             this.VMCompraReal.ReadOnly = true;
@@ -335,10 +335,10 @@
             // Lucro
             // 
             this.Lucro.DataPropertyName = "Lucro";
-            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle49.Format = "C2";
-            dataGridViewCellStyle49.NullValue = null;
-            this.Lucro.DefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "C2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.Lucro.DefaultCellStyle = dataGridViewCellStyle10;
             this.Lucro.HeaderText = "Lucro";
             this.Lucro.Name = "Lucro";
             this.Lucro.ReadOnly = true;
@@ -347,10 +347,10 @@
             // LucroReal
             // 
             this.LucroReal.DataPropertyName = "LucroReal";
-            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle50.Format = "C2";
-            dataGridViewCellStyle50.NullValue = null;
-            this.LucroReal.DefaultCellStyle = dataGridViewCellStyle50;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "C2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.LucroReal.DefaultCellStyle = dataGridViewCellStyle11;
             this.LucroReal.HeaderText = "Lucro Real";
             this.LucroReal.Name = "LucroReal";
             this.LucroReal.ReadOnly = true;
@@ -559,10 +559,10 @@
             this.dgvOperacoes.MultiSelect = false;
             this.dgvOperacoes.Name = "dgvOperacoes";
             this.dgvOperacoes.ReadOnly = true;
-            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle51.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle51;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvOperacoes.RowHeadersWidth = 25;
             this.dgvOperacoes.RowTemplate.Height = 24;
             this.dgvOperacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -650,10 +650,10 @@
             this.dgvAtivos.MultiSelect = false;
             this.dgvAtivos.Name = "dgvAtivos";
             this.dgvAtivos.ReadOnly = true;
-            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle52;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvAtivos.RowHeadersWidth = 25;
             this.dgvAtivos.RowTemplate.Height = 24;
             this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -792,6 +792,7 @@
             this.toolStripButtonNovaConta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNovaConta.Name = "toolStripButtonNovaConta";
             this.toolStripButtonNovaConta.Size = new System.Drawing.Size(91, 25);
+            this.toolStripButtonNovaConta.Tag = "new";
             this.toolStripButtonNovaConta.Text = "Nova Conta";
             this.toolStripButtonNovaConta.ToolTipText = "Nova Conta";
             this.toolStripButtonNovaConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
@@ -809,6 +810,7 @@
             this.toolStripButtonEditarConta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditarConta.Name = "toolStripButtonEditarConta";
             this.toolStripButtonEditarConta.Size = new System.Drawing.Size(95, 25);
+            this.toolStripButtonEditarConta.Tag = "edit";
             this.toolStripButtonEditarConta.Text = "Editar Conta";
             this.toolStripButtonEditarConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
             // 
@@ -830,6 +832,7 @@
             this.toolStripComboBoxConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBoxConta.Name = "toolStripComboBoxConta";
             this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 28);
+            this.toolStripComboBoxConta.Sorted = true;
             this.toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
             // 
             // toolStripLabel3
@@ -837,29 +840,6 @@
             this.toolStripLabel3.AutoSize = false;
             this.toolStripLabel3.Name = "toolStripLabel3";
             this.toolStripLabel3.Size = new System.Drawing.Size(60, 25);
-            // 
-            // toolStripButtonBalanco
-            // 
-            this.toolStripButtonBalanco.BackColor = System.Drawing.Color.NavajoWhite;
-            this.toolStripButtonBalanco.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonBalanco.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBalanco.Image")));
-            this.toolStripButtonBalanco.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonBalanco.Name = "toolStripButtonBalanco";
-            this.toolStripButtonBalanco.Size = new System.Drawing.Size(66, 25);
-            this.toolStripButtonBalanco.Text = "Balanço";
-            this.toolStripButtonBalanco.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.AutoSize = false;
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(60, 25);
-            // 
-            // toolStripSeparatorSalvar
-            // 
-            this.toolStripSeparatorSalvar.Name = "toolStripSeparatorSalvar";
-            this.toolStripSeparatorSalvar.Size = new System.Drawing.Size(6, 28);
-            this.toolStripSeparatorSalvar.Visible = false;
             // 
             // toolStripButtonNovaOperacao
             // 
@@ -872,6 +852,12 @@
             this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(117, 25);
             this.toolStripButtonNovaOperacao.Text = "Nova Operação";
             this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
+            // 
+            // toolStripSeparatorSalvar
+            // 
+            this.toolStripSeparatorSalvar.Name = "toolStripSeparatorSalvar";
+            this.toolStripSeparatorSalvar.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparatorSalvar.Visible = false;
             // 
             // toolStripButtonSalvar
             // 
@@ -886,6 +872,23 @@
             this.toolStripButtonSalvar.Text = "Salvar";
             this.toolStripButtonSalvar.Visible = false;
             this.toolStripButtonSalvar.Click += new System.EventHandler(this.toolStripButtonSalvar_Click);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.AutoSize = false;
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(60, 25);
+            // 
+            // toolStripButtonBalanco
+            // 
+            this.toolStripButtonBalanco.BackColor = System.Drawing.Color.NavajoWhite;
+            this.toolStripButtonBalanco.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonBalanco.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBalanco.Image")));
+            this.toolStripButtonBalanco.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBalanco.Name = "toolStripButtonBalanco";
+            this.toolStripButtonBalanco.Size = new System.Drawing.Size(66, 25);
+            this.toolStripButtonBalanco.Text = "Balanço";
+            this.toolStripButtonBalanco.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -928,7 +931,7 @@
         #endregion
 
         private EFWinforms.EntityDataSource entityDataSource1;
-        private System.Windows.Forms.DataGridView dgvAtivos;
+        private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvAtivos;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvOperacoes;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvVendas;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

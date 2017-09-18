@@ -12,7 +12,7 @@ namespace SerieHistorica {
             InitializeComponent();
 
             // Must setup year range selection before loading form
-            var anos = entityDataSource1.DbContext.Set<DataLayer.SerieHistorica>().Select(s => s.Data.Year.ToString()).Distinct().OrderBy(a => a).ToArray();
+            var anos = entityDataSource1.DbContext.Set<DataLayer.CotacaoDiaria>().Select(s => s.Data.Year.ToString()).Distinct().OrderBy(a => a).ToArray();
             toolStripComboBoxInicio.Items.AddRange(anos);
             toolStripComboBoxInicio.SelectedIndex = 0;
             toolStripComboBoxTermino.Items.AddRange(anos);
@@ -62,16 +62,16 @@ namespace SerieHistorica {
             chart1.Series.Clear();
             double chartMax = 0;
             double chartMin = 1000;
-            using (var ctx = new SerieHistoricaEntities()) {
+            using (var ctx = new InvestimentosEntities()) {
                 foreach (DataGridViewRow row in dgvAtivos.SelectedRows) {
                     var ativo = row.Cells[0].Value.ToString();
-                    if (!ctx.Ativos.Find(ativo).SeriesHistoricas
+                    if (!ctx.Ativos.Find(ativo).CotacoesDiarias
                         .Any(s => InYearRange(s.Data, anoInicio, anoTermino))) continue;
                     {
                         var serie = chart1.Series.Add(ativo);
                         serie.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                        var items = anoInicio == 0 ? ctx.Ativos.Find(ativo).SeriesHistoricas :
-                            ctx.Ativos.Find(ativo).SeriesHistoricas.Where(s => InYearRange(s.Data, anoInicio, anoTermino));
+                        var items = anoInicio == 0 ? ctx.Ativos.Find(ativo).CotacoesDiarias :
+                            ctx.Ativos.Find(ativo).CotacoesDiarias.Where(s => InYearRange(s.Data, anoInicio, anoTermino));
                         foreach (var s in items) {
                             serie.Points.AddXY(s.Data, s.PrecoUltimo);
                             chartMax = Math.Max(chartMax, (double)s.PrecoUltimo);
@@ -117,8 +117,8 @@ namespace SerieHistorica {
                         on linha.Substring(12, 12).Trim() equals ativo.Codigo
                         where linha.StartsWith("01")
                               && linha.Substring(24, 3) == "010"
-                        select new DataLayer.SerieHistorica(linha);
-            entityDataSource1.DbContext.Set<DataLayer.SerieHistorica>().AddRange(serie);
+                        select new DataLayer.CotacaoDiaria(linha);
+            entityDataSource1.DbContext.Set<DataLayer.CotacaoDiaria>().AddRange(serie);
         }
 
 

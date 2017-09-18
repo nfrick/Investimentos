@@ -12,8 +12,6 @@ namespace DataLayer
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
     public partial class InvestimentosEntities : DbContext
     {
@@ -33,18 +31,6 @@ namespace DataLayer
         public virtual DbSet<Ativo> Ativos { get; set; }
         public virtual DbSet<Operacao> Operacoes { get; set; }
         public virtual DbSet<Associacao> Associacoes { get; set; }
-    
-        public virtual ObjectResult<CompraDisponivelParaVenda> GetComprasDisponiveisParaVenda(Nullable<int> saidaId, Nullable<int> contaId)
-        {
-            var saidaIdParameter = saidaId.HasValue ?
-                new ObjectParameter("SaidaId", saidaId) :
-                new ObjectParameter("SaidaId", typeof(int));
-    
-            var contaIdParameter = contaId.HasValue ?
-                new ObjectParameter("ContaId", contaId) :
-                new ObjectParameter("ContaId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CompraDisponivelParaVenda>("GetComprasDisponiveisParaVenda", saidaIdParameter, contaIdParameter);
-        }
+        public virtual DbSet<CotacaoDiaria> CotacoesDiarias { get; set; }
     }
 }

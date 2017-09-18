@@ -76,16 +76,16 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
             <PropertyRef Name="OperacaoId" />
           </Key>
           <Property Name="OperacaoId" Type="Int32" Nullable="false" />
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
           <Property Name="Codigo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="Tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Qtd" Type="Int32" Nullable="false" />
           <Property Name="QtdAcumulada" Type="Int32" Nullable="false" />
+          <Property Name="QtdVendida" Type="Int32" Nullable="false" />
           <Property Name="Valor" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="ValorReal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="QtdVendida" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AtivoCotacao" Relationship="ModelAtivoCotacao.AtivoCotacaovwOperacoesComRunningSumQtdAssociada" FromRole="vwOperacoesComRunningSumQtdAssociada" ToRole="AtivoCotacao" />
-          <Property Name="ContaId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="AtivoCotacaovwOperacoesComRunningSumQtdAssociada">
           <End Type="ModelAtivoCotacao.AtivoCotacao" Role="AtivoCotacao" Multiplicity="1" />

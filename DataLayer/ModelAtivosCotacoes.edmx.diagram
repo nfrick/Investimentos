@@ -6,8 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8aada018188d45d78dc1d3af28f836fe" Name="Diagram1">
         <EntityTypeShape EntityType="ModelAtivoCotacao.AtivoCotacao" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelAtivoCotacao.OperacaoCotacao" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ModelAtivoCotacao.OperacaoCotacao" Width="1.75" PointX="3.375" PointY="0.75" />
         <AssociationConnector Association="ModelAtivoCotacao.AtivoCotacaovwOperacoesComRunningSumQtdAssociada" />
+        <EntityTypeShape EntityType="ModelAtivoCotacao.tbConta" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

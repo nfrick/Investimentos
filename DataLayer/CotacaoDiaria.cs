@@ -12,7 +12,7 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class SerieHistorica
+    public partial class CotacaoDiaria
     {
         public string Codigo { get; set; }
         public System.DateTime Data { get; set; }

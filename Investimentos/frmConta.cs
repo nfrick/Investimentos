@@ -14,7 +14,7 @@ namespace Investimentos {
             if (Conta.ContaId == 0) return;
             textBoxNome.Text = Conta.Nome;
             maskedTextBoxAgencia.Text = Conta.Agencia;
-            maskedTextBoxContaCorrente.Text = Conta.ContaCorrente;
+            maskedTextBoxContaCorrente.Text = Conta.ContaEdicao;
             textBoxSenha.Text = Conta.Senha;
             textBoxInfo.Text = Conta.Info;
         }
@@ -22,7 +22,7 @@ namespace Investimentos {
         private void buttonOK_Click(object sender, EventArgs e) {
             Conta.Nome = textBoxNome.Text;
             Conta.Agencia = maskedTextBoxAgencia.Text;
-            Conta.ContaCorrente = maskedTextBoxContaCorrente.Text;
+            Conta.ContaEdicao = maskedTextBoxContaCorrente.Text;
             Conta.Senha = textBoxSenha.Text;
             Conta.Info = textBoxInfo.Text;
         }

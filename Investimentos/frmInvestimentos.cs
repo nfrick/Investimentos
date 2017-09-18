@@ -11,7 +11,6 @@ using EFWinforms;
 
 namespace Investimentos {
     public partial class frmInvestimentos : Form {
-        private Conta _conta;
         public frmInvestimentos() {
             InitializeComponent();
         }
@@ -55,18 +54,13 @@ namespace Investimentos {
         }
 
         private void RefreshData() {
-            var ativoRow = dgvAtivos.SelectedRows[0].Index;
-            var operacaoRow = dgvOperacoes.SelectedRows[0].Index;
-            var vendaRow = dgvVendas.SelectedRows[0].Index;
+            dgvAtivos.SaveCurrentRow();
+            dgvOperacoes.SaveCurrentRow();
+            dgvVendas.SaveCurrentRow();
             entityDataSource1.Refresh();
-            // test for decreased number of rows
-            ativoRow -= dgvAtivos.RowCount > 0 && ativoRow > dgvAtivos.RowCount - 1 ? 1 : 0;
-            operacaoRow -= dgvOperacoes.RowCount > 0 && operacaoRow > dgvOperacoes.RowCount - 1 ? 1 : 0;
-            vendaRow -= dgvVendas.RowCount > 0 && vendaRow > dgvVendas.RowCount - 1 ? 1 : 0;
-            // Restore positions
-            dgvAtivos.CurrentCell = dgvAtivos.Rows[ativoRow].Cells[0];
-            dgvOperacoes.CurrentCell = dgvOperacoes.Rows[operacaoRow].Cells[1];
-            dgvVendas.CurrentCell = dgvVendas.Rows[vendaRow].Cells[1];
+            dgvAtivos.RestoreCurrentRow(0);
+            dgvOperacoes.RestoreCurrentRow(1);
+            dgvVendas.RestoreCurrentRow(1);
             RefreshSalvar();
         }
 
@@ -116,17 +110,17 @@ namespace Investimentos {
 
         #region toolstrip
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
-            _conta = ((Conta)toolStripComboBoxConta.SelectedItem);
+            var conta = ((Conta)toolStripComboBoxConta.SelectedItem);
             var row = (dgvContas.Rows
                 .Cast<DataGridViewRow>()
-                .First(r => (int)r.Cells[0].Value == _conta.ContaId)).Index;
+                .First(r => (int)r.Cells[0].Value == conta.ContaId)).Index;
             dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
         }
 
         private void ContaComboPopulate() {
             var cbx = toolStripComboBoxConta.ComboBox;
             var currentIndex = cbx.SelectedIndex;
-            cbx.DataSource = entityDataSource1.EntitySets["Contas"];
+            cbx.DataSource = entityDataSource1.CreateView(entityDataSource1.EntitySets["Contas"]);
             cbx.DisplayMember = "Nome";
             cbx.ValueMember = "ContaId";
             cbx.SelectedIndex = currentIndex == -1 ? 0 : currentIndex;
@@ -134,7 +128,8 @@ namespace Investimentos {
 
         private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
             var ativo = (AtivoDaConta)dgvAtivos.SelectedRows[0].DataBoundItem;
-            var op = new Operacao() { AtivoDaConta = ativo, ContaId = _conta.ContaId };
+            var conta = (Conta) dgvContas.CurrentRow.DataBoundItem;
+            var op = new Operacao() { AtivoDaConta = ativo, ContaId = conta.ContaId };
             var frm = GetFrmEditarOperacao(op);
             if (frm.ShowDialog() == DialogResult.Cancel)
                 return;
@@ -157,14 +152,13 @@ namespace Investimentos {
         }
 
         private void toolStripButtonResumoVendas_Click(object sender, EventArgs e) {
-            var frm = new frmBalanco() { Conta = _conta.ContaId };
+            var frm = new frmBalanco() { Conta = ((Conta)dgvContas.CurrentRow.DataBoundItem).ContaId };
             frm.ShowDialog();
         }
 
         private void toolStripButtonConta_Click(object sender, EventArgs e) {
             var btn = sender as ToolStripButton;
-            OpenFrmConta(btn.Name == "toolStripButtonNovaConta"
-                ? new Conta() : _conta);
+            OpenFrmConta(btn.Tag.ToString() == "new" ? new Conta() : (Conta)dgvContas.CurrentRow.DataBoundItem);
         }
 
         private void OpenFrmConta(Conta conta) {
@@ -175,7 +169,7 @@ namespace Investimentos {
             if (conta.ContaId == 0)
                 entityDataSource1.DbContext.Set<Conta>().Add(conta);
 
-            RefreshData();
+            RefreshSalvar();
             ContaComboPopulate();
         }
 

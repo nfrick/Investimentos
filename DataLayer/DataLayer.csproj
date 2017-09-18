@@ -65,29 +65,14 @@
     <Compile Include="AtivoDaConta.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
-    <Compile Include="CompraDisponivelParaVenda.cs">
+    <Compile Include="Conta.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Conta.cs">
+    <Compile Include="CotacaoDiaria.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
     <Compile Include="Entrada.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelSerieHistorica.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSerieHistorica.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelSerieHistorica.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSerieHistorica.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelSerieHistorica.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSerieHistorica.edmx</DependentUpon>
     </Compile>
     <Compile Include="Operacao.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
@@ -145,14 +130,11 @@
     <Compile Include="PartialClasses\OperacaoCotacao.cs" />
     <Compile Include="PartialClasses\OperacaoTipo.cs" />
     <Compile Include="PartialClasses\Saida.cs" />
-    <Compile Include="PartialClasses\SerieHistorica.cs" />
+    <Compile Include="PartialClasses\CotacaoDiaria.cs" />
     <Compile Include="PartialClasses\Associacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Saida.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SerieHistorica.cs">
-      <DependentUpon>ModelSerieHistorica.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -172,13 +154,6 @@
     </None>
     <None Include="ModelInvestimentos.edmx.diagram">
       <DependentUpon>ModelInvestimentos.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="ModelSerieHistorica.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelSerieHistorica.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ModelSerieHistorica.edmx.diagram">
-      <DependentUpon>ModelSerieHistorica.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -202,16 +177,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelInvestimentos.edmx</DependentUpon>
       <LastGenOutput>ModelInvestimentos.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModelSerieHistorica.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelSerieHistorica.edmx</DependentUpon>
-      <LastGenOutput>ModelSerieHistorica.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModelSerieHistorica.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelSerieHistorica.edmx</DependentUpon>
-      <LastGenOutput>ModelSerieHistorica.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
