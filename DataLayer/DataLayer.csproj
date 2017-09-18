@@ -57,7 +57,7 @@
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
     <Compile Include="Ativo.cs">
-      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+      <DependentUpon>ModelSerieHistorica.tt</DependentUpon>
     </Compile>
     <Compile Include="AtivoCotacao.cs">
       <DependentUpon>ModelAtivosCotacoes.tt</DependentUpon>

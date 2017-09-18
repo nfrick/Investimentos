@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Investimentos2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SerieHistoricaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbAtivos">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -39,7 +39,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Investimentos2ModelStoreContainer">
+        <EntityContainer Name="SerieHistoricaModelStoreContainer">
           <EntitySet Name="tbAtivos" EntityType="Self.tbAtivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbSerieHistorica" EntityType="Self.tbSerieHistorica" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_tbSerieHistorica_tbAtivos" Association="Self.FK_tbSerieHistorica_tbAtivos">
@@ -51,7 +51,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Investimentos2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="SerieHistoricaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Ativo">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -77,8 +77,8 @@
           <NavigationProperty Name="Ativo" Relationship="Self.FK_tbSerieHistorica_tbAtivos" FromRole="tbSerieHistorica" ToRole="tbAtivos" />
         </EntityType>
         <Association Name="FK_tbSerieHistorica_tbAtivos">
-          <End Role="tbAtivos" Type="Investimentos2Model.Ativo" Multiplicity="1" />
-          <End Role="tbSerieHistorica" Type="Investimentos2Model.SerieHistorica" Multiplicity="*" />
+          <End Role="tbAtivos" Type="SerieHistoricaModel.Ativo" Multiplicity="1" />
+          <End Role="tbSerieHistorica" Type="SerieHistoricaModel.SerieHistorica" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbAtivos">
               <PropertyRef Name="Codigo" />
@@ -88,9 +88,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Investimentos2Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Ativos" EntityType="Investimentos2Model.Ativo" />
-          <EntitySet Name="SeriesHistoricas" EntityType="Investimentos2Model.SerieHistorica" />
+        <EntityContainer Name="SerieHistoricaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ativos" EntityType="SerieHistoricaModel.Ativo" />
+          <EntitySet Name="SeriesHistoricas" EntityType="SerieHistoricaModel.SerieHistorica" />
           <AssociationSet Name="FK_tbSerieHistorica_tbAtivos" Association="Self.FK_tbSerieHistorica_tbAtivos">
             <End Role="tbAtivos" EntitySet="Ativos" />
             <End Role="tbSerieHistorica" EntitySet="SeriesHistoricas" />
@@ -101,9 +101,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Investimentos2ModelStoreContainer" CdmEntityContainer="Investimentos2Entities">
+        <EntityContainerMapping StorageEntityContainer="SerieHistoricaModelStoreContainer" CdmEntityContainer="SerieHistoricaEntities">
           <EntitySetMapping Name="Ativos">
-            <EntityTypeMapping TypeName="Investimentos2Model.Ativo">
+            <EntityTypeMapping TypeName="SerieHistoricaModel.Ativo">
               <MappingFragment StoreEntitySet="tbAtivos">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
@@ -111,7 +111,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SeriesHistoricas">
-            <EntityTypeMapping TypeName="Investimentos2Model.SerieHistorica">
+            <EntityTypeMapping TypeName="SerieHistoricaModel.SerieHistorica">
               <MappingFragment StoreEntitySet="tbSerieHistorica">
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Data" ColumnName="Data" />

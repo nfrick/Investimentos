@@ -6,7 +6,7 @@ namespace Testes {
     class Program {
         static void Main(string[] args) {
 
-            using (var ctx = new InvestimentosEntities()) {
+            using (var ctx = new SerieHistoricaEntities()) {
                 //foreach (var conta in ctx.Contas) {
                 //    Console.WriteLine($"{conta.Nome}");
                 //    foreach (var ativo in conta.AtivosDaConta) {
@@ -30,11 +30,18 @@ namespace Testes {
                 //op.QtdReal += 1;
                 //ctx.SaveChanges();
 
-                var op = ctx.Operacoes.First();
-                var entrada = op as Entrada;
-                var y = entrada.QtdReal;
-                var saida = op as Saida;
-                var x = saida.QtdReal;
+                //var op = ctx.Operacoes.First();
+                //var entrada = op as Entrada;
+                //var y = entrada.QtdReal;
+                //var saida = op as Saida;
+                //var x = saida.QtdReal;
+
+                foreach (var ativo in ctx.Ativos) {
+                    Console.WriteLine(ativo.Codigo);
+                    foreach (var sh in ativo.SeriesHistoricas) {
+                        Console.WriteLine($"\t{sh.Data}");
+                    }
+                }
 
             }
 

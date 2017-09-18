@@ -13,10 +13,10 @@ namespace DataLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Investimentos2Entities : DbContext
+    public partial class SerieHistoricaEntities : DbContext
     {
-        public Investimentos2Entities()
-            : base("name=Investimentos2Entities")
+        public SerieHistoricaEntities()
+            : base("name=SerieHistoricaEntities")
         {
         }
     

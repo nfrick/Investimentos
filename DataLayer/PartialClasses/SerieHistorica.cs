@@ -6,14 +6,12 @@ using System.Linq;
 
 namespace DataLayer {
     public partial class SerieHistorica {
-        public static CultureInfo Culture { get; } = CultureInfo.CreateSpecificCulture("en-US");
-
         /// <summary>
         /// Lê arquivo e retorna uma lista
         /// </summary>
         /// <param name="arquivo"></param>
         /// <returns>List<SerieHistorica></returns>
-        public static List<SerieHistorica> LerArquivo(string arquivo, Investimentos2Entities ctx) {
+        public static List<SerieHistorica> LerArquivo(string arquivo, SerieHistoricaEntities ctx) {
             //    var maxData = ctx.SeriesHistoricas.Max(c => c.Data).ToString("yyyyMMdd");
             var serie = from linha in File.ReadLines(arquivo)
                         join ativo in ctx.Ativos
@@ -32,7 +30,7 @@ namespace DataLayer {
         /// <returns>Número de registros gravados</returns>
         public static long LerArquivoParaDatabase(string arquivo) {
             long recordsAdded;
-            using (var ctx = new Investimentos2Entities()) {
+            using (var ctx = new SerieHistoricaEntities()) {
                 var serie = LerArquivo(arquivo, ctx);
                 recordsAdded = serie.Count;
                 ctx.SeriesHistoricas.AddRange(serie);
@@ -44,7 +42,6 @@ namespace DataLayer {
         public SerieHistorica() {
         }
         public SerieHistorica(string linha) {
-
             Data = DateTime.ParseExact(linha.Substring(2, 8), "yyyyMMdd",
                 CultureInfo.InvariantCulture, DateTimeStyles.None);
             Codigo = linha.Substring(12, 12).Trim();

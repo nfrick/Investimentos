@@ -12,15 +12,13 @@ namespace SerieHistorica {
             InitializeComponent();
 
             // Must setup year range selection before loading form
-            using (var ctx = new Investimentos2Entities()) {
-                var anos = ctx.SeriesHistoricas.Select(s => s.Data.Year.ToString()).Distinct().OrderBy(a => a).ToArray();
-                toolStripComboBoxInicio.Items.AddRange(anos);
-                toolStripComboBoxInicio.SelectedIndex = 0;
-                toolStripComboBoxTermino.Items.AddRange(anos);
-                toolStripComboBoxTermino.SelectedIndex = anos.Length - 1;
-                toolStripComboBoxInicio.SelectedIndexChanged += toolStripComboBoxAnos_SelectedIndexChanged;
-                toolStripComboBoxTermino.SelectedIndexChanged += toolStripComboBoxAnos_SelectedIndexChanged;
-            }
+            var anos = entityDataSource1.DbContext.Set<DataLayer.SerieHistorica>().Select(s => s.Data.Year.ToString()).Distinct().OrderBy(a => a).ToArray();
+            toolStripComboBoxInicio.Items.AddRange(anos);
+            toolStripComboBoxInicio.SelectedIndex = 0;
+            toolStripComboBoxTermino.Items.AddRange(anos);
+            toolStripComboBoxTermino.SelectedIndex = anos.Length - 1;
+            toolStripComboBoxInicio.SelectedIndexChanged += toolStripComboBoxAnos_SelectedIndexChanged;
+            toolStripComboBoxTermino.SelectedIndexChanged += toolStripComboBoxAnos_SelectedIndexChanged;
         }
 
         private void frmSerieHistorica_Load(object sender, EventArgs e) {
@@ -64,7 +62,7 @@ namespace SerieHistorica {
             chart1.Series.Clear();
             double chartMax = 0;
             double chartMin = 1000;
-            using (var ctx = new Investimentos2Entities()) {
+            using (var ctx = new SerieHistoricaEntities()) {
                 foreach (DataGridViewRow row in dgvAtivos.SelectedRows) {
                     var ativo = row.Cells[0].Value.ToString();
                     if (!ctx.Ativos.Find(ativo).SeriesHistoricas
@@ -98,23 +96,37 @@ namespace SerieHistorica {
             if (ofd.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            backgroundWorker1.RunWorkerAsync(ofd.FileNames);
+            bgWorker.RunWorkerAsync(ofd.FileNames);
             entityDataSource1.Refresh();
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e) {
+        private void bgWorker_DoWork(object sender, DoWorkEventArgs e) {
             var arquivos = e.Argument as string[];
             foreach (var arquivo in arquivos) {
-                backgroundWorker1.ReportProgress(1, arquivo);
-                DataLayer.SerieHistorica.LerArquivoParaDatabase(arquivo);
+                bgWorker.ReportProgress(1, arquivo);
+                LerArquivoParaDatabase(arquivo);
             }
+            entityDataSource1.SaveChanges();
         }
 
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+
+        private void LerArquivoParaDatabase(string arquivo) {
+            var ativos = entityDataSource1.DbContext.Set<Ativo>().ToList();
+            var serie = from linha in File.ReadLines(arquivo)
+                        join ativo in ativos
+                        on linha.Substring(12, 12).Trim() equals ativo.Codigo
+                        where linha.StartsWith("01")
+                              && linha.Substring(24, 3) == "010"
+                        select new DataLayer.SerieHistorica(linha);
+            entityDataSource1.DbContext.Set<DataLayer.SerieHistorica>().AddRange(serie);
+        }
+
+
+        private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             toolStripLabel1.Text = string.Empty;
         }
 
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e) {
+        private void bgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e) {
             var arquivo = Path.GetFileName((string)e.UserState);
             toolStripLabel1.Text = $@"Lendo {arquivo}";
         }

@@ -37,10 +37,18 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvSerieHistorica = new System.Windows.Forms.DataGridView();
+            this.dataDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoAberturaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoMaximoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoMinimoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoMedioDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoUltimoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entityDataSource1 = new EFWinforms.EntityDataSource(this.components);
             this.dgvAtivos = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonLerSerie = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,15 +59,7 @@
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxTermino = new System.Windows.Forms.ToolStripComboBox();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoAberturaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoMaximoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoMinimoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoMedioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoUltimoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bgWorker = new System.ComponentModel.BackgroundWorker();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -73,7 +73,7 @@
             // 
             // entityDataSource1
             // 
-            this.entityDataSource1.DbContextType = typeof(DataLayer.Investimentos2Entities);
+            this.entityDataSource1.DbContextType = typeof(DataLayer.SerieHistoricaEntities);
             // 
             // toolStripContainer1
             // 
@@ -199,14 +199,14 @@
             this.dgvSerieHistorica.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSerieHistorica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSerieHistorica.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataDataGridViewTextBoxColumn,
-            this.precoAberturaDataGridViewTextBoxColumn,
-            this.precoMaximoDataGridViewTextBoxColumn,
-            this.precoMinimoDataGridViewTextBoxColumn,
-            this.precoMedioDataGridViewTextBoxColumn,
-            this.precoUltimoDataGridViewTextBoxColumn,
-            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn,
-            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn});
+            this.dataDataGridViewTextBoxColumn1,
+            this.precoAberturaDataGridViewTextBoxColumn1,
+            this.precoMaximoDataGridViewTextBoxColumn1,
+            this.precoMinimoDataGridViewTextBoxColumn1,
+            this.precoMedioDataGridViewTextBoxColumn1,
+            this.precoUltimoDataGridViewTextBoxColumn1,
+            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn1,
+            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn1});
             this.dgvSerieHistorica.DataMember = "Ativos.SeriesHistoricas";
             this.dgvSerieHistorica.DataSource = this.entityDataSource1;
             this.dgvSerieHistorica.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -229,6 +229,64 @@
             this.dgvSerieHistorica.Size = new System.Drawing.Size(660, 328);
             this.dgvSerieHistorica.TabIndex = 5;
             // 
+            // dataDataGridViewTextBoxColumn1
+            // 
+            this.dataDataGridViewTextBoxColumn1.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn1.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn1.Name = "dataDataGridViewTextBoxColumn1";
+            this.dataDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // precoAberturaDataGridViewTextBoxColumn1
+            // 
+            this.precoAberturaDataGridViewTextBoxColumn1.DataPropertyName = "PrecoAbertura";
+            this.precoAberturaDataGridViewTextBoxColumn1.HeaderText = "Abertura";
+            this.precoAberturaDataGridViewTextBoxColumn1.Name = "precoAberturaDataGridViewTextBoxColumn1";
+            this.precoAberturaDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // precoMaximoDataGridViewTextBoxColumn1
+            // 
+            this.precoMaximoDataGridViewTextBoxColumn1.DataPropertyName = "PrecoMaximo";
+            this.precoMaximoDataGridViewTextBoxColumn1.HeaderText = "Máximo";
+            this.precoMaximoDataGridViewTextBoxColumn1.Name = "precoMaximoDataGridViewTextBoxColumn1";
+            this.precoMaximoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // precoMinimoDataGridViewTextBoxColumn1
+            // 
+            this.precoMinimoDataGridViewTextBoxColumn1.DataPropertyName = "PrecoMinimo";
+            this.precoMinimoDataGridViewTextBoxColumn1.HeaderText = "Mínimo";
+            this.precoMinimoDataGridViewTextBoxColumn1.Name = "precoMinimoDataGridViewTextBoxColumn1";
+            this.precoMinimoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // precoMedioDataGridViewTextBoxColumn1
+            // 
+            this.precoMedioDataGridViewTextBoxColumn1.DataPropertyName = "PrecoMedio";
+            this.precoMedioDataGridViewTextBoxColumn1.HeaderText = "Médio";
+            this.precoMedioDataGridViewTextBoxColumn1.Name = "precoMedioDataGridViewTextBoxColumn1";
+            this.precoMedioDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // precoUltimoDataGridViewTextBoxColumn1
+            // 
+            this.precoUltimoDataGridViewTextBoxColumn1.DataPropertyName = "PrecoUltimo";
+            this.precoUltimoDataGridViewTextBoxColumn1.HeaderText = "Último";
+            this.precoUltimoDataGridViewTextBoxColumn1.Name = "precoUltimoDataGridViewTextBoxColumn1";
+            this.precoUltimoDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // precoMelhorOfertaCompraDataGridViewTextBoxColumn1
+            // 
+            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn1.DataPropertyName = "PrecoMelhorOfertaCompra";
+            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn1.HeaderText = "M.O. Compra";
+            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn1.Name = "precoMelhorOfertaCompraDataGridViewTextBoxColumn1";
+            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn1.ToolTipText = "Melhor Oferta de Compra";
+            // 
+            // precoMelhorOfertaVendaDataGridViewTextBoxColumn1
+            // 
+            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn1.DataPropertyName = "PrecoMelhorOfertaVenda";
+            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn1.HeaderText = "M.O. Venda";
+            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn1.Name = "precoMelhorOfertaVendaDataGridViewTextBoxColumn1";
+            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn1.ToolTipText = "Melhor Oferta de Venda";
+            // 
             // dgvAtivos
             // 
             this.dgvAtivos.AllowUserToAddRows = false;
@@ -245,8 +303,8 @@
             this.dgvAtivos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAtivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAtivos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1});
+            this.codigoDataGridViewTextBoxColumn2,
+            this.nomeDataGridViewTextBoxColumn});
             this.dgvAtivos.DataMember = "Ativos";
             this.dgvAtivos.DataSource = this.entityDataSource1;
             this.dgvAtivos.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -270,19 +328,22 @@
             this.dgvAtivos.TabIndex = 4;
             this.dgvAtivos.SelectionChanged += new System.EventHandler(this.dgvAtivos_SelectionChanged);
             // 
-            // codigoDataGridViewTextBoxColumn
+            // codigoDataGridViewTextBoxColumn2
             // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codigoDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.codigoDataGridViewTextBoxColumn2.DataPropertyName = "Codigo";
+            this.codigoDataGridViewTextBoxColumn2.HeaderText = "Ativo";
+            this.codigoDataGridViewTextBoxColumn2.Name = "codigoDataGridViewTextBoxColumn2";
+            this.codigoDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.codigoDataGridViewTextBoxColumn2.Width = 77;
             // 
-            // dataGridViewTextBoxColumn1
+            // nomeDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Nome";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nome";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.nomeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -366,65 +427,12 @@
             this.toolStripComboBoxTermino.Size = new System.Drawing.Size(75, 28);
             this.toolStripComboBoxTermino.Tag = "";
             // 
-            // backgroundWorker1
+            // bgWorker
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precoAberturaDataGridViewTextBoxColumn
-            // 
-            this.precoAberturaDataGridViewTextBoxColumn.DataPropertyName = "PrecoAbertura";
-            this.precoAberturaDataGridViewTextBoxColumn.HeaderText = "Abertura";
-            this.precoAberturaDataGridViewTextBoxColumn.Name = "precoAberturaDataGridViewTextBoxColumn";
-            this.precoAberturaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precoMaximoDataGridViewTextBoxColumn
-            // 
-            this.precoMaximoDataGridViewTextBoxColumn.DataPropertyName = "PrecoMaximo";
-            this.precoMaximoDataGridViewTextBoxColumn.HeaderText = "Maximo";
-            this.precoMaximoDataGridViewTextBoxColumn.Name = "precoMaximoDataGridViewTextBoxColumn";
-            this.precoMaximoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precoMinimoDataGridViewTextBoxColumn
-            // 
-            this.precoMinimoDataGridViewTextBoxColumn.DataPropertyName = "PrecoMinimo";
-            this.precoMinimoDataGridViewTextBoxColumn.HeaderText = "Minimo";
-            this.precoMinimoDataGridViewTextBoxColumn.Name = "precoMinimoDataGridViewTextBoxColumn";
-            this.precoMinimoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precoMedioDataGridViewTextBoxColumn
-            // 
-            this.precoMedioDataGridViewTextBoxColumn.DataPropertyName = "PrecoMedio";
-            this.precoMedioDataGridViewTextBoxColumn.HeaderText = "Medio";
-            this.precoMedioDataGridViewTextBoxColumn.Name = "precoMedioDataGridViewTextBoxColumn";
-            this.precoMedioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precoUltimoDataGridViewTextBoxColumn
-            // 
-            this.precoUltimoDataGridViewTextBoxColumn.DataPropertyName = "PrecoUltimo";
-            this.precoUltimoDataGridViewTextBoxColumn.HeaderText = "Ultimo";
-            this.precoUltimoDataGridViewTextBoxColumn.Name = "precoUltimoDataGridViewTextBoxColumn";
-            this.precoUltimoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precoMelhorOfertaCompraDataGridViewTextBoxColumn
-            // 
-            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn.DataPropertyName = "PrecoMelhorOfertaCompra";
-            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn.HeaderText = "Melhor Oferta Compra";
-            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn.Name = "precoMelhorOfertaCompraDataGridViewTextBoxColumn";
-            this.precoMelhorOfertaCompraDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precoMelhorOfertaVendaDataGridViewTextBoxColumn
-            // 
-            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn.DataPropertyName = "PrecoMelhorOfertaVenda";
-            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn.HeaderText = "Melhor Oferta Venda";
-            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn.Name = "precoMelhorOfertaVendaDataGridViewTextBoxColumn";
-            this.precoMelhorOfertaVendaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bgWorker.WorkerReportsProgress = true;
+            this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
+            this.bgWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_ProgressChanged);
+            this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
             // 
             // frmSerieHistorica
             // 
@@ -433,7 +441,7 @@
             this.ClientSize = new System.Drawing.Size(1072, 709);
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "frmSerieHistorica";
-            this.Text = "frmSerie2";
+            this.Text = "Série Histórica de Cotações";
             this.Load += new System.EventHandler(this.frmSerieHistorica_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
@@ -456,21 +464,22 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private EFWinforms.EntityDataSource entityDataSource1;
         private System.Windows.Forms.OpenFileDialog ofd;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker bgWorker;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvAtivos;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn2;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView dgvSerieHistorica;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn precoAberturaDataGridViewTextBoxColumn1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn precoMaximoDataGridViewTextBoxColumn1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn precoMinimoDataGridViewTextBoxColumn1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn precoMedioDataGridViewTextBoxColumn1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn precoUltimoDataGridViewTextBoxColumn1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn precoMelhorOfertaCompraDataGridViewTextBoxColumn1;
-        //private System.Windows.Forms.DataGridViewTextBoxColumn precoMelhorOfertaVendaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoAberturaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoMaximoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoMinimoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoMedioDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoUltimoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoMelhorOfertaCompraDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoMelhorOfertaVendaDataGridViewTextBoxColumn1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonLerSerie;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
@@ -480,16 +489,5 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private EFWinforms.EntityDataSource entityDataSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoAberturaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoMaximoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoMinimoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoMedioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoUltimoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoMelhorOfertaCompraDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoMelhorOfertaVendaDataGridViewTextBoxColumn;
     }
 }
