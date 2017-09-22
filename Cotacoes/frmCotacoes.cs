@@ -24,7 +24,7 @@ namespace Cotacoes {
 
             var cbx = toolStripComboBoxConta.ComboBox;
             using (var ctx = new InvestimentosEntities()) {
-                cbx.Items.AddRange(ctx.Contas.ToArray());
+                cbx.Items.AddRange(ctx.Contas.OrderBy(c => c.Nome).ToArray());
             }
             cbx.DisplayMember = "Nome";
             cbx.ValueMember = "ContaId";
