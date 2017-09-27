@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using DataLayer;
 using GridAndChartStyleLibrary;
 
@@ -38,17 +40,17 @@ namespace SerieHistorica {
                 toolStripComboBoxInicio.SelectedIndex = toolStripComboBoxTermino.SelectedIndex;
                 toolStripComboBoxTermino.SelectedIndex = temp;
             }
-            GerarGrafico();
+            GerarGrafico(this.chart1);
         }
 
         private void dgvAtivos_SelectionChanged(object sender, EventArgs e) {
-            GerarGrafico();
+            GerarGrafico(this.chart1);
         }
 
-        private void GerarGrafico() {
+        private void GerarGrafico(Chart chart) {
             if (dgvAtivos.SelectedRows.Count == 0 ||
                 dgvSerieHistorica.Rows.Count == 0) {
-                chart1.Visible = false;
+                chart.Visible = false;
                 return;
             }
             var anoInicio = 0;
@@ -58,18 +60,24 @@ namespace SerieHistorica {
                 anoInicio = int.Parse(toolStripComboBoxInicio.SelectedItem.ToString());
                 anoTermino = int.Parse(toolStripComboBoxTermino.SelectedItem.ToString());
             }
-            chart1.Visible = true;
-            chart1.Series.Clear();
+            chart.Visible = true;
+            chart.Series.Clear();
             double chartMax = 0;
             double chartMin = 1000;
             using (var ctx = new InvestimentosEntities()) {
-                foreach (DataGridViewRow row in dgvAtivos.SelectedRows) {
+                var sortedRows =
+                (from DataGridViewRow row in dgvAtivos.SelectedRows
+                    where !row.IsNewRow
+                    orderby row.Index
+                    select row).ToList<DataGridViewRow>();
+
+                foreach (DataGridViewRow row in sortedRows) {
                     var ativo = row.Cells[0].Value.ToString();
                     if (!ctx.Ativos.Find(ativo).CotacoesDiarias
                         .Any(s => InYearRange(s.Data, anoInicio, anoTermino))) continue;
                     {
-                        var serie = chart1.Series.Add(ativo);
-                        serie.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                        var serie = chart.Series.Add(ativo);
+                        serie.ChartType = SeriesChartType.Line;
                         var items = anoInicio == 0 ? ctx.Ativos.Find(ativo).CotacoesDiarias :
                             ctx.Ativos.Find(ativo).CotacoesDiarias.Where(s => InYearRange(s.Data, anoInicio, anoTermino));
                         foreach (var s in items) {
@@ -80,7 +88,7 @@ namespace SerieHistorica {
                     }
                 }
             }
-            ChartMinMax.ChartSetYAxisMinMax(chart1, chartMin, chartMax, 0.05);
+            ChartMinMax.ChartSetYAxisMinMax(chart, chartMin, chartMax, 0.05);
         }
 
         private static bool InYearRange(DateTime data, int anoMin, int anoMax) {
@@ -131,5 +139,11 @@ namespace SerieHistorica {
             toolStripLabel1.Text = $@"Lendo {arquivo}";
         }
         #endregion
+
+        private void chart1_DoubleClick(object sender, EventArgs e) {
+            var frm = new frmGrafico();
+            GerarGrafico(frm.chart1);
+            frm.Show();
+        }
     }
 }

@@ -45,6 +45,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LaMarvin.Windows.Forms.ColorPicker">
+      <HintPath>..\..\ColorComboBox\Control\bin\LaMarvin.Windows.Forms.ColorPicker.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -61,6 +64,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCustomizeChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCustomizeChart.Designer.cs">
+      <DependentUpon>frmCustomizeChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGrafico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGrafico.Designer.cs">
+      <DependentUpon>frmGrafico.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSerieHistorica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +84,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCustomizeChart.resx">
+      <DependentUpon>frmCustomizeChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGrafico.resx">
+      <DependentUpon>frmGrafico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSerieHistorica.resx">
       <DependentUpon>frmSerieHistorica.cs</DependentUpon>
     </EmbeddedResource>
