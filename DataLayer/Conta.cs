@@ -19,6 +19,7 @@ namespace DataLayer
         {
             this.AtivosDaConta = new HashSet<AtivoDaConta>();
             this.Saidas = new HashSet<Saida>();
+            this.ContasFundos = new HashSet<ContaFundo>();
         }
     
         public int ContaId { get; set; }
@@ -32,5 +33,7 @@ namespace DataLayer
         public virtual ICollection<AtivoDaConta> AtivosDaConta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Saida> Saidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContaFundo> ContasFundos { get; set; }
     }
 }

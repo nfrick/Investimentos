@@ -32,5 +32,9 @@ namespace DataLayer
         public virtual DbSet<Operacao> Operacoes { get; set; }
         public virtual DbSet<Associacao> Associacoes { get; set; }
         public virtual DbSet<CotacaoDiaria> CotacoesDiarias { get; set; }
+        public virtual DbSet<ContaFundo> ContasFundos { get; set; }
+        public virtual DbSet<Fundo> Fundos { get; set; }
+        public virtual DbSet<Movimento> Movimentos { get; set; }
+        public virtual DbSet<Resultado> Resultados { get; set; }
     }
 }

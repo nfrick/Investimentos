@@ -82,6 +82,47 @@
           <Property Name="PrecoMelhorOfertaCompra" Type="smallmoney" Nullable="false" />
           <Property Name="PrecoMelhorOfertaVenda" Type="smallmoney" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbContasFundos">
+          <Key>
+            <PropertyRef Name="ContaFundoId" />
+          </Key>
+          <Property Name="ContaFundoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaId" Type="int" Nullable="false" />
+          <Property Name="FundoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbFundos">
+          <Key>
+            <PropertyRef Name="FundoId" />
+          </Key>
+          <Property Name="FundoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="CNPJ" Type="nchar" MaxLength="14" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMovimentos">
+          <Key>
+            <PropertyRef Name="MovimentoId" />
+          </Key>
+          <Property Name="MovimentoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MesId" Type="int" Nullable="false" />
+          <Property Name="Data" Type="smalldatetime" Nullable="false" />
+          <Property Name="Historico" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Valor" Type="money" Nullable="false" />
+          <Property Name="ImpostoRenda" Type="money" Nullable="false" />
+          <Property Name="CotaQtd" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="CotaValor" Type="decimal" Precision="18" Scale="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbResultados">
+          <Key>
+            <PropertyRef Name="MesId" />
+          </Key>
+          <Property Name="MesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaFundoId" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="smalldatetime" Nullable="false" />
+          <Property Name="CotaValor" Type="numeric" Precision="18" Scale="9" Nullable="false" />
+          <Property Name="RendimentoMes" Type="numeric" Precision="6" Scale="4" Nullable="false" />
+          <Property Name="RendimentoAno" Type="numeric" Precision="6" Scale="4" Nullable="false" />
+          <Property Name="Rendimento12Meses" Type="numeric" Precision="6" Scale="4" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwAtivos">
@@ -117,6 +158,30 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbContaFundo_tbContas">
+          <End Role="tbContas" Type="Self.tbContas" Multiplicity="1" />
+          <End Role="tbContasFundos" Type="Self.tbContasFundos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContas">
+              <PropertyRef Name="ContaId" />
+            </Principal>
+            <Dependent Role="tbContasFundos">
+              <PropertyRef Name="ContaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContaFundo_tbFundos">
+          <End Role="tbFundos" Type="Self.tbFundos" Multiplicity="1" />
+          <End Role="tbContasFundos" Type="Self.tbContasFundos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbFundos">
+              <PropertyRef Name="FundoId" />
+            </Principal>
+            <Dependent Role="tbContasFundos">
+              <PropertyRef Name="FundoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbEntradas2_tbOperacoes2">
           <End Role="tbOperacoes" Type="Self.tbOperacoes" Multiplicity="1" />
           <End Role="tbEntradas" Type="Self.tbEntradas" Multiplicity="0..1" />
@@ -129,6 +194,18 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbMovimentos_tbResultados">
+          <End Role="tbResultados" Type="Self.tbResultados" Multiplicity="1" />
+          <End Role="tbMovimentos" Type="Self.tbMovimentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbResultados">
+              <PropertyRef Name="MesId" />
+            </Principal>
+            <Dependent Role="tbMovimentos">
+              <PropertyRef Name="MesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbOperacoes_tbOperacoesTipos">
           <End Role="tbOperacoesTipos" Type="Self.tbOperacoesTipos" Multiplicity="1" />
           <End Role="tbOperacoes" Type="Self.tbOperacoes" Multiplicity="*" />
@@ -138,6 +215,18 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             </Principal>
             <Dependent Role="tbOperacoes">
               <PropertyRef Name="TipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbResultados_tbContasFundos">
+          <End Role="tbContasFundos" Type="Self.tbContasFundos" Multiplicity="1" />
+          <End Role="tbResultados" Type="Self.tbResultados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContasFundos">
+              <PropertyRef Name="ContaFundoId" />
+            </Principal>
+            <Dependent Role="tbResultados">
+              <PropertyRef Name="ContaFundoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -174,6 +263,10 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <EntitySet Name="tbOperacoesTipos" EntityType="Self.tbOperacoesTipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbSaidas" EntityType="Self.tbSaidas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbSerieHistorica" EntityType="Self.tbSerieHistorica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbContasFundos" EntityType="Self.tbContasFundos" Schema="Fundos" store:Type="Tables" />
+          <EntitySet Name="tbFundos" EntityType="Self.tbFundos" Schema="Fundos" store:Type="Tables" />
+          <EntitySet Name="tbMovimentos" EntityType="Self.tbMovimentos" Schema="Fundos" store:Type="Tables" />
+          <EntitySet Name="tbResultados" EntityType="Self.tbResultados" Schema="Fundos" store:Type="Tables" />
           <EntitySet Name="vwAtivos" EntityType="Self.vwAtivos" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwAtivos].[ContaId] AS [ContaId], 
@@ -189,13 +282,29 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <End Role="tbSaidas" EntitySet="tbSaidas" />
             <End Role="tbAssociacoes" EntitySet="tbAssociacoes" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbContaFundo_tbContas" Association="Self.FK_tbContaFundo_tbContas">
+            <End Role="tbContas" EntitySet="tbContas" />
+            <End Role="tbContasFundos" EntitySet="tbContasFundos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContaFundo_tbFundos" Association="Self.FK_tbContaFundo_tbFundos">
+            <End Role="tbFundos" EntitySet="tbFundos" />
+            <End Role="tbContasFundos" EntitySet="tbContasFundos" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbEntradas2_tbOperacoes2" Association="Self.FK_tbEntradas2_tbOperacoes2">
             <End Role="tbOperacoes" EntitySet="tbOperacoes" />
             <End Role="tbEntradas" EntitySet="tbEntradas" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbMovimentos_tbResultados" Association="Self.FK_tbMovimentos_tbResultados">
+            <End Role="tbResultados" EntitySet="tbResultados" />
+            <End Role="tbMovimentos" EntitySet="tbMovimentos" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbOperacoes_tbOperacoesTipos" Association="Self.FK_tbOperacoes_tbOperacoesTipos">
             <End Role="tbOperacoesTipos" EntitySet="tbOperacoesTipos" />
             <End Role="tbOperacoes" EntitySet="tbOperacoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbResultados_tbContasFundos" Association="Self.FK_tbResultados_tbContasFundos">
+            <End Role="tbContasFundos" EntitySet="tbContasFundos" />
+            <End Role="tbResultados" EntitySet="tbResultados" />
           </AssociationSet>
           <AssociationSet Name="FK_tbSaidas2_tbOperacoes2" Association="Self.FK_tbSaidas2_tbOperacoes2">
             <End Role="tbOperacoes" EntitySet="tbOperacoes" />
@@ -264,6 +373,26 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <End Role="Ativo" EntitySet="Ativos" />
             <End Role="tbSerieHistorica" EntitySet="CotacoesDiarias" />
           </AssociationSet>
+          <EntitySet Name="ContasFundos" EntityType="InvestimentosModel.ContaFundo" />
+          <EntitySet Name="Fundos" EntityType="InvestimentosModel.Fundo" />
+          <EntitySet Name="Movimentos" EntityType="InvestimentosModel.Movimento" />
+          <EntitySet Name="Resultados" EntityType="InvestimentosModel.Resultado" />
+          <AssociationSet Name="FK_tbContaFundo_tbContas" Association="InvestimentosModel.FK_tbContaFundo_tbContas">
+            <End Role="Conta" EntitySet="Contas" />
+            <End Role="tbContasFundo" EntitySet="ContasFundos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbContaFundo_tbFundos" Association="InvestimentosModel.FK_tbContaFundo_tbFundos">
+            <End Role="tbFundo" EntitySet="Fundos" />
+            <End Role="tbContasFundo" EntitySet="ContasFundos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbResultados_tbContasFundos" Association="InvestimentosModel.FK_tbResultados_tbContasFundos">
+            <End Role="ContaFundo" EntitySet="ContasFundos" />
+            <End Role="Resultado" EntitySet="Resultados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMovimentos_tbResultados" Association="InvestimentosModel.FK_tbMovimentos_tbResultados">
+            <End Role="Resultado" EntitySet="Resultados" />
+            <End Role="Movimento" EntitySet="Movimentos" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Conta">
           <Key>
@@ -277,6 +406,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Property Name="Info" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AtivosDaConta" Relationship="InvestimentosModel.ContaAtivo" FromRole="Conta" ToRole="vwAtivo" />
           <NavigationProperty Name="Saidas" Relationship="InvestimentosModel.ContaSaida" FromRole="Conta" ToRole="Saida" />
+          <NavigationProperty Name="ContasFundos" Relationship="InvestimentosModel.FK_tbContaFundo_tbContas" FromRole="Conta" ToRole="tbContasFundo" />
           </EntityType>
         <EntityType Name="AtivoDaConta">
           <Key>
@@ -463,6 +593,102 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ContaFundo">
+          <Key>
+            <PropertyRef Name="ContaFundoId" />
+          </Key>
+          <Property Name="ContaFundoId" Type="Int32" Nullable="false" />
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
+          <Property Name="FundoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Conta" Relationship="InvestimentosModel.FK_tbContaFundo_tbContas" FromRole="tbContasFundo" ToRole="Conta" />
+          <NavigationProperty Name="Fundo" Relationship="InvestimentosModel.FK_tbContaFundo_tbFundos" FromRole="tbContasFundo" ToRole="tbFundo" />
+          <NavigationProperty Name="Resultados" Relationship="InvestimentosModel.FK_tbResultados_tbContasFundos" FromRole="ContaFundo" ToRole="Resultado" />
+        </EntityType>
+        <EntityType Name="Fundo">
+          <Key>
+            <PropertyRef Name="FundoId" />
+          </Key>
+          <Property Name="FundoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CNPJ" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ContaFundo" Relationship="InvestimentosModel.FK_tbContaFundo_tbFundos" FromRole="tbFundo" ToRole="tbContasFundo" />
+        </EntityType>
+        <EntityType Name="Movimento">
+          <Key>
+            <PropertyRef Name="MovimentoId" />
+          </Key>
+          <Property Name="MovimentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MesId" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Historico" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ImpostoRenda" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CotaQtd" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="CotaValor" Type="Decimal" Nullable="false" Precision="18" Scale="9" />
+          <NavigationProperty Name="Resultado" Relationship="InvestimentosModel.FK_tbMovimentos_tbResultados" FromRole="Movimento" ToRole="Resultado" />
+        </EntityType>
+        <EntityType Name="Resultado">
+          <Key>
+            <PropertyRef Name="MesId" />
+          </Key>
+          <Property Name="MesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContaFundoId" Type="Int32" Nullable="false" />
+          <Property Name="Mes" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CotaValor" Type="Decimal" Nullable="false" Precision="18" Scale="9" />
+          <Property Name="RendimentoMes" Type="Decimal" Nullable="false" />
+          <Property Name="RendimentoAno" Type="Decimal" Nullable="false" />
+          <Property Name="Rendimento12Meses" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="ContaFundo" Relationship="InvestimentosModel.FK_tbResultados_tbContasFundos" FromRole="Resultado" ToRole="ContaFundo" />
+          <NavigationProperty Name="Movimentos" Relationship="InvestimentosModel.FK_tbMovimentos_tbResultados" FromRole="Resultado" ToRole="Movimento" />
+        </EntityType>
+        <Association Name="FK_tbContaFundo_tbContas">
+          <End Type="InvestimentosModel.Conta" Role="Conta" Multiplicity="1" />
+          <End Type="InvestimentosModel.ContaFundo" Role="tbContasFundo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conta">
+              <PropertyRef Name="ContaId" />
+            </Principal>
+            <Dependent Role="tbContasFundo">
+              <PropertyRef Name="ContaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbContaFundo_tbFundos">
+          <End Type="InvestimentosModel.Fundo" Role="tbFundo" Multiplicity="1" />
+          <End Type="InvestimentosModel.ContaFundo" Role="tbContasFundo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbFundo">
+              <PropertyRef Name="FundoId" />
+            </Principal>
+            <Dependent Role="tbContasFundo">
+              <PropertyRef Name="FundoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbResultados_tbContasFundos">
+          <End Type="InvestimentosModel.ContaFundo" Role="ContaFundo" Multiplicity="1" />
+          <End Type="InvestimentosModel.Resultado" Role="Resultado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContaFundo">
+              <PropertyRef Name="ContaFundoId" />
+            </Principal>
+            <Dependent Role="Resultado">
+              <PropertyRef Name="ContaFundoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMovimentos_tbResultados">
+          <End Type="InvestimentosModel.Resultado" Role="Resultado" Multiplicity="1" />
+          <End Type="InvestimentosModel.Movimento" Role="Movimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resultado">
+              <PropertyRef Name="MesId" />
+            </Principal>
+            <Dependent Role="Movimento">
+              <PropertyRef Name="MesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -554,6 +780,51 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
                 <ScalarProperty Name="PrecoAbertura" ColumnName="PrecoAbertura" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContasFundos">
+            <EntityTypeMapping TypeName="InvestimentosModel.ContaFundo">
+              <MappingFragment StoreEntitySet="tbContasFundos">
+                <ScalarProperty Name="FundoId" ColumnName="FundoId" />
+                <ScalarProperty Name="ContaId" ColumnName="ContaId" />
+                <ScalarProperty Name="ContaFundoId" ColumnName="ContaFundoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fundos">
+            <EntityTypeMapping TypeName="InvestimentosModel.Fundo">
+              <MappingFragment StoreEntitySet="tbFundos">
+                <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="FundoId" ColumnName="FundoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movimentos">
+            <EntityTypeMapping TypeName="InvestimentosModel.Movimento">
+              <MappingFragment StoreEntitySet="tbMovimentos">
+                <ScalarProperty Name="MesId" ColumnName="MesId" />
+                <ScalarProperty Name="CotaValor" ColumnName="CotaValor" />
+                <ScalarProperty Name="CotaQtd" ColumnName="CotaQtd" />
+                <ScalarProperty Name="ImpostoRenda" ColumnName="ImpostoRenda" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Historico" ColumnName="Historico" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="MovimentoId" ColumnName="MovimentoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resultados">
+            <EntityTypeMapping TypeName="InvestimentosModel.Resultado">
+              <MappingFragment StoreEntitySet="tbResultados">
+                <ScalarProperty Name="ContaFundoId" ColumnName="ContaFundoId" />
+                <ScalarProperty Name="Rendimento12Meses" ColumnName="Rendimento12Meses" />
+                <ScalarProperty Name="RendimentoAno" ColumnName="RendimentoAno" />
+                <ScalarProperty Name="RendimentoMes" ColumnName="RendimentoMes" />
+                <ScalarProperty Name="CotaValor" ColumnName="CotaValor" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="MesId" ColumnName="MesId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

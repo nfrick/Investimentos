@@ -25,7 +25,6 @@ namespace Testes
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tbOperacoes> tbOperacoes { get; set; }
-        public virtual DbSet<tbOperacoesTipos> tbOperacoesTipos { get; set; }
+        public virtual DbSet<tbContas> tbContas { get; set; }
     }
 }

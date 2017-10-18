@@ -36,10 +36,10 @@ namespace Testes {
                 //var saida = op as Saida;
                 //var x = saida.QtdReal;
 
-                foreach (var ativo in ctx.Ativos) {
-                    Console.WriteLine(ativo.Codigo);
-                    foreach (var sh in ativo.CotacoesDiarias) {
-                        Console.WriteLine($"\t{sh.Data}");
+                foreach (var conta in ctx.Contas) {
+                    Console.WriteLine(conta.Nome);
+                    foreach (var sh in conta.ContasFundos) {
+                        Console.WriteLine($"\t{sh.ToString()}");
                     }
                 }
 

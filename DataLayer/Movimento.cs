@@ -7,12 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Testes
+namespace DataLayer
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tbSaidas : tbOperacoes
+    public partial class Movimento
     {
+        public int MovimentoId { get; set; }
+        public int MesId { get; set; }
+        public System.DateTime Data { get; set; }
+        public string Historico { get; set; }
+        public decimal Valor { get; set; }
+        public decimal ImpostoRenda { get; set; }
+        public decimal CotaQtd { get; set; }
+        public decimal CotaValor { get; set; }
+    
+        public virtual Resultado Resultado { get; set; }
     }
 }

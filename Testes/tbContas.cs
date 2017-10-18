@@ -12,18 +12,13 @@ namespace Testes
     using System;
     using System.Collections.Generic;
     
-    public partial class tbOperacoes
+    public partial class tbContas
     {
-        public int OperacaoId { get; set; }
         public int ContaId { get; set; }
-        public string Codigo { get; set; }
-        public int TipoId { get; set; }
-        public System.DateTime Data { get; set; }
-        public int QtdPrevista { get; set; }
-        public int QtdReal { get; set; }
-        public decimal Valor { get; set; }
-        public decimal ValorReal { get; set; }
-    
-        public virtual tbOperacoesTipos tbOperacoesTipos { get; set; }
+        public string Nome { get; set; }
+        public string Agencia { get; set; }
+        public string ContaCorrente { get; set; }
+        public string Senha { get; set; }
+        public string Info { get; set; }
     }
 }

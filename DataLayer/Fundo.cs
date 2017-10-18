@@ -7,24 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Testes
+namespace DataLayer
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tbOperacoesTipos
+    public partial class Fundo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbOperacoesTipos()
+        public Fundo()
         {
-            this.tbOperacoes = new HashSet<tbOperacoes>();
+            this.ContaFundo = new HashSet<ContaFundo>();
         }
     
-        public int TipoId { get; set; }
-        public string Tipo { get; set; }
-        public bool SinalPositivo { get; set; }
+        public int FundoId { get; set; }
+        public string Nome { get; set; }
+        public string CNPJ { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbOperacoes> tbOperacoes { get; set; }
+        public virtual ICollection<ContaFundo> ContaFundo { get; set; }
     }
 }

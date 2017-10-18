@@ -29,21 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvestimentos));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.tableLayoutPanelAcoes = new System.Windows.Forms.TableLayoutPanel();
             this.dgvVendas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.OperacaoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +85,8 @@
             this.toEntradaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toSaidaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entityDataSource1 = new EFWinforms.EntityDataSource(this.components);
+            this.dgvFundos = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
+            this.fundoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvOperacoes = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,6 +101,8 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.dgvContas = new System.Windows.Forms.DataGridView();
             this.contaIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,7 +110,10 @@
             this.contaCorrenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.senhaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.infoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvResultados = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNovaConta = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -119,37 +127,54 @@
             this.toolStripButtonSalvar = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButtonBalanco = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonNovoFundo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabelNovoFundo = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripComboBoxFundos = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButtonFundoSalvar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonFundoCancelar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonNovoLerExtrato = new System.Windows.Forms.ToolStripButton();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cotaValorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rendimentoMesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rendimentoAnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rendimento12MesesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanelAcoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFundos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperacoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtivos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.tableLayoutPanelMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanelAcoes
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.5881F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.4119F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvVendas, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dgvOperacoes, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dgvAtivos, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dgvContas, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1021, 690);
-            this.tableLayoutPanel1.TabIndex = 5;
+            this.tableLayoutPanelAcoes.ColumnCount = 2;
+            this.tableLayoutPanelAcoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.5881F));
+            this.tableLayoutPanelAcoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.4119F));
+            this.tableLayoutPanelAcoes.Controls.Add(this.dgvVendas, 0, 1);
+            this.tableLayoutPanelAcoes.Controls.Add(this.dgvOperacoes, 1, 0);
+            this.tableLayoutPanelAcoes.Controls.Add(this.dgvAtivos, 0, 0);
+            this.tableLayoutPanelAcoes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelAcoes.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelAcoes.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanelAcoes.Name = "tableLayoutPanelAcoes";
+            this.tableLayoutPanelAcoes.RowCount = 2;
+            this.tableLayoutPanelAcoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanelAcoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanelAcoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelAcoes.Size = new System.Drawing.Size(1078, 582);
+            this.tableLayoutPanelAcoes.TabIndex = 5;
             // 
             // dgvVendas
             // 
@@ -195,7 +220,7 @@
             this.qtdAntesDataGridViewTextBoxColumn,
             this.toEntradaDataGridViewTextBoxColumn,
             this.toSaidaDataGridViewTextBoxColumn});
-            this.tableLayoutPanel1.SetColumnSpan(this.dgvVendas, 2);
+            this.tableLayoutPanelAcoes.SetColumnSpan(this.dgvVendas, 2);
             this.dgvVendas.DataMember = "Contas.AtivosDaConta.Saidas";
             this.dgvVendas.DataSource = this.entityDataSource1;
             this.dgvVendas.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -206,7 +231,7 @@
             this.dgvVendas.RowHeadersWidth = 25;
             this.dgvVendas.RowTemplate.Height = 24;
             this.dgvVendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVendas.Size = new System.Drawing.Size(1015, 294);
+            this.dgvVendas.Size = new System.Drawing.Size(1072, 294);
             this.dgvVendas.TabIndex = 2;
             this.dgvVendas.Tag = "9";
             this.dgvVendas.CellButtonClick += new DataGridViewWithButtons.VBControls.DataGridViewWithButtons.CellButtonClickEventHandler(this.dataGridViewVendas_CellButtonClick);
@@ -231,10 +256,10 @@
             // QtdAntes
             // 
             this.QtdAntes.DataPropertyName = "QtdAntes";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.QtdAntes.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N0";
+            dataGridViewCellStyle15.NullValue = null;
+            this.QtdAntes.DefaultCellStyle = dataGridViewCellStyle15;
             this.QtdAntes.HeaderText = "Antes";
             this.QtdAntes.Name = "QtdAntes";
             this.QtdAntes.ReadOnly = true;
@@ -243,9 +268,9 @@
             // Qtd
             // 
             this.Qtd.DataPropertyName = "QtdReal";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            this.Qtd.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "N0";
+            this.Qtd.DefaultCellStyle = dataGridViewCellStyle16;
             this.Qtd.HeaderText = "Venda";
             this.Qtd.Name = "Qtd";
             this.Qtd.ReadOnly = true;
@@ -254,9 +279,9 @@
             // QtdAcumulada
             // 
             this.QtdAcumulada.DataPropertyName = "QtdAcumulada";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            this.QtdAcumulada.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N0";
+            this.QtdAcumulada.DefaultCellStyle = dataGridViewCellStyle17;
             this.QtdAcumulada.HeaderText = "Depois";
             this.QtdAcumulada.Name = "QtdAcumulada";
             this.QtdAcumulada.ReadOnly = true;
@@ -265,9 +290,9 @@
             // Valor
             // 
             this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "C2";
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "C2";
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle18;
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
@@ -276,9 +301,9 @@
             // ValorReal
             // 
             this.ValorReal.DataPropertyName = "ValorReal";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "C2";
-            this.ValorReal.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "C2";
+            this.ValorReal.DefaultCellStyle = dataGridViewCellStyle19;
             this.ValorReal.HeaderText = "Valor Real";
             this.ValorReal.Name = "ValorReal";
             this.ValorReal.ReadOnly = true;
@@ -288,10 +313,10 @@
             // QtdComprada
             // 
             this.QtdComprada.DataPropertyName = "QtdAssociada";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.QtdComprada.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.Format = "N0";
+            dataGridViewCellStyle20.NullValue = null;
+            this.QtdComprada.DefaultCellStyle = dataGridViewCellStyle20;
             this.QtdComprada.HeaderText = "Compras";
             this.QtdComprada.Name = "QtdComprada";
             this.QtdComprada.ReadOnly = true;
@@ -300,9 +325,9 @@
             // QtdPendente
             // 
             this.QtdPendente.DataPropertyName = "QtdPendente";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N0";
-            this.QtdPendente.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle21.Format = "N0";
+            this.QtdPendente.DefaultCellStyle = dataGridViewCellStyle21;
             this.QtdPendente.HeaderText = "Pendente";
             this.QtdPendente.Name = "QtdPendente";
             this.QtdPendente.ReadOnly = true;
@@ -311,10 +336,10 @@
             // VMCompra
             // 
             this.VMCompra.DataPropertyName = "ValorMedioCompra";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "C2";
-            dataGridViewCellStyle8.NullValue = null;
-            this.VMCompra.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle22.Format = "C2";
+            dataGridViewCellStyle22.NullValue = null;
+            this.VMCompra.DefaultCellStyle = dataGridViewCellStyle22;
             this.VMCompra.HeaderText = "VM Compra";
             this.VMCompra.Name = "VMCompra";
             this.VMCompra.ReadOnly = true;
@@ -323,10 +348,10 @@
             // VMCompraReal
             // 
             this.VMCompraReal.DataPropertyName = "ValorMedioCompraReal";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "C2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.VMCompraReal.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle23.Format = "C2";
+            dataGridViewCellStyle23.NullValue = null;
+            this.VMCompraReal.DefaultCellStyle = dataGridViewCellStyle23;
             this.VMCompraReal.HeaderText = "VM Real";
             this.VMCompraReal.Name = "VMCompraReal";
             this.VMCompraReal.ReadOnly = true;
@@ -335,10 +360,10 @@
             // Lucro
             // 
             this.Lucro.DataPropertyName = "Lucro";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "C2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.Lucro.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle24.Format = "C2";
+            dataGridViewCellStyle24.NullValue = null;
+            this.Lucro.DefaultCellStyle = dataGridViewCellStyle24;
             this.Lucro.HeaderText = "Lucro";
             this.Lucro.Name = "Lucro";
             this.Lucro.ReadOnly = true;
@@ -347,10 +372,10 @@
             // LucroReal
             // 
             this.LucroReal.DataPropertyName = "LucroReal";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "C2";
-            dataGridViewCellStyle11.NullValue = null;
-            this.LucroReal.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.Format = "C2";
+            dataGridViewCellStyle25.NullValue = null;
+            this.LucroReal.DefaultCellStyle = dataGridViewCellStyle25;
             this.LucroReal.HeaderText = "Lucro Real";
             this.LucroReal.Name = "LucroReal";
             this.LucroReal.ReadOnly = true;
@@ -538,6 +563,37 @@
             // 
             this.entityDataSource1.DbContextType = typeof(DataLayer.InvestimentosEntities);
             // 
+            // dgvFundos
+            // 
+            this.dgvFundos.AllowUserToAddRows = false;
+            this.dgvFundos.AllowUserToDeleteRows = false;
+            this.dgvFundos.AutoGenerateColumns = false;
+            this.entityDataSource1.SetAutoLookup(this.dgvFundos, true);
+            this.dgvFundos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFundos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fundoDataGridViewTextBoxColumn});
+            this.dgvFundos.DataMember = "Contas.ContasFundos";
+            this.dgvFundos.DataSource = this.entityDataSource1;
+            this.dgvFundos.Location = new System.Drawing.Point(6, 6);
+            this.dgvFundos.Name = "dgvFundos";
+            this.dgvFundos.ReadOnly = true;
+            this.dgvFundos.RowTemplate.Height = 24;
+            this.dgvFundos.Size = new System.Drawing.Size(272, 150);
+            this.dgvFundos.TabIndex = 0;
+            // 
+            // fundoDataGridViewTextBoxColumn
+            // 
+            this.fundoDataGridViewTextBoxColumn.DataPropertyName = "FundoId";
+            this.fundoDataGridViewTextBoxColumn.DataSource = this.entityDataSource1;
+            this.fundoDataGridViewTextBoxColumn.DisplayMember = "Fundos.Nome";
+            this.fundoDataGridViewTextBoxColumn.HeaderText = "Fundo";
+            this.fundoDataGridViewTextBoxColumn.Name = "fundoDataGridViewTextBoxColumn";
+            this.fundoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fundoDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.fundoDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.fundoDataGridViewTextBoxColumn.ValueMember = "Fundos.FundoId";
+            this.fundoDataGridViewTextBoxColumn.Width = 200;
+            // 
             // dgvOperacoes
             // 
             this.dgvOperacoes.AllowUserToAddRows = false;
@@ -555,19 +611,19 @@
             this.dgvOperacoes.DataMember = "Contas.AtivosDaConta.Operacoes";
             this.dgvOperacoes.DataSource = this.entityDataSource1;
             this.dgvOperacoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvOperacoes.Location = new System.Drawing.Point(376, 3);
+            this.dgvOperacoes.Location = new System.Drawing.Point(397, 3);
             this.dgvOperacoes.MultiSelect = false;
             this.dgvOperacoes.Name = "dgvOperacoes";
             this.dgvOperacoes.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dgvOperacoes.RowHeadersWidth = 25;
             this.dgvOperacoes.RowTemplate.Height = 24;
             this.dgvOperacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvOperacoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOperacoes.Size = new System.Drawing.Size(642, 294);
+            this.dgvOperacoes.Size = new System.Drawing.Size(678, 294);
             this.dgvOperacoes.TabIndex = 1;
             this.dgvOperacoes.Tag = "3";
             this.dgvOperacoes.CellButtonClick += new DataGridViewWithButtons.VBControls.DataGridViewWithButtons.CellButtonClickEventHandler(this.dataGridViewOperacoes_CellButtonClick);
@@ -650,14 +706,14 @@
             this.dgvAtivos.MultiSelect = false;
             this.dgvAtivos.Name = "dgvAtivos";
             this.dgvAtivos.ReadOnly = true;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dgvAtivos.RowHeadersWidth = 25;
             this.dgvAtivos.RowTemplate.Height = 24;
             this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAtivos.Size = new System.Drawing.Size(367, 294);
+            this.dgvAtivos.Size = new System.Drawing.Size(388, 294);
             this.dgvAtivos.TabIndex = 0;
             // 
             // Codigo
@@ -688,6 +744,39 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanelMain);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1098, 702);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(1098, 730);
+            this.toolStripContainer1.TabIndex = 6;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            // 
+            // tableLayoutPanelMain
+            // 
+            this.tableLayoutPanelMain.ColumnCount = 1;
+            this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelMain.Controls.Add(this.dgvContas, 0, 1);
+            this.tableLayoutPanelMain.Controls.Add(this.tabControl1, 0, 0);
+            this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
+            this.tableLayoutPanelMain.RowCount = 2;
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 630F));
+            this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(1098, 702);
+            this.tableLayoutPanelMain.TabIndex = 6;
+            // 
             // dgvContas
             // 
             this.dgvContas.AutoGenerateColumns = false;
@@ -701,11 +790,11 @@
             this.infoDataGridViewTextBoxColumn});
             this.dgvContas.DataMember = "Contas";
             this.dgvContas.DataSource = this.entityDataSource1;
-            this.dgvContas.Location = new System.Drawing.Point(3, 603);
+            this.dgvContas.Location = new System.Drawing.Point(3, 633);
             this.dgvContas.Name = "dgvContas";
             this.dgvContas.RowTemplate.Height = 24;
-            this.dgvContas.Size = new System.Drawing.Size(240, 150);
-            this.dgvContas.TabIndex = 3;
+            this.dgvContas.Size = new System.Drawing.Size(167, 97);
+            this.dgvContas.TabIndex = 4;
             this.dgvContas.Visible = false;
             // 
             // contaIdDataGridViewTextBoxColumn
@@ -744,23 +833,65 @@
             this.infoDataGridViewTextBoxColumn.HeaderText = "Info";
             this.infoDataGridViewTextBoxColumn.Name = "infoDataGridViewTextBoxColumn";
             // 
-            // toolStripContainer1
+            // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1092, 624);
+            this.tabControl1.TabIndex = 5;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // toolStripContainer1.ContentPanel
+            // tabPage1
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1021, 690);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(1021, 718);
-            this.toolStripContainer1.TabIndex = 6;
-            this.toolStripContainer1.Text = "toolStripContainer1";
+            this.tabPage1.BackColor = System.Drawing.Color.Black;
+            this.tabPage1.Controls.Add(this.tableLayoutPanelAcoes);
+            this.tabPage1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Location = new System.Drawing.Point(4, 32);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1084, 588);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Ações";
             // 
-            // toolStripContainer1.TopToolStripPanel
+            // tabPage2
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            this.tabPage2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.tabPage2.Controls.Add(this.dgvResultados);
+            this.tabPage2.Controls.Add(this.dgvFundos);
+            this.tabPage2.ForeColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Location = new System.Drawing.Point(4, 32);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1084, 588);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Fundos";
+            // 
+            // dgvResultados
+            // 
+            this.dgvResultados.AllowUserToAddRows = false;
+            this.dgvResultados.AllowUserToDeleteRows = false;
+            this.dgvResultados.AutoGenerateColumns = false;
+            this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mesDataGridViewTextBoxColumn,
+            this.cotaValorDataGridViewTextBoxColumn,
+            this.rendimentoMesDataGridViewTextBoxColumn,
+            this.rendimentoAnoDataGridViewTextBoxColumn,
+            this.rendimento12MesesDataGridViewTextBoxColumn});
+            this.dgvResultados.DataMember = "Contas.ContasFundos.Resultados";
+            this.dgvResultados.DataSource = this.entityDataSource1;
+            this.dgvResultados.Location = new System.Drawing.Point(284, 6);
+            this.dgvResultados.Name = "dgvResultados";
+            this.dgvResultados.ReadOnly = true;
+            this.dgvResultados.RowTemplate.Height = 24;
+            this.dgvResultados.Size = new System.Drawing.Size(794, 150);
+            this.dgvResultados.TabIndex = 1;
             // 
             // toolStrip1
             // 
@@ -778,10 +909,16 @@
             this.toolStripSeparatorSalvar,
             this.toolStripButtonSalvar,
             this.toolStripLabel2,
-            this.toolStripButtonBalanco});
+            this.toolStripButtonBalanco,
+            this.toolStripButtonNovoFundo,
+            this.toolStripLabelNovoFundo,
+            this.toolStripComboBoxFundos,
+            this.toolStripButtonFundoSalvar,
+            this.toolStripButtonFundoCancelar,
+            this.toolStripButtonNovoLerExtrato});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(756, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1095, 28);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonNovaConta
@@ -850,6 +987,7 @@
             this.toolStripButtonNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNovaOperacao.Name = "toolStripButtonNovaOperacao";
             this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(117, 25);
+            this.toolStripButtonNovaOperacao.Tag = "Ações";
             this.toolStripButtonNovaOperacao.Text = "Nova Operação";
             this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
             // 
@@ -887,8 +1025,74 @@
             this.toolStripButtonBalanco.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBalanco.Name = "toolStripButtonBalanco";
             this.toolStripButtonBalanco.Size = new System.Drawing.Size(66, 25);
+            this.toolStripButtonBalanco.Tag = "Ações";
             this.toolStripButtonBalanco.Text = "Balanço";
             this.toolStripButtonBalanco.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
+            // 
+            // toolStripButtonNovoFundo
+            // 
+            this.toolStripButtonNovoFundo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonNovoFundo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovoFundo.Image")));
+            this.toolStripButtonNovoFundo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNovoFundo.Name = "toolStripButtonNovoFundo";
+            this.toolStripButtonNovoFundo.Size = new System.Drawing.Size(94, 25);
+            this.toolStripButtonNovoFundo.Tag = "Fundos";
+            this.toolStripButtonNovoFundo.Text = "Novo Fundo";
+            this.toolStripButtonNovoFundo.Visible = false;
+            this.toolStripButtonNovoFundo.Click += new System.EventHandler(this.toolStripButtonNovoFundo_Click);
+            // 
+            // toolStripLabelNovoFundo
+            // 
+            this.toolStripLabelNovoFundo.Name = "toolStripLabelNovoFundo";
+            this.toolStripLabelNovoFundo.Size = new System.Drawing.Size(93, 25);
+            this.toolStripLabelNovoFundo.Text = "Novo Fundo:";
+            this.toolStripLabelNovoFundo.Visible = false;
+            // 
+            // toolStripComboBoxFundos
+            // 
+            this.toolStripComboBoxFundos.Name = "toolStripComboBoxFundos";
+            this.toolStripComboBoxFundos.Size = new System.Drawing.Size(150, 28);
+            this.toolStripComboBoxFundos.Visible = false;
+            // 
+            // toolStripButtonFundoSalvar
+            // 
+            this.toolStripButtonFundoSalvar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonFundoSalvar.Font = new System.Drawing.Font("Wingdings", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripButtonFundoSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.toolStripButtonFundoSalvar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFundoSalvar.Image")));
+            this.toolStripButtonFundoSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFundoSalvar.Name = "toolStripButtonFundoSalvar";
+            this.toolStripButtonFundoSalvar.Size = new System.Drawing.Size(25, 25);
+            this.toolStripButtonFundoSalvar.Text = "ü";
+            this.toolStripButtonFundoSalvar.ToolTipText = "Salvar";
+            this.toolStripButtonFundoSalvar.Visible = false;
+            this.toolStripButtonFundoSalvar.Click += new System.EventHandler(this.toolStripButtonFundoSalvarCancelar_Click);
+            // 
+            // toolStripButtonFundoCancelar
+            // 
+            this.toolStripButtonFundoCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonFundoCancelar.Font = new System.Drawing.Font("Wingdings", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.toolStripButtonFundoCancelar.ForeColor = System.Drawing.Color.Red;
+            this.toolStripButtonFundoCancelar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFundoCancelar.Image")));
+            this.toolStripButtonFundoCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFundoCancelar.Name = "toolStripButtonFundoCancelar";
+            this.toolStripButtonFundoCancelar.Size = new System.Drawing.Size(23, 25);
+            this.toolStripButtonFundoCancelar.Text = "û";
+            this.toolStripButtonFundoCancelar.ToolTipText = "Cancelar";
+            this.toolStripButtonFundoCancelar.Visible = false;
+            this.toolStripButtonFundoCancelar.Click += new System.EventHandler(this.toolStripButtonFundoSalvarCancelar_Click);
+            // 
+            // toolStripButtonNovoLerExtrato
+            // 
+            this.toolStripButtonNovoLerExtrato.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonNovoLerExtrato.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovoLerExtrato.Image")));
+            this.toolStripButtonNovoLerExtrato.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNovoLerExtrato.Name = "toolStripButtonNovoLerExtrato";
+            this.toolStripButtonNovoLerExtrato.Size = new System.Drawing.Size(84, 24);
+            this.toolStripButtonNovoLerExtrato.Tag = "Fundos";
+            this.toolStripButtonNovoLerExtrato.Text = "Ler Extrato";
+            this.toolStripButtonNovoLerExtrato.Visible = false;
+            this.toolStripButtonNovoLerExtrato.Click += new System.EventHandler(this.toolStripButtonLerExtrato_Click);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -896,12 +1100,56 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Operação";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "OperacaoTipo";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Operação";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // mesDataGridViewTextBoxColumn
+            // 
+            this.mesDataGridViewTextBoxColumn.DataPropertyName = "Mes";
+            dataGridViewCellStyle28.Format = "MMM/yyyy";
+            dataGridViewCellStyle28.NullValue = null;
+            this.mesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle28;
+            this.mesDataGridViewTextBoxColumn.HeaderText = "Mês";
+            this.mesDataGridViewTextBoxColumn.Name = "mesDataGridViewTextBoxColumn";
+            this.mesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cotaValorDataGridViewTextBoxColumn
+            // 
+            this.cotaValorDataGridViewTextBoxColumn.DataPropertyName = "CotaValor";
+            this.cotaValorDataGridViewTextBoxColumn.HeaderText = "Valor Cota";
+            this.cotaValorDataGridViewTextBoxColumn.Name = "cotaValorDataGridViewTextBoxColumn";
+            this.cotaValorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rendimentoMesDataGridViewTextBoxColumn
+            // 
+            this.rendimentoMesDataGridViewTextBoxColumn.DataPropertyName = "RendimentoMes";
+            this.rendimentoMesDataGridViewTextBoxColumn.HeaderText = "Rend. Mês";
+            this.rendimentoMesDataGridViewTextBoxColumn.Name = "rendimentoMesDataGridViewTextBoxColumn";
+            this.rendimentoMesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rendimentoAnoDataGridViewTextBoxColumn
+            // 
+            this.rendimentoAnoDataGridViewTextBoxColumn.DataPropertyName = "RendimentoAno";
+            this.rendimentoAnoDataGridViewTextBoxColumn.HeaderText = "Rend. Ano";
+            this.rendimentoAnoDataGridViewTextBoxColumn.Name = "rendimentoAnoDataGridViewTextBoxColumn";
+            this.rendimentoAnoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rendimento12MesesDataGridViewTextBoxColumn
+            // 
+            this.rendimento12MesesDataGridViewTextBoxColumn.DataPropertyName = "Rendimento12Meses";
+            this.rendimento12MesesDataGridViewTextBoxColumn.HeaderText = "Rend. 12 Meses";
+            this.rendimento12MesesDataGridViewTextBoxColumn.Name = "rendimento12MesesDataGridViewTextBoxColumn";
+            this.rendimento12MesesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // frmInvestimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1021, 718);
+            this.ClientSize = new System.Drawing.Size(1098, 730);
             this.Controls.Add(this.toolStripContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -912,16 +1160,22 @@
             this.Text = "Investimentos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmInvestimentos_FormClosing);
             this.Load += new System.EventHandler(this.frmInvestimentos_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanelAcoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFundos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOperacoes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtivos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.tableLayoutPanelMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContas)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -934,7 +1188,7 @@
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvAtivos;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvOperacoes;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvVendas;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAcoes;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonNovaOperacao;
@@ -943,13 +1197,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonNovaConta;
         private System.Windows.Forms.ToolStripButton toolStripButtonEditarConta;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.DataGridView dgvContas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contaIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn agenciaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contaCorrenteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn senhaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn infoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
@@ -1007,6 +1254,32 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripButtonSalvar;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
+        private System.Windows.Forms.DataGridView dgvContas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contaIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn agenciaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contaCorrenteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn senhaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn infoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvFundos;
+        private System.Windows.Forms.ToolStripButton toolStripButtonNovoFundo;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxFundos;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFundoSalvar;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFundoCancelar;
+        private System.Windows.Forms.DataGridViewComboBoxColumn fundoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelNovoFundo;
+        private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvResultados;
+        private System.Windows.Forms.ToolStripButton toolStripButtonNovoLerExtrato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cotaValorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rendimentoMesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rendimentoAnoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rendimento12MesesDataGridViewTextBoxColumn;
     }
 }
 
