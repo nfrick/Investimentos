@@ -12,23 +12,23 @@ namespace Investimentos {
         }
 
         private void Vendas_Load(object sender, EventArgs e) {
-            GridStyles.FormatGrid(dgvVendas, 9);
-            dgvVendas.Columns[0].Width = 90;
-            GridStyles.FormatColumn(dgvVendas.Columns[1], GridStyles.StyleDate, 90);
-            GridStyles.FormatColumns(dgvVendas, 2, 3, GridStyles.StyleInteger, 80);
-            GridStyles.FormatColumns(dgvVendas, 4, 6, GridStyles.StyleCurrency, 80);
-            GridStyles.FormatColumns(dgvVendas, 7, 8, GridStyles.StyleCurrency, 90);
+            GridStyles.FormatGrid(dgvBalanco, 9);
+            dgvBalanco.Columns[0].Width = 70;
+            GridStyles.FormatColumn(dgvBalanco.Columns[1], GridStyles.StyleDate, 90);
+            GridStyles.FormatColumns(dgvBalanco, 2, 3, GridStyles.StyleInteger, 80);
+            GridStyles.FormatColumns(dgvBalanco, 4, 6, GridStyles.StyleCurrency, 80);
+            GridStyles.FormatColumns(dgvBalanco, 7, 8, GridStyles.StyleCurrency, 90);
 
-            GridStyles.FormatGridAsTotal(dgvTotal, dgvVendas);
+            GridStyles.FormatGridAsTotal(dgvTotal, dgvBalanco);
 
             var row = (dgvTotal.Rows
                 .Cast<DataGridViewRow>()
                 .First(r => (int)r.Cells[0].Value == Conta)).Index;
             dgvTotal.CurrentCell = dgvTotal.Rows[row].Cells[1];
 
-            Width = 25 + GridStyles.GridVisibleWidth(dgvVendas);
-            Height = dgvVendas.ColumnHeadersHeight +
-                     (dgvVendas.Rows.Count * dgvVendas.RowTemplate.Height) +
+            Width = 25 + GridStyles.GridVisibleWidth(dgvBalanco);
+            Height = dgvBalanco.ColumnHeadersHeight +
+                     (dgvBalanco.Rows.Count * dgvBalanco.RowTemplate.Height) +
                      (int)tableLayoutPanel1.RowStyles[1].Height + 48;
         }
 
@@ -48,6 +48,10 @@ namespace Investimentos {
                 var row = dgvTotal.Rows[e.RowIndex + i];
                 row.Cells[6].Value = "TOTAL";
             }
+        }
+
+        private void dgvBalanco_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
+            dgvTotal.Columns[e.Column.Index].Width = e.Column.Width;
         }
     }
 }

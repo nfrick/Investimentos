@@ -95,7 +95,7 @@
             <PropertyRef Name="FundoId" />
           </Key>
           <Property Name="FundoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nome" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CNPJ" Type="nchar" MaxLength="14" Nullable="false" />
         </EntityType>
         <EntityType Name="tbMovimentos">
@@ -119,9 +119,10 @@
           <Property Name="ContaFundoId" Type="int" Nullable="false" />
           <Property Name="Mes" Type="smalldatetime" Nullable="false" />
           <Property Name="CotaValor" Type="numeric" Precision="18" Scale="9" Nullable="false" />
-          <Property Name="RendimentoMes" Type="numeric" Precision="6" Scale="4" Nullable="false" />
-          <Property Name="RendimentoAno" Type="numeric" Precision="6" Scale="4" Nullable="false" />
-          <Property Name="Rendimento12Meses" Type="numeric" Precision="6" Scale="4" Nullable="false" />
+          <Property Name="RendimentoMes" Type="numeric" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="RendimentoAno" Type="numeric" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="Rendimento12Meses" Type="numeric" Precision="7" Scale="4" Nullable="false" />
+          <Property Name="RendimentoBruto" Type="money" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -609,7 +610,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <PropertyRef Name="FundoId" />
           </Key>
           <Property Name="FundoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CNPJ" Type="String" Nullable="false" MaxLength="14" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="ContaFundo" Relationship="InvestimentosModel.FK_tbContaFundo_tbFundos" FromRole="tbFundo" ToRole="tbContasFundo" />
         </EntityType>
@@ -635,9 +636,10 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Property Name="ContaFundoId" Type="Int32" Nullable="false" />
           <Property Name="Mes" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CotaValor" Type="Decimal" Nullable="false" Precision="18" Scale="9" />
-          <Property Name="RendimentoMes" Type="Decimal" Nullable="false" />
-          <Property Name="RendimentoAno" Type="Decimal" Nullable="false" />
-          <Property Name="Rendimento12Meses" Type="Decimal" Nullable="false" />
+          <Property Name="RendimentoMes" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="RendimentoAno" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="Rendimento12Meses" Type="Decimal" Nullable="false" Precision="7" Scale="4" />
+          <Property Name="RendimentoBruto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <NavigationProperty Name="ContaFundo" Relationship="InvestimentosModel.FK_tbResultados_tbContasFundos" FromRole="Resultado" ToRole="ContaFundo" />
           <NavigationProperty Name="Movimentos" Relationship="InvestimentosModel.FK_tbMovimentos_tbResultados" FromRole="Resultado" ToRole="Movimento" />
         </EntityType>
@@ -818,6 +820,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <EntitySetMapping Name="Resultados">
             <EntityTypeMapping TypeName="InvestimentosModel.Resultado">
               <MappingFragment StoreEntitySet="tbResultados">
+                <ScalarProperty Name="RendimentoBruto" ColumnName="RendimentoBruto" />
                 <ScalarProperty Name="ContaFundoId" ColumnName="ContaFundoId" />
                 <ScalarProperty Name="Rendimento12Meses" ColumnName="Rendimento12Meses" />
                 <ScalarProperty Name="RendimentoAno" ColumnName="RendimentoAno" />

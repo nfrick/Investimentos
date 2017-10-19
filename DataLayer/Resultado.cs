@@ -27,6 +27,7 @@ namespace DataLayer
         public decimal RendimentoMes { get; set; }
         public decimal RendimentoAno { get; set; }
         public decimal Rendimento12Meses { get; set; }
+        public decimal RendimentoBruto { get; set; }
     
         public virtual ContaFundo ContaFundo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

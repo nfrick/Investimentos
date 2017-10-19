@@ -86,6 +86,14 @@ namespace GridAndChartStyleLibrary {
         public static DataGridViewCellStyle StyleAlternate => _styleAlternate;
         public static DataGridViewCellStyle StyleNegative => _styleNegative;
         public static DataGridViewCellStyle StyleDate => _styleDate;
+
+        public static DataGridViewCellStyle StyleNumber(int decimais) {
+            return new DataGridViewCellStyle(_styleBase) {
+                Alignment = DataGridViewContentAlignment.MiddleRight,
+                Format = $"N{decimais}"
+            };
+        }
+
         public static DataGridViewCellStyle StyleDateTime => _styleDateTime;
         public static DataGridViewCellStyle StyleDayAndTime => _styleDayAndTime;
         public static DataGridViewCellStyle StyleCurrency => _styleCurrency;
@@ -144,7 +152,7 @@ namespace GridAndChartStyleLibrary {
             for (var col = 0; col < dgvMaster.ColumnCount; col++) {
                 dgvClone.Columns[col].DefaultCellStyle = isTotal ?
                     StyleAsTotal(dgvMaster.Columns[col].DefaultCellStyle) : dgvMaster.Columns[col].DefaultCellStyle;
-                dgvClone.Columns[col].Width = dgvMaster.Columns[col].Width;
+                //dgvClone.Columns[col].Width = dgvMaster.Columns[col].Width;
                 dgvClone.Columns[col].AutoSizeMode = dgvMaster.Columns[col].AutoSizeMode;
                 dgvClone.Columns[col].Visible = dgvMaster.Columns[col].Visible;
             }

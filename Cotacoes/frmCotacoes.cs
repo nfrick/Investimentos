@@ -256,5 +256,10 @@ namespace Cotacoes {
             _precisaCarregarListaDeAtivos = true;
             CarregarDados();
         }
+
+        private void dgvCotacoes_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
+            if (dgvTotal.ColumnCount > 0)
+                dgvTotal.Columns[e.Column.Index].Width = e.Column.Width;
+        }
     }
 }

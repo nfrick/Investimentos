@@ -1,17 +1,15 @@
-﻿using GridAndChartStyleLibrary;
+﻿using DataLayer;
+using GridAndChartStyleLibrary;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Core.Common;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using DataLayer;
-using EFWinforms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Investimentos {
     public partial class frmInvestimentos : Form {
@@ -38,7 +36,21 @@ namespace Investimentos {
             GridStyles.FormatColumns(dgvVendas, new[] { 11, 12 }, GridStyles.StyleCurrency, 85);
 
             GridStyles.FormatGrid(dgvFundos);
+            GridStyles.FormatColumn(dgvFundos.Columns[1], GridStyles.StyleCurrency, 90);
+
             GridStyles.FormatGrid(dgvResultados);
+            dgvResultados.Columns[0].Width = 75;
+            GridStyles.FormatColumn(dgvResultados.Columns[1], GridStyles.StyleNumber(6), 110);
+            GridStyles.FormatColumn(dgvResultados.Columns[2], GridStyles.StyleNumber(9), 110);
+            GridStyles.FormatColumns(dgvResultados, new[] { 3, 4, 5, 6 }, GridStyles.StyleCurrency, 80);
+            dgvResultados.Columns[3].Width = 90;
+            GridStyles.FormatColumns(dgvResultados, new[] { 7, 8, 9 }, GridStyles.StyleNumber(4), 75);
+
+            GridStyles.FormatGrid(dgvMovimentos);
+            GridStyles.FormatColumns(dgvMovimentos, new[] { 2, 3 }, GridStyles.StyleCurrency, 80);
+            GridStyles.FormatColumn(dgvMovimentos.Columns[4], GridStyles.StyleCurrency, 90);
+            GridStyles.FormatColumn(dgvMovimentos.Columns[5], GridStyles.StyleNumber(6), 100);
+
 
             // 50 = vertical scroll bar width
             var w0 = 50 + dgvAtivos.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
@@ -74,6 +86,8 @@ namespace Investimentos {
         private void RefreshDataFundos() {
             dgvFundos.SaveCurrentRow();
             entityDataSource1.Refresh();
+            dgvResultados.Refresh();
+            dgvMovimentos.Refresh();
             dgvFundos.RestoreCurrentRow(0);
             RefreshSalvar();
         }
@@ -106,7 +120,6 @@ namespace Investimentos {
         }
 
         private void dataGridViewVendas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
-            //var ctx = entityDataSource1.DbContext.Set<Associacao>();
             var frm = new frmAssociarCompraComVenda {
                 Saida = (Saida)dgvVendas.SelectedRows[0].DataBoundItem,
                 eds = entityDataSource1
@@ -129,6 +142,23 @@ namespace Investimentos {
                 .Cast<DataGridViewRow>()
                 .First(r => (int)r.Cells[0].Value == conta.ContaId)).Index;
             dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
+
+            chart1.Series.Clear();
+            if (conta.ContasFundos.Count == 0) {
+                chart1.Visible = false;
+                return;
+            }
+            chart1.Visible = true;
+            var total = conta.ContasFundos.Sum(cf => cf.SaldoAtual);
+            chart1.Titles[0].Text = $"Total: {total:N2}";
+            var serie = chart1.Series.Add("AAA");
+            serie.ChartType = SeriesChartType.Pie;
+            serie.Font = new Font("Segoe UI", 7);
+            foreach (var cf in conta.ContasFundos) {
+                var dp = serie.Points.Add((double)cf.SaldoAtual);
+                dp.LegendText = cf.ToString();
+                dp.AxisLabel = $"{cf.SaldoAtual / total:P0}";
+            }
         }
 
         private void ContaComboPopulate() {
@@ -218,50 +248,29 @@ namespace Investimentos {
             }
         }
 
-        private void toolStripButtonNovoFundo_Click(object sender, EventArgs e) {
-            var conta = (Conta)toolStripComboBoxConta.SelectedItem;
-            var fundos = entityDataSource1.DbContext.Set<Fundo>().ToList();
-            var disponiveis = fundos.Where(f => conta.ContasFundos.All(cf => cf.FundoId != f.FundoId));
-            toolStripComboBoxFundos.ComboBox.DataSource = disponiveis.ToList();
-            toolStripComboBoxFundos.ComboBox.DisplayMember = "Nome";
-            toolStripComboBoxFundos.ComboBox.ValueMember = "FundoId";
-            NovoFundoEnable(true);
-            toolStripComboBoxFundos.Focus();
-        }
-
-        private void toolStripButtonFundoSalvarCancelar_Click(object sender, EventArgs e) {
-            NovoFundoEnable(false);
-            if (((ToolStripButton)sender).Name == "toolStripButtonFundoCancelar")
-                return;
-            var conta = (Conta)toolStripComboBoxConta.SelectedItem;
-            var novoFundo = new ContaFundo() { Fundo = (Fundo)toolStripComboBoxFundos.SelectedItem };
-            conta.ContasFundos.Add(novoFundo);
-            RefreshDataFundos();
-        }
-
-        private void NovoFundoEnable(bool enable) {
-            toolStripLabelNovoFundo.Visible = enable;
-            toolStripComboBoxFundos.Visible = enable;
-            toolStripButtonFundoSalvar.Visible = enable;
-            toolStripButtonFundoCancelar.Visible = enable;
-            tabControl1.Enabled = !enable;
-            toolStripButtonNovoFundo.Visible = !enable;
-        }
-
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
-            var tab = tabControl1.SelectedTab.Text;
+            var tabLabel = tabControl1.SelectedTab.Text;
             foreach (ToolStripItem item in toolStrip1.Items) {
                 if (item.Tag == null) continue;
-                item.Visible = (item.Tag.ToString() == tab);
+                var tag = item.Tag.ToString();
+                if (tag == "Fundos" || tag == "Ações")
+                    item.Visible = (tag == tabLabel);
             }
         }
 
         private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
+            if (OFD.ShowDialog() == DialogResult.Cancel)
+                return;
+            foreach (var file in OFD.FileNames) {
+                LerExtrato(file);
+            }
+        }
+
+        private void LerExtrato(string fileName) {
             var conta = (Conta)toolStripComboBoxConta.SelectedItem;
             var fundos = entityDataSource1.DbContext.Set<Fundo>().ToList();
 
             IFormatProvider format = new CultureInfo("pt-BR");
-            const string fileName = @"D:\investimentos.txt";
             const int bufferSize = 128;
 
             using (var fileStream = File.OpenRead(fileName)) {
@@ -269,7 +278,7 @@ namespace Investimentos {
                     do {
                         string line;
                         do {
-                            // Ler até achar o inicio dos dados do Fundo
+                            // Ler até achar o inicio dos dados do Fundo ou achar o fim do arquivo
                             line = streamReader.ReadLine();
                             if (line != null) continue;
                             RefreshDataFundos();
@@ -277,71 +286,92 @@ namespace Investimentos {
                         } while (!line.Trim().StartsWith("BB"));
                         var fundoNome = line.Substring(0, 30).Trim();
 
+                        // Localiza o Fundo, criando se necessário
                         var fundo = fundos.FirstOrDefault(f => f.Nome == fundoNome) ?? new Fundo() { Nome = fundoNome, CNPJ = line.Substring(68, 18).Replace(".", "").Replace("/", "").Replace("-", "") };
-                        if(fundo.FundoId == 0)
+                        if (fundo.FundoId == 0)
                             fundos.Add(fundo);
 
+                        // Localiza a ContaFundo, criando se necessário
                         var contaFundo = conta.ContasFundos.FirstOrDefault(c => c.Fundo.Nome == fundoNome) ??
                             new ContaFundo() { Conta = conta, Fundo = fundo };
                         if (contaFundo.ContaFundoId == 0)
                             conta.ContasFundos.Add(contaFundo);
 
+                        // Cria o Resultado-Mes
                         var resultado = new Resultado() { ContaFundo = contaFundo };
 
                         // Mover até inicio dos Movimentos
                         do {
                             // nothing
-                        } while (!(line = streamReader.ReadLine().Trim()).Contains("SALDO ANTERIOR"));
+                        } while (!(line = GetNextLine(streamReader)).Contains("SALDO ANTERIOR"));
 
                         // Ler movimentos
                         DateTime data;
-                        while (!(line = streamReader.ReadLine().Trim()).Contains("SALDO ATUAL")) {
-                            if (string.IsNullOrEmpty(line)) continue;
+                        do {
+                            //if (string.IsNullOrEmpty(line)) continue;
                             if (!DateTime.TryParse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal,
                                 out data)) continue;
-                            var mov = line.Split(new[] { ' ' }).Where(x => !string.IsNullOrEmpty(x)).ToArray();
-                            var size = mov.Length;
-                            var movimento = new Movimento() {
-                                Data = data,
-                                Historico = mov[1],
-                                Valor = decimal.Parse(mov[2]),
-                                ImpostoRenda = decimal.Parse(mov[size - 3]),
-                                CotaQtd = decimal.Parse(mov[size - 2]),
-                                CotaValor = decimal.Parse(mov[size - 1])
-                            };
-                            resultado.Movimentos.Add(movimento);
-                        }
+                            resultado.Movimentos.Add(CreateMovimento(line, format));
+                        } while (!(line = GetNextLine(streamReader)).Contains("SALDO ATUAL"));
+                        resultado.Movimentos.Add(CreateMovimento(line, format));
                         resultado.Mes = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal);
                         resultado.Mes = resultado.Mes.AddDays(-1 * resultado.Mes.Day + 1);
 
-                        // Ler até achar o novo anterior da cota
+                        // Ler até achar o valor anterior da cota
                         do {
-                            line = streamReader.ReadLine().Trim();
-                        } while (string.IsNullOrEmpty(line) || !DateTime.TryParse(line.Substring(0, 10), format,
+                            line = GetNextLine(streamReader);
+                        } while (!DateTime.TryParse(line.Substring(0, 10), format,
                                      DateTimeStyles.AssumeLocal, out data));
 
-                        // Ler até achar o novo atual da cota
+                        // Ler até achar o valor atual da cota
                         do {
-                            line = streamReader.ReadLine().Trim();
-                            if (string.IsNullOrEmpty(line)) continue;
-                        } while (string.IsNullOrEmpty(line) || !DateTime.TryParse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal, out data));
-
+                            line = GetNextLine(streamReader);
+                        } while (!DateTime.TryParse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal, out data));
                         resultado.CotaValor = GetValor(line);
 
                         // Mover até inicio dos rendimentos
                         do {
-                            line = streamReader.ReadLine().Trim();
-                        } while (line == string.Empty || !line.StartsWith("No mês:"));
+                        } while (!(line = GetNextLine(streamReader)).StartsWith("No mês:"));
 
                         resultado.RendimentoMes = GetValor(line);
                         resultado.RendimentoAno = GetValor(streamReader);
                         resultado.Rendimento12Meses = GetValor(streamReader);
+
+                        // Mover até o rendimento bruto
+                        do {
+                        } while (!(line = GetNextLine(streamReader)).StartsWith("RENDIMENTO BRUTO"));
+                        resultado.RendimentoBruto = GetValor(line);
 
                         contaFundo.Resultados.Add(resultado);
 
                     } while (true);
                 }
             }
+        }
+
+        private static string GetNextLine(TextReader s) {
+            string line;
+            do {
+                line = s.ReadLine().Trim();
+            } while (line == string.Empty);
+            return line;
+        }
+
+        private static Movimento CreateMovimento(string line, IFormatProvider format) {
+            return new Movimento() {
+                Data = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal),
+                Historico = line.Substring(11, 20).Trim(),
+                Valor = ToDecimal(line, 38, 11),
+                ImpostoRenda = ToDecimal(line, 50, 16),
+                CotaQtd = ToDecimal(line, 95, 18),
+                CotaValor = ToDecimal(line, 117, 20)
+            };
+        }
+
+        private static decimal ToDecimal(string line, int start, int length) {
+            if (start > line.Length || start + length > line.Length) return 0.0m;
+            var text = line.Substring(start, length).Trim();
+            return decimal.TryParse(text, out decimal valor) ? valor : 0.0m;
         }
 
         private static decimal GetValor(TextReader stream) {

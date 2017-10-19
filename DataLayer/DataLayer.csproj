@@ -139,6 +139,7 @@
     <Compile Include="PartialClasses\Operacao.cs" />
     <Compile Include="PartialClasses\OperacaoCotacao.cs" />
     <Compile Include="PartialClasses\OperacaoTipo.cs" />
+    <Compile Include="PartialClasses\Resultado.cs" />
     <Compile Include="PartialClasses\Saida.cs" />
     <Compile Include="PartialClasses\CotacaoDiaria.cs" />
     <Compile Include="PartialClasses\Associacao.cs" />

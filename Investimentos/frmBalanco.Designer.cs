@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvTotal = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +48,7 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entityDataSource1 = new EFWinforms.EntityDataSource(this.components);
-            this.dgvVendas = new System.Windows.Forms.DataGridView();
+            this.dgvBalanco = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qtdRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +60,7 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBalanco)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -71,7 +71,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.dgvTotal, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dgvVendas, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dgvBalanco, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -115,14 +115,14 @@
             this.dgvTotal.MultiSelect = false;
             this.dgvTotal.Name = "dgvTotal";
             this.dgvTotal.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTotal.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTotal.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvTotal.RowHeadersWidth = 25;
             this.dgvTotal.RowTemplate.Height = 24;
             this.dgvTotal.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -153,27 +153,27 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Format = "dd/MM/yyyy";
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumn3.HeaderText = "3";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumn4.HeaderText = "4";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N0";
+            dataGridViewCellStyle7.NullValue = null;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn5.HeaderText = "5";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -258,13 +258,13 @@
             // 
             this.entityDataSource1.DbContextType = typeof(DataLayer.InvestimentosEntities);
             // 
-            // dgvVendas
+            // dgvBalanco
             // 
-            this.dgvVendas.AllowUserToAddRows = false;
-            this.dgvVendas.AllowUserToDeleteRows = false;
-            this.dgvVendas.AutoGenerateColumns = false;
-            this.dgvVendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvBalanco.AllowUserToAddRows = false;
+            this.dgvBalanco.AllowUserToDeleteRows = false;
+            this.dgvBalanco.AutoGenerateColumns = false;
+            this.dgvBalanco.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBalanco.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15,
             this.qtdRealDataGridViewTextBoxColumn,
@@ -274,18 +274,19 @@
             this.valorMedioCompraRealDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10});
-            this.dgvVendas.DataMember = "Contas.Saidas";
-            this.dgvVendas.DataSource = this.entityDataSource1;
-            this.dgvVendas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvVendas.Location = new System.Drawing.Point(3, 3);
-            this.dgvVendas.Name = "dgvVendas";
-            this.dgvVendas.ReadOnly = true;
-            this.dgvVendas.RowHeadersWidth = 25;
-            this.dgvVendas.RowTemplate.Height = 24;
-            this.dgvVendas.Size = new System.Drawing.Size(793, 467);
-            this.dgvVendas.TabIndex = 5;
-            this.dgvVendas.Tag = "8";
-            this.dgvVendas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVendas_CellFormatting);
+            this.dgvBalanco.DataMember = "Contas.Saidas";
+            this.dgvBalanco.DataSource = this.entityDataSource1;
+            this.dgvBalanco.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBalanco.Location = new System.Drawing.Point(3, 3);
+            this.dgvBalanco.Name = "dgvBalanco";
+            this.dgvBalanco.ReadOnly = true;
+            this.dgvBalanco.RowHeadersWidth = 25;
+            this.dgvBalanco.RowTemplate.Height = 24;
+            this.dgvBalanco.Size = new System.Drawing.Size(793, 467);
+            this.dgvBalanco.TabIndex = 5;
+            this.dgvBalanco.Tag = "8";
+            this.dgvBalanco.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvVendas_CellFormatting);
+            this.dgvBalanco.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvBalanco_ColumnWidthChanged);
             // 
             // dataGridViewTextBoxColumn14
             // 
@@ -365,7 +366,7 @@
             this.Load += new System.EventHandler(this.Vendas_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBalanco)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -375,7 +376,7 @@
         private EFWinforms.EntityDataSource entityDataSource1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvTotal;
-        private System.Windows.Forms.DataGridView dgvVendas;
+        private System.Windows.Forms.DataGridView dgvBalanco;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtdRealDataGridViewTextBoxColumn;
