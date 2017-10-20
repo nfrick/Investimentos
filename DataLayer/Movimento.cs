@@ -15,14 +15,14 @@ namespace DataLayer
     public partial class Movimento
     {
         public int MovimentoId { get; set; }
-        public int MesId { get; set; }
+        public int ContaMesId { get; set; }
         public System.DateTime Data { get; set; }
         public string Historico { get; set; }
         public decimal Valor { get; set; }
         public decimal ImpostoRenda { get; set; }
         public decimal CotaQtd { get; set; }
-        public decimal CotaValor { get; set; }
+        public Nullable<decimal> CotaValor { get; set; }
     
-        public virtual Resultado Resultado { get; set; }
+        public virtual ContaMes ContaMes { get; set; }
     }
 }

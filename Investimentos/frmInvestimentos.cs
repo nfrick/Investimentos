@@ -40,10 +40,10 @@ namespace Investimentos {
 
             GridStyles.FormatGrid(dgvResultados);
             dgvResultados.Columns[0].Width = 75;
-            GridStyles.FormatColumn(dgvResultados.Columns[1], GridStyles.StyleNumber(6), 110);
-            GridStyles.FormatColumn(dgvResultados.Columns[2], GridStyles.StyleNumber(9), 110);
-            GridStyles.FormatColumns(dgvResultados, new[] { 3, 4, 5, 6 }, GridStyles.StyleCurrency, 80);
-            dgvResultados.Columns[3].Width = 90;
+            GridStyles.FormatColumn(dgvResultados.Columns[2], GridStyles.StyleNumber(6), 110);
+            GridStyles.FormatColumn(dgvResultados.Columns[3], GridStyles.StyleNumber(9), 110);
+            GridStyles.FormatColumns(dgvResultados, new[] { 1, 4, 5, 6 }, GridStyles.StyleCurrency, 80);
+            dgvResultados.Columns[1].Width = 90;
             GridStyles.FormatColumns(dgvResultados, new[] { 7, 8, 9 }, GridStyles.StyleNumber(4), 75);
 
             GridStyles.FormatGrid(dgvMovimentos);
@@ -144,20 +144,20 @@ namespace Investimentos {
             dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
 
             chart1.Series.Clear();
-            if (conta.ContasFundos.Count == 0) {
+            if (conta.Fundos.Count == 0) {
                 chart1.Visible = false;
                 return;
             }
             chart1.Visible = true;
-            var total = conta.ContasFundos.Sum(cf => cf.SaldoAtual);
+            var total = conta.Fundos.Sum(cf => cf.Saldo);
             chart1.Titles[0].Text = $"Total: {total:N2}";
             var serie = chart1.Series.Add("AAA");
             serie.ChartType = SeriesChartType.Pie;
             serie.Font = new Font("Segoe UI", 7);
-            foreach (var cf in conta.ContasFundos) {
-                var dp = serie.Points.Add((double)cf.SaldoAtual);
+            foreach (var cf in conta.Fundos.Where(c=>c.Saldo > 0)) {
+                var dp = serie.Points.Add((double)cf.Saldo);
                 dp.LegendText = cf.ToString();
-                dp.AxisLabel = $"{cf.SaldoAtual / total:P0}";
+                dp.AxisLabel = $"{cf.Saldo / total:P0}";
             }
         }
 
@@ -268,7 +268,7 @@ namespace Investimentos {
 
         private void LerExtrato(string fileName) {
             var conta = (Conta)toolStripComboBoxConta.SelectedItem;
-            var fundos = entityDataSource1.DbContext.Set<Fundo>().ToList();
+            var fundos = entityDataSource1.DbContext.Set<Fundo>();
 
             IFormatProvider format = new CultureInfo("pt-BR");
             const int bufferSize = 128;
@@ -284,26 +284,32 @@ namespace Investimentos {
                             RefreshDataFundos();
                             return;
                         } while (!line.Trim().StartsWith("BB"));
-                        var fundoNome = line.Substring(0, 30).Trim();
+                        var fundoNome = line.Substring(0, 35).Trim();
 
                         // Localiza o Fundo, criando se necessário
-                        var fundo = fundos.FirstOrDefault(f => f.Nome == fundoNome) ?? new Fundo() { Nome = fundoNome, CNPJ = line.Substring(68, 18).Replace(".", "").Replace("/", "").Replace("-", "") };
-                        if (fundo.FundoId == 0)
+                        var fundo = fundos.Local.FirstOrDefault(f => f.Nome == fundoNome);
+                        if (fundo == null) {
+                            fundo = new Fundo() { Nome = fundoNome, CNPJ = line.Substring(68, 18).Replace(".", "").Replace("/", "").Replace("-", "") };
                             fundos.Add(fundo);
+                        }
 
                         // Localiza a ContaFundo, criando se necessário
-                        var contaFundo = conta.ContasFundos.FirstOrDefault(c => c.Fundo.Nome == fundoNome) ??
-                            new ContaFundo() { Conta = conta, Fundo = fundo };
+                        var contaFundo = conta.Fundos.FirstOrDefault(f => f.FundoNome == fundoNome) ??
+                            new ContaFundo() { Fundo = fundo };
                         if (contaFundo.ContaFundoId == 0)
-                            conta.ContasFundos.Add(contaFundo);
-
-                        // Cria o Resultado-Mes
-                        var resultado = new Resultado() { ContaFundo = contaFundo };
+                            conta.Fundos.Add(contaFundo);
 
                         // Mover até inicio dos Movimentos
                         do {
                             // nothing
                         } while (!(line = GetNextLine(streamReader)).Contains("SALDO ANTERIOR"));
+
+                        // Cria o Fundo-Mes
+                        var fundoMes = new FundoMes() { Fundo = fundo };
+                        fundo.Meses.Add(fundoMes);
+
+                        // Cria o Conta-Mes
+                        var contaMes = new ContaMes() { ContaFundo = contaFundo, FundoMes = fundoMes };
 
                         // Ler movimentos
                         DateTime data;
@@ -311,11 +317,13 @@ namespace Investimentos {
                             //if (string.IsNullOrEmpty(line)) continue;
                             if (!DateTime.TryParse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal,
                                 out data)) continue;
-                            resultado.Movimentos.Add(CreateMovimento(line, format));
+                            contaMes.Movimentos.Add(CreateMovimento(line, format));
                         } while (!(line = GetNextLine(streamReader)).Contains("SALDO ATUAL"));
-                        resultado.Movimentos.Add(CreateMovimento(line, format));
-                        resultado.Mes = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal);
-                        resultado.Mes = resultado.Mes.AddDays(-1 * resultado.Mes.Day + 1);
+                        contaMes.Movimentos.Add(CreateMovimento(line, format));
+
+                        // Preenche o mês no Fundo-Mes
+                        var mes = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal);
+                        fundoMes.Mes = mes.AddDays(1 - mes.Day);
 
                         // Ler até achar o valor anterior da cota
                         do {
@@ -327,22 +335,22 @@ namespace Investimentos {
                         do {
                             line = GetNextLine(streamReader);
                         } while (!DateTime.TryParse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal, out data));
-                        resultado.CotaValor = GetValor(line);
+                        fundoMes.CotaValor = GetValor(line);
 
                         // Mover até inicio dos rendimentos
                         do {
                         } while (!(line = GetNextLine(streamReader)).StartsWith("No mês:"));
 
-                        resultado.RendimentoMes = GetValor(line);
-                        resultado.RendimentoAno = GetValor(streamReader);
-                        resultado.Rendimento12Meses = GetValor(streamReader);
+                        fundoMes.RendimentoMes = GetValor(line);
+                        fundoMes.RendimentoAno = GetValor(streamReader);
+                        fundoMes.Rendimento12Meses = GetValor(streamReader);
 
                         // Mover até o rendimento bruto
                         do {
                         } while (!(line = GetNextLine(streamReader)).StartsWith("RENDIMENTO BRUTO"));
-                        resultado.RendimentoBruto = GetValor(line);
+                        contaMes.RendimentoBruto = GetValor(line);
 
-                        contaFundo.Resultados.Add(resultado);
+                        contaFundo.ContasMeses.Add(contaMes);
 
                     } while (true);
                 }
@@ -360,18 +368,22 @@ namespace Investimentos {
         private static Movimento CreateMovimento(string line, IFormatProvider format) {
             return new Movimento() {
                 Data = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal),
-                Historico = line.Substring(11, 20).Trim(),
+                Historico = line.Substring(11, 20).Trim().ToLower(),
                 Valor = ToDecimal(line, 38, 11),
                 ImpostoRenda = ToDecimal(line, 50, 16),
                 CotaQtd = ToDecimal(line, 95, 18),
-                CotaValor = ToDecimal(line, 117, 20)
+                CotaValor = ToDecimalNull(line, 117, 20)
             };
         }
 
         private static decimal ToDecimal(string line, int start, int length) {
-            if (start > line.Length || start + length > line.Length) return 0.0m;
+            return ToDecimalNull(line, start, length) ?? 0.0m;
+        }
+
+        private static decimal? ToDecimalNull(string line, int start, int length) {
+            if (start > line.Length || start + length > line.Length) return null;
             var text = line.Substring(start, length).Trim();
-            return decimal.TryParse(text, out decimal valor) ? valor : 0.0m;
+            return decimal.TryParse(text, out decimal valor) ? (decimal?)valor : null;
         }
 
         private static decimal GetValor(TextReader stream) {

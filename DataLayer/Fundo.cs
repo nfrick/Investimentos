@@ -17,7 +17,8 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Fundo()
         {
-            this.ContaFundo = new HashSet<ContaFundo>();
+            this.Contas = new HashSet<ContaFundo>();
+            this.Meses = new HashSet<FundoMes>();
         }
     
         public int FundoId { get; set; }
@@ -25,6 +26,8 @@ namespace DataLayer
         public string CNPJ { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContaFundo> ContaFundo { get; set; }
+        public virtual ICollection<ContaFundo> Contas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FundoMes> Meses { get; set; }
     }
 }

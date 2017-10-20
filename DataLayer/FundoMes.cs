@@ -12,25 +12,24 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Resultado
+    public partial class FundoMes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Resultado()
+        public FundoMes()
         {
-            this.Movimentos = new HashSet<Movimento>();
+            this.ContasMeses = new HashSet<ContaMes>();
         }
     
-        public int MesId { get; set; }
-        public int ContaFundoId { get; set; }
+        public int FundoMesId { get; set; }
+        public int FundoId { get; set; }
         public System.DateTime Mes { get; set; }
         public decimal CotaValor { get; set; }
         public decimal RendimentoMes { get; set; }
         public decimal RendimentoAno { get; set; }
         public decimal Rendimento12Meses { get; set; }
-        public decimal RendimentoBruto { get; set; }
     
-        public virtual ContaFundo ContaFundo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Movimento> Movimentos { get; set; }
+        public virtual ICollection<ContaMes> ContasMeses { get; set; }
+        public virtual Fundo Fundo { get; set; }
     }
 }
