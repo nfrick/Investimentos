@@ -1,7 +1,12 @@
 using System.Linq;
 
 namespace DataLayer {
-    public partial class AtivoDaConta {
+    public partial class AtivoDaConta
+    {
+        public decimal UltimaCotacao => Ativo.CotacoesDiarias.OrderByDescending(c => c.Data).First().PrecoMedio;
+
+        public decimal Patrimonio => UltimaCotacao * QtdTotal ?? 0;
+
         public decimal ValorMedioCompra => _valorMedioCompra(false);
 
         public decimal ValorMedioCompraReal => _valorMedioCompra(true);

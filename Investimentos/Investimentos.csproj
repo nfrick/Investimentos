@@ -128,9 +128,10 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DataLayer.Associacao.datasource" />
-    <None Include="Properties\DataSources\DataLayer.ComprasDisponiveisParaVenda.datasource" />
+    <None Include="Properties\DataSources\DataLayer.AtivoDaConta.datasource" />
+    <None Include="Properties\DataSources\DataLayer.ContaFundo.datasource" />
     <None Include="Properties\DataSources\DataLayer.Entrada.datasource" />
-    <None Include="Properties\DataSources\DataLayer.Venda.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Patrimonio.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

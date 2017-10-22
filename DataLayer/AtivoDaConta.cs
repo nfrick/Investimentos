@@ -33,5 +33,6 @@ namespace DataLayer
         public virtual ICollection<Saida> Saidas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Entrada> Entradas { get; set; }
+        public virtual Ativo Ativo { get; set; }
     }
 }

@@ -24,6 +24,7 @@ namespace DataLayer
         public int ContaFundoId { get; set; }
         public int FundoMesId { get; set; }
         public decimal RendimentoBruto { get; set; }
+        public decimal CotaQtd { get; set; }
     
         public virtual ContaFundo ContaFundo { get; set; }
         public virtual FundoMes FundoMes { get; set; }

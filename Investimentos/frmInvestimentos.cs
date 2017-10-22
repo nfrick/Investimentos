@@ -1,6 +1,7 @@
 ﻿using DataLayer;
 using GridAndChartStyleLibrary;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
@@ -21,8 +22,10 @@ namespace Investimentos {
             dgvOperacoes.Columns[0].Visible = false;
             dgvVendas.Columns[0].Visible = false;
             GridStyles.FormatGrid(dgvAtivos);
-            GridStyles.FormatColumn(dgvAtivos.Columns[1], GridStyles.StyleInteger, 70);
-            GridStyles.FormatColumns(dgvAtivos, 2, 0, GridStyles.StyleCurrency, 70);
+            GridStyles.FormatColumn(dgvAtivos.Columns[1], GridStyles.StyleInteger, 60);
+            GridStyles.FormatColumn(dgvAtivos.Columns[2], GridStyles.StyleCurrency, 70);
+            GridStyles.FormatColumn(dgvAtivos.Columns[3], GridStyles.StyleCurrency, 80);
+            //GridStyles.FormatColumns(dgvAtivos, 2, 0, GridStyles.StyleCurrency, 70);
 
             GridStyles.FormatGrid(dgvOperacoes);
             dgvOperacoes.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
@@ -51,6 +54,13 @@ namespace Investimentos {
             GridStyles.FormatColumn(dgvMovimentos.Columns[4], GridStyles.StyleCurrency, 90);
             GridStyles.FormatColumn(dgvMovimentos.Columns[5], GridStyles.StyleNumber(6), 100);
 
+            GridStyles.FormatGrid(dgvResumoAcoes);
+            GridStyles.FormatGrid(dgvResumoFundos);
+            dgvResumoAcoes.Columns[0].Width = 130;
+            GridStyles.FormatColumn(dgvResumoAcoes.Columns[1], GridStyles.StyleCurrency, 90);
+            GridStyles.FormatColumn(dgvResumoFundos.Columns[1], GridStyles.StyleCurrency, 90);
+            dgvResumoAcoes.SelectionMode = 
+            dgvResumoFundos.SelectionMode = DataGridViewSelectionMode.CellSelect;
 
             // 50 = vertical scroll bar width
             var w0 = 50 + dgvAtivos.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
@@ -143,21 +153,50 @@ namespace Investimentos {
                 .First(r => (int)r.Cells[0].Value == conta.ContaId)).Index;
             dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
 
-            chart1.Series.Clear();
-            if (conta.Fundos.Count == 0) {
-                chart1.Visible = false;
+            BindDataSourceAndPopulatePieChart(conta.AtivosNaoZerados, "Ações");
+            BindDataSourceAndPopulatePieChart(conta.FundosNaoZerados, "Fundos");
+            PopulateColumnChart(conta.PatrimonioTotal, chartResumoTotal);
+        }
+
+        private void BindDataSourceAndPopulatePieChart(IEnumerable<Patrimonio> data,
+            string fonte) {
+            var bs = fonte == "Ações" ? bindingSourceAcoes : bindingSourceFundos;
+            var dgv = fonte == "Ações" ? dgvResumoAcoes : dgvResumoFundos;
+            var chart = fonte == "Ações" ? chartResumoAcoes : chartResumoFundos;
+            if (!data.Any()) {
+                dgv.Visible = chart.Visible = false;
                 return;
             }
-            chart1.Visible = true;
-            var total = conta.Fundos.Sum(cf => cf.Saldo);
-            chart1.Titles[0].Text = $"Total: {total:N2}";
-            var serie = chart1.Series.Add("AAA");
+            bs.DataSource = data;
+            dgv.Visible = chart.Visible = true;
+            chart.Series.Clear();
+            var total = data.Sum(d => d.Valor);
+            chart.Titles[0].Text = $"{fonte}: {total:N2}";
+            var serie = chart.Series.Add("AAA");
             serie.ChartType = SeriesChartType.Pie;
             serie.Font = new Font("Segoe UI", 7);
-            foreach (var cf in conta.Fundos.Where(c=>c.Saldo > 0)) {
-                var dp = serie.Points.Add((double)cf.Saldo);
-                dp.LegendText = cf.ToString();
-                dp.AxisLabel = $"{cf.Saldo / total:P0}";
+            foreach (var d in data) {
+                var dp = serie.Points.Add((double)d.Valor);
+                dp.LegendText = d.Item;
+                dp.AxisLabel = $"{d.Valor / total:P0}";
+            }
+        }
+
+        private void PopulateColumnChart(IEnumerable<Patrimonio> data, Chart chart) {
+            chart.Series.Clear();
+            if (!data.Any()) {
+                chart.Visible = false;
+                return;
+            }
+            chart.Visible = true;
+            var total = data.Sum(d => d.Valor);
+            chart.Titles[0].Text = $"Total: {total:N2}";
+            foreach (var d in data) {
+                var serie = chart.Series.Add(d.Item);
+                serie.ChartType = SeriesChartType.StackedColumn100;
+                serie.Font = new Font("Segoe UI", 7);
+                serie.Label = $"{d.Valor / total:P0}";
+                var dp = serie.Points.AddY((double)d.Valor);
             }
         }
 
@@ -259,11 +298,16 @@ namespace Investimentos {
         }
 
         private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
+            toolStripButtonLerExtrato.Visible = false;
+            toolStripLabelLendoExtrato.Visible = true;
             if (OFD.ShowDialog() == DialogResult.Cancel)
                 return;
             foreach (var file in OFD.FileNames) {
+                toolStripLabelLendoExtrato.Text = $"Lendo extrato: {Path.GetFileName(file)}";
                 LerExtrato(file);
             }
+            toolStripButtonLerExtrato.Visible = true;
+            toolStripLabelLendoExtrato.Visible = false;
         }
 
         private void LerExtrato(string fileName) {
@@ -319,7 +363,9 @@ namespace Investimentos {
                                 out data)) continue;
                             contaMes.Movimentos.Add(CreateMovimento(line, format));
                         } while (!(line = GetNextLine(streamReader)).Contains("SALDO ATUAL"));
+                        // Adiciona o saldo atual (última linha)
                         contaMes.Movimentos.Add(CreateMovimento(line, format));
+                        contaMes.CotaQtd = contaMes.Movimentos.Last().CotaQtd;
 
                         // Preenche o mês no Fundo-Mes
                         var mes = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal);
@@ -395,6 +441,11 @@ namespace Investimentos {
         private static decimal GetValor(string linha) {
             var valores = linha.Split(new[] { ' ' }).Where(x => !string.IsNullOrEmpty(x)).ToArray();
             return decimal.Parse(valores[valores.Length - 1]);
+        }
+
+        private void dgvResumo_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
+            var dgv = ((DataGridView)sender).Name == "dgvResumoAcoes" ? dgvResumoFundos : dgvResumoAcoes;
+            dgv.Columns[e.Column.Index].Width = e.Column.Width;
         }
     }
 }

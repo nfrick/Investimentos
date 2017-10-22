@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="43af98fc1a5541c5afd92cab742ad0e0" Name="Diagram1" ZoomLevel="88">
+      <Diagram DiagramId="43af98fc1a5541c5afd92cab742ad0e0" Name="Diagram1" ZoomLevel="108">
         <EntityTypeShape EntityType="InvestimentosModel.OperacaoTipo" Width="1.5" PointX="6.5" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="InvestimentosModel.Conta" Width="1.5" PointX="11.625" PointY="9.375" FillColor="128, 255, 128" />
         <EntityTypeShape EntityType="InvestimentosModel.AtivoDaConta" Width="1.5" PointX="6.625" PointY="9.5" />
         <AssociationConnector Association="InvestimentosModel.ContaAtivo" />
-        <EntityTypeShape EntityType="InvestimentosModel.Ativo" Width="1.5" PointX="13.875" PointY="9.375" FillColor="255, 192, 192" />
+        <EntityTypeShape EntityType="InvestimentosModel.Ativo" Width="1.5" PointX="6.625" PointY="7.25" FillColor="255, 192, 192" />
         <EntityTypeShape EntityType="InvestimentosModel.Operacao" Width="1.5" PointX="9.125" PointY="13.25" />
         <AssociationConnector Association="InvestimentosModel.FK_tbOperacoes_tbOperacoesTipos" />
         <EntityTypeShape EntityType="InvestimentosModel.Entrada" Width="1.5" PointX="11.625" PointY="15.125" />
@@ -24,7 +24,7 @@
         <AssociationConnector Association="InvestimentosModel.AtivoDaContaSaida" />
         <AssociationConnector Association="InvestimentosModel.AtivoDaContaEntrada" />
         <AssociationConnector Association="InvestimentosModel.ContaSaida" />
-        <EntityTypeShape EntityType="InvestimentosModel.CotacaoDiaria" Width="1.5" PointX="16.25" PointY="11.125" FillColor="255, 192, 192" />
+        <EntityTypeShape EntityType="InvestimentosModel.CotacaoDiaria" Width="1.5" PointX="4.25" PointY="8.875" FillColor="255, 192, 192" />
         <AssociationConnector Association="InvestimentosModel.FK_tbSerieHistorica_tbAtivos" />
         <EntityTypeShape EntityType="InvestimentosModel.ContaFundo" Width="1.5" PointX="11.625" PointY="6.375" FillColor="255, 255, 192" />
         <EntityTypeShape EntityType="InvestimentosModel.ContaMes" Width="1.5" PointX="14" PointY="6.25" FillColor="255, 255, 192" />
@@ -38,6 +38,7 @@
         <AssociationConnector Association="InvestimentosModel.FK_tbContasMeses_tbFundosMeses" />
         <AssociationConnector Association="InvestimentosModel.FK_tbMovimentos_tbContasMeses" />
         <AssociationConnector Association="InvestimentosModel.FK_tbResultados_tbFundos" />
+        <AssociationConnector Association="InvestimentosModel.AtivoDaContaAtivo" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

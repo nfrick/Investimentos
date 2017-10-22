@@ -10,7 +10,6 @@ namespace DataLayer {
         public decimal RendimentoLiquido => RendimentoBruto - ImpostoRenda;
         private Movimento MovSaldo => Movimentos.FirstOrDefault(m => m.Historico == "saldo atual");
         public decimal Saldo => MovSaldo?.Valor ?? 0;
-        public decimal CotaQtd => MovSaldo?.CotaQtd ?? 0;
 
         public DateTime Mes => FundoMes.Mes;
         public decimal CotaValor => FundoMes.CotaValor;

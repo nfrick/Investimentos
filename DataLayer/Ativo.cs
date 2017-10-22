@@ -18,6 +18,7 @@ namespace DataLayer
         public Ativo()
         {
             this.CotacoesDiarias = new HashSet<CotacaoDiaria>();
+            this.AtivoDaConta = new HashSet<AtivoDaConta>();
         }
     
         public string Codigo { get; set; }
@@ -25,5 +26,7 @@ namespace DataLayer
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CotacaoDiaria> CotacoesDiarias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AtivoDaConta> AtivoDaConta { get; set; }
     }
 }
