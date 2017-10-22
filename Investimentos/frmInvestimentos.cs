@@ -179,6 +179,8 @@ namespace Investimentos {
                 var dp = serie.Points.Add((double)d.Valor);
                 dp.LegendText = d.Item;
                 dp.AxisLabel = $"{d.Valor / total:P0}";
+                chart.ApplyPaletteColors();
+                dp.LabelForeColor = ColorFunctions.ContrastColor(dp.Color);
             }
         }
 
@@ -196,7 +198,9 @@ namespace Investimentos {
                 serie.ChartType = SeriesChartType.StackedColumn100;
                 serie.Font = new Font("Segoe UI", 7);
                 serie.Label = $"{d.Valor / total:P0}";
-                var dp = serie.Points.AddY((double)d.Valor);
+                serie.Points.AddY((double)d.Valor);
+                chart.ApplyPaletteColors();
+                serie.LabelForeColor = ColorFunctions.ContrastColor(serie.Color);
             }
         }
 
