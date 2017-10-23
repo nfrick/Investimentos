@@ -19,40 +19,43 @@ namespace Investimentos {
         }
 
         private void frmInvestimentos_Load(object sender, EventArgs e) {
+
+            // AÇÕES
             dgvOperacoes.Columns[0].Visible = false;
             dgvVendas.Columns[0].Visible = false;
             GridStyles.FormatGrid(dgvAtivos);
             GridStyles.FormatColumn(dgvAtivos.Columns[1], GridStyles.StyleInteger, 60);
             GridStyles.FormatColumn(dgvAtivos.Columns[2], GridStyles.StyleCurrency, 70);
             GridStyles.FormatColumn(dgvAtivos.Columns[3], GridStyles.StyleCurrency, 80);
-            //GridStyles.FormatColumns(dgvAtivos, 2, 0, GridStyles.StyleCurrency, 70);
 
             GridStyles.FormatGrid(dgvOperacoes);
             dgvOperacoes.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
-            GridStyles.FormatColumns(dgvOperacoes, 3, 4, GridStyles.StyleInteger, 70);
-            GridStyles.FormatColumns(dgvOperacoes, 5, 6, GridStyles.StyleCurrency, 70);
+            GridStyles.FormatColumns(dgvOperacoes, 3, 4, GridStyles.StyleInteger, 65);
+            GridStyles.FormatColumns(dgvOperacoes, 5, 7, GridStyles.StyleCurrency, 70);
+            dgvOperacoes.Columns[7].Width = 80;
 
             GridStyles.FormatGrid(dgvVendas, 14);
             dgvVendas.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
-            GridStyles.FormatColumns(dgvVendas, new[] { 2, 3, 4, 6, 7 }, GridStyles.StyleInteger, 69);
-            GridStyles.FormatColumns(dgvVendas, new[] { 5, 8, 9, 10 }, GridStyles.StyleCurrency, 70);
-            GridStyles.FormatColumns(dgvVendas, new[] { 11, 12 }, GridStyles.StyleCurrency, 85);
+            GridStyles.FormatColumns(dgvVendas, new[] { 2, 3, 4, 6, 7 }, GridStyles.StyleInteger, 75);
+            GridStyles.FormatColumns(dgvVendas, new[] { 5, 8, 9, 10 }, GridStyles.StyleCurrency, 80);
+            GridStyles.FormatColumns(dgvVendas, new[] { 11, 12 }, GridStyles.StyleCurrency, 90);
 
+            // FUNDOS
             GridStyles.FormatGrid(dgvFundos);
             GridStyles.FormatColumn(dgvFundos.Columns[1], GridStyles.StyleCurrency, 90);
 
             GridStyles.FormatGrid(dgvResultados);
-            dgvResultados.Columns[0].Width = 75;
-            GridStyles.FormatColumn(dgvResultados.Columns[2], GridStyles.StyleNumber(6), 110);
-            GridStyles.FormatColumn(dgvResultados.Columns[3], GridStyles.StyleNumber(9), 110);
-            GridStyles.FormatColumns(dgvResultados, new[] { 1, 4, 5, 6 }, GridStyles.StyleCurrency, 80);
-            dgvResultados.Columns[1].Width = 90;
-            GridStyles.FormatColumns(dgvResultados, new[] { 7, 8, 9 }, GridStyles.StyleNumber(4), 75);
+            dgvResultados.Columns[0].Width = 85;
+            GridStyles.FormatColumn(dgvResultados.Columns[2], GridStyles.StyleNumber(6), 115);
+            GridStyles.FormatColumn(dgvResultados.Columns[3], GridStyles.StyleNumber(9), 115);
+            GridStyles.FormatColumns(dgvResultados, new[] { 1, 4, 5, 6 }, GridStyles.StyleCurrency, 85);
+            dgvResultados.Columns[1].Width = 95;
+            GridStyles.FormatColumns(dgvResultados, new[] { 7, 8, 9 }, GridStyles.StyleNumber(4), 80);
 
             GridStyles.FormatGrid(dgvMovimentos);
-            GridStyles.FormatColumns(dgvMovimentos, new[] { 2, 3 }, GridStyles.StyleCurrency, 80);
-            GridStyles.FormatColumn(dgvMovimentos.Columns[4], GridStyles.StyleCurrency, 90);
-            GridStyles.FormatColumn(dgvMovimentos.Columns[5], GridStyles.StyleNumber(6), 100);
+            GridStyles.FormatColumns(dgvMovimentos, new[] { 2, 3 }, GridStyles.StyleCurrency, 90);
+            GridStyles.FormatColumn(dgvMovimentos.Columns[4], GridStyles.StyleCurrency, 95);
+            GridStyles.FormatColumn(dgvMovimentos.Columns[5], GridStyles.StyleNumber(6), 105);
 
             GridStyles.FormatGrid(dgvResumoAcoes);
             GridStyles.FormatGrid(dgvResumoFundos);
@@ -67,11 +70,17 @@ namespace Investimentos {
             var w1 = 50 + dgvOperacoes.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
             var w2 = 50 + dgvVendas.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
 
-            tableLayoutPanelAcoes.ColumnStyles[0].Width = w0;
-            tableLayoutPanelAcoes.ColumnStyles[1].Width = w1;
-            Width = 10 + Math.Max(w0 + w1, w2);
+            tlpAcoes.ColumnStyles[0].Width = w0;
+            tlpAcoes.ColumnStyles[1].Width = w1;
+            Width = 40 + Math.Max(w0 + w1, w2);
+            dgvAtivos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvOperacoes.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvVendas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvFundos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvMovimentos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvResultados.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            tableLayoutPanelAcoes.RowStyles[0].Height =
+            tlpAcoes.RowStyles[0].Height =
                 8 + dgvAtivos.ColumnHeadersHeight + 11 * dgvAtivos.RowTemplate.Height;
 
             //----------------

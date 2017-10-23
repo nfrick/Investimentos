@@ -12,6 +12,8 @@ namespace DataLayer {
 
         public int QtdAntes => AtivoDaConta?.Operacoes.Where(o => o.Data < Data).Sum(o => o.QtdComSinal) ?? 0;
 
+        public decimal ValorOperacao => QtdReal * ValorReal;
+
         public Entrada ToEntrada => new Entrada() {
             OperacaoId = this.OperacaoId,
             ContaId = this.ContaId,
