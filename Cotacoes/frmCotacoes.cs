@@ -176,14 +176,13 @@ namespace Cotacoes {
         }
 
         private List<AtivoCotacao> AtivosEmExibicao() {
-            switch (toolStripDropDownButtonAtivos.Text) {
-                case "Ativos Correntes":
-                    return FinanceData.AtivosParaExibicao(AtivosTipos.Correntes);
-                case "Já Negociados":
-                    return FinanceData.AtivosParaExibicao(AtivosTipos.JaNegociados);
-                default:
-                    return FinanceData.AtivosParaExibicao(AtivosTipos.Todos);
+            var opcao = AtivosTipos.Correntes;
+            foreach (ToolStripItem i in toolStripDropDownButtonAtivos.DropDownItems) {
+                if (!(i is ToolStripMenuItem item) || !item.Checked) continue;
+                opcao = (AtivosTipos)int.Parse((string)i.Tag);
+                break;
             }
+            return FinanceData.AtivosParaExibicao(opcao);
         }
 
         private void AtualizarGrafico() {
@@ -234,10 +233,9 @@ namespace Cotacoes {
             CarregarDados(true);
         }
 
-        private void toolStripButtonAtualizar_Click(object sender, EventArgs e)
-        {
+        private void toolStripButtonAtualizar_Click(object sender, EventArgs e) {
             var ativos = from DataGridViewRow row in dgvCotacoes.SelectedRows
-                          select FinanceData.AtivoPorCodigo((string) row.Cells[0].Value);
+                         select FinanceData.AtivoPorCodigo((string)row.Cells[0].Value);
             Parallel.ForEach(ativos, (ativo) => {
                 ativo.AtualizarCotacao();
             });
