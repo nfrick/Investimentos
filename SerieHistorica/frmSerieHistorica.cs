@@ -103,7 +103,6 @@ namespace SerieHistorica {
             ofd.Multiselect = true;
             if (ofd.ShowDialog() == DialogResult.Cancel)
                 return;
-
             bgWorker.RunWorkerAsync(ofd.FileNames);
             entityDataSource1.Refresh();
         }
@@ -116,8 +115,7 @@ namespace SerieHistorica {
             }
             entityDataSource1.SaveChanges();
         }
-
-
+        
         private void LerArquivoParaDatabase(string arquivo) {
             var ativos = entityDataSource1.DbContext.Set<Ativo>().ToList();
             var serie = from linha in File.ReadLines(arquivo)
@@ -125,10 +123,9 @@ namespace SerieHistorica {
                         on linha.Substring(12, 12).Trim() equals ativo.Codigo
                         where linha.StartsWith("01")
                               && linha.Substring(24, 3) == "010"
-                        select new DataLayer.CotacaoDiaria(linha);
-            entityDataSource1.DbContext.Set<DataLayer.CotacaoDiaria>().AddRange(serie);
+                        select new CotacaoDiaria(linha);
+            entityDataSource1.DbContext.Set<CotacaoDiaria>().AddRange(serie);
         }
-
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             toolStripLabel1.Text = string.Empty;

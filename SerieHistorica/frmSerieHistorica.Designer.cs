@@ -65,10 +65,6 @@
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // entityDataSource1
-            // 
-            this.entityDataSource1.DbContextType = typeof(DataLayer.InvestimentosEntities);
-            // 
             // toolStripContainer1
             // 
             this.toolStripContainer1.BottomToolStripPanelVisible = false;
@@ -280,6 +276,10 @@
             this.precoMelhorOfertaVendaDataGridViewTextBoxColumn.Name = "precoMelhorOfertaVendaDataGridViewTextBoxColumn";
             this.precoMelhorOfertaVendaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // entityDataSource1
+            // 
+            this.entityDataSource1.DbContextType = typeof(DataLayer.InvestimentosEntities);
+            // 
             // dgvAtivos
             // 
             this.dgvAtivos.AllowUserToAddRows = false;
@@ -354,7 +354,7 @@
             this.toolStripComboBoxTermino});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(759, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 28);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonLerSerie

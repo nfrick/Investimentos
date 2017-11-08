@@ -19,33 +19,41 @@ namespace DataLayer {
         }
 
         public void AtualizarCotacao(bool reset = false) {
-            if (reset)
+            if (reset || DateTime.Now.Hour > 17)
                 Cotacoes.Clear();
-            var cotacao1 = ObterCotacao(1);
-            var serie = cotacao1.TimeSeries.Take(60);
-            if (!Cotacoes.Any()) {
-                var horaInicio = DateTime.Today + new TimeSpan(10, 0, 0);
-                var maisAntigo = serie.Last().Key;
-                if (maisAntigo.CompareTo(horaInicio) < 0) {
-                    var fechamento = serie
-                        .First(c => c.Key.CompareTo(horaInicio) <= 0);
-                    Cotacoes.Add(horaInicio, fechamento.Value);
-                }
-                else {
-                    var cotacao5 = ObterCotacao(5);
-                    var fechamento = cotacao5.TimeSeries
-                        .First(c => c.Key.CompareTo(horaInicio) <= 0);
-                    Cotacoes.Add(horaInicio, fechamento.Value);
-                    foreach (var cot in cotacao5.TimeSeries
-                        .SkipWhile(c => c.Key.CompareTo(maisAntigo) > 0)
-                        .TakeWhile(c => c.Key.CompareTo(horaInicio) > 0)) {
-                        Cotacoes.Add(cot.Key, cot.Value);
-                    }
+
+            if (DateTime.Now.Hour >= 17) {
+                foreach (var cot in ObterCotacao(5).TimeSeries.TakeWhile(c => c.Key.Date == DateTime.Today)) {
+                    Cotacoes.Add(cot.Key, cot.Value);
                 }
             }
-            var maisRecente = Cotacoes.Last().Key;
-            foreach (var cot in serie.TakeWhile(c => c.Key.CompareTo(maisRecente) > 0)) {
-                Cotacoes.Add(cot.Key, cot.Value);
+            else {
+                var cotacao1 = ObterCotacao(1);
+                var serie = cotacao1.TimeSeries.Take(60);
+                if (!Cotacoes.Any()) {
+                    var horaInicio = DateTime.Today + new TimeSpan(10, 0, 0);
+                    var maisAntigo = serie.Last().Key;
+                    if (maisAntigo.CompareTo(horaInicio) < 0) {
+                        var fechamento = serie
+                            .First(c => c.Key.CompareTo(horaInicio) <= 0);
+                        Cotacoes.Add(horaInicio, fechamento.Value);
+                    }
+                    else {
+                        var cotacao5 = ObterCotacao(5);
+                        var fechamento = cotacao5.TimeSeries
+                            .First(c => c.Key.CompareTo(horaInicio) <= 0);
+                        Cotacoes.Add(horaInicio, fechamento.Value);
+                        foreach (var cot in cotacao5.TimeSeries
+                            .SkipWhile(c => c.Key.CompareTo(maisAntigo) > 0)
+                            .TakeWhile(c => c.Key.CompareTo(horaInicio) > 0)) {
+                            Cotacoes.Add(cot.Key, cot.Value);
+                        }
+                    }
+                }
+                var maisRecente = Cotacoes.Last().Key;
+                foreach (var cot in serie.TakeWhile(c => c.Key.CompareTo(maisRecente) > 0)) {
+                    Cotacoes.Add(cot.Key, cot.Value);
+                }
             }
         }
 

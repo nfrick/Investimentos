@@ -96,7 +96,7 @@ namespace Cotacoes {
             set {
                 if (InvokeRequired) {
                     BeginInvoke(new Action(() => {
-                        CarregarDados(false);
+                        CarregarDados();
                         if (!value) {
                             Erros++;
                         }
@@ -150,9 +150,12 @@ namespace Cotacoes {
         #endregion TIMER
 
         #region DADOS E ATUALIZAÇÕES
-        private void CarregarDados(bool recarregarListaDeAtivos) {
-            if (recarregarListaDeAtivos)
-                bindingSourceCotacoes.DataSource = AtivosEmExibicao();
+        private void CarregarDados(bool recarregarListaDeAtivos = false) {
+            if (recarregarListaDeAtivos) {
+                var x = AtivosEmExibicao();
+                bindingSourceCotacoes.DataSource = x; //AtivosEmExibicao();
+            }
+
             else
                 dgvCotacoes.Refresh();
 
@@ -213,7 +216,6 @@ namespace Cotacoes {
         #endregion DADOS E ATUALIZAÇÕES
 
         #region TOOLBAR
-
         private void AtivosButtonsClick(object sender, EventArgs e) {
             var senderButton = (ToolStripMenuItem)sender;
             foreach (ToolStripItem i in toolStripDropDownButtonAtivos.DropDownItems) {
@@ -234,13 +236,14 @@ namespace Cotacoes {
         }
 
         private void toolStripButtonAtualizar_Click(object sender, EventArgs e) {
-            var ativos = from DataGridViewRow row in dgvCotacoes.SelectedRows
-                         select FinanceData.AtivoPorCodigo((string)row.Cells[0].Value);
+            toolStripButtonAtualizar.Enabled = false;
+            var ativos = (List<AtivoCotacao>)bindingSourceCotacoes.DataSource;
             Parallel.ForEach(ativos, (ativo) => {
                 ativo.AtualizarCotacao();
             });
+            CarregarDados();
+            toolStripButtonAtualizar.Enabled = true;
         }
-
         #endregion TOOLBAR
 
         #region DATAGRIDVIEW
