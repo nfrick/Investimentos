@@ -24,38 +24,38 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCotacoes));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvCotacoes = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patrimonioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastTradeDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastTradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.previousTradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.previousCloseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.changeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.changePercentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayLowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayHighDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.askDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorMedioCompraReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LucroReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtdVendavel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LucroImediato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceCotacoes = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelAtualizadoEm = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelErros = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvTotal = new System.Windows.Forms.DataGridView();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripComboBoxConta = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripDropDownButtonAtivos = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItemCorrentes = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemJaNegociados = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemTodos = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButtonFrequencia = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem5minutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1minuto = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemDesligado = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.toolStripMenuItem15minutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem10minutos = new System.Windows.Forms.ToolStripMenuItem();
             this.col0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,26 +76,22 @@
             this.col17DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col18DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceTotal = new System.Windows.Forms.BindingSource(this.components);
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBoxConta = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripDropDownButtonAtivos = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItemCorrentes = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemJaNegociados = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemTodos = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButtonFrequencia = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem5minutos = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1minuto = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem30segundos = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem10segundos = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5segundos = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1segundo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemDesligado = new System.Windows.Forms.ToolStripMenuItem();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patrimonioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastTradeDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastTradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.previousTradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.previousCloseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changePercentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayLowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayHighDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceCotacoes = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripButtonAtualizar = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotacoes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -103,9 +99,10 @@
             this.toolStripContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvCotacoes
@@ -118,6 +115,10 @@
             this.dataGridViewTextBoxColumn1,
             this.qtdTotalDataGridViewTextBoxColumn,
             this.patrimonioDataGridViewTextBoxColumn,
+            this.ValorMedioCompraReal,
+            this.LucroReal,
+            this.QtdVendavel,
+            this.LucroImediato,
             this.lastTradeDateDataGridViewTextBoxColumn,
             this.trendDataGridViewTextBoxColumn,
             this.lastTradeDataGridViewTextBoxColumn,
@@ -127,13 +128,7 @@
             this.changePercentDataGridViewTextBoxColumn,
             this.openDataGridViewTextBoxColumn,
             this.dayLowDataGridViewTextBoxColumn,
-            this.dayHighDataGridViewTextBoxColumn,
-            this.askDataGridViewTextBoxColumn,
-            this.bidDataGridViewTextBoxColumn,
-            this.ValorMedioCompraReal,
-            this.LucroReal,
-            this.QtdVendavel,
-            this.LucroImediato});
+            this.dayHighDataGridViewTextBoxColumn});
             this.dgvCotacoes.DataSource = this.bindingSourceCotacoes;
             this.dgvCotacoes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCotacoes.Location = new System.Drawing.Point(4, 4);
@@ -147,130 +142,6 @@
             this.dgvCotacoes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCotacoes_CellFormatting);
             this.dgvCotacoes.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvCotacoes_ColumnWidthChanged);
             this.dgvCotacoes.SelectionChanged += new System.EventHandler(this.dgvCotacoes_SelectionChanged);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Ativo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 70;
-            // 
-            // qtdTotalDataGridViewTextBoxColumn
-            // 
-            this.qtdTotalDataGridViewTextBoxColumn.DataPropertyName = "QtdTotal";
-            this.qtdTotalDataGridViewTextBoxColumn.HeaderText = "Qtd Total";
-            this.qtdTotalDataGridViewTextBoxColumn.Name = "qtdTotalDataGridViewTextBoxColumn";
-            this.qtdTotalDataGridViewTextBoxColumn.ReadOnly = true;
-            this.qtdTotalDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // patrimonioDataGridViewTextBoxColumn
-            // 
-            this.patrimonioDataGridViewTextBoxColumn.DataPropertyName = "Patrimonio";
-            this.patrimonioDataGridViewTextBoxColumn.HeaderText = "Patrimônio";
-            this.patrimonioDataGridViewTextBoxColumn.Name = "patrimonioDataGridViewTextBoxColumn";
-            this.patrimonioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.patrimonioDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // lastTradeDateDataGridViewTextBoxColumn
-            // 
-            this.lastTradeDateDataGridViewTextBoxColumn.DataPropertyName = "LastTradeDate";
-            this.lastTradeDateDataGridViewTextBoxColumn.HeaderText = "Last Trade Date";
-            this.lastTradeDateDataGridViewTextBoxColumn.Name = "lastTradeDateDataGridViewTextBoxColumn";
-            this.lastTradeDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastTradeDateDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // trendDataGridViewTextBoxColumn
-            // 
-            this.trendDataGridViewTextBoxColumn.DataPropertyName = "Trend";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.trendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.trendDataGridViewTextBoxColumn.HeaderText = "";
-            this.trendDataGridViewTextBoxColumn.Name = "trendDataGridViewTextBoxColumn";
-            this.trendDataGridViewTextBoxColumn.ReadOnly = true;
-            this.trendDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // lastTradeDataGridViewTextBoxColumn
-            // 
-            this.lastTradeDataGridViewTextBoxColumn.DataPropertyName = "LastTrade";
-            this.lastTradeDataGridViewTextBoxColumn.HeaderText = "Last Trade";
-            this.lastTradeDataGridViewTextBoxColumn.Name = "lastTradeDataGridViewTextBoxColumn";
-            this.lastTradeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastTradeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // previousTradeDataGridViewTextBoxColumn
-            // 
-            this.previousTradeDataGridViewTextBoxColumn.DataPropertyName = "PreviousTrade";
-            this.previousTradeDataGridViewTextBoxColumn.HeaderText = "Previous Trade";
-            this.previousTradeDataGridViewTextBoxColumn.Name = "previousTradeDataGridViewTextBoxColumn";
-            this.previousTradeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.previousTradeDataGridViewTextBoxColumn.Visible = false;
-            this.previousTradeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // previousCloseDataGridViewTextBoxColumn
-            // 
-            this.previousCloseDataGridViewTextBoxColumn.DataPropertyName = "PreviousClose";
-            this.previousCloseDataGridViewTextBoxColumn.HeaderText = "Previous Close";
-            this.previousCloseDataGridViewTextBoxColumn.Name = "previousCloseDataGridViewTextBoxColumn";
-            this.previousCloseDataGridViewTextBoxColumn.ReadOnly = true;
-            this.previousCloseDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // changeDataGridViewTextBoxColumn
-            // 
-            this.changeDataGridViewTextBoxColumn.DataPropertyName = "Change";
-            this.changeDataGridViewTextBoxColumn.HeaderText = "Change";
-            this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
-            this.changeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.changeDataGridViewTextBoxColumn.Visible = false;
-            this.changeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // changePercentDataGridViewTextBoxColumn
-            // 
-            this.changePercentDataGridViewTextBoxColumn.DataPropertyName = "ChangePercent";
-            this.changePercentDataGridViewTextBoxColumn.HeaderText = "Change %";
-            this.changePercentDataGridViewTextBoxColumn.Name = "changePercentDataGridViewTextBoxColumn";
-            this.changePercentDataGridViewTextBoxColumn.ReadOnly = true;
-            this.changePercentDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // openDataGridViewTextBoxColumn
-            // 
-            this.openDataGridViewTextBoxColumn.DataPropertyName = "Open";
-            this.openDataGridViewTextBoxColumn.HeaderText = "Open";
-            this.openDataGridViewTextBoxColumn.Name = "openDataGridViewTextBoxColumn";
-            this.openDataGridViewTextBoxColumn.ReadOnly = true;
-            this.openDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // dayLowDataGridViewTextBoxColumn
-            // 
-            this.dayLowDataGridViewTextBoxColumn.DataPropertyName = "DayLow";
-            this.dayLowDataGridViewTextBoxColumn.HeaderText = "Day Low";
-            this.dayLowDataGridViewTextBoxColumn.Name = "dayLowDataGridViewTextBoxColumn";
-            this.dayLowDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dayLowDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // dayHighDataGridViewTextBoxColumn
-            // 
-            this.dayHighDataGridViewTextBoxColumn.DataPropertyName = "DayHigh";
-            this.dayHighDataGridViewTextBoxColumn.HeaderText = "Day High";
-            this.dayHighDataGridViewTextBoxColumn.Name = "dayHighDataGridViewTextBoxColumn";
-            this.dayHighDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dayHighDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // askDataGridViewTextBoxColumn
-            // 
-            this.askDataGridViewTextBoxColumn.DataPropertyName = "Ask";
-            this.askDataGridViewTextBoxColumn.HeaderText = "Ask";
-            this.askDataGridViewTextBoxColumn.Name = "askDataGridViewTextBoxColumn";
-            this.askDataGridViewTextBoxColumn.ReadOnly = true;
-            this.askDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // bidDataGridViewTextBoxColumn
-            // 
-            this.bidDataGridViewTextBoxColumn.DataPropertyName = "Bid";
-            this.bidDataGridViewTextBoxColumn.HeaderText = "Bid";
-            this.bidDataGridViewTextBoxColumn.Name = "bidDataGridViewTextBoxColumn";
-            this.bidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.bidDataGridViewTextBoxColumn.Width = 70;
             // 
             // ValorMedioCompraReal
             // 
@@ -303,11 +174,6 @@
             this.LucroImediato.Name = "LucroImediato";
             this.LucroImediato.ReadOnly = true;
             this.LucroImediato.Width = 70;
-            // 
-            // bindingSourceCotacoes
-            // 
-            this.bindingSourceCotacoes.AllowNew = false;
-            this.bindingSourceCotacoes.DataSource = typeof(DataLayer.AtivoCotacao);
             // 
             // statusStrip1
             // 
@@ -416,6 +282,192 @@
             this.dgvTotal.Size = new System.Drawing.Size(1275, 25);
             this.dgvTotal.TabIndex = 2;
             this.dgvTotal.SelectionChanged += new System.EventHandler(this.dgvTotal_SelectionChanged);
+            // 
+            // chart1
+            // 
+            this.chart1.BackColor = System.Drawing.Color.Black;
+            this.chart1.BorderSkin.BackColor = System.Drawing.Color.Black;
+            this.chart1.BorderSkin.BackImageTransparentColor = System.Drawing.Color.Black;
+            this.chart1.BorderSkin.BorderColor = System.Drawing.Color.White;
+            this.chart1.BorderSkin.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.chart1.BorderSkin.PageColor = System.Drawing.Color.Black;
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX.LabelStyle.Format = "HH:mm";
+            chartArea1.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.IsLabelAutoFit = false;
+            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LabelStyle.Format = "N2";
+            chartArea1.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            chartArea1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            chartArea1.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.ShadowColor = System.Drawing.Color.White;
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Alignment = System.Drawing.StringAlignment.Center;
+            legend1.BackColor = System.Drawing.Color.Black;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend1.ForeColor = System.Drawing.Color.White;
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(4, 337);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.LabelBackColor = System.Drawing.Color.Black;
+            series1.LabelForeColor = System.Drawing.Color.White;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(1275, 407);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1,
+            this.toolStripComboBoxConta,
+            this.toolStripDropDownButtonAtivos,
+            this.toolStripDropDownButtonFrequencia,
+            this.toolStripButtonAtualizar});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(697, 28);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(51, 25);
+            this.toolStripLabel1.Text = "Conta:";
+            // 
+            // toolStripComboBoxConta
+            // 
+            this.toolStripComboBoxConta.AutoSize = false;
+            this.toolStripComboBoxConta.Name = "toolStripComboBoxConta";
+            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 28);
+            this.toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
+            // 
+            // toolStripDropDownButtonAtivos
+            // 
+            this.toolStripDropDownButtonAtivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.toolStripDropDownButtonAtivos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButtonAtivos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemCorrentes,
+            this.ToolStripMenuItemJaNegociados,
+            this.toolStripMenuItemTodos});
+            this.toolStripDropDownButtonAtivos.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonAtivos.Image")));
+            this.toolStripDropDownButtonAtivos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonAtivos.Name = "toolStripDropDownButtonAtivos";
+            this.toolStripDropDownButtonAtivos.Size = new System.Drawing.Size(131, 25);
+            this.toolStripDropDownButtonAtivos.Text = "Ativos Correntes";
+            // 
+            // toolStripMenuItemCorrentes
+            // 
+            this.toolStripMenuItemCorrentes.Checked = true;
+            this.toolStripMenuItemCorrentes.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemCorrentes.Name = "toolStripMenuItemCorrentes";
+            this.toolStripMenuItemCorrentes.Size = new System.Drawing.Size(192, 26);
+            this.toolStripMenuItemCorrentes.Tag = "o";
+            this.toolStripMenuItemCorrentes.Text = "Ativos Correntes";
+            // 
+            // ToolStripMenuItemJaNegociados
+            // 
+            this.ToolStripMenuItemJaNegociados.Name = "ToolStripMenuItemJaNegociados";
+            this.ToolStripMenuItemJaNegociados.Size = new System.Drawing.Size(192, 26);
+            this.ToolStripMenuItemJaNegociados.Tag = "1";
+            this.ToolStripMenuItemJaNegociados.Text = "Já Negociados";
+            // 
+            // toolStripMenuItemTodos
+            // 
+            this.toolStripMenuItemTodos.Name = "toolStripMenuItemTodos";
+            this.toolStripMenuItemTodos.Size = new System.Drawing.Size(192, 26);
+            this.toolStripMenuItemTodos.Tag = "2";
+            this.toolStripMenuItemTodos.Text = "Todos os Ativos";
+            // 
+            // toolStripDropDownButtonFrequencia
+            // 
+            this.toolStripDropDownButtonFrequencia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.toolStripDropDownButtonFrequencia.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButtonFrequencia.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1minuto,
+            this.toolStripMenuItem5minutos,
+            this.toolStripMenuItem10minutos,
+            this.toolStripMenuItem15minutos,
+            this.toolStripSeparator1,
+            this.toolStripMenuItemDesligado});
+            this.toolStripDropDownButtonFrequencia.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonFrequencia.Image")));
+            this.toolStripDropDownButtonFrequencia.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonFrequencia.Name = "toolStripDropDownButtonFrequencia";
+            this.toolStripDropDownButtonFrequencia.Size = new System.Drawing.Size(167, 25);
+            this.toolStripDropDownButtonFrequencia.Text = "Frequência: 5 minutos";
+            this.toolStripDropDownButtonFrequencia.ToolTipText = "Frequência de atualização";
+            // 
+            // toolStripMenuItem5minutos
+            // 
+            this.toolStripMenuItem5minutos.Name = "toolStripMenuItem5minutos";
+            this.toolStripMenuItem5minutos.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem5minutos.Tag = "5";
+            this.toolStripMenuItem5minutos.Text = "5 minutos";
+            // 
+            // toolStripMenuItem1minuto
+            // 
+            this.toolStripMenuItem1minuto.Name = "toolStripMenuItem1minuto";
+            this.toolStripMenuItem1minuto.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem1minuto.Tag = "1";
+            this.toolStripMenuItem1minuto.Text = "1 minuto";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            // 
+            // toolStripMenuItemDesligado
+            // 
+            this.toolStripMenuItemDesligado.Name = "toolStripMenuItemDesligado";
+            this.toolStripMenuItemDesligado.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemDesligado.Tag = "0";
+            this.toolStripMenuItemDesligado.Text = "Desligado";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipText = "Recebendo cotações de ações BOVESPA";
+            this.notifyIcon1.BalloonTipTitle = "Cotações";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Cotações";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            // 
+            // toolStripMenuItem15minutos
+            // 
+            this.toolStripMenuItem15minutos.Name = "toolStripMenuItem15minutos";
+            this.toolStripMenuItem15minutos.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem15minutos.Tag = "15";
+            this.toolStripMenuItem15minutos.Text = "15 minutos";
+            // 
+            // toolStripMenuItem10minutos
+            // 
+            this.toolStripMenuItem10minutos.Name = "toolStripMenuItem10minutos";
+            this.toolStripMenuItem10minutos.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItem10minutos.Tag = "10";
+            this.toolStripMenuItem10minutos.Text = "10 minutos";
             // 
             // col0DataGridViewTextBoxColumn
             // 
@@ -554,206 +606,129 @@
             // 
             this.bindingSourceTotal.DataSource = typeof(DataLayer.AtivoCotacaoTotal);
             // 
-            // chart1
+            // dataGridViewTextBoxColumn1
             // 
-            this.chart1.BackColor = System.Drawing.Color.Black;
-            this.chart1.BorderSkin.BackColor = System.Drawing.Color.Black;
-            this.chart1.BorderSkin.BackImageTransparentColor = System.Drawing.Color.Black;
-            this.chart1.BorderSkin.BorderColor = System.Drawing.Color.White;
-            this.chart1.BorderSkin.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            this.chart1.BorderSkin.PageColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.IsLabelAutoFit = false;
-            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisX.LabelStyle.Format = "HH:mm";
-            chartArea1.AxisX.LineColor = System.Drawing.Color.White;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY.IsLabelAutoFit = false;
-            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY.LabelStyle.Format = "N2";
-            chartArea1.AxisY.LineColor = System.Drawing.Color.White;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            chartArea1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
-            chartArea1.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            chartArea1.ShadowColor = System.Drawing.Color.White;
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Alignment = System.Drawing.StringAlignment.Center;
-            legend1.BackColor = System.Drawing.Color.Black;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend1.ForeColor = System.Drawing.Color.White;
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(4, 337);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.LabelBackColor = System.Drawing.Color.Black;
-            series1.LabelForeColor = System.Drawing.Color.White;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1275, 407);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Ativo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // toolStrip1
+            // qtdTotalDataGridViewTextBoxColumn
             // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
-            this.toolStripComboBoxConta,
-            this.toolStripDropDownButtonAtivos,
-            this.toolStripDropDownButtonFrequencia});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(463, 28);
-            this.toolStrip1.TabIndex = 0;
+            this.qtdTotalDataGridViewTextBoxColumn.DataPropertyName = "QtdTotal";
+            this.qtdTotalDataGridViewTextBoxColumn.HeaderText = "Qtd Total";
+            this.qtdTotalDataGridViewTextBoxColumn.Name = "qtdTotalDataGridViewTextBoxColumn";
+            this.qtdTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            this.qtdTotalDataGridViewTextBoxColumn.Width = 70;
             // 
-            // toolStripLabel1
+            // patrimonioDataGridViewTextBoxColumn
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(51, 25);
-            this.toolStripLabel1.Text = "Conta:";
+            this.patrimonioDataGridViewTextBoxColumn.DataPropertyName = "Patrimonio";
+            this.patrimonioDataGridViewTextBoxColumn.HeaderText = "Patrimônio";
+            this.patrimonioDataGridViewTextBoxColumn.Name = "patrimonioDataGridViewTextBoxColumn";
+            this.patrimonioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.patrimonioDataGridViewTextBoxColumn.Width = 70;
             // 
-            // toolStripComboBoxConta
+            // lastTradeDateDataGridViewTextBoxColumn
             // 
-            this.toolStripComboBoxConta.AutoSize = false;
-            this.toolStripComboBoxConta.Name = "toolStripComboBoxConta";
-            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 28);
-            this.toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
+            this.lastTradeDateDataGridViewTextBoxColumn.DataPropertyName = "LastTradeDate";
+            this.lastTradeDateDataGridViewTextBoxColumn.HeaderText = "Last Trade Date";
+            this.lastTradeDateDataGridViewTextBoxColumn.Name = "lastTradeDateDataGridViewTextBoxColumn";
+            this.lastTradeDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastTradeDateDataGridViewTextBoxColumn.Width = 70;
             // 
-            // toolStripDropDownButtonAtivos
+            // trendDataGridViewTextBoxColumn
             // 
-            this.toolStripDropDownButtonAtivos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButtonAtivos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemCorrentes,
-            this.ToolStripMenuItemJaNegociados,
-            this.toolStripMenuItemTodos});
-            this.toolStripDropDownButtonAtivos.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonAtivos.Image")));
-            this.toolStripDropDownButtonAtivos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonAtivos.Name = "toolStripDropDownButtonAtivos";
-            this.toolStripDropDownButtonAtivos.Size = new System.Drawing.Size(131, 25);
-            this.toolStripDropDownButtonAtivos.Text = "Ativos Correntes";
+            this.trendDataGridViewTextBoxColumn.DataPropertyName = "Trend";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.trendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.trendDataGridViewTextBoxColumn.HeaderText = "";
+            this.trendDataGridViewTextBoxColumn.Name = "trendDataGridViewTextBoxColumn";
+            this.trendDataGridViewTextBoxColumn.ReadOnly = true;
+            this.trendDataGridViewTextBoxColumn.Width = 5;
             // 
-            // toolStripMenuItemCorrentes
+            // lastTradeDataGridViewTextBoxColumn
             // 
-            this.toolStripMenuItemCorrentes.Checked = true;
-            this.toolStripMenuItemCorrentes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItemCorrentes.Name = "toolStripMenuItemCorrentes";
-            this.toolStripMenuItemCorrentes.Size = new System.Drawing.Size(192, 26);
-            this.toolStripMenuItemCorrentes.Tag = "o";
-            this.toolStripMenuItemCorrentes.Text = "Ativos Correntes";
+            this.lastTradeDataGridViewTextBoxColumn.DataPropertyName = "LastTrade";
+            this.lastTradeDataGridViewTextBoxColumn.HeaderText = "Last Trade";
+            this.lastTradeDataGridViewTextBoxColumn.Name = "lastTradeDataGridViewTextBoxColumn";
+            this.lastTradeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastTradeDataGridViewTextBoxColumn.Width = 70;
             // 
-            // ToolStripMenuItemJaNegociados
+            // previousTradeDataGridViewTextBoxColumn
             // 
-            this.ToolStripMenuItemJaNegociados.Name = "ToolStripMenuItemJaNegociados";
-            this.ToolStripMenuItemJaNegociados.Size = new System.Drawing.Size(192, 26);
-            this.ToolStripMenuItemJaNegociados.Tag = "1";
-            this.ToolStripMenuItemJaNegociados.Text = "Já Negociados";
+            this.previousTradeDataGridViewTextBoxColumn.DataPropertyName = "PreviousTrade";
+            this.previousTradeDataGridViewTextBoxColumn.HeaderText = "Previous Trade";
+            this.previousTradeDataGridViewTextBoxColumn.Name = "previousTradeDataGridViewTextBoxColumn";
+            this.previousTradeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.previousTradeDataGridViewTextBoxColumn.Visible = false;
+            this.previousTradeDataGridViewTextBoxColumn.Width = 70;
             // 
-            // toolStripMenuItemTodos
+            // previousCloseDataGridViewTextBoxColumn
             // 
-            this.toolStripMenuItemTodos.Name = "toolStripMenuItemTodos";
-            this.toolStripMenuItemTodos.Size = new System.Drawing.Size(192, 26);
-            this.toolStripMenuItemTodos.Tag = "2";
-            this.toolStripMenuItemTodos.Text = "Todos os Ativos";
+            this.previousCloseDataGridViewTextBoxColumn.DataPropertyName = "PreviousClose";
+            this.previousCloseDataGridViewTextBoxColumn.HeaderText = "Previous Close";
+            this.previousCloseDataGridViewTextBoxColumn.Name = "previousCloseDataGridViewTextBoxColumn";
+            this.previousCloseDataGridViewTextBoxColumn.ReadOnly = true;
+            this.previousCloseDataGridViewTextBoxColumn.Width = 70;
             // 
-            // toolStripDropDownButtonFrequencia
+            // changeDataGridViewTextBoxColumn
             // 
-            this.toolStripDropDownButtonFrequencia.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButtonFrequencia.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5minutos,
-            this.toolStripMenuItem1minuto,
-            this.toolStripMenuItem30segundos,
-            this.toolStripMenuItem10segundos,
-            this.toolStripMenuItem5segundos,
-            this.toolStripMenuItem1segundo,
-            this.toolStripSeparator1,
-            this.toolStripMenuItemDesligado});
-            this.toolStripDropDownButtonFrequencia.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonFrequencia.Image")));
-            this.toolStripDropDownButtonFrequencia.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonFrequencia.Name = "toolStripDropDownButtonFrequencia";
-            this.toolStripDropDownButtonFrequencia.Size = new System.Drawing.Size(177, 25);
-            this.toolStripDropDownButtonFrequencia.Text = "Frequência: 5 segundos";
-            this.toolStripDropDownButtonFrequencia.ToolTipText = "Frequência de atualização";
+            this.changeDataGridViewTextBoxColumn.DataPropertyName = "Change";
+            this.changeDataGridViewTextBoxColumn.HeaderText = "Change";
+            this.changeDataGridViewTextBoxColumn.Name = "changeDataGridViewTextBoxColumn";
+            this.changeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.changeDataGridViewTextBoxColumn.Visible = false;
+            this.changeDataGridViewTextBoxColumn.Width = 70;
             // 
-            // toolStripMenuItem5minutos
+            // changePercentDataGridViewTextBoxColumn
             // 
-            this.toolStripMenuItem5minutos.Name = "toolStripMenuItem5minutos";
-            this.toolStripMenuItem5minutos.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem5minutos.Tag = "300";
-            this.toolStripMenuItem5minutos.Text = "5 minutos";
+            this.changePercentDataGridViewTextBoxColumn.DataPropertyName = "ChangePercent";
+            this.changePercentDataGridViewTextBoxColumn.HeaderText = "Change %";
+            this.changePercentDataGridViewTextBoxColumn.Name = "changePercentDataGridViewTextBoxColumn";
+            this.changePercentDataGridViewTextBoxColumn.ReadOnly = true;
+            this.changePercentDataGridViewTextBoxColumn.Width = 70;
             // 
-            // toolStripMenuItem1minuto
+            // openDataGridViewTextBoxColumn
             // 
-            this.toolStripMenuItem1minuto.Name = "toolStripMenuItem1minuto";
-            this.toolStripMenuItem1minuto.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem1minuto.Tag = "60";
-            this.toolStripMenuItem1minuto.Text = "1 minuto";
+            this.openDataGridViewTextBoxColumn.DataPropertyName = "Open";
+            this.openDataGridViewTextBoxColumn.HeaderText = "Open";
+            this.openDataGridViewTextBoxColumn.Name = "openDataGridViewTextBoxColumn";
+            this.openDataGridViewTextBoxColumn.ReadOnly = true;
+            this.openDataGridViewTextBoxColumn.Width = 70;
             // 
-            // toolStripMenuItem30segundos
+            // dayLowDataGridViewTextBoxColumn
             // 
-            this.toolStripMenuItem30segundos.Name = "toolStripMenuItem30segundos";
-            this.toolStripMenuItem30segundos.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem30segundos.Tag = "60";
-            this.toolStripMenuItem30segundos.Text = "30 segundos";
+            this.dayLowDataGridViewTextBoxColumn.DataPropertyName = "DayLow";
+            this.dayLowDataGridViewTextBoxColumn.HeaderText = "Day Low";
+            this.dayLowDataGridViewTextBoxColumn.Name = "dayLowDataGridViewTextBoxColumn";
+            this.dayLowDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dayLowDataGridViewTextBoxColumn.Width = 70;
             // 
-            // toolStripMenuItem10segundos
+            // dayHighDataGridViewTextBoxColumn
             // 
-            this.toolStripMenuItem10segundos.Name = "toolStripMenuItem10segundos";
-            this.toolStripMenuItem10segundos.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem10segundos.Tag = "10";
-            this.toolStripMenuItem10segundos.Text = "10 segundos";
+            this.dayHighDataGridViewTextBoxColumn.DataPropertyName = "DayHigh";
+            this.dayHighDataGridViewTextBoxColumn.HeaderText = "Day High";
+            this.dayHighDataGridViewTextBoxColumn.Name = "dayHighDataGridViewTextBoxColumn";
+            this.dayHighDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dayHighDataGridViewTextBoxColumn.Width = 70;
             // 
-            // toolStripMenuItem5segundos
+            // bindingSourceCotacoes
             // 
-            this.toolStripMenuItem5segundos.Checked = true;
-            this.toolStripMenuItem5segundos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolStripMenuItem5segundos.Name = "toolStripMenuItem5segundos";
-            this.toolStripMenuItem5segundos.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem5segundos.Tag = "5";
-            this.toolStripMenuItem5segundos.Text = "5 segundos";
+            this.bindingSourceCotacoes.AllowNew = false;
+            this.bindingSourceCotacoes.DataSource = typeof(DataLayer.AtivoCotacao);
             // 
-            // toolStripMenuItem1segundo
+            // toolStripButtonAtualizar
             // 
-            this.toolStripMenuItem1segundo.Name = "toolStripMenuItem1segundo";
-            this.toolStripMenuItem1segundo.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItem1segundo.Tag = "1";
-            this.toolStripMenuItem1segundo.Text = "1 segundo";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
-            // 
-            // toolStripMenuItemDesligado
-            // 
-            this.toolStripMenuItemDesligado.Name = "toolStripMenuItemDesligado";
-            this.toolStripMenuItemDesligado.Size = new System.Drawing.Size(167, 26);
-            this.toolStripMenuItemDesligado.Tag = "0";
-            this.toolStripMenuItemDesligado.Text = "Desligado";
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notifyIcon1.BalloonTipText = "Recebendo cotações de ações BOVESPA";
-            this.notifyIcon1.BalloonTipTitle = "Cotações";
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Cotações";
-            this.notifyIcon1.Visible = true;
-            this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            this.toolStripButtonAtualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.toolStripButtonAtualizar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAtualizar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAtualizar.Image")));
+            this.toolStripButtonAtualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAtualizar.Name = "toolStripButtonAtualizar";
+            this.toolStripButtonAtualizar.Size = new System.Drawing.Size(205, 25);
+            this.toolStripButtonAtualizar.Text = "Atualizar ativos selecionados";
+            this.toolStripButtonAtualizar.Click += new System.EventHandler(this.toolStripButtonAtualizar_Click);
             // 
             // frmCotacoes
             // 
@@ -769,7 +744,6 @@
             this.Load += new System.EventHandler(this.frmCotacoes_Load);
             this.Resize += new System.EventHandler(this.frmCotacoes_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotacoes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
@@ -781,10 +755,11 @@
             this.toolStripContainer1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -831,15 +806,15 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonFrequencia;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5minutos;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1minuto;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem30segundos;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10segundos;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5segundos;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1segundo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDesligado;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtdTotalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn patrimonioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorMedioCompraReal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LucroReal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtdVendavel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LucroImediato;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastTradeDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn trendDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastTradeDataGridViewTextBoxColumn;
@@ -850,12 +825,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn openDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dayLowDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dayHighDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn askDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValorMedioCompraReal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LucroReal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtdVendavel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LucroImediato;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10minutos;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15minutos;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAtualizar;
     }
 }
 

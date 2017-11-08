@@ -15,9 +15,7 @@ namespace DataLayer {
         [JsonProperty(PropertyName = "Time Series (5min)")]
         public Dictionary<DateTime, StockInfo> TimeSeries5 { get; set; }
 
-        public Dictionary<DateTime, StockInfo> TimeSeries => TimeSeries5 == null
-            ? TimeSeries1.ToDictionary(c => EasternToLocalTime(c.Key), c => c.Value)
-            : TimeSeries5.ToDictionary(c => EasternToLocalTime(c.Key), c => c.Value);
+        public Dictionary<DateTime, StockInfo> TimeSeries => TimeSeries5?.ToDictionary(c => EasternToLocalTime(c.Key), c => c.Value) ?? TimeSeries1.ToDictionary(c => EasternToLocalTime(c.Key), c => c.Value);
 
         public static DateTime EasternToLocalTime(DateTime easternTime) {
             var easternZone = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
