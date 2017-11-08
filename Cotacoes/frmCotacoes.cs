@@ -162,14 +162,15 @@ namespace Cotacoes {
             double chartMin = 1000;
             foreach (DataGridViewRow row in dgvCotacoes.SelectedRows) {
                 var ativo = YahooFinance.AtivoPorCodigo((string)row.Cells[0].Value);
+                ativo.AtualizarCotacao();
                 if (!ativo.HasTrades) continue;
                 ativo.PackTrades(forcePack);
                 var serie = chart1.Series.Add(row.Cells[0].Value.ToString());
                 serie.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                foreach (var trade in ativo.Trades) {
-                    serie.Points.AddXY(trade.Key, trade.Value);
+                foreach (var trade in ativo.Cotacoes) {
+                    serie.Points.AddXY(trade.Key, trade.Value.close);
                 }
-                serie.Points.AddXY(ativo.LastTradeDate, ativo.LastTrade);
+                //serie.Points.AddXY(ativo.LastTradeDate, ativo.LastTrade);
                 chartMax = Math.Max(chartMax, ativo.MaxTrade);
                 chartMin = Math.Min(chartMin, ativo.MinTrade);
             }

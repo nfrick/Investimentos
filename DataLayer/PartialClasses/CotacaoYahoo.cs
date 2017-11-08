@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 
 namespace DataLayer {
-    public class Cotacao {
+    public class CotacaoYahoo {
         enum YahooCols {
             codigo,
             nome,
@@ -52,7 +52,7 @@ namespace DataLayer {
 
         public static string Codigo => _cols[(int)YahooCols.codigo].Substring(1, 5);
 
-        public Cotacao() {
+        public CotacaoYahoo() {
             Bid = StringToDecimal(_cols[(int)YahooCols.bid]);
             Ask = StringToDecimal(_cols[(int)YahooCols.ask]);
             Open = StringToDecimal(_cols[(int)YahooCols.open]);

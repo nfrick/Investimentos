@@ -32,17 +32,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -95,6 +95,7 @@
     <Compile Include="OperacaoTipo.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
+    <Compile Include="PartialClasses\AlphaVantageClasses.cs" />
     <Compile Include="PartialClasses\Ativo.cs" />
     <Compile Include="PartialClasses\AtivoDaConta.cs" />
     <Compile Include="PartialClasses\AtivoCotacao.cs" />
@@ -140,7 +141,7 @@
     </Compile>
     <Compile Include="PartialClasses\Conta.cs" />
     <Compile Include="PartialClasses\ContaFundo.cs" />
-    <Compile Include="PartialClasses\Cotacao.cs" />
+    <Compile Include="PartialClasses\CotacaoYahoo.cs" />
     <Compile Include="PartialClasses\Extensions.cs" />
     <Compile Include="PartialClasses\Operacao.cs" />
     <Compile Include="PartialClasses\OperacaoCotacao.cs" />

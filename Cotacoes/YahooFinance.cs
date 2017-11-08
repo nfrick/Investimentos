@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using DataLayer;
 
 namespace Cotacoes {
@@ -15,40 +17,43 @@ namespace Cotacoes {
         Correntes
     }
     public static class YahooFinance {
-        private static string _yahooString;
+        //private static string _yahooString;
         private static List<AtivoCotacao> _ativos;
-        private static readonly Dictionary<string, Cotacao> Cotacoes = new Dictionary<string, Cotacao>();
+        //private static readonly Dictionary<string, CotacaoYahoo> Cotacoes = new Dictionary<string, CotacaoYahoo>();
 
         /// <summary>
         /// Inicializa a string para o Web Service
         /// e a lista de ativos a serem controlados
         /// </summary>
         public static bool Initialize(int contaId) {
-            var sucessoNoYahoo = true;
+            //var sucessoNoYahoo = true;
             using (var ctx = new AtivoCotacaoEntities()) {
                 if (_ativos == null) {
 
-                    _yahooString = @"http://finance.yahoo.com/d/quotes.csv?s=" +
-                                   string.Join("+", ctx.Ativos
-                                       .Select(x => x.Codigo + ".SA").OrderBy(x => x).ToArray()) +
-                                   @"&f=snbb3ab2opl1d1t1ghc1c6p2k2jk";
+                    //_yahooString = @"http://finance.yahoo.com/d/quotes.csv?s=" +
+                    //               string.Join("+", ctx.Ativos
+                    //                   .Select(x => x.Codigo + ".SA").OrderBy(x => x).ToArray()) +
+                    //               @"&f=snbb3ab2opl1d1t1ghc1c6p2k2jk";
 
                     _ativos = ctx.Ativos.ToList();
                     try {
-                        ObterCotacoes();
+                        //ObterCotacoes();
                     }
                     catch (WebException) {
-                        sucessoNoYahoo = false;
+                        //sucessoNoYahoo = false;
                     }
                     foreach (var ativo in _ativos)
-                        ativo.Initialize(Cotacoes, contaId);
+                        ativo.Initialize(contaId);  //Cotacoes, contaId);
+                    //Parallel.ForEach(_ativos, (ativo) => {
+                    //    Initialize(contaId);
+                    //});
                 }
                 else {
                     foreach (var ativo in _ativos)
                         ativo.SetarConta(contaId);
                 }
             }
-            return sucessoNoYahoo;
+            return true;  //sucessoNoYahoo;
         }
 
         /// <summary>
@@ -76,25 +81,25 @@ namespace Cotacoes {
         /// Atualiza as cotações e a lista de trades
         /// </summary>
         public static void AtualizarCotacoes() {
-            ObterCotacoes();
-            foreach (var ativo in _ativos)
-                ativo.AtualizarCotacao(Cotacoes);
+            //ObterCotacoes();
+            //foreach (var ativo in _ativos)
+            //    ativo.AtualizarCotacao(Cotacoes);
         }
 
         /// <summary>
         /// Acessa o serviço Yahoo de cotações
         /// </summary>
         internal static void ObterCotacoes() {
-            string csvData;
-            using (var web = new WebClient()) {
-                csvData = web.DownloadString(_yahooString);
-            }
-            Cotacoes.Clear();
-            var rows = csvData.Replace("\r", "").Split('\n');
-            foreach (var row in rows) {
-                if (Cotacao.CotacaoValida(row))
-                    Cotacoes.Add(Cotacao.Codigo, new Cotacao());
-            }
+            //string csvData;
+            //using (var web = new WebClient()) {
+            //    csvData = web.DownloadString(_yahooString);
+            //}
+            //Cotacoes.Clear();
+            //var rows = csvData.Replace("\r", "").Split('\n');
+            //foreach (var row in rows) {
+            //    if (CotacaoYahoo.CotacaoValida(row))
+            //        Cotacoes.Add(CotacaoYahoo.Codigo, new CotacaoYahoo());
+            //}
         }
     }
 }
