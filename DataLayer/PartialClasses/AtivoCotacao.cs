@@ -19,7 +19,7 @@ namespace DataLayer {
         }
 
         public void AtualizarCotacao(bool reset = false) {
-            var offTime = DateTime.Now.Hour <= 10 || DateTime.Now.Hour >= 17;
+            var offTime = DateTime.Now.Hour < 10 || DateTime.Now.Hour >= 17;
             if (reset || offTime)
                 Cotacoes.Clear();
 
