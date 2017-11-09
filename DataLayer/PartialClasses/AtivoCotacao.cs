@@ -19,11 +19,14 @@ namespace DataLayer {
         }
 
         public void AtualizarCotacao(bool reset = false) {
-            if (reset || DateTime.Now.Hour > 17)
+            var offTime = DateTime.Now.Hour <= 10 || DateTime.Now.Hour >= 17;
+            if (reset || offTime)
                 Cotacoes.Clear();
 
-            if (DateTime.Now.Hour >= 17) {
-                foreach (var cot in ObterCotacao(5).TimeSeries.TakeWhile(c => c.Key.Date == DateTime.Today)) {
+            if (offTime) {
+                var serie = ObterCotacao(5).TimeSeries;
+                var data = serie.ElementAt(0).Key.Date;
+                foreach (var cot in serie.Where(c => c.Key.Date == data)) {
                     Cotacoes.Add(cot.Key, cot.Value);
                 }
             }
@@ -120,7 +123,7 @@ namespace DataLayer {
 
         public DateTime? LastTradeDate => HasTrades ? (DateTime?)Cotacoes.Last().Key : null;
 
-        public decimal? PreviousTrade => HasTrades ? (decimal?)Cotacoes.ElementAt(Cotacoes.Count - 2).Value.close : null;
+        public decimal? PreviousTrade => Cotacoes.Count > 1 ? (decimal?)Cotacoes.ElementAt(Cotacoes.Count - 2).Value.close : 0;
 
         public string Trend {
             get {

@@ -160,6 +160,10 @@
       <Project>{988d85c9-5eb7-4f27-a1de-247ea35a38b5}</Project>
       <Name>GridAndChartStyles</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Settings\Settings.csproj">
+      <Project>{a5d7e547-fb21-4a5c-a2cf-ea585f52f80a}</Project>
+      <Name>Settings</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dollar.ico" />

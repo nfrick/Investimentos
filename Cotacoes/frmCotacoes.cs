@@ -1,5 +1,6 @@
 ﻿using DataLayer;
 using GridAndChartStyleLibrary;
+using Settings;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -22,7 +23,8 @@ namespace Cotacoes {
             }
             cbx.DisplayMember = "Nome";
             cbx.ValueMember = "ContaId";
-            cbx.SelectedIndex = 0;
+            var conta = SettingsManager.GetSetting("Conta");
+            cbx.SelectedIndex = conta == null ? 0 : int.Parse(conta);
         }
 
         private void frmCotacoes_Load(object sender, EventArgs e) {
@@ -56,6 +58,10 @@ namespace Cotacoes {
             WindowState = FormWindowState.Normal;
             ShowInTaskbar = true;
             notifyIcon1.Visible = false;
+        }
+
+        private void frmCotacoes_FormClosing(object sender, FormClosingEventArgs e) {
+            SettingsManager.SetSetting("Conta", toolStripComboBoxConta.SelectedIndex.ToString());
         }
         #endregion FORM
 
@@ -271,5 +277,6 @@ namespace Cotacoes {
                 dgvTotal.Columns[e.Column.Index].Width = e.Column.Width;
         }
         #endregion DATAGRIDVIEW
+
     }
 }

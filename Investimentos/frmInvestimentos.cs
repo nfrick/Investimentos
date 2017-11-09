@@ -1,8 +1,8 @@
 ﻿using DataLayer;
 using GridAndChartStyleLibrary;
+using Settings;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Drawing;
 using System.Globalization;
@@ -85,6 +85,8 @@ namespace Investimentos {
 
             //----------------
             ContaComboPopulate();
+            var conta = SettingsManager.GetSetting("Conta");
+            toolStripComboBoxConta.SelectedIndex = conta == null ? 0 : int.Parse(conta);
             using (var ctx = new InvestimentosEntities()) {
                 if (!ctx.Contas.ToList().Any())
                     OpenFrmConta(new Conta());
@@ -277,6 +279,7 @@ namespace Investimentos {
         #endregion
 
         private void frmInvestimentos_FormClosing(object sender, FormClosingEventArgs e) {
+            SettingsManager.SetSetting("Conta", toolStripComboBoxConta.SelectedIndex.ToString());
             var tracker = entityDataSource1.DbContext.ChangeTracker;
             if (!tracker.HasChanges()) return;
             var adds = tracker.Entries().Count(entry => entry.State == EntityState.Added);
