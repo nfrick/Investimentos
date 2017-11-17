@@ -89,8 +89,9 @@
             this.toolStripMenuItem15minutos = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemDesligado = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonAtualizar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAtualizarTodos = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.toolStripButtonAtualizarSelecionados = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotacoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -595,10 +596,11 @@
             this.toolStripComboBoxConta,
             this.toolStripDropDownButtonAtivos,
             this.toolStripDropDownButtonFrequencia,
-            this.toolStripButtonAtualizar});
+            this.toolStripButtonAtualizarSelecionados,
+            this.toolStripButtonAtualizarTodos});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(658, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(873, 28);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripLabel1
@@ -709,16 +711,16 @@
             this.toolStripMenuItemDesligado.Tag = "0";
             this.toolStripMenuItemDesligado.Text = "Desligado";
             // 
-            // toolStripButtonAtualizar
+            // toolStripButtonAtualizarTodos
             // 
-            this.toolStripButtonAtualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.toolStripButtonAtualizar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonAtualizar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAtualizar.Image")));
-            this.toolStripButtonAtualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAtualizar.Name = "toolStripButtonAtualizar";
-            this.toolStripButtonAtualizar.Size = new System.Drawing.Size(205, 25);
-            this.toolStripButtonAtualizar.Text = "Atualizar ativos selecionados";
-            this.toolStripButtonAtualizar.Click += new System.EventHandler(this.toolStripButtonAtualizar_Click);
+            this.toolStripButtonAtualizarTodos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.toolStripButtonAtualizarTodos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAtualizarTodos.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAtualizarTodos.Image")));
+            this.toolStripButtonAtualizarTodos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAtualizarTodos.Name = "toolStripButtonAtualizarTodos";
+            this.toolStripButtonAtualizarTodos.Size = new System.Drawing.Size(176, 25);
+            this.toolStripButtonAtualizarTodos.Text = "Atualizar todos os ativos";
+            this.toolStripButtonAtualizarTodos.Click += new System.EventHandler(this.toolStripButtonAtualizar_Click);
             // 
             // notifyIcon1
             // 
@@ -729,6 +731,17 @@
             this.notifyIcon1.Text = "Cotações";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            // 
+            // toolStripButtonAtualizarSelecionados
+            // 
+            this.toolStripButtonAtualizarSelecionados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.toolStripButtonAtualizarSelecionados.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonAtualizarSelecionados.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAtualizarSelecionados.Image")));
+            this.toolStripButtonAtualizarSelecionados.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAtualizarSelecionados.Name = "toolStripButtonAtualizarSelecionados";
+            this.toolStripButtonAtualizarSelecionados.Size = new System.Drawing.Size(205, 25);
+            this.toolStripButtonAtualizarSelecionados.Text = "Atualizar ativos selecionados";
+            this.toolStripButtonAtualizarSelecionados.Click += new System.EventHandler(this.toolStripButtonAtualizar_Click);
             // 
             // frmCotacoes
             // 
@@ -811,7 +824,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDesligado;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10minutos;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem15minutos;
-        private System.Windows.Forms.ToolStripButton toolStripButtonAtualizar;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAtualizarTodos;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn qtdTotalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn patrimonioDataGridViewTextBoxColumn;
@@ -829,6 +842,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn openDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dayLowDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dayHighDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAtualizarSelecionados;
     }
 }
 

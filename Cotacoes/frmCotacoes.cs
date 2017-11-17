@@ -242,14 +242,24 @@ namespace Cotacoes {
         }
 
         private void toolStripButtonAtualizar_Click(object sender, EventArgs e) {
-            toolStripButtonAtualizar.Enabled = false;
-            var ativos = (List<AtivoCotacao>)bindingSourceCotacoes.DataSource;
+            List<AtivoCotacao> ativos;
+            var botao = (ToolStripButton)sender;
+            botao.Enabled = false;
+
+            if (botao.Name.Contains("Todos"))
+                ativos = (List<AtivoCotacao>)bindingSourceCotacoes.DataSource;
+            else {
+                ativos = new List<AtivoCotacao>();
+                ativos.AddRange(from DataGridViewRow row in dgvCotacoes.SelectedRows
+                                select FinanceData.AtivoPorCodigo((string)row.Cells[0].Value));
+            }
             Parallel.ForEach(ativos, (ativo) => {
                 ativo.AtualizarCotacao();
             });
             CarregarDados();
-            toolStripButtonAtualizar.Enabled = true;
+            botao.Enabled = true;
         }
+
         #endregion TOOLBAR
 
         #region DATAGRIDVIEW
@@ -260,7 +270,7 @@ namespace Cotacoes {
                 var s = cell.Value as string;
                 cell.Style.ForeColor = s == AtivoCotacao.TrendUp ? Color.LightGreen : (s == AtivoCotacao.TrendDown ? Color.OrangeRed : Color.Gray);
             }
-            else if (e.ColumnIndex == 4 || e.ColumnIndex == 11)
+            else if (e.ColumnIndex == 4 || e.ColumnIndex == 12 || e.ColumnIndex == 13)
                 cell.Style.ForeColor = Convert.ToDecimal(cell.Value) < 0 ? Color.OrangeRed : forecolor;
         }
 
