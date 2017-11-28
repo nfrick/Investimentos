@@ -30,10 +30,10 @@ namespace Cotacoes {
         private void frmCotacoes_Load(object sender, EventArgs e) {
             GridStyles.FormatGrid(dgvCotacoes);
             GridStyles.FormatColumns(dgvCotacoes, 2, 16, GridStyles.StyleCurrency, 85);
-            GridStyles.FormatColumns(dgvCotacoes, new[] { 1, 5 }, GridStyles.StyleInteger, 65);
-            GridStyles.FormatColumn(dgvCotacoes.Columns[7], GridStyles.StyleDayAndTime, 90);
-            GridStyles.FormatColumn(dgvCotacoes.Columns[8], GridStyles.StyleTrend, 20);
-            GridStyles.FormatColumn(dgvCotacoes.Columns[13], GridStyles.StylePercent, 65);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleInteger, 65, 1, 5);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleDayAndTime, 90, 7);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleTrend, 20, 8);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StylePercent, 65, 13);
 
             GridStyles.FormatGridAsTotal(dgvTotal, dgvCotacoes);
 

@@ -24,44 +24,44 @@ namespace Investimentos {
             dgvOperacoes.Columns[0].Visible = false;
             dgvVendas.Columns[0].Visible = false;
             GridStyles.FormatGrid(dgvAtivos);
-            GridStyles.FormatColumn(dgvAtivos.Columns[1], GridStyles.StyleInteger, 60);
-            GridStyles.FormatColumn(dgvAtivos.Columns[2], GridStyles.StyleCurrency, 70);
-            GridStyles.FormatColumn(dgvAtivos.Columns[3], GridStyles.StyleCurrency, 80);
+            GridStyles.FormatColumns(dgvAtivos, GridStyles.StyleInteger, 60, 1);
+            GridStyles.FormatColumns(dgvAtivos, GridStyles.StyleCurrency, 70, 2);
+            GridStyles.FormatColumns(dgvAtivos, GridStyles.StyleCurrency, 80, 3);
 
             GridStyles.FormatGrid(dgvOperacoes);
             dgvOperacoes.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
-            GridStyles.FormatColumns(dgvOperacoes, 3, 4, GridStyles.StyleInteger, 65);
-            GridStyles.FormatColumns(dgvOperacoes, 5, 7, GridStyles.StyleCurrency, 70);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 65, 3, 4);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 70, 5, 7);
             dgvOperacoes.Columns[7].Width = 80;
 
             GridStyles.FormatGrid(dgvVendas, 14);
             dgvVendas.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
-            GridStyles.FormatColumns(dgvVendas, new[] { 2, 3, 4, 6, 7 }, GridStyles.StyleInteger, 75);
-            GridStyles.FormatColumns(dgvVendas, new[] { 5, 8, 9, 10 }, GridStyles.StyleCurrency, 80);
-            GridStyles.FormatColumns(dgvVendas, new[] { 11, 12 }, GridStyles.StyleCurrency, 90);
+            GridStyles.FormatColumns(dgvVendas, GridStyles.StyleInteger, 75, 2, 3, 4, 6, 7);
+            GridStyles.FormatColumns(dgvVendas, GridStyles.StyleCurrency, 80, 5, 8, 9, 10);
+            GridStyles.FormatColumns(dgvVendas, GridStyles.StyleCurrency, 90, 11, 12);
 
             // FUNDOS
             GridStyles.FormatGrid(dgvFundos);
-            GridStyles.FormatColumn(dgvFundos.Columns[1], GridStyles.StyleCurrency, 90);
+            GridStyles.FormatColumns(dgvFundos, GridStyles.StyleCurrency, 90, 1);
 
             GridStyles.FormatGrid(dgvResultados);
             dgvResultados.Columns[0].Width = 85;
-            GridStyles.FormatColumn(dgvResultados.Columns[2], GridStyles.StyleNumber(6), 115);
-            GridStyles.FormatColumn(dgvResultados.Columns[3], GridStyles.StyleNumber(9), 115);
-            GridStyles.FormatColumns(dgvResultados, new[] { 1, 4, 5, 6 }, GridStyles.StyleCurrency, 85);
+            GridStyles.FormatColumns(dgvResultados, GridStyles.StyleNumber(6), 115, 2);
+            GridStyles.FormatColumns(dgvResultados, GridStyles.StyleNumber(9), 115, 3);
+            GridStyles.FormatColumns(dgvResultados, GridStyles.StyleCurrency, 85, 1, 4, 5, 6);
             dgvResultados.Columns[1].Width = 95;
-            GridStyles.FormatColumns(dgvResultados, new[] { 7, 8, 9 }, GridStyles.StyleNumber(4), 80);
+            GridStyles.FormatColumns(dgvResultados, GridStyles.StyleNumber(4), 80, 7, 8, 9);
 
             GridStyles.FormatGrid(dgvMovimentos);
-            GridStyles.FormatColumns(dgvMovimentos, new[] { 2, 3 }, GridStyles.StyleCurrency, 90);
-            GridStyles.FormatColumn(dgvMovimentos.Columns[4], GridStyles.StyleCurrency, 95);
-            GridStyles.FormatColumn(dgvMovimentos.Columns[5], GridStyles.StyleNumber(6), 105);
+            GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleCurrency, 90, 2, 3);
+            GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleCurrency, 95, 4);
+            GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleNumber(6), 105, 5);
 
             GridStyles.FormatGrid(dgvResumoAcoes);
             GridStyles.FormatGrid(dgvResumoFundos);
             dgvResumoAcoes.Columns[0].Width = 130;
-            GridStyles.FormatColumn(dgvResumoAcoes.Columns[1], GridStyles.StyleCurrency, 90);
-            GridStyles.FormatColumn(dgvResumoFundos.Columns[1], GridStyles.StyleCurrency, 90);
+            GridStyles.FormatColumns(dgvResumoAcoes, GridStyles.StyleCurrency, 90, 1);
+            GridStyles.FormatColumns(dgvResumoFundos, GridStyles.StyleCurrency, 90, 1);
             dgvResumoAcoes.SelectionMode = 
             dgvResumoFundos.SelectionMode = DataGridViewSelectionMode.CellSelect;
 

@@ -14,7 +14,7 @@ namespace Investimentos {
         private void Vendas_Load(object sender, EventArgs e) {
             GridStyles.FormatGrid(dgvBalanco, 9);
             dgvBalanco.Columns[0].Width = 70;
-            GridStyles.FormatColumn(dgvBalanco.Columns[1], GridStyles.StyleDate, 90);
+            GridStyles.FormatColumns(dgvBalanco, GridStyles.StyleDate, 90, 1);
             GridStyles.FormatColumns(dgvBalanco, 2, 3, GridStyles.StyleInteger, 80);
             GridStyles.FormatColumns(dgvBalanco, 4, 6, GridStyles.StyleCurrency, 80);
             GridStyles.FormatColumns(dgvBalanco, 7, 8, GridStyles.StyleCurrency, 90);

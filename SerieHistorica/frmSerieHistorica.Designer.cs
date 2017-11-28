@@ -65,6 +65,10 @@
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // entityDataSource1
+            // 
+            this.entityDataSource1.DbContextType = typeof(DataLayer.InvestimentosEntities);
+            // 
             // toolStripContainer1
             // 
             this.toolStripContainer1.BottomToolStripPanelVisible = false;
@@ -275,10 +279,6 @@
             this.precoMelhorOfertaVendaDataGridViewTextBoxColumn.HeaderText = "M.O. Venda";
             this.precoMelhorOfertaVendaDataGridViewTextBoxColumn.Name = "precoMelhorOfertaVendaDataGridViewTextBoxColumn";
             this.precoMelhorOfertaVendaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // entityDataSource1
-            // 
-            this.entityDataSource1.DbContextType = typeof(DataLayer.InvestimentosEntities);
             // 
             // dgvAtivos
             // 

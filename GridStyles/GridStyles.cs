@@ -162,35 +162,26 @@ namespace GridAndChartStyleLibrary {
 
         }
 
-        public static void FormatColumn(DataGridViewColumn col, DataGridViewCellStyle style, int width) {
-            col.DefaultCellStyle = style;
-            col.Width = width;
-        }
-
-        public static void FormatColumns(DataGridView dgv, int[] cols, DataGridViewCellStyle style) {
-            foreach (var col in cols) {
-                dgv.Columns[col].DefaultCellStyle = style;
-            }
-        }
-
         public static void FormatColumns(DataGridView dgv, int colStart, int colEnd, DataGridViewCellStyle style, int width) {
             colEnd = colEnd == 0 ? dgv.ColumnCount - 1 : colEnd;
-            for (int col = colStart; col <= colEnd; col++) {
-                FormatColumn(dgv.Columns[col], style, width);
-            }
-        }
-
-        public static void FormatColumns(DataGridView dgv, int[] cols, DataGridViewCellStyle style, int width) {
-            foreach (var col in cols) {
+            for (var col = colStart; col <= colEnd; col++) {
                 dgv.Columns[col].DefaultCellStyle = style;
                 dgv.Columns[col].Width = width;
             }
         }
 
-        public static int GridVisibleWidth(DataGridView dgv1) {
-            return dgv1.Columns.Cast<DataGridViewColumn>()
+        public static void FormatColumns(DataGridView dgv, DataGridViewCellStyle style, int width = 0, params int[] cols) {
+            foreach (var col in cols) {
+                dgv.Columns[col].DefaultCellStyle = style;
+                if (width != 0)
+                    dgv.Columns[col].Width = width;
+            }
+        }
+
+        public static int GridVisibleWidth(DataGridView dgv) {
+            return dgv.Columns.Cast<DataGridViewColumn>()
                 .Where(c => c.Visible).Sum(x => x.Width)
-                + (dgv1.RowHeadersVisible ? dgv1.RowHeadersWidth : 0) + 3;
+                + (dgv.RowHeadersVisible ? dgv.RowHeadersWidth : 0) + 3;
         }
     }
 }
