@@ -162,6 +162,11 @@ namespace GridAndChartStyleLibrary {
 
         }
 
+        public static void FormatColumn(DataGridViewColumn col, DataGridViewCellStyle style, int width) {
+            col.DefaultCellStyle = style;
+            col.Width = width;
+        }
+
         public static void FormatColumns(DataGridView dgv, int colStart, int colEnd, DataGridViewCellStyle style, int width) {
             colEnd = colEnd == 0 ? dgv.ColumnCount - 1 : colEnd;
             for (var col = colStart; col <= colEnd; col++) {

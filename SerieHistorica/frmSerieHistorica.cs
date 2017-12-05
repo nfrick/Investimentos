@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -67,9 +68,9 @@ namespace SerieHistorica {
             using (var ctx = new InvestimentosEntities()) {
                 var sortedRows =
                 (from DataGridViewRow row in dgvAtivos.SelectedRows
-                    where !row.IsNewRow
-                    orderby row.Index
-                    select row).ToList<DataGridViewRow>();
+                 where !row.IsNewRow
+                 orderby row.Index
+                 select row).ToList<DataGridViewRow>();
 
                 foreach (DataGridViewRow row in sortedRows) {
                     var ativo = row.Cells[0].Value.ToString();
@@ -99,7 +100,7 @@ namespace SerieHistorica {
         private void toolStripButtonLerSerie_Click(object sender, EventArgs e) {
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             ofd.DefaultExt = @".txt";
-            ofd.Filter = @"Text files|*.txt";
+            ofd.Filter = @"Text files|*.txt|Zip files|*.zip";
             ofd.Multiselect = true;
             if (ofd.ShowDialog() == DialogResult.Cancel)
                 return;
@@ -111,20 +112,41 @@ namespace SerieHistorica {
             var arquivos = e.Argument as string[];
             foreach (var arquivo in arquivos) {
                 bgWorker.ReportProgress(1, arquivo);
-                LerArquivoParaDatabase(arquivo);
+                if (arquivo.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase))
+                    LerArquivoParaDatabase(File.ReadLines(arquivo));
+                else {
+                    using (var archive = ZipFile.OpenRead(arquivo)) {
+                        foreach (var entry in archive.Entries) {
+                            LerArquivoParaDatabase(InternalReadAllLines(entry));
+                        }
+                    }
+                }
             }
             entityDataSource1.SaveChanges();
         }
-        
-        private void LerArquivoParaDatabase(string arquivo) {
+
+        private void LerArquivoParaDatabase(IEnumerable<string> linhas) {
             var ativos = entityDataSource1.DbContext.Set<Ativo>().ToList();
-            var serie = from linha in File.ReadLines(arquivo)
+            var serie = from linha in linhas
                         join ativo in ativos
                         on linha.Substring(12, 12).Trim() equals ativo.Codigo
                         where linha.StartsWith("01")
                               && linha.Substring(24, 3) == "010"
                         select new CotacaoDiaria(linha);
             entityDataSource1.DbContext.Set<CotacaoDiaria>().AddRange(serie);
+        }
+
+        //https://stackoverflow.com/questions/23989677/file-readalllines-or-stream-reader
+        private static IEnumerable<string> InternalReadAllLines(ZipArchiveEntry entry) {
+            var lines = new List<string>();
+            using (var stream = entry.Open()) {
+                using (var sr = new StreamReader(stream)) {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                        lines.Add(line);
+                }
+            }
+            return lines.ToArray();
         }
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
