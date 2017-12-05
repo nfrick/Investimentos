@@ -99,8 +99,7 @@ namespace SerieHistorica {
         #region Ler Arquivos
         private void toolStripButtonLerSerie_Click(object sender, EventArgs e) {
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            ofd.DefaultExt = @".txt";
-            ofd.Filter = @"Text files|*.txt|Zip files|*.zip";
+            ofd.Filter = @"Arquivos|*.zip;*.txt";
             ofd.Multiselect = true;
             if (ofd.ShowDialog() == DialogResult.Cancel)
                 return;

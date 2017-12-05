@@ -354,7 +354,7 @@
             this.toolStripComboBoxTermino});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(759, 28);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonLerSerie
@@ -433,6 +433,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1072, 709);
             this.Controls.Add(this.toolStripContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSerieHistorica";
             this.Text = "Série Histórica de Cotações";
             this.Load += new System.EventHandler(this.frmSerieHistorica_Load);
