@@ -61,7 +61,7 @@ namespace DataLayer {
         }
 
         public AlphaVantage ObterCotacao(int interval) {
-            var request = $"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={Codigo}&interval={interval}min&apikey=5M72TGSVJXVYAO5W";
+            var request = $"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={Codigo}.SA&interval={interval}min&apikey=5M72TGSVJXVYAO5W";
 
             using (var web = new WebClient()) {
                 try {
