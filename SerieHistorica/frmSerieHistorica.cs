@@ -109,19 +109,20 @@ namespace SerieHistorica {
 
         private void bgWorker_DoWork(object sender, DoWorkEventArgs e) {
             var arquivos = e.Argument as string[];
+            var linhas = new List<string>();
             foreach (var arquivo in arquivos) {
                 bgWorker.ReportProgress(1, arquivo);
                 if (arquivo.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase))
-                    LerArquivoParaDatabase(File.ReadLines(arquivo));
+                    linhas.AddRange(File.ReadLines(arquivo));
                 else {
                     using (var archive = ZipFile.OpenRead(arquivo)) {
                         foreach (var entry in archive.Entries) {
-                            LerArquivoParaDatabase(InternalReadAllLines(entry));
+                            linhas.AddRange(InternalReadAllLines(entry));
                         }
                     }
                 }
             }
-            entityDataSource1.SaveChanges();
+            LerArquivoParaDatabase(linhas);
         }
 
         private void LerArquivoParaDatabase(IEnumerable<string> linhas) {
@@ -132,7 +133,8 @@ namespace SerieHistorica {
                         where linha.StartsWith("01")
                               && linha.Substring(24, 3) == "010"
                         select new CotacaoDiaria(linha);
-            entityDataSource1.DbContext.Set<CotacaoDiaria>().AddRange(serie);
+            //entityDataSource1.DbContext.Set<CotacaoDiaria>().AddRange(serie);
+            //entityDataSource1.SaveChanges();
         }
 
         //https://stackoverflow.com/questions/23989677/file-readalllines-or-stream-reader
@@ -145,7 +147,7 @@ namespace SerieHistorica {
                         lines.Add(line);
                 }
             }
-            return lines.ToArray();
+            return lines;
         }
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
