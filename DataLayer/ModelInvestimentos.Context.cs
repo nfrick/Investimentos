@@ -37,5 +37,8 @@ namespace DataLayer
         public virtual DbSet<Fundo> Fundos { get; set; }
         public virtual DbSet<FundoMes> FundosMeses { get; set; }
         public virtual DbSet<Movimento> Movimentos { get; set; }
+        public virtual DbSet<LCA> LCAs { get; set; }
+        public virtual DbSet<LCAMes> LCAMeses { get; set; }
+        public virtual DbSet<LCAMovimento> LCAMovimentos { get; set; }
     }
 }

@@ -127,11 +127,54 @@
           <Property Name="MovimentoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ContaMesId" Type="int" Nullable="false" />
           <Property Name="Data" Type="smalldatetime" Nullable="false" />
-          <Property Name="Historico" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Historico" Type="nvarchar" MaxLength="35" Nullable="false" />
           <Property Name="Valor" Type="money" Nullable="false" />
           <Property Name="ImpostoRenda" Type="money" Nullable="false" />
           <Property Name="CotaQtd" Type="decimal" Precision="18" Scale="6" Nullable="false" />
           <Property Name="CotaValor" Type="decimal" Precision="18" Scale="9" />
+        </EntityType>
+        <EntityType Name="tbLCA">
+          <Key>
+            <PropertyRef Name="LCAId" />
+          </Key>
+          <Property Name="LCAId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContaId" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Aplicacao" Type="smalldatetime" Nullable="false" />
+          <Property Name="Vencimento" Type="smalldatetime" Nullable="false" />
+          <Property Name="Taxa" Type="money" Nullable="false" />
+          <Property Name="ValorEmissao" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbLCAMeses">
+          <Key>
+            <PropertyRef Name="LCAMesId" />
+          </Key>
+          <Property Name="LCAMesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LCAId" Type="int" Nullable="false" />
+          <Property Name="Mes" Type="smalldatetime" Nullable="false" />
+          <Property Name="SaldoAnterior" Type="money" Nullable="false" />
+          <Property Name="Aplicacoes" Type="money" Nullable="false" />
+          <Property Name="Resgates" Type="money" Nullable="false" />
+          <Property Name="RendimentoBruto" Type="money" Nullable="false" />
+          <Property Name="ImpostoRenda" Type="money" Nullable="false" />
+          <Property Name="IOF" Type="money" Nullable="false" />
+          <Property Name="RendimentoLiquido" Type="money" Nullable="false" />
+          <Property Name="SaldoAtual" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbLCAMovimentos">
+          <Key>
+            <PropertyRef Name="MovimentoId" />
+          </Key>
+          <Property Name="MovimentoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LCAMesId" Type="int" Nullable="false" />
+          <Property Name="Data" Type="smalldatetime" Nullable="false" />
+          <Property Name="Historico" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="ValorCapital" Type="money" Nullable="false" />
+          <Property Name="ImpostoRenda" Type="money" Nullable="false" />
+          <Property Name="IOF" Type="money" Nullable="false" />
+          <Property Name="Rendimentos" Type="money" Nullable="false" />
+          <Property Name="ValorMovimento" Type="money" Nullable="false" />
+          <Property Name="ValorAtual" Type="money" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -228,6 +271,30 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbLCA_tbContas">
+          <End Role="tbContas" Type="Self.tbContas" Multiplicity="1" />
+          <End Role="tbLCA" Type="Self.tbLCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbContas">
+              <PropertyRef Name="ContaId" />
+            </Principal>
+            <Dependent Role="tbLCA">
+              <PropertyRef Name="ContaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbLCAMeses_tbLCA">
+          <End Role="tbLCA" Type="Self.tbLCA" Multiplicity="1" />
+          <End Role="tbLCAMeses" Type="Self.tbLCAMeses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbLCA">
+              <PropertyRef Name="LCAId" />
+            </Principal>
+            <Dependent Role="tbLCAMeses">
+              <PropertyRef Name="LCAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbMovimentos_tbContasMeses">
           <End Role="tbContasMeses" Type="Self.tbContasMeses" Multiplicity="1" />
           <End Role="tbMovimentos" Type="Self.tbMovimentos" Multiplicity="*" />
@@ -237,6 +304,18 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             </Principal>
             <Dependent Role="tbMovimentos">
               <PropertyRef Name="ContaMesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMovimentos_tbLCAMeses">
+          <End Role="tbLCAMeses" Type="Self.tbLCAMeses" Multiplicity="1" />
+          <End Role="tbLCAMovimentos" Type="Self.tbLCAMovimentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbLCAMeses">
+              <PropertyRef Name="LCAMesId" />
+            </Principal>
+            <Dependent Role="tbLCAMovimentos">
+              <PropertyRef Name="LCAMesId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -302,6 +381,9 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <EntitySet Name="tbFundos" EntityType="Self.tbFundos" Schema="Fundos" store:Type="Tables" />
           <EntitySet Name="tbFundosMeses" EntityType="Self.tbFundosMeses" Schema="Fundos" store:Type="Tables" />
           <EntitySet Name="tbMovimentos" EntityType="Self.tbMovimentos" Schema="Fundos" store:Type="Tables" />
+          <EntitySet Name="tbLCA" EntityType="Self.tbLCA" Schema="LCA" store:Type="Tables" />
+          <EntitySet Name="tbLCAMeses" EntityType="Self.tbLCAMeses" Schema="LCA" store:Type="Tables" />
+          <EntitySet Name="tbLCAMovimentos" EntityType="Self.tbLCAMovimentos" Schema="LCA" store:Type="Tables" />
           <EntitySet Name="vwAtivos" EntityType="Self.vwAtivos" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwAtivos].[ContaId] AS [ContaId], 
@@ -337,9 +419,21 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <End Role="tbOperacoes" EntitySet="tbOperacoes" />
             <End Role="tbEntradas" EntitySet="tbEntradas" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbLCA_tbContas" Association="Self.FK_tbLCA_tbContas">
+            <End Role="tbContas" EntitySet="tbContas" />
+            <End Role="tbLCA" EntitySet="tbLCA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbLCAMeses_tbLCA" Association="Self.FK_tbLCAMeses_tbLCA">
+            <End Role="tbLCA" EntitySet="tbLCA" />
+            <End Role="tbLCAMeses" EntitySet="tbLCAMeses" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbMovimentos_tbContasMeses" Association="Self.FK_tbMovimentos_tbContasMeses">
             <End Role="tbContasMeses" EntitySet="tbContasMeses" />
             <End Role="tbMovimentos" EntitySet="tbMovimentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMovimentos_tbLCAMeses" Association="Self.FK_tbMovimentos_tbLCAMeses">
+            <End Role="tbLCAMeses" EntitySet="tbLCAMeses" />
+            <End Role="tbLCAMovimentos" EntitySet="tbLCAMovimentos" />
           </AssociationSet>
           <AssociationSet Name="FK_tbOperacoes_tbOperacoesTipos" Association="Self.FK_tbOperacoes_tbOperacoesTipos">
             <End Role="tbOperacoesTipos" EntitySet="tbOperacoesTipos" />
@@ -449,6 +543,21 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <End Role="AtivoDaConta" EntitySet="AtivosDaConta" />
             <End Role="Ativo" EntitySet="Ativos" />
           </AssociationSet>
+          <EntitySet Name="LCAs" EntityType="InvestimentosModel.LCA" />
+          <EntitySet Name="LCAMeses" EntityType="InvestimentosModel.LCAMes" />
+          <EntitySet Name="LCAMovimentos" EntityType="InvestimentosModel.LCAMovimento" />
+          <AssociationSet Name="FK_tbLCA_tbContas" Association="InvestimentosModel.FK_tbLCA_tbContas">
+            <End Role="Conta" EntitySet="Contas" />
+            <End Role="tbLCA" EntitySet="LCAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbLCAMeses_tbLCA" Association="InvestimentosModel.FK_tbLCAMeses_tbLCA">
+            <End Role="tbLCA" EntitySet="LCAs" />
+            <End Role="tbLCAMes" EntitySet="LCAMeses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMovimentos_tbLCAMeses" Association="InvestimentosModel.FK_tbMovimentos_tbLCAMeses">
+            <End Role="tbLCAMes" EntitySet="LCAMeses" />
+            <End Role="tbLCAMovimento" EntitySet="LCAMovimentos" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Conta">
           <Key>
@@ -463,6 +572,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <NavigationProperty Name="AtivosDaConta" Relationship="InvestimentosModel.ContaAtivo" FromRole="Conta" ToRole="vwAtivo" />
           <NavigationProperty Name="Saidas" Relationship="InvestimentosModel.ContaSaida" FromRole="Conta" ToRole="Saida" />
           <NavigationProperty Name="Fundos" Relationship="InvestimentosModel.FK_tbContasFundos_tbContas" FromRole="Conta" ToRole="tbContasFundo" />
+          <NavigationProperty Name="LCAs" Relationship="InvestimentosModel.FK_tbLCA_tbContas" FromRole="Conta" ToRole="tbLCA" />
           </EntityType>
         <EntityType Name="AtivoDaConta">
           <Key>
@@ -706,7 +816,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Property Name="MovimentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ContaMesId" Type="Int32" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Historico" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Historico" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="Valor" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ImpostoRenda" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="CotaQtd" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
@@ -794,6 +904,90 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             </Principal>
             <Dependent Role="AtivoDaConta">
               <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LCA">
+          <Key>
+            <PropertyRef Name="LCAId" />
+          </Key>
+          <Property Name="LCAId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContaId" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="Aplicacao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Vencimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Taxa" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ValorEmissao" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Conta" Relationship="InvestimentosModel.FK_tbLCA_tbContas" FromRole="tbLCA" ToRole="Conta" />
+          <NavigationProperty Name="LCAMeses" Relationship="InvestimentosModel.FK_tbLCAMeses_tbLCA" FromRole="tbLCA" ToRole="tbLCAMes" />
+        </EntityType>
+        <EntityType Name="LCAMes">
+          <Key>
+            <PropertyRef Name="LCAMesId" />
+          </Key>
+          <Property Name="LCAMesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LCAId" Type="Int32" Nullable="false" />
+          <Property Name="Mes" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SaldoAnterior" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Aplicacoes" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Resgates" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="RendimentoBruto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ImpostoRenda" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IOF" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="RendimentoLiquido" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="SaldoAtual" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="LCA" Relationship="InvestimentosModel.FK_tbLCAMeses_tbLCA" FromRole="tbLCAMes" ToRole="tbLCA" />
+          <NavigationProperty Name="LCAMovimentos" Relationship="InvestimentosModel.FK_tbMovimentos_tbLCAMeses" FromRole="tbLCAMes" ToRole="tbLCAMovimento" />
+        </EntityType>
+        <EntityType Name="LCAMovimento">
+          <Key>
+            <PropertyRef Name="MovimentoId" />
+          </Key>
+          <Property Name="MovimentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LCAMesId" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Historico" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="ValorCapital" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ImpostoRenda" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IOF" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Rendimentos" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ValorMovimento" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ValorAtual" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="LCAMes" Relationship="InvestimentosModel.FK_tbMovimentos_tbLCAMeses" FromRole="tbLCAMovimento" ToRole="tbLCAMes" />
+        </EntityType>
+        <Association Name="FK_tbLCA_tbContas">
+          <End Type="InvestimentosModel.Conta" Role="Conta" Multiplicity="1" />
+          <End Type="InvestimentosModel.LCA" Role="tbLCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conta">
+              <PropertyRef Name="ContaId" />
+            </Principal>
+            <Dependent Role="tbLCA">
+              <PropertyRef Name="ContaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbLCAMeses_tbLCA">
+          <End Type="InvestimentosModel.LCA" Role="tbLCA" Multiplicity="1" />
+          <End Type="InvestimentosModel.LCAMes" Role="tbLCAMes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbLCA">
+              <PropertyRef Name="LCAId" />
+            </Principal>
+            <Dependent Role="tbLCAMes">
+              <PropertyRef Name="LCAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMovimentos_tbLCAMeses">
+          <End Type="InvestimentosModel.LCAMes" Role="tbLCAMes" Multiplicity="1" />
+          <End Type="InvestimentosModel.LCAMovimento" Role="tbLCAMovimento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbLCAMes">
+              <PropertyRef Name="LCAMesId" />
+            </Principal>
+            <Dependent Role="tbLCAMovimento">
+              <PropertyRef Name="LCAMesId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -943,6 +1137,52 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
                 <ScalarProperty Name="Historico" ColumnName="Historico" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="ContaMesId" ColumnName="ContaMesId" />
+                <ScalarProperty Name="MovimentoId" ColumnName="MovimentoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LCAs">
+            <EntityTypeMapping TypeName="InvestimentosModel.LCA">
+              <MappingFragment StoreEntitySet="tbLCA">
+                <ScalarProperty Name="ValorEmissao" ColumnName="ValorEmissao" />
+                <ScalarProperty Name="Taxa" ColumnName="Taxa" />
+                <ScalarProperty Name="Vencimento" ColumnName="Vencimento" />
+                <ScalarProperty Name="Aplicacao" ColumnName="Aplicacao" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="ContaId" ColumnName="ContaId" />
+                <ScalarProperty Name="LCAId" ColumnName="LCAId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LCAMeses">
+            <EntityTypeMapping TypeName="InvestimentosModel.LCAMes">
+              <MappingFragment StoreEntitySet="tbLCAMeses">
+                <ScalarProperty Name="SaldoAtual" ColumnName="SaldoAtual" />
+                <ScalarProperty Name="RendimentoLiquido" ColumnName="RendimentoLiquido" />
+                <ScalarProperty Name="IOF" ColumnName="IOF" />
+                <ScalarProperty Name="ImpostoRenda" ColumnName="ImpostoRenda" />
+                <ScalarProperty Name="RendimentoBruto" ColumnName="RendimentoBruto" />
+                <ScalarProperty Name="Resgates" ColumnName="Resgates" />
+                <ScalarProperty Name="Aplicacoes" ColumnName="Aplicacoes" />
+                <ScalarProperty Name="SaldoAnterior" ColumnName="SaldoAnterior" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="LCAId" ColumnName="LCAId" />
+                <ScalarProperty Name="LCAMesId" ColumnName="LCAMesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LCAMovimentos">
+            <EntityTypeMapping TypeName="InvestimentosModel.LCAMovimento">
+              <MappingFragment StoreEntitySet="tbLCAMovimentos">
+                <ScalarProperty Name="ValorMovimento" ColumnName="ValorMovimento" />
+                <ScalarProperty Name="ValorCapital" ColumnName="ValorCapital" />
+                <ScalarProperty Name="ValorAtual" ColumnName="ValorAtual" />
+                <ScalarProperty Name="Rendimentos" ColumnName="Rendimentos" />
+                <ScalarProperty Name="IOF" ColumnName="IOF" />
+                <ScalarProperty Name="ImpostoRenda" ColumnName="ImpostoRenda" />
+                <ScalarProperty Name="Historico" ColumnName="Historico" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="LCAMesId" ColumnName="LCAMesId" />
                 <ScalarProperty Name="MovimentoId" ColumnName="MovimentoId" />
               </MappingFragment>
             </EntityTypeMapping>

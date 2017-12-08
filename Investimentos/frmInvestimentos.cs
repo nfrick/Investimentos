@@ -44,25 +44,38 @@ namespace Investimentos {
             GridStyles.FormatGrid(dgvFundos);
             GridStyles.FormatColumns(dgvFundos, GridStyles.StyleCurrency, 90, 1);
 
-            GridStyles.FormatGrid(dgvResultados);
-            dgvResultados.Columns[0].Width = 85;
-            GridStyles.FormatColumns(dgvResultados, GridStyles.StyleNumber(6), 115, 2);
-            GridStyles.FormatColumns(dgvResultados, GridStyles.StyleNumber(9), 115, 3);
-            GridStyles.FormatColumns(dgvResultados, GridStyles.StyleCurrency, 85, 1, 4, 5, 6);
-            dgvResultados.Columns[1].Width = 95;
-            GridStyles.FormatColumns(dgvResultados, GridStyles.StyleNumber(4), 80, 7, 8, 9);
+            GridStyles.FormatGrid(dgvFundosMeses);
+            dgvFundosMeses.Columns[0].Width = 85;
+            GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleNumber(6), 115, 2);
+            GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleNumber(9), 115, 3);
+            GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleCurrency, 85, 1, 4, 5, 6);
+            dgvFundosMeses.Columns[1].Width = 95;
+            GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleNumber(4), 80, 7, 8, 9);
 
             GridStyles.FormatGrid(dgvMovimentos);
             GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleCurrency, 90, 2, 3);
             GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleCurrency, 95, 4);
             GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleNumber(6), 105, 5);
 
+            // LCA
+            GridStyles.FormatGrid(dgvLCAs);
+            GridStyles.FormatColumns(dgvLCAs, 1, 2, GridStyles.StyleDate, 85);
+            GridStyles.FormatColumn(dgvLCAs.Columns[3], GridStyles.StyleCurrency, 50);
+            GridStyles.FormatColumns(dgvLCAs, 4, 5, GridStyles.StyleCurrency, 80);
+            GridStyles.FormatGrid(dgvLCAMeses);
+            dgvLCAMeses.Columns[0].Width = 90;
+            GridStyles.FormatColumns(dgvLCAMeses, 1, 7, GridStyles.StyleCurrency, 90);
+            GridStyles.FormatGrid(dgvLCAMovimentos);
+            GridStyles.FormatColumns(dgvLCAMovimentos, 2, 4, GridStyles.StyleCurrency, 60);
+            GridStyles.FormatColumn(dgvLCAMovimentos.Columns[5], GridStyles.StyleCurrency, 90);
+
+            // RESUMO
             GridStyles.FormatGrid(dgvResumoAcoes);
             GridStyles.FormatGrid(dgvResumoFundos);
             dgvResumoAcoes.Columns[0].Width = 130;
             GridStyles.FormatColumns(dgvResumoAcoes, GridStyles.StyleCurrency, 90, 1);
             GridStyles.FormatColumns(dgvResumoFundos, GridStyles.StyleCurrency, 90, 1);
-            dgvResumoAcoes.SelectionMode = 
+            dgvResumoAcoes.SelectionMode =
             dgvResumoFundos.SelectionMode = DataGridViewSelectionMode.CellSelect;
 
             // 50 = vertical scroll bar width
@@ -78,7 +91,7 @@ namespace Investimentos {
             dgvVendas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvFundos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvMovimentos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvResultados.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvFundosMeses.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             tlpAcoes.RowStyles[0].Height =
                 8 + dgvAtivos.ColumnHeadersHeight + 11 * dgvAtivos.RowTemplate.Height;
@@ -107,9 +120,18 @@ namespace Investimentos {
         private void RefreshDataFundos() {
             dgvFundos.SaveCurrentRow();
             entityDataSource1.Refresh();
-            dgvResultados.Refresh();
+            dgvFundosMeses.Refresh();
             dgvMovimentos.Refresh();
             dgvFundos.RestoreCurrentRow(0);
+            RefreshSalvar();
+        }
+
+        private void RefreshDataLCA() {
+            dgvLCAs.SaveCurrentRow();
+            entityDataSource1.Refresh();
+            dgvLCAMeses.Refresh();
+            dgvLCAMovimentos.Refresh();
+            dgvLCAs.RestoreCurrentRow(0);
             RefreshSalvar();
         }
 
@@ -308,25 +330,44 @@ namespace Investimentos {
             foreach (ToolStripItem item in toolStrip1.Items) {
                 if (item.Tag == null) continue;
                 var tag = item.Tag.ToString();
-                if (tag == "Fundos" || tag == "Ações")
-                    item.Visible = (tag == tabLabel);
+                if (tag == "Fundos;LCA" || tag == "Ações")
+                    item.Visible = (tag.Contains(tabLabel));
             }
         }
 
         private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
-            toolStripButtonLerExtrato.Visible = false;
-            toolStripLabelLendoExtrato.Visible = true;
-            if (OFD.ShowDialog() == DialogResult.Cancel)
+            ToggleLeitura();
+            if (OFD.ShowDialog() == DialogResult.Cancel) {
+                ToggleLeitura();
                 return;
-            foreach (var file in OFD.FileNames) {
-                toolStripLabelLendoExtrato.Text = $"Lendo extrato: {Path.GetFileName(file)}";
-                LerExtrato(file);
             }
-            toolStripButtonLerExtrato.Visible = true;
-            toolStripLabelLendoExtrato.Visible = false;
+            toolStripProgressBar1.Value = 0;
+            toolStripProgressBar1.Maximum = OFD.FileNames.Length;
+            var tabLabel = tabControl1.SelectedTab.Text;
+
+            Func<string, int> leitor;
+            if (tabLabel == "Fundos")
+                leitor = LerExtratoFundos;
+            else {
+                leitor = LerExtratoLCA;
+            }
+
+            foreach (var file in OFD.FileNames) {
+                toolStripProgressBar1.Value += 1;
+                toolStripLabelLendoExtrato.Text = $"Lendo extrato: {Path.GetFileName(file)}";
+                leitor(file);
+            }
+            ToggleLeitura();
         }
 
-        private void LerExtrato(string fileName) {
+        private void ToggleLeitura() {
+            toolStripButtonLerExtrato.Visible = !toolStripButtonLerExtrato.Visible;
+            toolStripLabelLendoExtrato.Visible = !toolStripLabelLendoExtrato.Visible;
+            toolStripProgressBar1.Visible = !toolStripProgressBar1.Visible;
+            toolStrip1.Refresh();
+        }
+
+        private int LerExtratoFundos(string fileName) {
             var conta = (Conta)toolStripComboBoxConta.SelectedItem;
             var fundos = entityDataSource1.DbContext.Set<Fundo>();
 
@@ -342,7 +383,7 @@ namespace Investimentos {
                             line = streamReader.ReadLine();
                             if (line != null) continue;
                             RefreshDataFundos();
-                            return;
+                            return 0;
                         } while (!line.Trim().StartsWith("BB"));
                         var fundoNome = line.Substring(0, 35).Trim();
 
@@ -417,14 +458,91 @@ namespace Investimentos {
                     } while (true);
                 }
             }
+            return 0;
         }
 
-        private static string GetNextLine(TextReader s) {
-            string line;
-            do {
-                line = s.ReadLine().Trim();
-            } while (line == string.Empty);
-            return line;
+        private int LerExtratoLCA(string fileName) {
+            var conta = (Conta)toolStripComboBoxConta.SelectedItem;
+            var LCAs = entityDataSource1.DbContext.Set<LCA>();
+
+            IFormatProvider format = new CultureInfo("pt-BR");
+            const int bufferSize = 128;
+
+            using (var fileStream = File.OpenRead(fileName)) {
+                using (var streamReader = new StreamReader(fileStream, Encoding.Default, true, bufferSize)) {
+
+                    string line;
+                    // Ler até achar o inicio dos dados
+                    line = ReadUntil(streamReader, "NÚMERO");
+                    var lcaNumero = line.Substring(18).Trim();
+
+                    // Localiza a LCA, criando se necessário
+                    var lca = LCAs.Local.FirstOrDefault(l => l.Numero == lcaNumero);
+                    if (lca == null) {
+                        lca = new LCA { Numero = lcaNumero, Conta = conta };
+                        lca.Aplicacao = DateTime.Parse(GetNextLine(streamReader).Substring(18).Trim(), format);
+                        lca.ValorEmissao = decimal.Parse(GetNextLine(streamReader).Substring(18).Trim(), format);
+                        var saldo = GetNextLine(streamReader);  // skip that line
+                        lca.Taxa = decimal.Parse(GetNextLine(streamReader).Substring(18).Trim(), format);
+                        lca.Vencimento = DateTime.Parse(GetNextLine(streamReader).Substring(18).Trim(), format);
+                        LCAs.Add(lca);
+                    }
+
+                    // Localiza o mês
+                    line = ReadUntil(streamReader, "EXTRATO REF AO MÊS");
+
+                    // Cria o Mes
+                    var lcaMes = new LCAMes { LCA = lca, Mes = DateTime.Parse($"01/{line.Substring(18).Trim()}") };
+                    lca.LCAMeses.Add(lcaMes);
+
+                    // Ler movimentos
+                    DateTime data;
+                    do {
+                        if (string.IsNullOrEmpty(line)) continue;
+                        if (!DateTime.TryParse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal,
+                            out data)) continue;
+                        lcaMes.LCAMovimentos.Add(CreateLCAMovimento(line, format));
+                    } while (!(line = GetNextLine(streamReader)).Contains("Saldo Atual"));
+                    // Adiciona o saldo atual (última linha)
+                    lcaMes.LCAMovimentos.Add(CreateLCAMovimento(line, format));
+
+                    // Localiza o mês
+                    line = ReadUntil(streamReader, "SALDO ANTERIOR");
+                    lcaMes.SaldoAnterior = GetValor(line);
+                    lcaMes.Aplicacoes = GetValor(streamReader);
+                    lcaMes.Resgates = GetValor(streamReader);
+                    lcaMes.RendimentoBruto = GetValor(streamReader);
+                    lcaMes.ImpostoRenda = GetValor(streamReader);
+                    lcaMes.IOF = GetValor(streamReader);
+                    lcaMes.RendimentoLiquido = GetValor(streamReader);
+                    lcaMes.SaldoAtual = GetValor(streamReader);
+                    RefreshDataLCA();
+                }
+            }
+            return 0;
+        }
+
+        private static string GetNextLine(TextReader stream) {
+            string linha;
+            while ((linha = stream.ReadLine().Trim()) == "") ;
+            return linha;
+        }
+
+        private static string ReadUntil(TextReader stream, string text) {
+            string linha;
+            while (!(linha = stream.ReadLine().Trim()).Contains(text)) ;
+            return linha;
+        }
+
+        private static decimal GetValor(TextReader stream) =>
+            //            string linha;
+            //            while ((linha = stream.ReadLine().Trim()) == "") ;
+            //            return GetValor(linha);
+            GetValor(GetNextLine(stream));
+
+        private static decimal GetValor(string linha) {
+            var valores = linha.Split(new[] { ' ' }).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            return decimal.Parse(valores[valores.Length - 1]);
         }
 
         private static Movimento CreateMovimento(string line, IFormatProvider format) {
@@ -438,6 +556,20 @@ namespace Investimentos {
             };
         }
 
+
+        private static LCAMovimento CreateLCAMovimento(string line, IFormatProvider format) {
+            return new LCAMovimento() {
+                Data = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal),
+                Historico = line.Substring(11, 20).Trim().ToLower(),
+                ValorCapital = ToDecimal(line, 38, 11),
+                ImpostoRenda = ToDecimal(line, 48, 12),
+                IOF = ToDecimal(line, 60, 12),
+                Rendimentos = ToDecimal(line, 72, 15),
+                ValorMovimento = ToDecimal(line, 88, 16),
+                ValorAtual = int.Parse(line.Substring(103, 13)) / 10.0m
+            };
+        }
+
         private static decimal ToDecimal(string line, int start, int length) {
             return ToDecimalNull(line, start, length) ?? 0.0m;
         }
@@ -446,17 +578,6 @@ namespace Investimentos {
             if (start > line.Length || start + length > line.Length) return null;
             var text = line.Substring(start, length).Trim();
             return decimal.TryParse(text, out decimal valor) ? (decimal?)valor : null;
-        }
-
-        private static decimal GetValor(TextReader stream) {
-            string linha;
-            while ((linha = stream.ReadLine().Trim()) == "") ;
-            return GetValor(linha);
-        }
-
-        private static decimal GetValor(string linha) {
-            var valores = linha.Split(new[] { ' ' }).Where(x => !string.IsNullOrEmpty(x)).ToArray();
-            return decimal.Parse(valores[valores.Length - 1]);
         }
 
         private void dgvResumo_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {

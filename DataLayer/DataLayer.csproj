@@ -86,6 +86,15 @@
     <Compile Include="FundoMes.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
+    <Compile Include="LCA.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LCAMes.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LCAMovimento.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Movimento.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
@@ -143,6 +152,7 @@
     <Compile Include="PartialClasses\ContaFundo.cs" />
     <Compile Include="PartialClasses\CotacaoYahoo.cs" />
     <Compile Include="PartialClasses\Extensions.cs" />
+    <Compile Include="PartialClasses\LCA.cs" />
     <Compile Include="PartialClasses\Operacao.cs" />
     <Compile Include="PartialClasses\OperacaoCotacao.cs" />
     <Compile Include="PartialClasses\OperacaoTipo.cs" />
