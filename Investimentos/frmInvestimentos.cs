@@ -31,7 +31,7 @@ namespace Investimentos {
             GridStyles.FormatGrid(dgvOperacoes);
             dgvOperacoes.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
             GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 65, 3, 4);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 70, 5, 7);
+            GridStyles.FormatColumns(dgvOperacoes, 5, 7, GridStyles.StyleCurrency, 70);
             dgvOperacoes.Columns[7].Width = 80;
 
             GridStyles.FormatGrid(dgvVendas, 14);
