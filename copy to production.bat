@@ -1,0 +1,3 @@
+xcopy "D:\Users\nfric\Documents\Visual Studio 2017\Projects\Investimentos\Cotacoes\bin\Debug\*.*" "D:\Users\nfric\Documents\My Apps" /y
+xcopy "D:\Users\nfric\Documents\Visual Studio 2017\Projects\Investimentos\Investimentos\bin\Debug\*.*" "D:\Users\nfric\Documents\My Apps" /y
+xcopy "D:\Users\nfric\Documents\Visual Studio 2017\Projects\Investimentos\SerieHistorica\bin\Debug\*.*" "D:\Users\nfric\Documents\My Apps" /y

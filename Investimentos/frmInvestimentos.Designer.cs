@@ -118,6 +118,10 @@
             this.ValorOperacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEditarOperacao = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvAtivos = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tlpContas = new System.Windows.Forms.TableLayoutPanel();
             this.dgvContas = new System.Windows.Forms.DataGridView();
@@ -201,10 +205,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpAcoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFundos)).BeginInit();
@@ -255,7 +255,7 @@
             this.tlpAcoes.RowCount = 2;
             this.tlpAcoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tlpAcoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.tlpAcoes.Size = new System.Drawing.Size(1043, 582);
+            this.tlpAcoes.Size = new System.Drawing.Size(1043, 586);
             this.tlpAcoes.TabIndex = 5;
             // 
             // dgvVendas
@@ -662,7 +662,7 @@
             this.dgvFundos.Name = "dgvFundos";
             this.dgvFundos.ReadOnly = true;
             this.dgvFundos.RowTemplate.Height = 24;
-            this.dgvFundos.Size = new System.Drawing.Size(305, 279);
+            this.dgvFundos.Size = new System.Drawing.Size(305, 281);
             this.dgvFundos.TabIndex = 3;
             // 
             // fundoNomeDataGridViewTextBoxColumn
@@ -702,7 +702,7 @@
             this.dgvLCAs.Name = "dgvLCAs";
             this.dgvLCAs.ReadOnly = true;
             this.dgvLCAs.RowTemplate.Height = 24;
-            this.dgvLCAs.Size = new System.Drawing.Size(494, 279);
+            this.dgvLCAs.Size = new System.Drawing.Size(494, 281);
             this.dgvLCAs.TabIndex = 3;
             // 
             // Numero
@@ -878,6 +878,34 @@
             this.dgvAtivos.Size = new System.Drawing.Size(204, 294);
             this.dgvAtivos.TabIndex = 0;
             // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "Codigo";
+            this.Codigo.HeaderText = "Código";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "QtdTotal";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Qtd";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "UltimaCotacao";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Últ. Cotação";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Patrimonio";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Patrimônio";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
             // toolStripContainer1
             // 
             // 
@@ -988,10 +1016,10 @@
             this.tabPageAcoes.Controls.Add(this.tlpAcoes);
             this.tabPageAcoes.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageAcoes.ForeColor = System.Drawing.SystemColors.Control;
-            this.tabPageAcoes.Location = new System.Drawing.Point(4, 32);
+            this.tabPageAcoes.Location = new System.Drawing.Point(4, 28);
             this.tabPageAcoes.Name = "tabPageAcoes";
             this.tabPageAcoes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAcoes.Size = new System.Drawing.Size(1049, 588);
+            this.tabPageAcoes.Size = new System.Drawing.Size(1049, 592);
             this.tabPageAcoes.TabIndex = 0;
             this.tabPageAcoes.Text = "Ações";
             // 
@@ -1000,10 +1028,10 @@
             this.tabPageFundos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tabPageFundos.Controls.Add(this.tlpFundosMain);
             this.tabPageFundos.ForeColor = System.Drawing.SystemColors.Control;
-            this.tabPageFundos.Location = new System.Drawing.Point(4, 32);
+            this.tabPageFundos.Location = new System.Drawing.Point(4, 28);
             this.tabPageFundos.Name = "tabPageFundos";
             this.tabPageFundos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFundos.Size = new System.Drawing.Size(1049, 588);
+            this.tabPageFundos.Size = new System.Drawing.Size(1049, 592);
             this.tabPageFundos.TabIndex = 1;
             this.tabPageFundos.Text = "Fundos";
             // 
@@ -1019,7 +1047,7 @@
             this.tlpFundosMain.RowCount = 2;
             this.tlpFundosMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpFundosMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpFundosMain.Size = new System.Drawing.Size(1043, 582);
+            this.tlpFundosMain.Size = new System.Drawing.Size(1043, 586);
             this.tlpFundosMain.TabIndex = 3;
             // 
             // dgvFundosMeses
@@ -1042,11 +1070,11 @@
             this.dgvFundosMeses.DataMember = "Contas.Fundos.ContasMeses";
             this.dgvFundosMeses.DataSource = this.entityDataSource1;
             this.dgvFundosMeses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvFundosMeses.Location = new System.Drawing.Point(3, 294);
+            this.dgvFundosMeses.Location = new System.Drawing.Point(3, 296);
             this.dgvFundosMeses.Name = "dgvFundosMeses";
             this.dgvFundosMeses.ReadOnly = true;
             this.dgvFundosMeses.RowTemplate.Height = 24;
-            this.dgvFundosMeses.Size = new System.Drawing.Size(1037, 285);
+            this.dgvFundosMeses.Size = new System.Drawing.Size(1037, 287);
             this.dgvFundosMeses.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn16
@@ -1133,7 +1161,7 @@
             this.tlpFundosTop.Name = "tlpFundosTop";
             this.tlpFundosTop.RowCount = 1;
             this.tlpFundosTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFundosTop.Size = new System.Drawing.Size(1037, 285);
+            this.tlpFundosTop.Size = new System.Drawing.Size(1037, 287);
             this.tlpFundosTop.TabIndex = 2;
             // 
             // dgvMovimentos
@@ -1156,7 +1184,7 @@
             this.dgvMovimentos.Name = "dgvMovimentos";
             this.dgvMovimentos.ReadOnly = true;
             this.dgvMovimentos.RowTemplate.Height = 24;
-            this.dgvMovimentos.Size = new System.Drawing.Size(720, 279);
+            this.dgvMovimentos.Size = new System.Drawing.Size(720, 281);
             this.dgvMovimentos.TabIndex = 2;
             // 
             // dataDataGridViewTextBoxColumn2
@@ -1204,10 +1232,10 @@
             // tabPageLCA
             // 
             this.tabPageLCA.Controls.Add(this.tableLayoutPanel1);
-            this.tabPageLCA.Location = new System.Drawing.Point(4, 32);
+            this.tabPageLCA.Location = new System.Drawing.Point(4, 28);
             this.tabPageLCA.Name = "tabPageLCA";
             this.tabPageLCA.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLCA.Size = new System.Drawing.Size(1049, 588);
+            this.tabPageLCA.Size = new System.Drawing.Size(1049, 592);
             this.tabPageLCA.TabIndex = 3;
             this.tabPageLCA.Text = "LCA";
             this.tabPageLCA.UseVisualStyleBackColor = true;
@@ -1224,7 +1252,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1043, 582);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1043, 586);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // dgvLCAMeses
@@ -1245,11 +1273,11 @@
             this.dgvLCAMeses.DataMember = "Contas.LCAs.LCAMeses";
             this.dgvLCAMeses.DataSource = this.entityDataSource1;
             this.dgvLCAMeses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLCAMeses.Location = new System.Drawing.Point(3, 294);
+            this.dgvLCAMeses.Location = new System.Drawing.Point(3, 296);
             this.dgvLCAMeses.Name = "dgvLCAMeses";
             this.dgvLCAMeses.ReadOnly = true;
             this.dgvLCAMeses.RowTemplate.Height = 24;
-            this.dgvLCAMeses.Size = new System.Drawing.Size(1037, 285);
+            this.dgvLCAMeses.Size = new System.Drawing.Size(1037, 287);
             this.dgvLCAMeses.TabIndex = 1;
             // 
             // lCADataGridViewTextBoxColumn
@@ -1323,7 +1351,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1037, 285);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1037, 287);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // dgvLCAMovimentos
@@ -1346,7 +1374,7 @@
             this.dgvLCAMovimentos.Name = "dgvLCAMovimentos";
             this.dgvLCAMovimentos.ReadOnly = true;
             this.dgvLCAMovimentos.RowTemplate.Height = 24;
-            this.dgvLCAMovimentos.Size = new System.Drawing.Size(531, 279);
+            this.dgvLCAMovimentos.Size = new System.Drawing.Size(531, 281);
             this.dgvLCAMovimentos.TabIndex = 2;
             // 
             // dataDataGridViewTextBoxColumn1
@@ -1395,10 +1423,10 @@
             // 
             this.tabPageResumo.BackColor = System.Drawing.Color.Black;
             this.tabPageResumo.Controls.Add(this.tlpResumo);
-            this.tabPageResumo.Location = new System.Drawing.Point(4, 32);
+            this.tabPageResumo.Location = new System.Drawing.Point(4, 28);
             this.tabPageResumo.Name = "tabPageResumo";
             this.tabPageResumo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageResumo.Size = new System.Drawing.Size(1049, 588);
+            this.tabPageResumo.Size = new System.Drawing.Size(1049, 592);
             this.tabPageResumo.TabIndex = 2;
             this.tabPageResumo.Text = "Resumo";
             // 
@@ -1419,7 +1447,7 @@
             this.tlpResumo.RowCount = 2;
             this.tlpResumo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpResumo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpResumo.Size = new System.Drawing.Size(1043, 582);
+            this.tlpResumo.Size = new System.Drawing.Size(1043, 586);
             this.tlpResumo.TabIndex = 0;
             // 
             // dgvResumoAcoes
@@ -1437,7 +1465,7 @@
             this.dgvResumoAcoes.Name = "dgvResumoAcoes";
             this.dgvResumoAcoes.ReadOnly = true;
             this.dgvResumoAcoes.RowTemplate.Height = 24;
-            this.dgvResumoAcoes.Size = new System.Drawing.Size(254, 285);
+            this.dgvResumoAcoes.Size = new System.Drawing.Size(254, 287);
             this.dgvResumoAcoes.TabIndex = 0;
             this.dgvResumoAcoes.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvResumo_ColumnWidthChanged);
             // 
@@ -1470,11 +1498,11 @@
             this.valorDataGridViewTextBoxColumn3});
             this.dgvResumoFundos.DataSource = this.bindingSourceFundos;
             this.dgvResumoFundos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvResumoFundos.Location = new System.Drawing.Point(3, 294);
+            this.dgvResumoFundos.Location = new System.Drawing.Point(3, 296);
             this.dgvResumoFundos.Name = "dgvResumoFundos";
             this.dgvResumoFundos.ReadOnly = true;
             this.dgvResumoFundos.RowTemplate.Height = 24;
-            this.dgvResumoFundos.Size = new System.Drawing.Size(254, 285);
+            this.dgvResumoFundos.Size = new System.Drawing.Size(254, 287);
             this.dgvResumoFundos.TabIndex = 1;
             this.dgvResumoFundos.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvResumo_ColumnWidthChanged);
             // 
@@ -1520,7 +1548,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartResumoAcoes.Series.Add(series1);
-            this.chartResumoAcoes.Size = new System.Drawing.Size(385, 285);
+            this.chartResumoAcoes.Size = new System.Drawing.Size(385, 287);
             this.chartResumoAcoes.TabIndex = 2;
             this.chartResumoAcoes.Text = "chart2";
             title1.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1545,14 +1573,14 @@
             legend2.IsTextAutoFit = false;
             legend2.Name = "Legend1";
             this.chartResumoFundos.Legends.Add(legend2);
-            this.chartResumoFundos.Location = new System.Drawing.Point(263, 294);
+            this.chartResumoFundos.Location = new System.Drawing.Point(263, 296);
             this.chartResumoFundos.Name = "chartResumoFundos";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chartResumoFundos.Series.Add(series2);
-            this.chartResumoFundos.Size = new System.Drawing.Size(385, 285);
+            this.chartResumoFundos.Size = new System.Drawing.Size(385, 287);
             this.chartResumoFundos.TabIndex = 3;
             this.chartResumoFundos.Text = "chart3";
             title2.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1577,7 +1605,7 @@
             this.chartResumoTotal.Location = new System.Drawing.Point(654, 3);
             this.chartResumoTotal.Name = "chartResumoTotal";
             this.tlpResumo.SetRowSpan(this.chartResumoTotal, 2);
-            this.chartResumoTotal.Size = new System.Drawing.Size(386, 576);
+            this.chartResumoTotal.Size = new System.Drawing.Size(386, 580);
             this.chartResumoTotal.TabIndex = 4;
             this.chartResumoTotal.Text = "chart4";
             title3.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1608,7 +1636,7 @@
             this.toolStripProgressBar1});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(606, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(524, 28);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonNovaConta
@@ -1618,7 +1646,7 @@
             this.toolStripButtonNovaConta.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaConta.Image")));
             this.toolStripButtonNovaConta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNovaConta.Name = "toolStripButtonNovaConta";
-            this.toolStripButtonNovaConta.Size = new System.Drawing.Size(91, 25);
+            this.toolStripButtonNovaConta.Size = new System.Drawing.Size(74, 25);
             this.toolStripButtonNovaConta.Tag = "new";
             this.toolStripButtonNovaConta.Text = "Nova Conta";
             this.toolStripButtonNovaConta.ToolTipText = "Nova Conta";
@@ -1636,7 +1664,7 @@
             this.toolStripButtonEditarConta.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditarConta.Image")));
             this.toolStripButtonEditarConta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditarConta.Name = "toolStripButtonEditarConta";
-            this.toolStripButtonEditarConta.Size = new System.Drawing.Size(95, 25);
+            this.toolStripButtonEditarConta.Size = new System.Drawing.Size(76, 25);
             this.toolStripButtonEditarConta.Tag = "edit";
             this.toolStripButtonEditarConta.Text = "Editar Conta";
             this.toolStripButtonEditarConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
@@ -1649,7 +1677,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(51, 25);
+            this.toolStripLabel1.Size = new System.Drawing.Size(42, 25);
             this.toolStripLabel1.Text = "Conta:";
             this.toolStripLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -1658,7 +1686,7 @@
             this.toolStripComboBoxConta.AutoSize = false;
             this.toolStripComboBoxConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBoxConta.Name = "toolStripComboBoxConta";
-            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 28);
+            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 23);
             this.toolStripComboBoxConta.Sorted = true;
             this.toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
             // 
@@ -1676,7 +1704,7 @@
             this.toolStripButtonNovaOperacao.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaOperacao.Image")));
             this.toolStripButtonNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNovaOperacao.Name = "toolStripButtonNovaOperacao";
-            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(117, 25);
+            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(93, 25);
             this.toolStripButtonNovaOperacao.Tag = "Ações";
             this.toolStripButtonNovaOperacao.Text = "Nova Operação";
             this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
@@ -1696,7 +1724,7 @@
             this.toolStripButtonSalvar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSalvar.Image")));
             this.toolStripButtonSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSalvar.Name = "toolStripButtonSalvar";
-            this.toolStripButtonSalvar.Size = new System.Drawing.Size(55, 25);
+            this.toolStripButtonSalvar.Size = new System.Drawing.Size(43, 25);
             this.toolStripButtonSalvar.Text = "Salvar";
             this.toolStripButtonSalvar.Visible = false;
             this.toolStripButtonSalvar.Click += new System.EventHandler(this.toolStripButtonSalvar_Click);
@@ -1715,7 +1743,7 @@
             this.toolStripButtonBalanco.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBalanco.Image")));
             this.toolStripButtonBalanco.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBalanco.Name = "toolStripButtonBalanco";
-            this.toolStripButtonBalanco.Size = new System.Drawing.Size(66, 25);
+            this.toolStripButtonBalanco.Size = new System.Drawing.Size(53, 25);
             this.toolStripButtonBalanco.Tag = "Ações";
             this.toolStripButtonBalanco.Text = "Balanço";
             this.toolStripButtonBalanco.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
@@ -1727,7 +1755,7 @@
             this.toolStripButtonLerExtrato.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLerExtrato.Image")));
             this.toolStripButtonLerExtrato.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLerExtrato.Name = "toolStripButtonLerExtrato";
-            this.toolStripButtonLerExtrato.Size = new System.Drawing.Size(84, 25);
+            this.toolStripButtonLerExtrato.Size = new System.Drawing.Size(66, 25);
             this.toolStripButtonLerExtrato.Tag = "Fundos;LCA";
             this.toolStripButtonLerExtrato.Text = "Ler Extrato";
             this.toolStripButtonLerExtrato.Visible = false;
@@ -1736,7 +1764,7 @@
             // toolStripLabelLendoExtrato
             // 
             this.toolStripLabelLendoExtrato.Name = "toolStripLabelLendoExtrato";
-            this.toolStripLabelLendoExtrato.Size = new System.Drawing.Size(101, 25);
+            this.toolStripLabelLendoExtrato.Size = new System.Drawing.Size(79, 25);
             this.toolStripLabelLendoExtrato.Text = "Lendo extrato";
             this.toolStripLabelLendoExtrato.Visible = false;
             // 
@@ -1764,37 +1792,9 @@
             this.OFD.Filter = "Text Files|*.txt";
             this.OFD.Multiselect = true;
             // 
-            // Codigo
-            // 
-            this.Codigo.DataPropertyName = "Codigo";
-            this.Codigo.HeaderText = "Código";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "QtdTotal";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Qtd";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "UltimaCotacao";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Últ. Cotação";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Patrimonio";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Patrimônio";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
             // frmInvestimentos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1063, 659);

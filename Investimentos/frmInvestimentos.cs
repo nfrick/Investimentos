@@ -29,10 +29,10 @@ namespace Investimentos {
             GridStyles.FormatColumns(dgvAtivos, GridStyles.StyleCurrency, 80, 3);
 
             GridStyles.FormatGrid(dgvOperacoes);
-            dgvOperacoes.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleDateTime, 100, 1);
             GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 65, 3, 4);
-            GridStyles.FormatColumns(dgvOperacoes, 5, 7, GridStyles.StyleCurrency, 70);
-            dgvOperacoes.Columns[7].Width = 80;
+            GridStyles.FormatColumns(dgvOperacoes, 5, 7, GridStyles.StyleCurrency, 80);
+            dgvOperacoes.Columns[7].Width = 90;
 
             GridStyles.FormatGrid(dgvVendas, 14);
             dgvVendas.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
