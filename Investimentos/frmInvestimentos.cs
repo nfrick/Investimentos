@@ -496,11 +496,10 @@ namespace Investimentos {
                     lca.LCAMeses.Add(lcaMes);
 
                     // Ler movimentos
-                    DateTime data;
                     do {
                         if (string.IsNullOrEmpty(line)) continue;
                         if (!DateTime.TryParse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal,
-                            out data)) continue;
+                            out DateTime data)) continue;
                         lcaMes.LCAMovimentos.Add(CreateLCAMovimento(line, format));
                     } while (!(line = GetNextLine(streamReader)).Contains("Saldo Atual"));
                     // Adiciona o saldo atual (última linha)
@@ -566,7 +565,7 @@ namespace Investimentos {
                 IOF = ToDecimal(line, 60, 12),
                 Rendimentos = ToDecimal(line, 72, 15),
                 ValorMovimento = ToDecimal(line, 88, 16),
-                ValorAtual = int.Parse(line.Substring(103, 13)) / 10.0m
+                ValorAtual = int.Parse(line.Substring(103, 13)) / 100.0m
             };
         }
 

@@ -133,8 +133,8 @@ namespace SerieHistorica {
                         where linha.StartsWith("01")
                               && linha.Substring(24, 3) == "010"
                         select new CotacaoDiaria(linha);
-            //entityDataSource1.DbContext.Set<CotacaoDiaria>().AddRange(serie);
-            //entityDataSource1.SaveChanges();
+            entityDataSource1.DbContext.Set<CotacaoDiaria>().AddRange(serie);
+            entityDataSource1.SaveChanges();
         }
 
         //https://stackoverflow.com/questions/23989677/file-readalllines-or-stream-reader
