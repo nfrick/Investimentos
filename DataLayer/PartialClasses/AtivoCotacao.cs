@@ -24,7 +24,9 @@ namespace DataLayer {
                 Cotacoes.Clear();
 
             if (offTime) {
-                var serie = ObterCotacao(5).TimeSeries;
+                var cotacao5 = ObterCotacao(5);
+                if (cotacao5 == null) return;
+                var serie = cotacao5.TimeSeries;
                 var data = serie.ElementAt(0).Key.Date;
                 foreach (var cot in serie.Where(c => c.Key.Date == data)) {
                     Cotacoes.Add(cot.Key, cot.Value);
@@ -32,6 +34,7 @@ namespace DataLayer {
             }
             else {
                 var cotacao1 = ObterCotacao(1);
+                if (cotacao1 == null) return;
                 var serie = cotacao1.TimeSeries.Take(60);
                 if (!Cotacoes.Any()) {
                     var horaInicio = DateTime.Today + new TimeSpan(10, 0, 0);
@@ -43,13 +46,17 @@ namespace DataLayer {
                     }
                     else {
                         var cotacao5 = ObterCotacao(5);
-                        var fechamento = cotacao5.TimeSeries
-                            .First(c => c.Key.CompareTo(horaInicio) <= 0);
-                        Cotacoes.Add(horaInicio, fechamento.Value);
-                        foreach (var cot in cotacao5.TimeSeries
-                            .SkipWhile(c => c.Key.CompareTo(maisAntigo) > 0)
-                            .TakeWhile(c => c.Key.CompareTo(horaInicio) > 0)) {
-                            Cotacoes.Add(cot.Key, cot.Value);
+                        if (cotacao5 != null) {
+                            var fechamento = cotacao5.TimeSeries
+                                .First(c => c.Key.CompareTo(horaInicio) <= 0);
+                            if (!Cotacoes.ContainsKey(horaInicio))
+                                Cotacoes.Add(horaInicio, fechamento.Value);
+                            foreach (var cot in cotacao5.TimeSeries
+                                .SkipWhile(c => c.Key.CompareTo(maisAntigo) > 0)
+                                .TakeWhile(c => c.Key.CompareTo(horaInicio) > 0)) {
+                                if (!Cotacoes.ContainsKey(cot.Key))
+                                    Cotacoes.Add(cot.Key, cot.Value);
+                            }
                         }
                     }
                 }
@@ -96,6 +103,8 @@ namespace DataLayer {
 
         public decimal ValorMedioCompraReal => _valorMedioCompra(true);
 
+        public decimal? AlertaVenda => LastTrade == 0 ? 10m : LastTrade / ValorMedioCompraReal;
+
         private decimal _valorMedioCompra(bool real) =>
             !JaNegociado ? 0 :
                 _operacoes
@@ -107,11 +116,11 @@ namespace DataLayer {
                     .Aggregate(new { SumQtd = 0, ValorTotal = 0.0m }, (a, o) => new { SumQtd = a.SumQtd + o.Qtd, ValorTotal = a.ValorTotal + o.Valor },
                         a => a.SumQtd == 0 ? 0 : a.ValorTotal / a.SumQtd);
 
-        public decimal Patrimonio => LastTrade == null ? 0 : (decimal)LastTrade * QtdTotal;
+        public decimal Patrimonio => LastTrade * QtdTotal;
 
-        public decimal Lucro => LastTrade == null ? 0 : ((decimal)LastTrade - ValorMedioCompra) * QtdTotal;
+        public decimal Lucro => (LastTrade - ValorMedioCompra) * QtdTotal;
 
-        public decimal LucroReal => LastTrade == null ? 0 : ((decimal)LastTrade - ValorMedioCompraReal) * QtdTotal;
+        public decimal LucroReal => ((decimal)LastTrade - ValorMedioCompraReal) * QtdTotal;
 
         public bool HasTrades => Cotacoes.Any();
 
@@ -119,7 +128,7 @@ namespace DataLayer {
 
         public decimal? PreviousClose => HasTrades ? (decimal?)Cotacoes.ElementAt(0).Value.close : 0;
 
-        public decimal? LastTrade => HasTrades ? Cotacoes.Last().Value.close : 0;
+        public decimal LastTrade => HasTrades ? Cotacoes.Last().Value.close : 0;
 
         public DateTime? LastTradeDate => HasTrades ? (DateTime?)Cotacoes.Last().Key : null;
 

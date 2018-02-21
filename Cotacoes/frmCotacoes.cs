@@ -29,12 +29,15 @@ namespace Cotacoes {
 
         private void frmCotacoes_Load(object sender, EventArgs e) {
             GridStyles.FormatGrid(dgvCotacoes);
-            GridStyles.FormatColumns(dgvCotacoes, 2, 8, GridStyles.StyleCurrency, 85);
-            GridStyles.FormatColumns(dgvCotacoes, 9, 16, GridStyles.StyleCurrency, 80);
-            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleInteger, 65, 1, 5);
-            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleDayAndTime, 100, 7);
-            dgvCotacoes.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleTrend, 20, 8);
+            dgvCotacoes.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleInteger, 65, 1, 7);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleCurrency, 80, 3, 5);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleCurrency, 85, 4, 6, 8);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleDayAndTime, 100, 9);
+            GridStyles.FormatColumns(dgvCotacoes, 11, 16, GridStyles.StyleCurrency, 80);
+
+            dgvCotacoes.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleTrend, 20, 2);
             GridStyles.FormatColumns(dgvCotacoes, GridStyles.StylePercent, 65, 13);
 
             GridStyles.FormatGridAsTotal(dgvTotal, dgvCotacoes);
@@ -198,24 +201,35 @@ namespace Cotacoes {
 
         private void AtualizarGrafico() {
             chart1.Series.Clear();
-            if (dgvCotacoes.SelectedRows.Count == 0)
-                return;
+            //if (dgvCotacoes.SelectedRows.Count == 0)
+            //    return;
 
             double chartMax = 0;
             double chartMin = 1000;
-            foreach (DataGridViewRow row in dgvCotacoes.SelectedRows) {
-                var ativo = FinanceData.AtivoPorCodigo((string)row.Cells[0].Value);
-                if (!ativo.HasTrades)
-                    ativo.AtualizarCotacao();
-                var serie = chart1.Series.Add(row.Cells[0].Value.ToString());
-                serie.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                foreach (var trade in ativo.Cotacoes) {
-                    serie.Points.AddXY(trade.Key, trade.Value.close);
+
+            if (dgvCotacoes.SelectedRows.Count == 0)
+                foreach (DataGridViewCell cell in dgvCotacoes.SelectedCells) {
+                    AtualizarGraficoAcao(cell.OwningRow, ref chartMin, ref chartMax);
                 }
-                chartMax = Math.Max(chartMax, ativo.DayHigh);
-                chartMin = Math.Min(chartMin, ativo.DayLow);
-            }
+            else
+                foreach (DataGridViewRow row in dgvCotacoes.SelectedRows) {
+                    AtualizarGraficoAcao(row, ref chartMin, ref chartMax);
+                }
             ChartMinMax.ChartSetYAxisMinMax(chart1, chartMin, chartMax);
+        }
+
+        private void AtualizarGraficoAcao(DataGridViewRow row, ref double chartMin, ref double chartMax) {
+            var codigo = row.Cells[0].Value.ToString();
+            var ativo = FinanceData.AtivoPorCodigo(codigo);
+            if (!ativo.HasTrades)
+                ativo.AtualizarCotacao();
+            var serie = chart1.Series.Add(codigo);
+            serie.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            foreach (var trade in ativo.Cotacoes) {
+                serie.Points.AddXY(trade.Key, trade.Value.close);
+            }
+            chartMax = Math.Max(chartMax, ativo.DayHigh);
+            chartMin = Math.Min(chartMin, ativo.DayLow);
         }
 
         private void FrequenciaButtonsClick(object sender, EventArgs e) {
@@ -266,14 +280,24 @@ namespace Cotacoes {
 
         #region DATAGRIDVIEW
         private void dgvCotacoes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            var acao = (AtivoCotacao)dgvCotacoes.Rows[e.RowIndex].DataBoundItem;
             var cell = dgvCotacoes.Rows[e.RowIndex].Cells[e.ColumnIndex];
             var forecolor = e.RowIndex % 2 == 0 ? dgvCotacoes.DefaultCellStyle.ForeColor : dgvCotacoes.AlternatingRowsDefaultCellStyle.ForeColor;
-            if (e.ColumnIndex == 8) {  // Trend
-                var s = cell.Value as string;
-                cell.Style.ForeColor = s == AtivoCotacao.TrendUp ? Color.LightGreen : (s == AtivoCotacao.TrendDown ? Color.OrangeRed : Color.Gray);
+            switch (e.ColumnIndex) {
+                case 2: // Trend
+                    var s = cell.Value as string;
+                    cell.Style.ForeColor = s == AtivoCotacao.TrendUp ? Color.LightGreen : (s == AtivoCotacao.TrendDown ? Color.OrangeRed : Color.Gray);
+                    break;
+                case 3 when acao.AlertaVenda < 1.004m:
+                    cell.Style.ForeColor = Color.White;
+                    cell.Style.BackColor = acao.AlertaVenda < 1.002m ? Color.Tomato : Color.Goldenrod;
+                    break;
+                case 6:
+                case 12:
+                case 13:
+                    cell.Style.ForeColor = Convert.ToDecimal(cell.Value) < 0 ? Color.OrangeRed : forecolor;
+                    break;
             }
-            else if (e.ColumnIndex == 4 || e.ColumnIndex == 12 || e.ColumnIndex == 13)
-                cell.Style.ForeColor = Convert.ToDecimal(cell.Value) < 0 ? Color.OrangeRed : forecolor;
         }
 
         private void dgvCotacoes_SelectionChanged(object sender, EventArgs e) {
@@ -288,7 +312,11 @@ namespace Cotacoes {
             if (dgvTotal.ColumnCount > 0)
                 dgvTotal.Columns[e.Column.Index].Width = e.Column.Width;
         }
-        #endregion DATAGRIDVIEW
 
+        private void dgvCotacoes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            AtualizarGrafico();
+        }
+
+        #endregion DATAGRIDVIEW
     }
 }

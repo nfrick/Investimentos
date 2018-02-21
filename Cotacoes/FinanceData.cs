@@ -37,13 +37,12 @@ namespace Cotacoes {
         /// </summary>
         /// <param name="tipo"></param>
         /// <returns></returns>
-        public static List<AtivoCotacao> AtivosParaExibicao(AtivosTipos tipo) {
-            return tipo == AtivosTipos.Correntes ?
+        public static List<AtivoCotacao> AtivosParaExibicao(AtivosTipos tipo) =>
+            tipo == AtivosTipos.Correntes ?
                     _ativos.Where(a => a.Corrente).ToList() : (
                     tipo == AtivosTipos.JaNegociados ?
                     _ativos.Where(a => a.JaNegociado).ToList() :
                     _ativos);
-        }
 
         /// <summary>
         /// Retorna o ativo da lista pelo código

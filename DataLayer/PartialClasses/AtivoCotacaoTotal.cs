@@ -24,22 +24,21 @@ namespace DataLayer {
         public decimal? Col18 { get; set; }
 
         public static List<AtivoCotacaoTotal> New(IReadOnlyCollection<AtivoCotacao> cotacoes) {
-            var lista = new List<AtivoCotacaoTotal>();
-            lista.Add(new AtivoCotacaoTotal(cotacoes));
+            var lista = new List<AtivoCotacaoTotal> {new AtivoCotacaoTotal(cotacoes)};
             return lista;
 
         }
         public AtivoCotacaoTotal(IReadOnlyCollection<AtivoCotacao> cotacoes) {
             Col0 = "TOTAL";
-            Col2 = cotacoes.Sum(c => c.Patrimonio);
-            Col4 = cotacoes.Sum(c => c.LucroReal);
-            Col6 = cotacoes.Sum(c => c.LucroImediato);
+            Col4 = cotacoes.Sum(c => c.Patrimonio);
+            Col6 = cotacoes.Sum(c => c.LucroReal);
+            Col8 = cotacoes.Sum(c => c.LucroImediato);
 
             Col1 = null;
+            Col2 = null;
             Col3 = null;
             Col5 = null;
             Col7 = null;
-            Col8 = null;
             Col9 = null;
             Col10 = null;
             Col11 = null;
