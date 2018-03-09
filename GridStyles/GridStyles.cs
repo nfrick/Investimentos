@@ -51,6 +51,11 @@ namespace GridAndChartStyleLibrary {
             Format = "dd/MM/yyyy HH:mm"
         };
 
+        private static DataGridViewCellStyle _styleDateTimeShort = new DataGridViewCellStyle(_styleBase) {
+            Alignment = DataGridViewContentAlignment.MiddleLeft,
+            Format = "dd/MM/yy HH:mm"
+        };
+
         private static DataGridViewCellStyle _styleDayAndTime = new DataGridViewCellStyle(_styleBase) {
             Alignment = DataGridViewContentAlignment.MiddleLeft,
             Format = "dd/MM HH:mm"
@@ -95,6 +100,7 @@ namespace GridAndChartStyleLibrary {
         }
 
         public static DataGridViewCellStyle StyleDateTime => _styleDateTime;
+        public static DataGridViewCellStyle StyleDateTimeShort => _styleDateTimeShort;
         public static DataGridViewCellStyle StyleDayAndTime => _styleDayAndTime;
         public static DataGridViewCellStyle StyleCurrency => _styleCurrency;
         public static DataGridViewCellStyle StyleInteger => _styleInteger;

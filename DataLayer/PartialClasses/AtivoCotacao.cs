@@ -136,7 +136,7 @@ namespace DataLayer {
 
         public string Trend {
             get {
-                if (LastTrade == null || PreviousTrade == 0)
+                if (LastTrade == 0 || PreviousTrade == 0)
                     return TrendNone;
                 return LastTrade > PreviousTrade ? TrendUp :
                     (LastTrade < PreviousTrade ? TrendDown :

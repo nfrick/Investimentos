@@ -1,5 +1,7 @@
-﻿using DataLayer;
+﻿using System;
+using DataLayer;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Cotacoes {
@@ -12,6 +14,11 @@ namespace Cotacoes {
         Todos,
         JaNegociados,
         Correntes
+    }
+
+    public enum Posicao {
+        Papel, Nada1, Cotação, VarPercent, QtdComprada, Compra, Venda, QtdVendida, Max, Min, Fech,
+        NumNeg, QtdNegDia, VolNegDia, QtdUltNeg, Nada2, DtUltNeg, HoraUltNeg
     }
 
     public static class FinanceData {
@@ -51,8 +58,34 @@ namespace Cotacoes {
         /// <returns></returns>
         public static AtivoCotacao AtivoPorCodigo(string codigo) => _ativos.Find(a => a.Codigo == codigo);
 
+        public static void AtualizarPorExtrato(string fileName) {
+            var seps = new[] { "\r\n" };
+            var readText = File.ReadAllText(fileName);
+            var lines = readText.Split(seps, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var line in lines) {
+                var cotacao = line.Split(';');
+                var papel = cotacao[(int)Posicao.Papel];
+                var ativo = _ativos.FirstOrDefault(a => a.Codigo == papel);
+                if (ativo == null) continue;
+                var d = $"{cotacao[(int)Posicao.DtUltNeg]} {cotacao[(int)Posicao.HoraUltNeg]}";
+                var dt = DateTime.Parse(d);
+                if (ativo.Cotacoes.ContainsKey(dt)) continue;
+                var si = new StockInfo {
+                    close = decimal.Parse(cotacao[(int)Posicao.Cotação]),
+                    high = decimal.Parse(cotacao[(int)Posicao.Max]),
+                    low = decimal.Parse(cotacao[(int)Posicao.Min]),
+                    open = decimal.Parse(cotacao[(int)Posicao.Fech]),
+                    volume = ParseInt(cotacao[(int)Posicao.QtdNegDia])
+                };
+                ativo.Cotacoes.Add(dt, si);
+            }
+        }
+
+        private static int ParseInt(string num) {
+            var mult = num[num.Length - 1] == 'K' ? 1000 : 1000000;
+            var num2 = num.Replace(",", ".").Substring(0, num.Length - 1);
+            return (int)(mult * decimal.Parse(num2));
+        }
     }
 }
-
-
-

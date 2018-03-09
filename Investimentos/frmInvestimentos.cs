@@ -13,6 +13,10 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Investimentos {
+
+    public enum posicao {
+        Papel, Nada, Cotação, VarPercent, QtdComprada, Compra, Venda, QtdVendida, Max, Min, Fech
+    }
     public partial class frmInvestimentos : Form {
         public frmInvestimentos() {
             InitializeComponent();
@@ -29,10 +33,10 @@ namespace Investimentos {
             GridStyles.FormatColumns(dgvAtivos, GridStyles.StyleCurrency, 80, 3);
 
             GridStyles.FormatGrid(dgvOperacoes);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleDateTime, 100, 1);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 65, 3, 4);
-            GridStyles.FormatColumns(dgvOperacoes, 5, 7, GridStyles.StyleCurrency, 80);
-            dgvOperacoes.Columns[7].Width = 90;
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleDateTimeShort, 85, 1);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 55, 3, 4);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 60, 5, 6, 8, 9);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 80, 7);
 
             GridStyles.FormatGrid(dgvVendas, 14);
             dgvVendas.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
@@ -330,26 +334,45 @@ namespace Investimentos {
             foreach (ToolStripItem item in toolStrip1.Items) {
                 if (item.Tag == null) continue;
                 var tag = item.Tag.ToString();
-                if (tag == "Fundos;LCA" || tag == "Ações")
-                    item.Visible = (tag.Contains(tabLabel));
+                item.Visible = (tag.Contains(tabLabel));
             }
         }
 
         private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
             ToggleLeitura();
+            var tabLabel = tabControl1.SelectedTab.Text;
+            if (tabLabel == "Ações") {
+                OFD.DefaultExt = "csv";
+                OFD.Filter = @"CSV iles|*.csv";
+                OFD.Multiselect = false;
+            }
+            else {
+                OFD.DefaultExt = "txt";
+                OFD.Filter = @"Text files|*.txt";
+                OFD.Multiselect = true;
+            }
+
             if (OFD.ShowDialog() == DialogResult.Cancel) {
                 ToggleLeitura();
                 return;
             }
             toolStripProgressBar1.Value = 0;
             toolStripProgressBar1.Maximum = OFD.FileNames.Length;
-            var tabLabel = tabControl1.SelectedTab.Text;
 
             Func<string, int> leitor;
-            if (tabLabel == "Fundos")
-                leitor = LerExtratoFundos;
-            else {
-                leitor = LerExtratoLCA;
+            switch (tabLabel) {
+                case "Ações":
+                    leitor = LerExtratoAcoes;
+                    break;
+                case "Fundos":
+                    leitor = LerExtratoFundos;
+                    break;
+                case "LCA":
+                    leitor = LerExtratoLCA;
+                    break;
+                default:
+                    ToggleLeitura();
+                    return;
             }
 
             foreach (var file in OFD.FileNames) {
@@ -365,6 +388,26 @@ namespace Investimentos {
             toolStripLabelLendoExtrato.Visible = !toolStripLabelLendoExtrato.Visible;
             toolStripProgressBar1.Visible = !toolStripProgressBar1.Visible;
             toolStrip1.Refresh();
+        }
+
+        private int LerExtratoAcoes(string fileName) {
+            var seps = new[] { "\r\n" };
+            var readText = File.ReadAllText(fileName);
+            var lines = readText.Split(seps, StringSplitOptions.RemoveEmptyEntries);
+
+            var conta = (Conta)toolStripComboBoxConta.SelectedItem;
+            var ativos = conta.AtivosDaConta;
+
+            foreach (var line in lines) {
+                var cotacao = line.Split(';');
+                var papel = cotacao[(int)posicao.Papel];
+                var ativo = ativos.FirstOrDefault(a => a.Ativo.Codigo == papel);
+                if (ativo != null) {
+                    ativo.CotacaoAtual = decimal.Parse(cotacao[(int)posicao.Cotação]);
+                }
+            }
+            dgvAtivos.Refresh();
+            return 0;
         }
 
         private int LerExtratoFundos(string fileName) {
@@ -554,7 +597,6 @@ namespace Investimentos {
                 CotaValor = ToDecimalNull(line, 117, 20)
             };
         }
-
 
         private static LCAMovimento CreateLCAMovimento(string line, IFormatProvider format) {
             return new LCAMovimento() {

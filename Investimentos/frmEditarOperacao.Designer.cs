@@ -34,19 +34,25 @@
             this.groupBoxPrevisto = new System.Windows.Forms.GroupBox();
             this.labelValor = new System.Windows.Forms.Label();
             this.labelQtdPrevista = new System.Windows.Forms.Label();
-            this.nudValor = new System.Windows.Forms.NumericUpDown();
+            this.nudValorPrevisto = new System.Windows.Forms.NumericUpDown();
             this.nudQtdPrevista = new System.Windows.Forms.NumericUpDown();
             this.groupBoxReal = new System.Windows.Forms.GroupBox();
             this.labelValorReal = new System.Windows.Forms.Label();
             this.labelQtdReal = new System.Windows.Forms.Label();
             this.nudValorReal = new System.Windows.Forms.NumericUpDown();
             this.nudQtdReal = new System.Windows.Forms.NumericUpDown();
+            this.labelTaxas = new System.Windows.Forms.Label();
+            this.nudTaxas = new System.Windows.Forms.NumericUpDown();
+            this.labelImpostos = new System.Windows.Forms.Label();
+            this.nudImpostos = new System.Windows.Forms.NumericUpDown();
             this.groupBoxPrevisto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudValor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValorPrevisto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdPrevista)).BeginInit();
             this.groupBoxReal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdReal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTaxas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImpostos)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePickerData
@@ -65,7 +71,7 @@
             this.comboBoxAtivo.FormattingEnabled = true;
             this.comboBoxAtivo.Location = new System.Drawing.Point(108, 19);
             this.comboBoxAtivo.Name = "comboBoxAtivo";
-            this.comboBoxAtivo.Size = new System.Drawing.Size(119, 31);
+            this.comboBoxAtivo.Size = new System.Drawing.Size(139, 31);
             this.comboBoxAtivo.TabIndex = 0;
             this.comboBoxAtivo.SelectedValueChanged += new System.EventHandler(this.combos_ValueChanged);
             this.comboBoxAtivo.TextChanged += new System.EventHandler(this.combos_ValueChanged);
@@ -76,7 +82,7 @@
             this.comboBoxOperacao.FormattingEnabled = true;
             this.comboBoxOperacao.Location = new System.Drawing.Point(107, 56);
             this.comboBoxOperacao.Name = "comboBoxOperacao";
-            this.comboBoxOperacao.Size = new System.Drawing.Size(119, 31);
+            this.comboBoxOperacao.Size = new System.Drawing.Size(139, 31);
             this.comboBoxOperacao.TabIndex = 1;
             this.comboBoxOperacao.SelectedValueChanged += new System.EventHandler(this.combos_ValueChanged);
             this.comboBoxOperacao.TextChanged += new System.EventHandler(this.combos_ValueChanged);
@@ -119,7 +125,7 @@
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Font = new System.Drawing.Font("Wingdings", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.buttonOK.Location = new System.Drawing.Point(362, 19);
+            this.buttonOK.Location = new System.Drawing.Point(406, 19);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(55, 42);
             this.buttonOK.TabIndex = 5;
@@ -132,7 +138,7 @@
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.Font = new System.Drawing.Font("Wingdings", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonCancelar.ForeColor = System.Drawing.Color.Red;
-            this.buttonCancelar.Location = new System.Drawing.Point(362, 63);
+            this.buttonCancelar.Location = new System.Drawing.Point(406, 63);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(55, 42);
             this.buttonCancelar.TabIndex = 6;
@@ -143,11 +149,11 @@
             // 
             this.groupBoxPrevisto.Controls.Add(this.labelValor);
             this.groupBoxPrevisto.Controls.Add(this.labelQtdPrevista);
-            this.groupBoxPrevisto.Controls.Add(this.nudValor);
+            this.groupBoxPrevisto.Controls.Add(this.nudValorPrevisto);
             this.groupBoxPrevisto.Controls.Add(this.nudQtdPrevista);
             this.groupBoxPrevisto.Location = new System.Drawing.Point(22, 149);
             this.groupBoxPrevisto.Name = "groupBoxPrevisto";
-            this.groupBoxPrevisto.Size = new System.Drawing.Size(187, 116);
+            this.groupBoxPrevisto.Size = new System.Drawing.Size(208, 116);
             this.groupBoxPrevisto.TabIndex = 3;
             this.groupBoxPrevisto.TabStop = false;
             this.groupBoxPrevisto.Text = "Previsto";
@@ -174,21 +180,21 @@
             this.labelQtdPrevista.TabIndex = 0;
             this.labelQtdPrevista.Text = "Qtd";
             // 
-            // nudValor
+            // nudValorPrevisto
             // 
-            this.nudValor.DecimalPlaces = 2;
-            this.nudValor.Location = new System.Drawing.Point(75, 71);
-            this.nudValor.Name = "nudValor";
-            this.nudValor.Size = new System.Drawing.Size(98, 30);
-            this.nudValor.TabIndex = 3;
-            this.nudValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nudValor.ThousandsSeparator = true;
-            this.nudValor.Enter += new System.EventHandler(this.numericUpDown_Enter);
-            this.nudValor.Validated += new System.EventHandler(this.nudPrevista_Validated);
+            this.nudValorPrevisto.DecimalPlaces = 2;
+            this.nudValorPrevisto.Location = new System.Drawing.Point(95, 71);
+            this.nudValorPrevisto.Name = "nudValorPrevisto";
+            this.nudValorPrevisto.Size = new System.Drawing.Size(98, 30);
+            this.nudValorPrevisto.TabIndex = 3;
+            this.nudValorPrevisto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudValorPrevisto.ThousandsSeparator = true;
+            this.nudValorPrevisto.Enter += new System.EventHandler(this.numericUpDown_Enter);
+            this.nudValorPrevisto.Validated += new System.EventHandler(this.nudPrevista_Validated);
             // 
             // nudQtdPrevista
             // 
-            this.nudQtdPrevista.Location = new System.Drawing.Point(75, 35);
+            this.nudQtdPrevista.Location = new System.Drawing.Point(95, 35);
             this.nudQtdPrevista.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -218,9 +224,9 @@
             this.groupBoxReal.Controls.Add(this.labelQtdReal);
             this.groupBoxReal.Controls.Add(this.nudValorReal);
             this.groupBoxReal.Controls.Add(this.nudQtdReal);
-            this.groupBoxReal.Location = new System.Drawing.Point(230, 149);
+            this.groupBoxReal.Location = new System.Drawing.Point(253, 149);
             this.groupBoxReal.Name = "groupBoxReal";
-            this.groupBoxReal.Size = new System.Drawing.Size(187, 116);
+            this.groupBoxReal.Size = new System.Drawing.Size(208, 116);
             this.groupBoxReal.TabIndex = 4;
             this.groupBoxReal.TabStop = false;
             this.groupBoxReal.Text = "Real";
@@ -252,7 +258,7 @@
             // nudValorReal
             // 
             this.nudValorReal.DecimalPlaces = 2;
-            this.nudValorReal.Location = new System.Drawing.Point(75, 69);
+            this.nudValorReal.Location = new System.Drawing.Point(95, 69);
             this.nudValorReal.Name = "nudValorReal";
             this.nudValorReal.Size = new System.Drawing.Size(98, 30);
             this.nudValorReal.TabIndex = 3;
@@ -263,7 +269,7 @@
             // 
             // nudQtdReal
             // 
-            this.nudQtdReal.Location = new System.Drawing.Point(75, 33);
+            this.nudQtdReal.Location = new System.Drawing.Point(95, 33);
             this.nudQtdReal.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -287,6 +293,48 @@
             this.nudQtdReal.Enter += new System.EventHandler(this.numericUpDown_Enter);
             this.nudQtdReal.Validated += new System.EventHandler(this.numericUpDownReal_Validated);
             // 
+            // labelTaxas
+            // 
+            this.labelTaxas.AutoSize = true;
+            this.labelTaxas.BackColor = System.Drawing.Color.Transparent;
+            this.labelTaxas.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelTaxas.Location = new System.Drawing.Point(33, 282);
+            this.labelTaxas.Name = "labelTaxas";
+            this.labelTaxas.Size = new System.Drawing.Size(50, 23);
+            this.labelTaxas.TabIndex = 12;
+            this.labelTaxas.Text = "Taxas";
+            // 
+            // nudTaxas
+            // 
+            this.nudTaxas.DecimalPlaces = 2;
+            this.nudTaxas.Location = new System.Drawing.Point(117, 280);
+            this.nudTaxas.Name = "nudTaxas";
+            this.nudTaxas.Size = new System.Drawing.Size(98, 30);
+            this.nudTaxas.TabIndex = 13;
+            this.nudTaxas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudTaxas.ThousandsSeparator = true;
+            // 
+            // labelImpostos
+            // 
+            this.labelImpostos.AutoSize = true;
+            this.labelImpostos.BackColor = System.Drawing.Color.Transparent;
+            this.labelImpostos.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelImpostos.Location = new System.Drawing.Point(264, 282);
+            this.labelImpostos.Name = "labelImpostos";
+            this.labelImpostos.Size = new System.Drawing.Size(80, 23);
+            this.labelImpostos.TabIndex = 14;
+            this.labelImpostos.Text = "Impostos";
+            // 
+            // nudImpostos
+            // 
+            this.nudImpostos.DecimalPlaces = 2;
+            this.nudImpostos.Location = new System.Drawing.Point(346, 278);
+            this.nudImpostos.Name = "nudImpostos";
+            this.nudImpostos.Size = new System.Drawing.Size(98, 30);
+            this.nudImpostos.TabIndex = 15;
+            this.nudImpostos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudImpostos.ThousandsSeparator = true;
+            // 
             // frmEditarOperacao
             // 
             this.AcceptButton = this.buttonOK;
@@ -294,7 +342,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.buttonCancelar;
-            this.ClientSize = new System.Drawing.Size(434, 278);
+            this.ClientSize = new System.Drawing.Size(478, 331);
+            this.Controls.Add(this.labelImpostos);
+            this.Controls.Add(this.nudImpostos);
+            this.Controls.Add(this.labelTaxas);
+            this.Controls.Add(this.nudTaxas);
             this.Controls.Add(this.groupBoxReal);
             this.Controls.Add(this.groupBoxPrevisto);
             this.Controls.Add(this.buttonCancelar);
@@ -317,12 +369,14 @@
             this.Load += new System.EventHandler(this.EditarOperacao_Load);
             this.groupBoxPrevisto.ResumeLayout(false);
             this.groupBoxPrevisto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudValor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValorPrevisto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdPrevista)).EndInit();
             this.groupBoxReal.ResumeLayout(false);
             this.groupBoxReal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtdReal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTaxas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImpostos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,7 +394,7 @@
         private System.Windows.Forms.GroupBox groupBoxPrevisto;
         private System.Windows.Forms.Label labelValor;
         private System.Windows.Forms.Label labelQtdPrevista;
-        private System.Windows.Forms.NumericUpDown nudValor;
+        private System.Windows.Forms.NumericUpDown nudValorPrevisto;
         private System.Windows.Forms.NumericUpDown nudQtdPrevista;
         private System.Windows.Forms.GroupBox groupBoxReal;
         private System.Windows.Forms.Label labelValorReal;
@@ -348,5 +402,9 @@
         private System.Windows.Forms.NumericUpDown nudValorReal;
         private System.Windows.Forms.NumericUpDown nudQtdReal;
         public System.Windows.Forms.ComboBox comboBoxOperacao;
+        private System.Windows.Forms.Label labelTaxas;
+        private System.Windows.Forms.NumericUpDown nudTaxas;
+        private System.Windows.Forms.Label labelImpostos;
+        private System.Windows.Forms.NumericUpDown nudImpostos;
     }
 }

@@ -39,8 +39,10 @@ namespace Investimentos {
                 dateTimePickerData.Value = Operacao.Data;
                 nudQtdPrevista.Value = Operacao.QtdPrevista;
                 nudQtdReal.Value = Operacao.QtdReal;
-                nudValor.Value = Operacao.Valor;
+                nudValorPrevisto.Value = Operacao.Valor;
                 nudValorReal.Value = Operacao.ValorReal;
+                nudTaxas.Value = Operacao.Taxas;
+                nudImpostos.Value = Operacao.Impostos;
                 Text = @"Editar Operação";
             }
             comboBoxAtivo.SelectedValue = Operacao.Codigo;
@@ -55,8 +57,10 @@ namespace Investimentos {
             Operacao.Data = dateTimePickerData.Value;
             Operacao.QtdPrevista = (int)nudQtdPrevista.Value;
             Operacao.QtdReal = (int)nudQtdReal.Value;
-            Operacao.Valor = nudValor.Value;
+            Operacao.Valor = nudValorPrevisto.Value;
             Operacao.ValorReal = nudValorReal.Value;
+            Operacao.Taxas = nudTaxas.Value;
+            Operacao.Impostos = nudImpostos.Value;
         }
 
         private void combos_ValueChanged(object sender, EventArgs e) {
@@ -69,7 +73,7 @@ namespace Investimentos {
         }
 
         private void labelValorReal_Click(object sender, EventArgs e) {
-            nudValorReal.Value = nudValor.Value;
+            nudValorReal.Value = nudValorPrevisto.Value;
         }
 
         private void numericUpDown_Enter(object sender, EventArgs e) {
@@ -82,17 +86,19 @@ namespace Investimentos {
             if (nud.Value == 0 || nud.Text == string.Empty) {
                 nud.Value = nud.Name.Contains("Qtd") ?
                     nudQtdPrevista.Value :
-                    nudValor.Value;
+                    nudValorPrevisto.Value;
             }
             Totais();
         }
 
         private void nudPrevista_Validated(object sender, EventArgs e) {
+            nudQtdReal.Value = nudQtdPrevista.Value;
+            nudValorReal.Value = nudValorPrevisto.Value;
             Totais();
         }
 
         private void Totais() {
-            groupBoxPrevisto.Text = $@"Previsto: {nudQtdPrevista.Value * nudValor.Value:N2}";
+            groupBoxPrevisto.Text = $@"Previsto: {nudQtdPrevista.Value * nudValorPrevisto.Value:N2}";
             groupBoxReal.Text = $@"Real: {nudQtdReal.Value * nudValorReal.Value:N2}";
         }
     }

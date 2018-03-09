@@ -4,6 +4,7 @@ using Settings;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -318,5 +319,14 @@ namespace Cotacoes {
         }
 
         #endregion DATAGRIDVIEW
+
+        private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
+            OFD.DefaultExt = "csv";
+            OFD.Filter = @"CSV iles|*.csv";
+            OFD.Multiselect = true;
+            if (OFD.ShowDialog() != DialogResult.OK) return;
+            foreach(var fileName in OFD.FileNames)
+                FinanceData.AtualizarPorExtrato(fileName);
+        }
     }
 }

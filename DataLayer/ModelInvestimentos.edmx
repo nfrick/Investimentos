@@ -51,6 +51,8 @@
           <Property Name="QtdReal" Type="int" Nullable="false" />
           <Property Name="Valor" Type="smallmoney" Nullable="false" />
           <Property Name="ValorReal" Type="smallmoney" Nullable="false" />
+          <Property Name="Taxas" Type="smallmoney" Nullable="false" />
+          <Property Name="Impostos" Type="smallmoney" Nullable="false" />
         </EntityType>
         <EntityType Name="tbOperacoesTipos">
           <Key>
@@ -624,6 +626,8 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Property Name="ValorReal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <NavigationProperty Name="OperacaoTipo" Relationship="InvestimentosModel.FK_tbOperacoes_tbOperacoesTipos" FromRole="tbOperaco" ToRole="OperacaoTipo" />
           <NavigationProperty Name="AtivoDaConta" Relationship="InvestimentosModel.AtivoDaContaOperacao" FromRole="Operacao" ToRole="AtivoDaConta" />
+          <Property Name="Taxas" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="Impostos" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
         </EntityType>
         <Association Name="FK_tbOperacoes_tbOperacoesTipos">
           <End Type="InvestimentosModel.OperacaoTipo" Role="OperacaoTipo" Multiplicity="1" />
@@ -952,7 +956,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Property Name="IOF" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Rendimentos" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ValorMovimento" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="ValorAtual" Type="Decimal" Nullable="false" />
+          <Property Name="ValorAtual" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <NavigationProperty Name="LCAMes" Relationship="InvestimentosModel.FK_tbMovimentos_tbLCAMeses" FromRole="tbLCAMovimento" ToRole="tbLCAMes" />
         </EntityType>
         <Association Name="FK_tbLCA_tbContas">
@@ -1039,6 +1043,8 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <EntitySetMapping Name="Operacoes">
             <EntityTypeMapping TypeName="IsTypeOf(InvestimentosModel.Operacao)">
               <MappingFragment StoreEntitySet="tbOperacoes">
+                <ScalarProperty Name="Impostos" ColumnName="Impostos" />
+                <ScalarProperty Name="Taxas" ColumnName="Taxas" />
                 <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
                 <ScalarProperty Name="ValorReal" ColumnName="ValorReal" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />

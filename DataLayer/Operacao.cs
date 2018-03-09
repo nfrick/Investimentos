@@ -23,6 +23,8 @@ namespace DataLayer
         public int QtdReal { get; set; }
         public decimal Valor { get; set; }
         public decimal ValorReal { get; set; }
+        public decimal Taxas { get; set; }
+        public decimal Impostos { get; set; }
     
         public virtual OperacaoTipo OperacaoTipo { get; set; }
         public virtual AtivoDaConta AtivoDaConta { get; set; }
