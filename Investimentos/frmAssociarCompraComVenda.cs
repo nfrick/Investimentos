@@ -24,7 +24,7 @@ namespace Investimentos {
             labelAtivo.Text = Saida.Codigo;
             labelData.Text = Saida.Data.ToString("dd/MM/yyyy");
             labelValor.Text = Saida.Valor.ToString("C2");
-            labelVenda.Text = Saida.QtdReal.ToString("N0");
+            labelVenda.Text = Saida.Qtd.ToString("N0");
             AtualizarLabels();
         }
 
@@ -49,7 +49,7 @@ namespace Investimentos {
 
         private void dgvToggleEnable(bool enable) {
             dgvAssociadas.Enabled = enable && Saida.Associacoes.Count > 0;
-            dgvDisponiveis.Enabled = enable && Saida.QtdAssociada != Saida.QtdReal;
+            dgvDisponiveis.Enabled = enable && Saida.QtdAssociada != Saida.Qtd;
         }
 
         private void nudSetup(int max, int rowToBind) {
@@ -61,7 +61,7 @@ namespace Investimentos {
             nudQtdAssociada.DataBindings.Add(new Binding("Value", dgvAssociadas[5, rowToBind], "Value", false));
 
             var associacao = (Associacao)dgvAssociadas.Rows[rowToBind].DataBoundItem;
-            labelQtdVendida.Text = $"{Saida.QtdReal:N0}";
+            labelQtdVendida.Text = $"{Saida.Qtd:N0}";
             labelQtdComprada.Text = $"{Saida.QtdAssociada - associacao.QtdAssociada:N0}";
             panelEditar.Visible = true;
             nudQtdAssociada.Focus();
@@ -198,7 +198,7 @@ namespace Investimentos {
 
         private void numericUpDownQtdAAssociar_ValueChanged(object sender, EventArgs e) {
             if (int.TryParse(labelQtdComprada.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out int diferenca))
-                labelSaldo.Text = $"{Saida.QtdReal - diferenca - nudQtdAssociada.Value:N0}";
+                labelSaldo.Text = $"{Saida.Qtd - diferenca - nudQtdAssociada.Value:N0}";
         }
 
         #endregion Disponiveis

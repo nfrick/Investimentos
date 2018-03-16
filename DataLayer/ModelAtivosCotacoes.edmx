@@ -13,7 +13,7 @@
           <Property Name="Nome" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssociada' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'Investimentos2.dbo.vwOperacoesComRunningSumQtdAssociada' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwOperacoesComRunningSumQtdAssociada">
           <Key>
             <PropertyRef Name="OperacaoId" />
@@ -22,6 +22,9 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
             
             
             
+            
+            
+            <PropertyRef Name="SinalPositivo" />
           </Key>
           <Property Name="OperacaoId" Type="int" Nullable="false" />
           <Property Name="Codigo" Type="char" MaxLength="5" Nullable="false" />
@@ -33,6 +36,8 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
           <Property Name="Valor" Type="smallmoney" Nullable="false" />
           <Property Name="ValorReal" Type="smallmoney" Nullable="false" />
           <Property Name="QtdVendida" Type="int" Nullable="false" />
+          <Property Name="SinalPositivo" Type="bit" Nullable="false" />
+          <Property Name="IncideTaxa" Type="bit" />
         </EntityType>
         <EntityContainer Name="ModelAtivoCotacaoStoreContainer">
           <EntitySet Name="tbAtivos" EntityType="Self.tbAtivos" Schema="dbo" store:Type="Tables" />
@@ -47,7 +52,9 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
     [vwOperacoesComRunningSumQtdAssociada].[QtdAcumulada] AS [QtdAcumulada], 
     [vwOperacoesComRunningSumQtdAssociada].[Valor] AS [Valor], 
     [vwOperacoesComRunningSumQtdAssociada].[ValorReal] AS [ValorReal], 
-    [vwOperacoesComRunningSumQtdAssociada].[QtdVendida] AS [QtdVendida]
+    [vwOperacoesComRunningSumQtdAssociada].[QtdVendida] AS [QtdVendida], 
+    [vwOperacoesComRunningSumQtdAssociada].[SinalPositivo] AS [SinalPositivo], 
+    [vwOperacoesComRunningSumQtdAssociada].[IncideTaxa] AS [IncideTaxa]
     FROM [dbo].[vwOperacoesComRunningSumQtdAssociada] AS [vwOperacoesComRunningSumQtdAssociada]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -74,6 +81,7 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
         <EntityType Name="OperacaoCotacao">
           <Key>
             <PropertyRef Name="OperacaoId" />
+            <PropertyRef Name="SinalPositivo" />
           </Key>
           <Property Name="OperacaoId" Type="Int32" Nullable="false" />
           <Property Name="ContaId" Type="Int32" Nullable="false" />
@@ -86,6 +94,8 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
           <Property Name="Valor" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="ValorReal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <NavigationProperty Name="AtivoCotacao" Relationship="ModelAtivoCotacao.AtivoCotacaovwOperacoesComRunningSumQtdAssociada" FromRole="vwOperacoesComRunningSumQtdAssociada" ToRole="AtivoCotacao" />
+          <Property Name="SinalPositivo" Type="Boolean" Nullable="false" />
+          <Property Name="IncideTaxa" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="AtivoCotacaovwOperacoesComRunningSumQtdAssociada">
           <End Type="ModelAtivoCotacao.AtivoCotacao" Role="AtivoCotacao" Multiplicity="1" />
@@ -116,6 +126,8 @@ warning 6002: The table/view 'Investimentos.dbo.vwOperacoesComRunningSumQtdAssoc
           <EntitySetMapping Name="Operacoes">
             <EntityTypeMapping TypeName="ModelAtivoCotacao.OperacaoCotacao">
               <MappingFragment StoreEntitySet="vwOperacoesComRunningSumQtdAssociada">
+                <ScalarProperty Name="IncideTaxa" ColumnName="IncideTaxa" />
+                <ScalarProperty Name="SinalPositivo" ColumnName="SinalPositivo" />
                 <ScalarProperty Name="ContaId" ColumnName="ContaId" />
                 <ScalarProperty Name="QtdVendida" ColumnName="QtdVendida" />
                 <ScalarProperty Name="ValorReal" ColumnName="ValorReal" />

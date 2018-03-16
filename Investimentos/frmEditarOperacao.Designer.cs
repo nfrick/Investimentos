@@ -31,35 +31,27 @@
             this.labelData = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
-            this.groupBoxPrevisto = new System.Windows.Forms.GroupBox();
-            this.labelValor = new System.Windows.Forms.Label();
-            this.labelQtdPrevista = new System.Windows.Forms.Label();
-            this.nudValorPrevisto = new System.Windows.Forms.NumericUpDown();
-            this.nudQtdPrevista = new System.Windows.Forms.NumericUpDown();
-            this.groupBoxReal = new System.Windows.Forms.GroupBox();
-            this.labelValorReal = new System.Windows.Forms.Label();
-            this.labelQtdReal = new System.Windows.Forms.Label();
-            this.nudValorReal = new System.Windows.Forms.NumericUpDown();
-            this.nudQtdReal = new System.Windows.Forms.NumericUpDown();
-            this.labelTaxas = new System.Windows.Forms.Label();
-            this.nudTaxas = new System.Windows.Forms.NumericUpDown();
             this.labelImpostos = new System.Windows.Forms.Label();
             this.nudImpostos = new System.Windows.Forms.NumericUpDown();
-            this.groupBoxPrevisto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudValorPrevisto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQtdPrevista)).BeginInit();
-            this.groupBoxReal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQtdReal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTaxas)).BeginInit();
+            this.labelReal = new System.Windows.Forms.Label();
+            this.labelQtdReal = new System.Windows.Forms.Label();
+            this.nudValorReal = new System.Windows.Forms.NumericUpDown();
+            this.nudQtd = new System.Windows.Forms.NumericUpDown();
+            this.labelValorNominal = new System.Windows.Forms.Label();
+            this.nudValorNominal = new System.Windows.Forms.NumericUpDown();
+            this.textBoxTotalNominal = new System.Windows.Forms.TextBox();
+            this.textBoxTotalReal = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudImpostos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValorNominal)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePickerData
             // 
             this.dateTimePickerData.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateTimePickerData.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerData.Location = new System.Drawing.Point(108, 93);
+            this.dateTimePickerData.Location = new System.Drawing.Point(144, 93);
             this.dateTimePickerData.Name = "dateTimePickerData";
             this.dateTimePickerData.ShowUpDown = true;
             this.dateTimePickerData.Size = new System.Drawing.Size(139, 30);
@@ -69,7 +61,7 @@
             // 
             this.comboBoxAtivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAtivo.FormattingEnabled = true;
-            this.comboBoxAtivo.Location = new System.Drawing.Point(108, 19);
+            this.comboBoxAtivo.Location = new System.Drawing.Point(144, 19);
             this.comboBoxAtivo.Name = "comboBoxAtivo";
             this.comboBoxAtivo.Size = new System.Drawing.Size(139, 31);
             this.comboBoxAtivo.TabIndex = 0;
@@ -80,7 +72,7 @@
             // 
             this.comboBoxOperacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOperacao.FormattingEnabled = true;
-            this.comboBoxOperacao.Location = new System.Drawing.Point(107, 56);
+            this.comboBoxOperacao.Location = new System.Drawing.Point(143, 56);
             this.comboBoxOperacao.Name = "comboBoxOperacao";
             this.comboBoxOperacao.Size = new System.Drawing.Size(139, 31);
             this.comboBoxOperacao.TabIndex = 1;
@@ -125,10 +117,10 @@
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOK.Font = new System.Drawing.Font("Wingdings", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.buttonOK.Location = new System.Drawing.Point(406, 19);
+            this.buttonOK.Location = new System.Drawing.Point(143, 317);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(55, 42);
-            this.buttonOK.TabIndex = 5;
+            this.buttonOK.TabIndex = 7;
             this.buttonOK.Text = "ü";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -138,202 +130,134 @@
             this.buttonCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelar.Font = new System.Drawing.Font("Wingdings", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.buttonCancelar.ForeColor = System.Drawing.Color.Red;
-            this.buttonCancelar.Location = new System.Drawing.Point(406, 63);
+            this.buttonCancelar.Location = new System.Drawing.Point(227, 317);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(55, 42);
-            this.buttonCancelar.TabIndex = 6;
+            this.buttonCancelar.TabIndex = 8;
             this.buttonCancelar.Text = "û";
             this.buttonCancelar.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxPrevisto
-            // 
-            this.groupBoxPrevisto.Controls.Add(this.labelValor);
-            this.groupBoxPrevisto.Controls.Add(this.labelQtdPrevista);
-            this.groupBoxPrevisto.Controls.Add(this.nudValorPrevisto);
-            this.groupBoxPrevisto.Controls.Add(this.nudQtdPrevista);
-            this.groupBoxPrevisto.Location = new System.Drawing.Point(22, 149);
-            this.groupBoxPrevisto.Name = "groupBoxPrevisto";
-            this.groupBoxPrevisto.Size = new System.Drawing.Size(208, 116);
-            this.groupBoxPrevisto.TabIndex = 3;
-            this.groupBoxPrevisto.TabStop = false;
-            this.groupBoxPrevisto.Text = "Previsto";
-            // 
-            // labelValor
-            // 
-            this.labelValor.AutoSize = true;
-            this.labelValor.BackColor = System.Drawing.Color.Transparent;
-            this.labelValor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelValor.Location = new System.Drawing.Point(11, 73);
-            this.labelValor.Name = "labelValor";
-            this.labelValor.Size = new System.Drawing.Size(49, 23);
-            this.labelValor.TabIndex = 2;
-            this.labelValor.Text = "Valor";
-            // 
-            // labelQtdPrevista
-            // 
-            this.labelQtdPrevista.AutoSize = true;
-            this.labelQtdPrevista.BackColor = System.Drawing.Color.Transparent;
-            this.labelQtdPrevista.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelQtdPrevista.Location = new System.Drawing.Point(11, 40);
-            this.labelQtdPrevista.Name = "labelQtdPrevista";
-            this.labelQtdPrevista.Size = new System.Drawing.Size(39, 23);
-            this.labelQtdPrevista.TabIndex = 0;
-            this.labelQtdPrevista.Text = "Qtd";
-            // 
-            // nudValorPrevisto
-            // 
-            this.nudValorPrevisto.DecimalPlaces = 2;
-            this.nudValorPrevisto.Location = new System.Drawing.Point(95, 71);
-            this.nudValorPrevisto.Name = "nudValorPrevisto";
-            this.nudValorPrevisto.Size = new System.Drawing.Size(98, 30);
-            this.nudValorPrevisto.TabIndex = 3;
-            this.nudValorPrevisto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nudValorPrevisto.ThousandsSeparator = true;
-            this.nudValorPrevisto.Enter += new System.EventHandler(this.numericUpDown_Enter);
-            this.nudValorPrevisto.Validated += new System.EventHandler(this.nudPrevista_Validated);
-            // 
-            // nudQtdPrevista
-            // 
-            this.nudQtdPrevista.Location = new System.Drawing.Point(95, 35);
-            this.nudQtdPrevista.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nudQtdPrevista.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudQtdPrevista.Name = "nudQtdPrevista";
-            this.nudQtdPrevista.Size = new System.Drawing.Size(98, 30);
-            this.nudQtdPrevista.TabIndex = 1;
-            this.nudQtdPrevista.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nudQtdPrevista.ThousandsSeparator = true;
-            this.nudQtdPrevista.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudQtdPrevista.Enter += new System.EventHandler(this.numericUpDown_Enter);
-            this.nudQtdPrevista.Validated += new System.EventHandler(this.nudPrevista_Validated);
-            // 
-            // groupBoxReal
-            // 
-            this.groupBoxReal.Controls.Add(this.labelValorReal);
-            this.groupBoxReal.Controls.Add(this.labelQtdReal);
-            this.groupBoxReal.Controls.Add(this.nudValorReal);
-            this.groupBoxReal.Controls.Add(this.nudQtdReal);
-            this.groupBoxReal.Location = new System.Drawing.Point(253, 149);
-            this.groupBoxReal.Name = "groupBoxReal";
-            this.groupBoxReal.Size = new System.Drawing.Size(208, 116);
-            this.groupBoxReal.TabIndex = 4;
-            this.groupBoxReal.TabStop = false;
-            this.groupBoxReal.Text = "Real";
-            // 
-            // labelValorReal
-            // 
-            this.labelValorReal.AutoSize = true;
-            this.labelValorReal.BackColor = System.Drawing.Color.Transparent;
-            this.labelValorReal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelValorReal.Location = new System.Drawing.Point(11, 75);
-            this.labelValorReal.Name = "labelValorReal";
-            this.labelValorReal.Size = new System.Drawing.Size(49, 23);
-            this.labelValorReal.TabIndex = 2;
-            this.labelValorReal.Text = "Valor";
-            this.labelValorReal.Click += new System.EventHandler(this.labelValorReal_Click);
-            // 
-            // labelQtdReal
-            // 
-            this.labelQtdReal.AutoSize = true;
-            this.labelQtdReal.BackColor = System.Drawing.Color.Transparent;
-            this.labelQtdReal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelQtdReal.Location = new System.Drawing.Point(11, 40);
-            this.labelQtdReal.Name = "labelQtdReal";
-            this.labelQtdReal.Size = new System.Drawing.Size(39, 23);
-            this.labelQtdReal.TabIndex = 0;
-            this.labelQtdReal.Text = "Qtd";
-            this.labelQtdReal.Click += new System.EventHandler(this.labelQtdReal_Click);
-            // 
-            // nudValorReal
-            // 
-            this.nudValorReal.DecimalPlaces = 2;
-            this.nudValorReal.Location = new System.Drawing.Point(95, 69);
-            this.nudValorReal.Name = "nudValorReal";
-            this.nudValorReal.Size = new System.Drawing.Size(98, 30);
-            this.nudValorReal.TabIndex = 3;
-            this.nudValorReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nudValorReal.ThousandsSeparator = true;
-            this.nudValorReal.Enter += new System.EventHandler(this.numericUpDown_Enter);
-            this.nudValorReal.Validated += new System.EventHandler(this.numericUpDownReal_Validated);
-            // 
-            // nudQtdReal
-            // 
-            this.nudQtdReal.Location = new System.Drawing.Point(95, 33);
-            this.nudQtdReal.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.nudQtdReal.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudQtdReal.Name = "nudQtdReal";
-            this.nudQtdReal.Size = new System.Drawing.Size(98, 30);
-            this.nudQtdReal.TabIndex = 1;
-            this.nudQtdReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nudQtdReal.ThousandsSeparator = true;
-            this.nudQtdReal.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudQtdReal.Enter += new System.EventHandler(this.numericUpDown_Enter);
-            this.nudQtdReal.Validated += new System.EventHandler(this.numericUpDownReal_Validated);
-            // 
-            // labelTaxas
-            // 
-            this.labelTaxas.AutoSize = true;
-            this.labelTaxas.BackColor = System.Drawing.Color.Transparent;
-            this.labelTaxas.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTaxas.Location = new System.Drawing.Point(33, 282);
-            this.labelTaxas.Name = "labelTaxas";
-            this.labelTaxas.Size = new System.Drawing.Size(50, 23);
-            this.labelTaxas.TabIndex = 12;
-            this.labelTaxas.Text = "Taxas";
-            // 
-            // nudTaxas
-            // 
-            this.nudTaxas.DecimalPlaces = 2;
-            this.nudTaxas.Location = new System.Drawing.Point(117, 280);
-            this.nudTaxas.Name = "nudTaxas";
-            this.nudTaxas.Size = new System.Drawing.Size(98, 30);
-            this.nudTaxas.TabIndex = 13;
-            this.nudTaxas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nudTaxas.ThousandsSeparator = true;
             // 
             // labelImpostos
             // 
             this.labelImpostos.AutoSize = true;
             this.labelImpostos.BackColor = System.Drawing.Color.Transparent;
             this.labelImpostos.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelImpostos.Location = new System.Drawing.Point(264, 282);
+            this.labelImpostos.Location = new System.Drawing.Point(18, 241);
             this.labelImpostos.Name = "labelImpostos";
             this.labelImpostos.Size = new System.Drawing.Size(80, 23);
-            this.labelImpostos.TabIndex = 14;
+            this.labelImpostos.TabIndex = 15;
             this.labelImpostos.Text = "Impostos";
             // 
             // nudImpostos
             // 
             this.nudImpostos.DecimalPlaces = 2;
-            this.nudImpostos.Location = new System.Drawing.Point(346, 278);
+            this.nudImpostos.Location = new System.Drawing.Point(144, 237);
             this.nudImpostos.Name = "nudImpostos";
-            this.nudImpostos.Size = new System.Drawing.Size(98, 30);
-            this.nudImpostos.TabIndex = 15;
+            this.nudImpostos.Size = new System.Drawing.Size(139, 30);
+            this.nudImpostos.TabIndex = 6;
             this.nudImpostos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudImpostos.ThousandsSeparator = true;
+            this.nudImpostos.Enter += new System.EventHandler(this.numericUpDown_Enter);
+            // 
+            // labelReal
+            // 
+            this.labelReal.AutoSize = true;
+            this.labelReal.BackColor = System.Drawing.Color.Transparent;
+            this.labelReal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelReal.Location = new System.Drawing.Point(18, 207);
+            this.labelReal.Name = "labelReal";
+            this.labelReal.Size = new System.Drawing.Size(86, 23);
+            this.labelReal.TabIndex = 14;
+            this.labelReal.Text = "Valor Real";
+            // 
+            // labelQtdReal
+            // 
+            this.labelQtdReal.AutoSize = true;
+            this.labelQtdReal.BackColor = System.Drawing.Color.Transparent;
+            this.labelQtdReal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelQtdReal.Location = new System.Drawing.Point(17, 136);
+            this.labelQtdReal.Name = "labelQtdReal";
+            this.labelQtdReal.Size = new System.Drawing.Size(39, 23);
+            this.labelQtdReal.TabIndex = 12;
+            this.labelQtdReal.Text = "Qtd";
+            // 
+            // nudValorReal
+            // 
+            this.nudValorReal.DecimalPlaces = 2;
+            this.nudValorReal.Location = new System.Drawing.Point(144, 201);
+            this.nudValorReal.Name = "nudValorReal";
+            this.nudValorReal.Size = new System.Drawing.Size(139, 30);
+            this.nudValorReal.TabIndex = 5;
+            this.nudValorReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudValorReal.ThousandsSeparator = true;
+            this.nudValorReal.Enter += new System.EventHandler(this.numericUpDown_Enter);
+            this.nudValorReal.Validated += new System.EventHandler(this.nudValor_Validated);
+            // 
+            // nudQtd
+            // 
+            this.nudQtd.Location = new System.Drawing.Point(143, 129);
+            this.nudQtd.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudQtd.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudQtd.Name = "nudQtd";
+            this.nudQtd.Size = new System.Drawing.Size(139, 30);
+            this.nudQtd.TabIndex = 3;
+            this.nudQtd.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudQtd.ThousandsSeparator = true;
+            this.nudQtd.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudQtd.Enter += new System.EventHandler(this.numericUpDown_Enter);
+            // 
+            // labelValorNominal
+            // 
+            this.labelValorNominal.AutoSize = true;
+            this.labelValorNominal.BackColor = System.Drawing.Color.Transparent;
+            this.labelValorNominal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelValorNominal.Location = new System.Drawing.Point(18, 167);
+            this.labelValorNominal.Name = "labelValorNominal";
+            this.labelValorNominal.Size = new System.Drawing.Size(119, 23);
+            this.labelValorNominal.TabIndex = 13;
+            this.labelValorNominal.Text = "Valor Nominal";
+            // 
+            // nudValorNominal
+            // 
+            this.nudValorNominal.DecimalPlaces = 2;
+            this.nudValorNominal.Location = new System.Drawing.Point(144, 165);
+            this.nudValorNominal.Name = "nudValorNominal";
+            this.nudValorNominal.Size = new System.Drawing.Size(139, 30);
+            this.nudValorNominal.TabIndex = 4;
+            this.nudValorNominal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudValorNominal.ThousandsSeparator = true;
+            this.nudValorNominal.Enter += new System.EventHandler(this.numericUpDown_Enter);
+            this.nudValorNominal.Validated += new System.EventHandler(this.nudValor_Validated);
+            // 
+            // textBoxTotalNominal
+            // 
+            this.textBoxTotalNominal.Location = new System.Drawing.Point(312, 164);
+            this.textBoxTotalNominal.Name = "textBoxTotalNominal";
+            this.textBoxTotalNominal.ReadOnly = true;
+            this.textBoxTotalNominal.Size = new System.Drawing.Size(126, 30);
+            this.textBoxTotalNominal.TabIndex = 16;
+            this.textBoxTotalNominal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxTotalReal
+            // 
+            this.textBoxTotalReal.Location = new System.Drawing.Point(312, 201);
+            this.textBoxTotalReal.Name = "textBoxTotalReal";
+            this.textBoxTotalReal.ReadOnly = true;
+            this.textBoxTotalReal.Size = new System.Drawing.Size(126, 30);
+            this.textBoxTotalReal.TabIndex = 17;
+            this.textBoxTotalReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // frmEditarOperacao
             // 
@@ -342,13 +266,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.buttonCancelar;
-            this.ClientSize = new System.Drawing.Size(478, 331);
+            this.ClientSize = new System.Drawing.Size(464, 374);
+            this.Controls.Add(this.textBoxTotalReal);
+            this.Controls.Add(this.textBoxTotalNominal);
+            this.Controls.Add(this.labelValorNominal);
+            this.Controls.Add(this.nudValorNominal);
+            this.Controls.Add(this.labelReal);
+            this.Controls.Add(this.labelQtdReal);
+            this.Controls.Add(this.nudValorReal);
+            this.Controls.Add(this.nudQtd);
             this.Controls.Add(this.labelImpostos);
             this.Controls.Add(this.nudImpostos);
-            this.Controls.Add(this.labelTaxas);
-            this.Controls.Add(this.nudTaxas);
-            this.Controls.Add(this.groupBoxReal);
-            this.Controls.Add(this.groupBoxPrevisto);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.labelData);
@@ -367,16 +295,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar/Editar Operação";
             this.Load += new System.EventHandler(this.EditarOperacao_Load);
-            this.groupBoxPrevisto.ResumeLayout(false);
-            this.groupBoxPrevisto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudValorPrevisto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQtdPrevista)).EndInit();
-            this.groupBoxReal.ResumeLayout(false);
-            this.groupBoxReal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudQtdReal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTaxas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudImpostos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudQtd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValorNominal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,20 +313,16 @@
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancelar;
-        private System.Windows.Forms.GroupBox groupBoxPrevisto;
-        private System.Windows.Forms.Label labelValor;
-        private System.Windows.Forms.Label labelQtdPrevista;
-        private System.Windows.Forms.NumericUpDown nudValorPrevisto;
-        private System.Windows.Forms.NumericUpDown nudQtdPrevista;
-        private System.Windows.Forms.GroupBox groupBoxReal;
-        private System.Windows.Forms.Label labelValorReal;
-        private System.Windows.Forms.Label labelQtdReal;
-        private System.Windows.Forms.NumericUpDown nudValorReal;
-        private System.Windows.Forms.NumericUpDown nudQtdReal;
         public System.Windows.Forms.ComboBox comboBoxOperacao;
-        private System.Windows.Forms.Label labelTaxas;
-        private System.Windows.Forms.NumericUpDown nudTaxas;
         private System.Windows.Forms.Label labelImpostos;
         private System.Windows.Forms.NumericUpDown nudImpostos;
+        private System.Windows.Forms.Label labelReal;
+        private System.Windows.Forms.Label labelQtdReal;
+        private System.Windows.Forms.NumericUpDown nudValorReal;
+        private System.Windows.Forms.NumericUpDown nudQtd;
+        private System.Windows.Forms.Label labelValorNominal;
+        private System.Windows.Forms.NumericUpDown nudValorNominal;
+        private System.Windows.Forms.TextBox textBoxTotalNominal;
+        private System.Windows.Forms.TextBox textBoxTotalReal;
     }
 }

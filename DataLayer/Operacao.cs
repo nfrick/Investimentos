@@ -19,11 +19,9 @@ namespace DataLayer
         public string Codigo { get; set; }
         public int TipoId { get; set; }
         public System.DateTime Data { get; set; }
-        public int QtdPrevista { get; set; }
-        public int QtdReal { get; set; }
+        public int Qtd { get; set; }
         public decimal Valor { get; set; }
         public decimal ValorReal { get; set; }
-        public decimal Taxas { get; set; }
         public decimal Impostos { get; set; }
     
         public virtual OperacaoTipo OperacaoTipo { get; set; }

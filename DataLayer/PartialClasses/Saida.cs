@@ -5,11 +5,11 @@ namespace DataLayer {
     public partial class Saida {
         
         public int QtdAssociada => Associacoes?.Sum(e => e.QtdAssociada) ?? 0;
-        public int QtdPendente => QtdReal - QtdAssociada;
+        public int QtdPendente => Qtd - QtdAssociada;
         public decimal ValorMedioCompra => _ValorMedioCompra(false);
         public decimal ValorMedioCompraReal => _ValorMedioCompra(true);
-        public decimal Lucro => QtdReal * (Valor - ValorMedioCompra);
-        public decimal LucroReal => QtdReal * (Valor - ValorMedioCompraReal);
+        public decimal Lucro => Qtd * (Valor - ValorMedioCompra);
+        public decimal LucroReal => Qtd * (Valor - ValorMedioCompraReal);
 
         private decimal _ValorMedioCompra(bool real) {
             if (QtdAssociada == 0) return 0;
@@ -23,6 +23,6 @@ namespace DataLayer {
 
     public partial class Entrada {
         public int QtdAssociada => Associacoes?.Sum(e => e.QtdAssociada) ?? 0;
-        public int QtdDisponivel => QtdReal - QtdAssociada;
+        public int QtdDisponivel => Qtd - QtdAssociada;
     }
 }

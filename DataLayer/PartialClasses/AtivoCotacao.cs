@@ -99,57 +99,55 @@ namespace DataLayer {
 
         public decimal? LucroImediato => QtdVendavel * (LastTrade - VMVendavel);
 
-        public decimal ValorMedioCompra => _valorMedioCompra(false);
+        public decimal ValorMedioCompra => JaNegociado ? _valorMedioCompra(false) : 0;
 
-        public decimal ValorMedioCompraReal => _valorMedioCompra(true);
+        public decimal ValorMedioCompraReal => JaNegociado ? _valorMedioCompra(true) : 0;
 
         public decimal? AlertaVenda => LastTrade == 0 ? 10m : LastTrade / ValorMedioCompraReal;
 
         private decimal _valorMedioCompra(bool real) =>
-            !JaNegociado ? 0 :
-                _operacoes
-                    .OrderByDescending(o => o.Data)
-                    .ThenByDescending(o => o.OperacaoId)
-                    .TakeWhile(o => o.QtdAcumulada > 0)
-                    .Where(o => o.Qtd > 0)
-                    .Select(o => new { o.Qtd, Valor = o.Qtd * (real ? o.ValorReal : o.Valor) })
-                    .Aggregate(new { SumQtd = 0, ValorTotal = 0.0m }, (a, o) => new { SumQtd = a.SumQtd + o.Qtd, ValorTotal = a.ValorTotal + o.Valor },
-                        a => a.SumQtd == 0 ? 0 : a.ValorTotal / a.SumQtd);
+           _operacoes.AsEnumerable()
+                .Reverse()
+                .TakeWhile(o => o.QtdAcumulada > 0)
+                .Where(o => o.SinalPositivo).Reverse()
+                .Aggregate(0.0m,
+                    (current, operacao) => (current * operacao.QtdAntes +
+                                (real ? operacao.ValorOperacaoComTaxasReal : operacao.ValorOperacaoComTaxas)) / operacao.QtdAcumulada);
 
-        public decimal Patrimonio => LastTrade * QtdTotal;
+    public decimal Patrimonio => LastTrade * QtdTotal;
 
-        public decimal Lucro => (LastTrade - ValorMedioCompra) * QtdTotal;
+    public decimal Lucro => (LastTrade - ValorMedioCompra) * QtdTotal;
 
-        public decimal LucroReal => ((decimal)LastTrade - ValorMedioCompraReal) * QtdTotal;
+    public decimal LucroReal => ((decimal)LastTrade - ValorMedioCompraReal) * QtdTotal;
 
-        public bool HasTrades => Cotacoes.Any();
+    public bool HasTrades => Cotacoes.Any();
 
-        public decimal? Open => HasTrades ? (decimal?)Cotacoes.First().Value.open : 0;
+    public decimal? Open => HasTrades ? (decimal?)Cotacoes.First().Value.open : 0;
 
-        public decimal? PreviousClose => HasTrades ? (decimal?)Cotacoes.ElementAt(0).Value.close : 0;
+    public decimal? PreviousClose => HasTrades ? (decimal?)Cotacoes.ElementAt(0).Value.close : 0;
 
-        public decimal LastTrade => HasTrades ? Cotacoes.Last().Value.close : 0;
+    public decimal LastTrade => HasTrades ? Cotacoes.Last().Value.close : 0;
 
-        public DateTime? LastTradeDate => HasTrades ? (DateTime?)Cotacoes.Last().Key : null;
+    public DateTime? LastTradeDate => HasTrades ? (DateTime?)Cotacoes.Last().Key : null;
 
-        public decimal? PreviousTrade => Cotacoes.Count > 1 ? (decimal?)Cotacoes.ElementAt(Cotacoes.Count - 2).Value.close : 0;
+    public decimal? PreviousTrade => Cotacoes.Count > 1 ? (decimal?)Cotacoes.ElementAt(Cotacoes.Count - 2).Value.close : 0;
 
-        public string Trend {
-            get {
-                if (LastTrade == 0 || PreviousTrade == 0)
-                    return TrendNone;
-                return LastTrade > PreviousTrade ? TrendUp :
-                    (LastTrade < PreviousTrade ? TrendDown :
-                        TrendNeutral);
-            }
+    public string Trend {
+        get {
+            if (LastTrade == 0 || PreviousTrade == 0)
+                return TrendNone;
+            return LastTrade > PreviousTrade ? TrendUp :
+                (LastTrade < PreviousTrade ? TrendDown :
+                    TrendNeutral);
         }
-
-        public double DayLow => (double)(HasTrades ? Cotacoes.Min(c => c.Value.low) : 0);
-
-        public double DayHigh => (double)(HasTrades ? Cotacoes.Max(c => c.Value.high) : 0);
-
-        public decimal? Change => LastTrade - Open;
-
-        public decimal? ChangePercent => HasTrades ? Change / Open : 0;
     }
+
+    public double DayLow => (double)(HasTrades ? Cotacoes.Min(c => c.Value.low) : 0);
+
+    public double DayHigh => (double)(HasTrades ? Cotacoes.Max(c => c.Value.high) : 0);
+
+    public decimal? Change => LastTrade - Open;
+
+    public decimal? ChangePercent => HasTrades ? Change / Open : 0;
+}
 }

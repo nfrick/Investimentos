@@ -24,6 +24,8 @@ namespace DataLayer
         public int QtdVendida { get; set; }
         public decimal Valor { get; set; }
         public decimal ValorReal { get; set; }
+        public bool SinalPositivo { get; set; }
+        public bool IncideTaxa { get; set; }
     
         public virtual AtivoCotacao AtivoCotacao { get; set; }
     }

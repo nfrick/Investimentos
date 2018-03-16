@@ -24,6 +24,7 @@ namespace DataLayer
         public string Tipo { get; set; }
         public bool SinalPositivo { get; set; }
         public int Sinal { get; set; }
+        public bool IncideTaxa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Operacao> Operacoes { get; set; }

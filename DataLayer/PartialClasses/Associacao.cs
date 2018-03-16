@@ -6,9 +6,9 @@ namespace DataLayer {
 
         public string Tipo => Entrada?.OperacaoTipo.Tipo ?? string.Empty;
 
-        public int QtdEntrada => Entrada?.QtdReal ?? 0;
+        public int QtdEntrada => Entrada?.Qtd ?? 0;
 
-        public int QtdSaida => Saida?.QtdReal ?? 0;
+        public int QtdSaida => Saida?.Qtd ?? 0;
 
         public int QtdDisponivel => QtdEntrada - QtdAssociada;
 
