@@ -83,8 +83,6 @@
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdPrevistaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operacaoTipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -291,8 +289,6 @@
             this.codigoDataGridViewTextBoxColumn,
             this.tipoIdDataGridViewTextBoxColumn,
             this.dataDataGridViewTextBoxColumn,
-            this.qtdPrevistaDataGridViewTextBoxColumn,
-            this.qtdRealDataGridViewTextBoxColumn,
             this.valorDataGridViewTextBoxColumn,
             this.valorRealDataGridViewTextBoxColumn,
             this.operacaoTipoDataGridViewTextBoxColumn,
@@ -551,20 +547,6 @@
             this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
             this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
             this.dataDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qtdPrevistaDataGridViewTextBoxColumn
-            // 
-            this.qtdPrevistaDataGridViewTextBoxColumn.DataPropertyName = "QtdPrevista";
-            this.qtdPrevistaDataGridViewTextBoxColumn.HeaderText = "QtdPrevista";
-            this.qtdPrevistaDataGridViewTextBoxColumn.Name = "qtdPrevistaDataGridViewTextBoxColumn";
-            this.qtdPrevistaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // qtdRealDataGridViewTextBoxColumn
-            // 
-            this.qtdRealDataGridViewTextBoxColumn.DataPropertyName = "QtdReal";
-            this.qtdRealDataGridViewTextBoxColumn.HeaderText = "QtdReal";
-            this.qtdRealDataGridViewTextBoxColumn.Name = "qtdRealDataGridViewTextBoxColumn";
-            this.qtdRealDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // valorDataGridViewTextBoxColumn
             // 

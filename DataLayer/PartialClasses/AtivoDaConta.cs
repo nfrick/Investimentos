@@ -4,7 +4,7 @@ namespace DataLayer {
     public partial class AtivoDaConta {
         public decimal? CotacaoAtual { get; set; }
 
-        public decimal UltimaCotacao => CotacaoAtual ?? Ativo.CotacoesDiarias.OrderByDescending(c => c.Data).First().PrecoMedio;
+        public decimal UltimaCotacao => CotacaoAtual ?? Ativo.CotacoesDiarias.OrderByDescending(c => c.Data).First().PrecoUltimo;
 
         public decimal Patrimonio => UltimaCotacao * QtdTotal ?? 0;
 

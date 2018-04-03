@@ -590,10 +590,10 @@ namespace Investimentos {
         private static Movimento CreateMovimento(string line, IFormatProvider format) {
             return new Movimento() {
                 Data = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal),
-                Historico = line.Substring(11, 20).Trim().ToLower(),
-                Valor = ToDecimal(line, 38, 11),
+                Historico = line.Substring(11, 22).Trim().ToLower(),
+                Valor = ToDecimal(line, 38, 12),
                 ImpostoRenda = ToDecimal(line, 50, 16),
-                CotaQtd = ToDecimal(line, 95, 18),
+                CotaQtd = ToDecimal(line, 95, 19),
                 CotaValor = ToDecimalNull(line, 117, 20)
             };
         }
