@@ -410,6 +410,10 @@ namespace Investimentos {
             return 0;
         }
 
+        private static string GetCNPJ(string input) {
+            return new string(input.Where(char.IsDigit).ToArray());
+        }
+
         private int LerExtratoFundos(string fileName) {
             var conta = (Conta)toolStripComboBoxConta.SelectedItem;
             var fundos = entityDataSource1.DbContext.Set<Fundo>();
@@ -428,17 +432,21 @@ namespace Investimentos {
                             RefreshDataFundos();
                             return 0;
                         } while (!line.Trim().StartsWith("BB"));
-                        var fundoNome = line.Substring(0, 35).Trim();
+                        var fundoCNPJ = GetCNPJ(line.Substring(68, 18).Trim());
+                        var fundoNome = line.Substring(0, 40).Trim();
 
-                        // Localiza o Fundo, criando se necessário
-                        var fundo = fundos.Local.FirstOrDefault(f => f.Nome == fundoNome);
+                        // Localiza o Fundo, criando ou atualizando o nome caso necessário
+                        var fundo = fundos.Local.FirstOrDefault(f => f.CNPJ == fundoCNPJ);
                         if (fundo == null) {
-                            fundo = new Fundo() { Nome = fundoNome, CNPJ = line.Substring(68, 18).Replace(".", "").Replace("/", "").Replace("-", "") };
+                            fundo = new Fundo() { Nome = fundoNome, CNPJ = fundoCNPJ };
                             fundos.Add(fundo);
+                        }
+                        else if (fundo.Nome != fundoNome) {
+                            fundo.Nome = fundoNome;
                         }
 
                         // Localiza a ContaFundo, criando se necessário
-                        var contaFundo = conta.Fundos.FirstOrDefault(f => f.FundoNome == fundoNome) ??
+                        var contaFundo = conta.Fundos.FirstOrDefault(f => f.FundoCNPJ == fundoCNPJ) ??
                             new ContaFundo() { Fundo = fundo };
                         if (contaFundo.ContaFundoId == 0)
                             conta.Fundos.Add(contaFundo);

@@ -9,6 +9,8 @@ namespace DataLayer {
 
         public string FundoNome => Fundo.Nome;
 
+        public string FundoCNPJ => Fundo.CNPJ;
+
         public decimal Saldo =>
             ContasMeses.Count == 0 ? 0.0m : 
             ContasMeses.OrderByDescending(cm => cm.FundoMes.Mes).First().Saldo;
