@@ -97,6 +97,7 @@ namespace SerieHistorica {
         }
 
         #region Ler Arquivos
+
         private void toolStripButtonLerSerie_Click(object sender, EventArgs e) {
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             ofd.Filter = @"Arquivos|*.zip;*.txt";
@@ -105,6 +106,11 @@ namespace SerieHistorica {
                 return;
             bgWorker.RunWorkerAsync(ofd.FileNames);
             entityDataSource1.Refresh();
+            if (MessageBox.Show(@"Deletar arquivo(s)?", @"Ler Série", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                DialogResult.No) return;
+            foreach (var arquivo in ofd.FileNames) {
+                File.Delete(arquivo);
+            }
         }
 
         private void bgWorker_DoWork(object sender, DoWorkEventArgs e) {
