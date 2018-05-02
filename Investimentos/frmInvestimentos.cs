@@ -69,8 +69,10 @@ namespace Investimentos {
             GridStyles.FormatGrid(dgvLCAMeses);
             dgvLCAMeses.Columns[0].Width = 90;
             GridStyles.FormatColumns(dgvLCAMeses, 1, 7, GridStyles.StyleCurrency, 90);
+            GridStyles.FormatColumn(dgvLCAMeses.Columns[8], GridStyles.StylePercent, 70);
             GridStyles.FormatGrid(dgvLCAMovimentos);
             GridStyles.FormatColumns(dgvLCAMovimentos, 2, 4, GridStyles.StyleCurrency, 60);
+            dgvLCAMovimentos.Columns[1].Width = 100;
             GridStyles.FormatColumn(dgvLCAMovimentos.Columns[5], GridStyles.StyleCurrency, 90);
 
             // RESUMO

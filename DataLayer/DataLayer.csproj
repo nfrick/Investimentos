@@ -153,6 +153,7 @@
     <Compile Include="PartialClasses\CotacaoYahoo.cs" />
     <Compile Include="PartialClasses\Extensions.cs" />
     <Compile Include="PartialClasses\LCA.cs" />
+    <Compile Include="PartialClasses\LCAMes.cs" />
     <Compile Include="PartialClasses\Operacao.cs" />
     <Compile Include="PartialClasses\OperacaoCotacao.cs" />
     <Compile Include="PartialClasses\OperacaoTipo.cs" />

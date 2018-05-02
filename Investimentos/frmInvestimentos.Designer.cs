@@ -165,6 +165,7 @@
             this.iOFDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rendimentoLiquidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldoAtualDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RendimentoMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvLCAMovimentos = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.dataDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1269,7 +1270,8 @@
             this.impostoRendaDataGridViewTextBoxColumn1,
             this.iOFDataGridViewTextBoxColumn1,
             this.rendimentoLiquidoDataGridViewTextBoxColumn,
-            this.saldoAtualDataGridViewTextBoxColumn});
+            this.saldoAtualDataGridViewTextBoxColumn,
+            this.RendimentoMes});
             this.dgvLCAMeses.DataMember = "Contas.LCAs.LCAMeses";
             this.dgvLCAMeses.DataSource = this.entityDataSource1;
             this.dgvLCAMeses.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1338,6 +1340,13 @@
             this.saldoAtualDataGridViewTextBoxColumn.HeaderText = "Saldo";
             this.saldoAtualDataGridViewTextBoxColumn.Name = "saldoAtualDataGridViewTextBoxColumn";
             this.saldoAtualDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // RendimentoMes
+            // 
+            this.RendimentoMes.DataPropertyName = "RendimentoMes";
+            this.RendimentoMes.HeaderText = "Rend. Mês";
+            this.RendimentoMes.Name = "RendimentoMes";
+            this.RendimentoMes.ReadOnly = true;
             // 
             // tableLayoutPanel2
             // 
@@ -1408,7 +1417,7 @@
             // rendimentosDataGridViewTextBoxColumn
             // 
             this.rendimentosDataGridViewTextBoxColumn.DataPropertyName = "Rendimentos";
-            this.rendimentosDataGridViewTextBoxColumn.HeaderText = "Rendimentos";
+            this.rendimentosDataGridViewTextBoxColumn.HeaderText = "Rend.";
             this.rendimentosDataGridViewTextBoxColumn.Name = "rendimentosDataGridViewTextBoxColumn";
             this.rendimentosDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -1636,7 +1645,7 @@
             this.toolStripProgressBar1});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(993, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(690, 28);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonNovaConta
@@ -1964,21 +1973,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvLCAs;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvLCAMovimentos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn historicoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn impostoRendaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iOFDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rendimentosDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorAtualDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lCADataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aplicacoesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resgatesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rendimentoBrutoDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn impostoRendaDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iOFDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rendimentoLiquidoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saldoAtualDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Aplicacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vencimento;
@@ -2001,6 +1996,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Taxas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Impostos;
         private System.Windows.Forms.DataGridViewButtonColumn btnEditarOperacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lCADataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aplicacoesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resgatesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rendimentoBrutoDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn impostoRendaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iOFDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rendimentoLiquidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saldoAtualDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RendimentoMes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn historicoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn impostoRendaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iOFDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rendimentosDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorAtualDataGridViewTextBoxColumn;
     }
 }
 
