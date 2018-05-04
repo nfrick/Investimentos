@@ -511,7 +511,6 @@ namespace Investimentos {
                     } while (true);
                 }
             }
-            return 0;
         }
 
         private int LerExtratoLCA(string fileName) {
@@ -626,7 +625,8 @@ namespace Investimentos {
         }
 
         private static decimal? ToDecimalNull(string line, int start, int length) {
-            if (start > line.Length || start + length > line.Length) return null;
+            if (start > line.Length) return null;
+            if (start + length > line.Length) length = line.Length - start;
             var text = line.Substring(start, length).Trim();
             return decimal.TryParse(text, out decimal valor) ? (decimal?)valor : null;
         }
