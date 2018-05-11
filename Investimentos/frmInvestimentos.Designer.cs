@@ -98,13 +98,8 @@
             this.dgvFundos = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.fundoNomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvLCAs = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Aplicacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vencimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Taxa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorEmissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvOperacoes = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -155,7 +150,7 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageLCA = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpLCA = new System.Windows.Forms.TableLayoutPanel();
             this.dgvLCAMeses = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.lCADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aplicacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -166,7 +161,7 @@
             this.rendimentoLiquidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldoAtualDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RendimentoMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpLCATop = new System.Windows.Forms.TableLayoutPanel();
             this.dgvLCAMovimentos = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.dataDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.historicoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -206,6 +201,15 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aplicacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vencimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taxa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorEmissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RendimentoPercentual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RendimentoMensal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpAcoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFundos)).BeginInit();
@@ -225,9 +229,9 @@
             this.tlpFundosTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimentos)).BeginInit();
             this.tabPageLCA.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tlpLCA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMeses)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.tlpLCATop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMovimentos)).BeginInit();
             this.tabPageResumo.SuspendLayout();
             this.tlpResumo.SuspendLayout();
@@ -639,7 +643,8 @@
             this.dgvFundos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFundos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fundoNomeDataGridViewTextBoxColumn,
-            this.saldoDataGridViewTextBoxColumn});
+            this.saldoDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn14});
             this.dgvFundos.DataMember = "Contas.Fundos";
             this.dgvFundos.DataSource = this.entityDataSource1;
             this.dgvFundos.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -647,7 +652,7 @@
             this.dgvFundos.Name = "dgvFundos";
             this.dgvFundos.ReadOnly = true;
             this.dgvFundos.RowTemplate.Height = 24;
-            this.dgvFundos.Size = new System.Drawing.Size(305, 279);
+            this.dgvFundos.Size = new System.Drawing.Size(356, 279);
             this.dgvFundos.TabIndex = 3;
             // 
             // fundoNomeDataGridViewTextBoxColumn
@@ -666,6 +671,13 @@
             this.saldoDataGridViewTextBoxColumn.ReadOnly = true;
             this.saldoDataGridViewTextBoxColumn.Width = 90;
             // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "RendimentoLiquido";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Rend. Liq.";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            // 
             // dgvLCAs
             // 
             this.dgvLCAs.AllowUserToAddRows = false;
@@ -679,7 +691,10 @@
             this.Vencimento,
             this.Taxa,
             this.ValorEmissao,
-            this.dataGridViewTextBoxColumn26});
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewTextBoxColumn15,
+            this.RendimentoPercentual,
+            this.RendimentoMensal});
             this.dgvLCAs.DataMember = "Contas.LCAs";
             this.dgvLCAs.DataSource = this.entityDataSource1;
             this.dgvLCAs.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -687,51 +702,8 @@
             this.dgvLCAs.Name = "dgvLCAs";
             this.dgvLCAs.ReadOnly = true;
             this.dgvLCAs.RowTemplate.Height = 24;
-            this.dgvLCAs.Size = new System.Drawing.Size(494, 279);
+            this.dgvLCAs.Size = new System.Drawing.Size(524, 279);
             this.dgvLCAs.TabIndex = 3;
-            // 
-            // Numero
-            // 
-            this.Numero.DataPropertyName = "Codigo";
-            this.Numero.HeaderText = "Código";
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            // 
-            // Aplicacao
-            // 
-            this.Aplicacao.DataPropertyName = "Aplicacao";
-            this.Aplicacao.HeaderText = "Aplicação";
-            this.Aplicacao.Name = "Aplicacao";
-            this.Aplicacao.ReadOnly = true;
-            // 
-            // Vencimento
-            // 
-            this.Vencimento.DataPropertyName = "Vencimento";
-            this.Vencimento.HeaderText = "Vencimento";
-            this.Vencimento.Name = "Vencimento";
-            this.Vencimento.ReadOnly = true;
-            // 
-            // Taxa
-            // 
-            this.Taxa.DataPropertyName = "Taxa";
-            this.Taxa.HeaderText = "Taxa";
-            this.Taxa.Name = "Taxa";
-            this.Taxa.ReadOnly = true;
-            // 
-            // ValorEmissao
-            // 
-            this.ValorEmissao.DataPropertyName = "ValorEmissao";
-            this.ValorEmissao.HeaderText = "Valor Emissão";
-            this.ValorEmissao.Name = "ValorEmissao";
-            this.ValorEmissao.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn26
-            // 
-            this.dataGridViewTextBoxColumn26.DataPropertyName = "Saldo";
-            this.dataGridViewTextBoxColumn26.HeaderText = "Saldo";
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            this.dataGridViewTextBoxColumn26.Width = 90;
             // 
             // dgvOperacoes
             // 
@@ -1153,8 +1125,8 @@
             // tlpFundosTop
             // 
             this.tlpFundosTop.ColumnCount = 2;
-            this.tlpFundosTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tlpFundosTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tlpFundosTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tlpFundosTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tlpFundosTop.Controls.Add(this.dgvFundos, 0, 0);
             this.tlpFundosTop.Controls.Add(this.dgvMovimentos, 1, 0);
             this.tlpFundosTop.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1181,11 +1153,11 @@
             this.dgvMovimentos.DataMember = "Contas.Fundos.ContasMeses.Movimentos";
             this.dgvMovimentos.DataSource = this.entityDataSource1;
             this.dgvMovimentos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMovimentos.Location = new System.Drawing.Point(314, 3);
+            this.dgvMovimentos.Location = new System.Drawing.Point(365, 3);
             this.dgvMovimentos.Name = "dgvMovimentos";
             this.dgvMovimentos.ReadOnly = true;
             this.dgvMovimentos.RowTemplate.Height = 24;
-            this.dgvMovimentos.Size = new System.Drawing.Size(720, 279);
+            this.dgvMovimentos.Size = new System.Drawing.Size(669, 279);
             this.dgvMovimentos.TabIndex = 2;
             // 
             // dataDataGridViewTextBoxColumn2
@@ -1232,7 +1204,7 @@
             // 
             // tabPageLCA
             // 
-            this.tabPageLCA.Controls.Add(this.tableLayoutPanel1);
+            this.tabPageLCA.Controls.Add(this.tlpLCA);
             this.tabPageLCA.Location = new System.Drawing.Point(4, 32);
             this.tabPageLCA.Name = "tabPageLCA";
             this.tabPageLCA.Padding = new System.Windows.Forms.Padding(3);
@@ -1241,20 +1213,20 @@
             this.tabPageLCA.Text = "LCA";
             this.tabPageLCA.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // tlpLCA
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvLCAMeses, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1043, 582);
-            this.tableLayoutPanel1.TabIndex = 4;
+            this.tlpLCA.ColumnCount = 1;
+            this.tlpLCA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpLCA.Controls.Add(this.dgvLCAMeses, 0, 1);
+            this.tlpLCA.Controls.Add(this.tlpLCATop, 0, 0);
+            this.tlpLCA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpLCA.Location = new System.Drawing.Point(3, 3);
+            this.tlpLCA.Name = "tlpLCA";
+            this.tlpLCA.RowCount = 2;
+            this.tlpLCA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpLCA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpLCA.Size = new System.Drawing.Size(1043, 582);
+            this.tlpLCA.TabIndex = 4;
             // 
             // dgvLCAMeses
             // 
@@ -1348,20 +1320,20 @@
             this.RendimentoMes.Name = "RendimentoMes";
             this.RendimentoMes.ReadOnly = true;
             // 
-            // tableLayoutPanel2
+            // tlpLCATop
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.dgvLCAs, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.dgvLCAMovimentos, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1037, 285);
-            this.tableLayoutPanel2.TabIndex = 2;
+            this.tlpLCATop.ColumnCount = 2;
+            this.tlpLCATop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 530F));
+            this.tlpLCATop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpLCATop.Controls.Add(this.dgvLCAs, 0, 0);
+            this.tlpLCATop.Controls.Add(this.dgvLCAMovimentos, 1, 0);
+            this.tlpLCATop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpLCATop.Location = new System.Drawing.Point(3, 3);
+            this.tlpLCATop.Name = "tlpLCATop";
+            this.tlpLCATop.RowCount = 1;
+            this.tlpLCATop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpLCATop.Size = new System.Drawing.Size(1037, 285);
+            this.tlpLCATop.TabIndex = 2;
             // 
             // dgvLCAMovimentos
             // 
@@ -1379,11 +1351,11 @@
             this.dgvLCAMovimentos.DataMember = "Contas.LCAs.LCAMeses.LCAMovimentos";
             this.dgvLCAMovimentos.DataSource = this.entityDataSource1;
             this.dgvLCAMovimentos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLCAMovimentos.Location = new System.Drawing.Point(503, 3);
+            this.dgvLCAMovimentos.Location = new System.Drawing.Point(533, 3);
             this.dgvLCAMovimentos.Name = "dgvLCAMovimentos";
             this.dgvLCAMovimentos.ReadOnly = true;
             this.dgvLCAMovimentos.RowTemplate.Height = 24;
-            this.dgvLCAMovimentos.Size = new System.Drawing.Size(531, 279);
+            this.dgvLCAMovimentos.Size = new System.Drawing.Size(501, 279);
             this.dgvLCAMovimentos.TabIndex = 2;
             // 
             // dataDataGridViewTextBoxColumn1
@@ -1800,6 +1772,70 @@
             this.OFD.Filter = "Text Files|*.txt";
             this.OFD.Multiselect = true;
             // 
+            // Numero
+            // 
+            this.Numero.DataPropertyName = "Codigo";
+            this.Numero.HeaderText = "Código";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            // 
+            // Aplicacao
+            // 
+            this.Aplicacao.DataPropertyName = "Aplicacao";
+            this.Aplicacao.HeaderText = "Aplic.";
+            this.Aplicacao.Name = "Aplicacao";
+            this.Aplicacao.ReadOnly = true;
+            // 
+            // Vencimento
+            // 
+            this.Vencimento.DataPropertyName = "Vencimento";
+            this.Vencimento.HeaderText = "Venc.";
+            this.Vencimento.Name = "Vencimento";
+            this.Vencimento.ReadOnly = true;
+            // 
+            // Taxa
+            // 
+            this.Taxa.DataPropertyName = "Taxa";
+            this.Taxa.HeaderText = "Taxa";
+            this.Taxa.Name = "Taxa";
+            this.Taxa.ReadOnly = true;
+            // 
+            // ValorEmissao
+            // 
+            this.ValorEmissao.DataPropertyName = "ValorEmissao";
+            this.ValorEmissao.HeaderText = "Valor Emissão";
+            this.ValorEmissao.Name = "ValorEmissao";
+            this.ValorEmissao.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.DataPropertyName = "Saldo";
+            this.dataGridViewTextBoxColumn26.HeaderText = "Saldo";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
+            this.dataGridViewTextBoxColumn26.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "RendimentoLiquido";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Rend. Liq.";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // RendimentoPercentual
+            // 
+            this.RendimentoPercentual.DataPropertyName = "RendimentoPercentual";
+            this.RendimentoPercentual.HeaderText = "Rend. %";
+            this.RendimentoPercentual.Name = "RendimentoPercentual";
+            this.RendimentoPercentual.ReadOnly = true;
+            // 
+            // RendimentoMensal
+            // 
+            this.RendimentoMensal.DataPropertyName = "RendimentoMensal";
+            this.RendimentoMensal.HeaderText = "Rend. Mensal";
+            this.RendimentoMensal.Name = "RendimentoMensal";
+            this.RendimentoMensal.ReadOnly = true;
+            // 
             // frmInvestimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -1837,9 +1873,9 @@
             this.tlpFundosTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimentos)).EndInit();
             this.tabPageLCA.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tlpLCA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMeses)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tlpLCATop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMovimentos)).EndInit();
             this.tabPageResumo.ResumeLayout(false);
             this.tlpResumo.ResumeLayout(false);
@@ -1965,21 +2001,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itemDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn3;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvFundos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fundoNomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saldoDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabPage tabPageLCA;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlpLCA;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvLCAMeses;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tlpLCATop;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvLCAs;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvLCAMovimentos;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Aplicacao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vencimento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Taxa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValorEmissao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -2011,6 +2039,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn iOFDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rendimentosDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorAtualDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fundoNomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saldoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Aplicacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vencimento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Taxa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorEmissao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RendimentoPercentual;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RendimentoMensal;
     }
 }
 

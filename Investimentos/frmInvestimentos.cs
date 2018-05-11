@@ -17,7 +17,10 @@ namespace Investimentos {
     public enum posicao {
         Papel, Nada, Cotação, VarPercent, QtdComprada, Compra, Venda, QtdVendida, Max, Min, Fech
     }
+
     public partial class frmInvestimentos : Form {
+        private static readonly IFormatProvider FormatPT_BR = new CultureInfo("pt-BR");
+
         public frmInvestimentos() {
             InitializeComponent();
         }
@@ -47,6 +50,7 @@ namespace Investimentos {
             // FUNDOS
             GridStyles.FormatGrid(dgvFundos);
             GridStyles.FormatColumns(dgvFundos, GridStyles.StyleCurrency, 90, 1);
+            GridStyles.FormatColumns(dgvFundos, GridStyles.StyleCurrency, 80, 2);
 
             GridStyles.FormatGrid(dgvFundosMeses);
             dgvFundosMeses.Columns[0].Width = 85;
@@ -63,9 +67,12 @@ namespace Investimentos {
 
             // LCA
             GridStyles.FormatGrid(dgvLCAs);
-            GridStyles.FormatColumns(dgvLCAs, 1, 2, GridStyles.StyleDate, 85);
+            dgvLCAs.Columns[0].Width = 70;
+            GridStyles.FormatColumns(dgvLCAs, 1, 2, GridStyles.StyleDateShort, 70);
             GridStyles.FormatColumn(dgvLCAs.Columns[3], GridStyles.StyleCurrency, 50);
-            GridStyles.FormatColumns(dgvLCAs, 4, 5, GridStyles.StyleCurrency, 80);
+            GridStyles.FormatColumns(dgvLCAs, GridStyles.StyleCurrency, 80, 4, 6);
+            GridStyles.FormatColumn(dgvLCAs.Columns[5], GridStyles.StyleCurrency, 80);
+            GridStyles.FormatColumns(dgvLCAs, GridStyles.StylePercent, 60, 7, 8);
             GridStyles.FormatGrid(dgvLCAMeses);
             dgvLCAMeses.Columns[0].Width = 90;
             GridStyles.FormatColumns(dgvLCAMeses, 1, 7, GridStyles.StyleCurrency, 90);
@@ -420,7 +427,6 @@ namespace Investimentos {
             var conta = (Conta)toolStripComboBoxConta.SelectedItem;
             var fundos = entityDataSource1.DbContext.Set<Fundo>();
 
-            IFormatProvider format = new CultureInfo("pt-BR");
             const int bufferSize = 128;
 
             using (var fileStream = File.OpenRead(fileName)) {
@@ -469,28 +475,28 @@ namespace Investimentos {
                         DateTime data;
                         do {
                             //if (string.IsNullOrEmpty(line)) continue;
-                            if (!DateTime.TryParse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal,
+                            if (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal,
                                 out data)) continue;
-                            contaMes.Movimentos.Add(CreateMovimento(line, format));
+                            contaMes.Movimentos.Add(CreateMovimento(line));
                         } while (!(line = GetNextLine(streamReader)).Contains("SALDO ATUAL"));
                         // Adiciona o saldo atual (última linha)
-                        contaMes.Movimentos.Add(CreateMovimento(line, format));
+                        contaMes.Movimentos.Add(CreateMovimento(line));
                         contaMes.CotaQtd = contaMes.Movimentos.Last().CotaQtd;
 
                         // Preenche o mês no Fundo-Mes
-                        var mes = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal);
+                        var mes = DateTime.Parse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal);
                         fundoMes.Mes = mes.AddDays(1 - mes.Day);
 
                         // Ler até achar o valor anterior da cota
                         do {
                             line = GetNextLine(streamReader);
-                        } while (!DateTime.TryParse(line.Substring(0, 10), format,
+                        } while (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR,
                                      DateTimeStyles.AssumeLocal, out data));
 
                         // Ler até achar o valor atual da cota
                         do {
                             line = GetNextLine(streamReader);
-                        } while (!DateTime.TryParse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal, out data));
+                        } while (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal, out data));
                         fundoMes.CotaValor = GetValor(line);
 
                         // Mover até inicio dos rendimentos
@@ -517,7 +523,6 @@ namespace Investimentos {
             var conta = (Conta)toolStripComboBoxConta.SelectedItem;
             var LCAs = entityDataSource1.DbContext.Set<LCA>();
 
-            IFormatProvider format = new CultureInfo("pt-BR");
             const int bufferSize = 128;
 
             using (var fileStream = File.OpenRead(fileName)) {
@@ -532,11 +537,11 @@ namespace Investimentos {
                     var lca = LCAs.Local.FirstOrDefault(l => l.Numero == lcaNumero);
                     if (lca == null) {
                         lca = new LCA { Numero = lcaNumero, Conta = conta };
-                        lca.Aplicacao = DateTime.Parse(GetNextLine(streamReader).Substring(18).Trim(), format);
-                        lca.ValorEmissao = decimal.Parse(GetNextLine(streamReader).Substring(18).Trim(), format);
+                        lca.Aplicacao = DateTime.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
+                        lca.ValorEmissao = decimal.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
                         var saldo = GetNextLine(streamReader);  // skip that line
-                        lca.Taxa = decimal.Parse(GetNextLine(streamReader).Substring(18).Trim(), format);
-                        lca.Vencimento = DateTime.Parse(GetNextLine(streamReader).Substring(18).Trim(), format);
+                        lca.Taxa = decimal.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
+                        lca.Vencimento = DateTime.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
                         LCAs.Add(lca);
                     }
 
@@ -550,12 +555,12 @@ namespace Investimentos {
                     // Ler movimentos
                     do {
                         if (string.IsNullOrEmpty(line)) continue;
-                        if (!DateTime.TryParse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal,
+                        if (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal,
                             out DateTime data)) continue;
-                        lcaMes.LCAMovimentos.Add(CreateLCAMovimento(line, format));
+                        lcaMes.LCAMovimentos.Add(CreateLCAMovimento(line));
                     } while (!(line = GetNextLine(streamReader)).Contains("Saldo Atual"));
                     // Adiciona o saldo atual (última linha)
-                    lcaMes.LCAMovimentos.Add(CreateLCAMovimento(line, format));
+                    lcaMes.LCAMovimentos.Add(CreateLCAMovimento(line));
 
                     // Localiza o mês
                     line = ReadUntil(streamReader, "SALDO ANTERIOR");
@@ -586,9 +591,6 @@ namespace Investimentos {
         }
 
         private static decimal GetValor(TextReader stream) =>
-            //            string linha;
-            //            while ((linha = stream.ReadLine().Trim()) == "") ;
-            //            return GetValor(linha);
             GetValor(GetNextLine(stream));
 
         private static decimal GetValor(string linha) {
@@ -596,9 +598,9 @@ namespace Investimentos {
             return decimal.Parse(valores[valores.Length - 1]);
         }
 
-        private static Movimento CreateMovimento(string line, IFormatProvider format) {
+        private static Movimento CreateMovimento(string line) {
             return new Movimento() {
-                Data = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal),
+                Data = DateTime.Parse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal),
                 Historico = line.Substring(11, 22).Trim().ToLower(),
                 Valor = ToDecimal(line, 38, 12),
                 ImpostoRenda = ToDecimal(line, 50, 16),
@@ -607,9 +609,9 @@ namespace Investimentos {
             };
         }
 
-        private static LCAMovimento CreateLCAMovimento(string line, IFormatProvider format) {
+        private static LCAMovimento CreateLCAMovimento(string line) {
             return new LCAMovimento() {
-                Data = DateTime.Parse(line.Substring(0, 10), format, DateTimeStyles.AssumeLocal),
+                Data = DateTime.Parse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal),
                 Historico = line.Substring(11, 20).Trim().ToLower(),
                 ValorCapital = ToDecimal(line, 38, 11),
                 ImpostoRenda = ToDecimal(line, 48, 12),

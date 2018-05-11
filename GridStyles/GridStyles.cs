@@ -5,26 +5,25 @@ using System.Windows.Forms;
 namespace GridAndChartStyleLibrary {
     public static class GridStyles {
 
-        private static DataGridViewCellStyle _styleFont = new DataGridViewCellStyle {
+        private static readonly DataGridViewCellStyle _styleFont = new DataGridViewCellStyle {
             Font = new Font("Segoe UI", 10)
         };
 
-        private static DataGridViewCellStyle _styleHeader = new DataGridViewCellStyle(_styleFont) {
+        public static DataGridViewCellStyle StyleHeader { get; } = new DataGridViewCellStyle(_styleFont) {
             Alignment = DataGridViewContentAlignment.MiddleCenter,
             ForeColor = Color.WhiteSmoke,
             BackColor = Color.DimGray,
             WrapMode = DataGridViewTriState.True
         };
 
-
-        private static DataGridViewCellStyle _styleBase = new DataGridViewCellStyle(_styleFont) {
+        public static DataGridViewCellStyle StyleBase { get; } = new DataGridViewCellStyle(_styleFont) {
             ForeColor = Color.LightBlue,
             BackColor = Color.Black,
             SelectionForeColor = Color.Black,
             SelectionBackColor = Color.FromArgb(255, 192, 255, 255)
         };
 
-        private static DataGridViewCellStyle _styleTotal = new DataGridViewCellStyle(_styleFont) {
+        public static DataGridViewCellStyle StyleTotal { get; } = new DataGridViewCellStyle(_styleFont) {
             ForeColor = Color.White,
             BackColor = Color.Black,
             SelectionForeColor = Color.White,
@@ -32,81 +31,71 @@ namespace GridAndChartStyleLibrary {
             Font = new Font("Segoe UI", 10, FontStyle.Bold)
         };
 
-        private static DataGridViewCellStyle _styleAlternate = new DataGridViewCellStyle() {
+        public static DataGridViewCellStyle StyleAlternate { get; } = new DataGridViewCellStyle() {
             ForeColor = Color.LightGreen,
             BackColor = Color.FromArgb(255, 30, 30, 30)
         };
 
-        private static DataGridViewCellStyle _styleNegative = new DataGridViewCellStyle {
+        public static DataGridViewCellStyle StyleNegative { get; } = new DataGridViewCellStyle {
             ForeColor = Color.Red
         };
 
-        private static DataGridViewCellStyle _styleDate = new DataGridViewCellStyle(_styleBase) {
+        public static DataGridViewCellStyle StyleDate { get; } = new DataGridViewCellStyle(StyleBase) {
             Alignment = DataGridViewContentAlignment.MiddleLeft,
             Format = "dd/MM/yyyy"
         };
 
-        private static DataGridViewCellStyle _styleDateTime = new DataGridViewCellStyle(_styleBase) {
+        public static DataGridViewCellStyle StyleDateShort { get; } = new DataGridViewCellStyle(StyleBase) {
             Alignment = DataGridViewContentAlignment.MiddleLeft,
-            Format = "dd/MM/yyyy HH:mm"
+            Format = "dd/MM/yy"
         };
-
-        private static DataGridViewCellStyle _styleDateTimeShort = new DataGridViewCellStyle(_styleBase) {
-            Alignment = DataGridViewContentAlignment.MiddleLeft,
-            Format = "dd/MM/yy HH:mm"
-        };
-
-        private static DataGridViewCellStyle _styleDayAndTime = new DataGridViewCellStyle(_styleBase) {
-            Alignment = DataGridViewContentAlignment.MiddleLeft,
-            Format = "dd/MM HH:mm"
-        };
-
-        private static DataGridViewCellStyle _styleCurrency = new DataGridViewCellStyle(_styleBase) {
-            Alignment = DataGridViewContentAlignment.MiddleRight,
-            Format = "N2"
-        };
-
-        private static DataGridViewCellStyle _styleInteger = new DataGridViewCellStyle(_styleBase) {
-            Alignment = DataGridViewContentAlignment.MiddleRight,
-            Format = "N0"
-        };
-
-        private static DataGridViewCellStyle _stylePercent = new DataGridViewCellStyle(_styleBase) {
-            Alignment = DataGridViewContentAlignment.MiddleRight,
-            Format = @"0.00%"
-        };
-
-        private static DataGridViewCellStyle _styleTrend = new DataGridViewCellStyle(_styleBase) {
-            Alignment = DataGridViewContentAlignment.MiddleCenter,
-            Font = new Font("Wingdings", 10)
-        };
-
-        private static DataGridViewCellStyle _styleTrendAlternate = new DataGridViewCellStyle(_styleAlternate) {
-            Alignment = DataGridViewContentAlignment.MiddleCenter,
-            Font = new Font("Wingdings", 10)
-        };
-        public static DataGridViewCellStyle StyleHeader => _styleHeader;
-        public static DataGridViewCellStyle StyleBase => _styleBase;
-        public static DataGridViewCellStyle StyleTotal => _styleTotal;
-        public static DataGridViewCellStyle StyleAlternate => _styleAlternate;
-        public static DataGridViewCellStyle StyleNegative => _styleNegative;
-        public static DataGridViewCellStyle StyleDate => _styleDate;
 
         public static DataGridViewCellStyle StyleNumber(int decimais) {
-            return new DataGridViewCellStyle(_styleBase) {
+            return new DataGridViewCellStyle(StyleBase) {
                 Alignment = DataGridViewContentAlignment.MiddleRight,
                 Format = $"N{decimais}"
             };
         }
 
-        public static DataGridViewCellStyle StyleDateTime => _styleDateTime;
-        public static DataGridViewCellStyle StyleDateTimeShort => _styleDateTimeShort;
-        public static DataGridViewCellStyle StyleDayAndTime => _styleDayAndTime;
-        public static DataGridViewCellStyle StyleCurrency => _styleCurrency;
-        public static DataGridViewCellStyle StyleInteger => _styleInteger;
-        public static DataGridViewCellStyle StylePercent => _stylePercent;
-        public static DataGridViewCellStyle StyleTrend => _styleTrend;
-        public static DataGridViewCellStyle StyleTrendAlternate => _styleTrendAlternate;
+        public static DataGridViewCellStyle StyleDateTime { get; } = new DataGridViewCellStyle(StyleBase) {
+            Alignment = DataGridViewContentAlignment.MiddleLeft,
+            Format = "dd/MM/yyyy HH:mm"
+        };
+
+        public static DataGridViewCellStyle StyleDateTimeShort { get; } = new DataGridViewCellStyle(StyleBase) {
+            Alignment = DataGridViewContentAlignment.MiddleLeft,
+            Format = "dd/MM/yy HH:mm"
+        };
+
+        public static DataGridViewCellStyle StyleDayAndTime { get; } = new DataGridViewCellStyle(StyleBase) {
+            Alignment = DataGridViewContentAlignment.MiddleLeft,
+            Format = "dd/MM HH:mm"
+        };
+
+        public static DataGridViewCellStyle StyleCurrency { get; } = new DataGridViewCellStyle(StyleBase) {
+            Alignment = DataGridViewContentAlignment.MiddleRight,
+            Format = "N2"
+        };
+
+        public static DataGridViewCellStyle StyleInteger { get; } = new DataGridViewCellStyle(StyleBase) {
+            Alignment = DataGridViewContentAlignment.MiddleRight,
+            Format = "N0"
+        };
+
+        public static DataGridViewCellStyle StylePercent { get; } = new DataGridViewCellStyle(StyleBase) {
+            Alignment = DataGridViewContentAlignment.MiddleRight,
+            Format = @"0.00%"
+        };
+
+        public static DataGridViewCellStyle StyleTrend { get; } = new DataGridViewCellStyle(StyleBase) {
+            Alignment = DataGridViewContentAlignment.MiddleCenter,
+            Font = new Font("Wingdings", 10)
+        };
+
+        public static DataGridViewCellStyle StyleTrendAlternate { get; } = new DataGridViewCellStyle(StyleAlternate) {
+            Alignment = DataGridViewContentAlignment.MiddleCenter,
+            Font = new Font("Wingdings", 10)
+        };
 
         public static DataGridViewCellStyle StyleAsTotal(DataGridViewCellStyle style) {
             return new DataGridViewCellStyle(style) {
@@ -122,17 +111,17 @@ namespace GridAndChartStyleLibrary {
                     dgv.Columns.RemoveAt(dgv.ColumnCount - 1);
                 }
             }
-            dgv.AlternatingRowsDefaultCellStyle = _styleAlternate;
+            dgv.AlternatingRowsDefaultCellStyle = StyleAlternate;
             dgv.BackgroundColor = Color.Black;
             dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgv.ColumnHeadersDefaultCellStyle = _styleHeader;
+            dgv.ColumnHeadersDefaultCellStyle = StyleHeader;
             dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv.EnableHeadersVisualStyles = false;
             dgv.GridColor = Color.FromArgb(255, 64, 64, 64);
             dgv.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgv.RowHeadersDefaultCellStyle = _styleHeader;
+            dgv.RowHeadersDefaultCellStyle = StyleHeader;
             dgv.RowHeadersWidth = 20;
-            dgv.DefaultCellStyle = _styleBase;
+            dgv.DefaultCellStyle = StyleBase;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             foreach (DataGridViewColumn col in dgv.Columns) {
                 col.Width = col.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
@@ -144,12 +133,12 @@ namespace GridAndChartStyleLibrary {
             while (dgvTotal.ColumnCount > dgvDetails.ColumnCount) {
                 dgvTotal.Columns.RemoveAt(dgvTotal.ColumnCount - 1);
             }
-            dgvTotal.DefaultCellStyle = _styleBase;
+            dgvTotal.DefaultCellStyle = StyleBase;
             CloneGrid(dgvDetails, dgvTotal, true);
             dgvTotal.ColumnHeadersVisible = false;
             dgvTotal.EnableHeadersVisualStyles = false;
             dgvTotal.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgvTotal.RowHeadersDefaultCellStyle = _styleHeader;
+            dgvTotal.RowHeadersDefaultCellStyle = StyleHeader;
             dgvTotal.SelectionMode = DataGridViewSelectionMode.CellSelect;
         }
 
