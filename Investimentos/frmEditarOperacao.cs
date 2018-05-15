@@ -37,7 +37,7 @@ namespace Investimentos {
                 nudQtd.Value = Operacao.Qtd;
                 nudValorNominal.Value = Operacao.Valor;
                 nudValorReal.Value = Operacao.ValorReal;
-                nudImpostos.Value = Operacao.Impostos;
+                nudCustoOperacao.Value = Operacao.CustoOperacao;
                 Text = @"Editar Operação";
             }
             comboBoxAtivo.SelectedValue = Operacao.Codigo;
@@ -53,7 +53,7 @@ namespace Investimentos {
             Operacao.Qtd = (int)nudQtd.Value;
             Operacao.Valor = nudValorNominal.Value;
             Operacao.ValorReal = nudValorReal.Value;
-            Operacao.Impostos = nudImpostos.Value;
+            // Operacao.CustoOperacao = nudCustoOperacao.Value;
         }
 
         private void combos_ValueChanged(object sender, EventArgs e) {

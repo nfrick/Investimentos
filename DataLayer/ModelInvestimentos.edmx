@@ -50,7 +50,6 @@
           <Property Name="Qtd" Type="int" Nullable="false" />
           <Property Name="Valor" Type="smallmoney" Nullable="false" />
           <Property Name="ValorReal" Type="smallmoney" Nullable="false" />
-          <Property Name="Impostos" Type="smallmoney" Nullable="false" />
         </EntityType>
         <EntityType Name="tbOperacoesTipos">
           <Key>
@@ -272,6 +271,18 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tbFundosMeses_tbFundos">
+          <End Role="tbFundos" Type="Self.tbFundos" Multiplicity="1" />
+          <End Role="tbFundosMeses" Type="Self.tbFundosMeses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbFundos">
+              <PropertyRef Name="FundoId" />
+            </Principal>
+            <Dependent Role="tbFundosMeses">
+              <PropertyRef Name="FundoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbLCA_tbContas">
           <End Role="tbContas" Type="Self.tbContas" Multiplicity="1" />
           <End Role="tbLCA" Type="Self.tbLCA" Multiplicity="*" />
@@ -329,18 +340,6 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             </Principal>
             <Dependent Role="tbOperacoes">
               <PropertyRef Name="TipoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbResultados_tbFundos">
-          <End Role="tbFundos" Type="Self.tbFundos" Multiplicity="1" />
-          <End Role="tbFundosMeses" Type="Self.tbFundosMeses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbFundos">
-              <PropertyRef Name="FundoId" />
-            </Principal>
-            <Dependent Role="tbFundosMeses">
-              <PropertyRef Name="FundoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -420,6 +419,10 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <End Role="tbOperacoes" EntitySet="tbOperacoes" />
             <End Role="tbEntradas" EntitySet="tbEntradas" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbFundosMeses_tbFundos" Association="Self.FK_tbFundosMeses_tbFundos">
+            <End Role="tbFundos" EntitySet="tbFundos" />
+            <End Role="tbFundosMeses" EntitySet="tbFundosMeses" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbLCA_tbContas" Association="Self.FK_tbLCA_tbContas">
             <End Role="tbContas" EntitySet="tbContas" />
             <End Role="tbLCA" EntitySet="tbLCA" />
@@ -439,10 +442,6 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <AssociationSet Name="FK_tbOperacoes_tbOperacoesTipos" Association="Self.FK_tbOperacoes_tbOperacoesTipos">
             <End Role="tbOperacoesTipos" EntitySet="tbOperacoesTipos" />
             <End Role="tbOperacoes" EntitySet="tbOperacoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbResultados_tbFundos" Association="Self.FK_tbResultados_tbFundos">
-            <End Role="tbFundos" EntitySet="tbFundos" />
-            <End Role="tbFundosMeses" EntitySet="tbFundosMeses" />
           </AssociationSet>
           <AssociationSet Name="FK_tbSaidas2_tbOperacoes2" Association="Self.FK_tbSaidas2_tbOperacoes2">
             <End Role="tbOperacoes" EntitySet="tbOperacoes" />
@@ -625,7 +624,6 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
           <Property Name="ValorReal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <NavigationProperty Name="OperacaoTipo" Relationship="InvestimentosModel.FK_tbOperacoes_tbOperacoesTipos" FromRole="tbOperaco" ToRole="OperacaoTipo" />
           <NavigationProperty Name="AtivoDaConta" Relationship="InvestimentosModel.AtivoDaContaOperacao" FromRole="Operacao" ToRole="AtivoDaConta" />
-          <Property Name="Impostos" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
         </EntityType>
         <Association Name="FK_tbOperacoes_tbOperacoesTipos">
           <End Type="InvestimentosModel.OperacaoTipo" Role="OperacaoTipo" Multiplicity="1" />
@@ -1043,7 +1041,6 @@ warning 6002: The table/view 'Investimentos2.dbo.vwAtivos' does not have a prima
             <EntityTypeMapping TypeName="IsTypeOf(InvestimentosModel.Operacao)">
               <MappingFragment StoreEntitySet="tbOperacoes">
                 <ScalarProperty Name="Qtd" ColumnName="Qtd" />
-                <ScalarProperty Name="Impostos" ColumnName="Impostos" />
                 <ScalarProperty Name="OperacaoId" ColumnName="OperacaoId" />
                 <ScalarProperty Name="ValorReal" ColumnName="ValorReal" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />

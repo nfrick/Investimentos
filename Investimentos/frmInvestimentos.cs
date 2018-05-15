@@ -36,12 +36,13 @@ namespace Investimentos {
             GridStyles.FormatColumns(dgvAtivos, GridStyles.StyleCurrency, 80, 3);
 
             GridStyles.FormatGrid(dgvOperacoes);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleDateTimeShort, 85, 1);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 55, 3, 4);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 60, 5, 6, 8, 9);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 80, 7);
+            dgvOperacoes.Columns[2].Width = 150;
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleDateTimeShort, 75, 1);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 60, 3, 4);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 70, 5, 6, 8);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 85, 7);
 
-            GridStyles.FormatGrid(dgvVendas, 14);
+            GridStyles.FormatGrid(dgvVendas, 13);
             dgvVendas.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
             GridStyles.FormatColumns(dgvVendas, GridStyles.StyleInteger, 75, 2, 3, 4, 6, 7);
             GridStyles.FormatColumns(dgvVendas, GridStyles.StyleCurrency, 80, 5, 8, 9, 10);
@@ -160,7 +161,7 @@ namespace Investimentos {
             toolStripButtonSalvar.Text = $" Salvar {alts} alteraç" + (alts == 1 ? "ão" : "ões");
         }
 
-        private void dataGridViewOperacoes_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
+        private void dgvOperacoes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
             var op = (Operacao)dgvOperacoes.SelectedRows[0].DataBoundItem;
             var frm = GetFrmEditarOperacao(op);
             if (frm.ShowDialog() == DialogResult.Cancel) return;
@@ -175,7 +176,7 @@ namespace Investimentos {
                 row.DefaultCellStyle.ForeColor = Color.Orange;
         }
 
-        private void dataGridViewVendas_CellButtonClick(DataGridView sender, DataGridViewCellEventArgs e) {
+        private void dgvVendas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
             var frm = new frmAssociarCompraComVenda {
                 Saida = (Saida)dgvVendas.SelectedRows[0].DataBoundItem,
                 eds = entityDataSource1

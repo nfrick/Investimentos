@@ -32,7 +32,7 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.labelImpostos = new System.Windows.Forms.Label();
-            this.nudImpostos = new System.Windows.Forms.NumericUpDown();
+            this.nudCustoOperacao = new System.Windows.Forms.NumericUpDown();
             this.labelReal = new System.Windows.Forms.Label();
             this.labelQtdReal = new System.Windows.Forms.Label();
             this.nudValorReal = new System.Windows.Forms.NumericUpDown();
@@ -41,7 +41,7 @@
             this.nudValorNominal = new System.Windows.Forms.NumericUpDown();
             this.textBoxTotalNominal = new System.Windows.Forms.TextBox();
             this.textBoxTotalReal = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.nudImpostos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCustoOperacao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudValorNominal)).BeginInit();
@@ -144,20 +144,22 @@
             this.labelImpostos.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelImpostos.Location = new System.Drawing.Point(18, 241);
             this.labelImpostos.Name = "labelImpostos";
-            this.labelImpostos.Size = new System.Drawing.Size(80, 23);
+            this.labelImpostos.Size = new System.Drawing.Size(101, 23);
             this.labelImpostos.TabIndex = 15;
-            this.labelImpostos.Text = "Impostos";
+            this.labelImpostos.Text = "Custo Oper.";
             // 
-            // nudImpostos
+            // nudCustoOperacao
             // 
-            this.nudImpostos.DecimalPlaces = 2;
-            this.nudImpostos.Location = new System.Drawing.Point(144, 237);
-            this.nudImpostos.Name = "nudImpostos";
-            this.nudImpostos.Size = new System.Drawing.Size(139, 30);
-            this.nudImpostos.TabIndex = 6;
-            this.nudImpostos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nudImpostos.ThousandsSeparator = true;
-            this.nudImpostos.Enter += new System.EventHandler(this.numericUpDown_Enter);
+            this.nudCustoOperacao.DecimalPlaces = 2;
+            this.nudCustoOperacao.Enabled = false;
+            this.nudCustoOperacao.Location = new System.Drawing.Point(144, 237);
+            this.nudCustoOperacao.Name = "nudCustoOperacao";
+            this.nudCustoOperacao.ReadOnly = true;
+            this.nudCustoOperacao.Size = new System.Drawing.Size(139, 30);
+            this.nudCustoOperacao.TabIndex = 6;
+            this.nudCustoOperacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudCustoOperacao.ThousandsSeparator = true;
+            this.nudCustoOperacao.Enter += new System.EventHandler(this.numericUpDown_Enter);
             // 
             // labelReal
             // 
@@ -276,7 +278,7 @@
             this.Controls.Add(this.nudValorReal);
             this.Controls.Add(this.nudQtd);
             this.Controls.Add(this.labelImpostos);
-            this.Controls.Add(this.nudImpostos);
+            this.Controls.Add(this.nudCustoOperacao);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.labelData);
@@ -295,7 +297,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar/Editar Operação";
             this.Load += new System.EventHandler(this.EditarOperacao_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nudImpostos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCustoOperacao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudValorReal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQtd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudValorNominal)).EndInit();
@@ -315,7 +317,7 @@
         private System.Windows.Forms.Button buttonCancelar;
         public System.Windows.Forms.ComboBox comboBoxOperacao;
         private System.Windows.Forms.Label labelImpostos;
-        private System.Windows.Forms.NumericUpDown nudImpostos;
+        private System.Windows.Forms.NumericUpDown nudCustoOperacao;
         private System.Windows.Forms.Label labelReal;
         private System.Windows.Forms.Label labelQtdReal;
         private System.Windows.Forms.NumericUpDown nudValorReal;
