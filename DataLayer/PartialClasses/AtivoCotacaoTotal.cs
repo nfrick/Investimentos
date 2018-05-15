@@ -30,23 +30,22 @@ namespace DataLayer {
         }
         public AtivoCotacaoTotal(IReadOnlyCollection<AtivoCotacao> cotacoes) {
             Col0 = "TOTAL";
-            Col4 = cotacoes.Sum(c => c.Patrimonio);
-            Col6 = cotacoes.Sum(c => c.LucroReal);
-            Col8 = cotacoes.Sum(c => c.LucroImediato);
+            Col10 = cotacoes.Sum(c => c.Patrimonio);
+            Col12 = cotacoes.Sum(c => c.LucroReal);
+            Col14 = cotacoes.Sum(c => c.LucroImediato);
 
             Col1 = null;
             Col2 = null;
             Col3 = null;
+            Col4 = null;
             Col5 = null;
+            Col6 = null;
             Col7 = null;
+            Col8 = null;
             Col9 = null;
-            Col10 = null;
             Col11 = null;
-            Col12 = null;
             Col13 = null;
-            Col14 = null;
-            Col15 = null;
-            Col16 = null;
+
         }
     }
 }

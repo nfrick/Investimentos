@@ -31,15 +31,30 @@ namespace Cotacoes {
         private void frmCotacoes_Load(object sender, EventArgs e) {
             GridStyles.FormatGrid(dgvCotacoes);
             dgvCotacoes.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
-            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleInteger, 65, 1, 7);
-            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleCurrency, 80, 3, 5);
-            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleCurrency, 85, 4, 6, 8);
-            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleDayAndTime, 100, 9);
-            GridStyles.FormatColumns(dgvCotacoes, 11, 16, GridStyles.StyleCurrency, 80);
 
-            dgvCotacoes.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //0    Ativo
+            //1    Data
+            //2    seta
+            //3    Last Trade
+            //4    prev Close
+            //5    Change %
+            //6    Open
+            //7    Day Low
+            //8    Day High
+            //9    Qtd Total
+            //10   Patrimonio*
+            //11   VM Compra
+            //12   Lucro real*
+            //13   Qtd vendavel
+            //14   Lucro imediato*
+
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleDayAndTime, 100, 1);
+            dgvCotacoes.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleTrend, 20, 2);
-            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StylePercent, 65, 13);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StylePercent, 65, 5);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleInteger, 65, 9, 13);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleCurrency, 80, 3, 4, 6, 7, 8, 11);
+            GridStyles.FormatColumns(dgvCotacoes, GridStyles.StyleCurrency, 85, 10, 12, 14);
 
             GridStyles.FormatGridAsTotal(dgvTotal, dgvCotacoes);
 
@@ -277,6 +292,15 @@ namespace Cotacoes {
             botao.Enabled = true;
         }
 
+        private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
+            OFD.DefaultExt = "csv";
+            OFD.Filter = @"CSV iles|*.csv";
+            OFD.Multiselect = true;
+            if (OFD.ShowDialog() != DialogResult.OK) return;
+            foreach (var fileName in OFD.FileNames)
+                FinanceData.AtualizarPorExtrato(fileName);
+        }
+
         #endregion TOOLBAR
 
         #region DATAGRIDVIEW
@@ -289,13 +313,12 @@ namespace Cotacoes {
                     var s = cell.Value as string;
                     cell.Style.ForeColor = s == AtivoCotacao.TrendUp ? Color.LightGreen : (s == AtivoCotacao.TrendDown ? Color.OrangeRed : Color.Gray);
                     break;
-                case 3 when acao.AlertaVenda < 1.004m:
+                case 3 when acao.AlertaVenda < 1.004m: // Last Trade
                     cell.Style.ForeColor = Color.White;
                     cell.Style.BackColor = acao.AlertaVenda < 1.002m ? Color.Tomato : Color.Goldenrod;
                     break;
-                case 6:
-                case 12:
-                case 13:
+                case 5: // Change %
+                case 12: // Lucro Real
                     cell.Style.ForeColor = Convert.ToDecimal(cell.Value) < 0 ? Color.OrangeRed : forecolor;
                     break;
             }
@@ -320,13 +343,5 @@ namespace Cotacoes {
 
         #endregion DATAGRIDVIEW
 
-        private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
-            OFD.DefaultExt = "csv";
-            OFD.Filter = @"CSV iles|*.csv";
-            OFD.Multiselect = true;
-            if (OFD.ShowDialog() != DialogResult.OK) return;
-            foreach(var fileName in OFD.FileNames)
-                FinanceData.AtualizarPorExtrato(fileName);
-        }
     }
 }
