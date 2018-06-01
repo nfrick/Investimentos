@@ -86,7 +86,7 @@ namespace Investimentos {
             // RESUMO
             GridStyles.FormatGrid(dgvResumoAcoes);
             GridStyles.FormatGrid(dgvResumoFundos);
-            dgvResumoAcoes.Columns[0].Width = 130;
+            dgvResumoAcoes.Columns[0].Width = dgvResumoFundos.Columns[0].Width = 130;
             GridStyles.FormatColumns(dgvResumoAcoes, GridStyles.StyleCurrency, 90, 1);
             GridStyles.FormatColumns(dgvResumoFundos, GridStyles.StyleCurrency, 90, 1);
             dgvResumoAcoes.SelectionMode =

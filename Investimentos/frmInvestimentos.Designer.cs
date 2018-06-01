@@ -29,24 +29,37 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title13 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title14 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title15 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvestimentos));
             this.tlpAcoes = new System.Windows.Forms.TableLayoutPanel();
             this.dgvVendas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
+            this.operacaoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdAntesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdAcumuladaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdAssociadaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdPendenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorMedioCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorMedioCompraRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lucroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lucroRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entityDataSource1 = new EFWinforms.EntityDataSource(this.components);
             this.dgvFundos = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.fundoNomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -131,13 +144,7 @@
             this.valorAtualDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageResumo = new System.Windows.Forms.TabPage();
             this.tlpResumo = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvResumoAcoes = new System.Windows.Forms.DataGridView();
-            this.itemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceAcoes = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvResumoFundos = new System.Windows.Forms.DataGridView();
-            this.itemDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceFundos = new System.Windows.Forms.BindingSource(this.components);
             this.chartResumoAcoes = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartResumoFundos = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -161,19 +168,16 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.operacaoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdAntesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdAcumuladaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdAssociadaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdPendenteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorMedioCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorMedioCompraRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lucroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lucroRealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvResumoFundos = new System.Windows.Forms.DataGridView();
+            this.itemDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvResumoAcoes = new System.Windows.Forms.DataGridView();
+            this.itemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tlpAcoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFundos)).BeginInit();
@@ -199,14 +203,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMovimentos)).BeginInit();
             this.tabPageResumo.SuspendLayout();
             this.tlpResumo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAcoes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResumoFundos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFundos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoAcoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoFundos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoTotal)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResumoFundos)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpAcoes
@@ -262,6 +268,98 @@
             this.dgvVendas.Tag = "9";
             this.dgvVendas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
             this.dgvVendas.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVendas_CellMouseDoubleClick);
+            // 
+            // operacaoIdDataGridViewTextBoxColumn
+            // 
+            this.operacaoIdDataGridViewTextBoxColumn.DataPropertyName = "OperacaoId";
+            this.operacaoIdDataGridViewTextBoxColumn.HeaderText = "OperacaoId";
+            this.operacaoIdDataGridViewTextBoxColumn.Name = "operacaoIdDataGridViewTextBoxColumn";
+            this.operacaoIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataDataGridViewTextBoxColumn
+            // 
+            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // qtdAntesDataGridViewTextBoxColumn
+            // 
+            this.qtdAntesDataGridViewTextBoxColumn.DataPropertyName = "QtdAntes";
+            this.qtdAntesDataGridViewTextBoxColumn.HeaderText = "Antes";
+            this.qtdAntesDataGridViewTextBoxColumn.Name = "qtdAntesDataGridViewTextBoxColumn";
+            this.qtdAntesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdDataGridViewTextBoxColumn
+            // 
+            this.qtdDataGridViewTextBoxColumn.DataPropertyName = "Qtd";
+            this.qtdDataGridViewTextBoxColumn.HeaderText = "Venda";
+            this.qtdDataGridViewTextBoxColumn.Name = "qtdDataGridViewTextBoxColumn";
+            this.qtdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdAcumuladaDataGridViewTextBoxColumn
+            // 
+            this.qtdAcumuladaDataGridViewTextBoxColumn.DataPropertyName = "QtdAcumulada";
+            this.qtdAcumuladaDataGridViewTextBoxColumn.HeaderText = "Depois";
+            this.qtdAcumuladaDataGridViewTextBoxColumn.Name = "qtdAcumuladaDataGridViewTextBoxColumn";
+            this.qtdAcumuladaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorDataGridViewTextBoxColumn
+            // 
+            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
+            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorRealDataGridViewTextBoxColumn
+            // 
+            this.valorRealDataGridViewTextBoxColumn.DataPropertyName = "ValorReal";
+            this.valorRealDataGridViewTextBoxColumn.HeaderText = "Valor Real";
+            this.valorRealDataGridViewTextBoxColumn.Name = "valorRealDataGridViewTextBoxColumn";
+            this.valorRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdAssociadaDataGridViewTextBoxColumn
+            // 
+            this.qtdAssociadaDataGridViewTextBoxColumn.DataPropertyName = "QtdAssociada";
+            this.qtdAssociadaDataGridViewTextBoxColumn.HeaderText = "Compras";
+            this.qtdAssociadaDataGridViewTextBoxColumn.Name = "qtdAssociadaDataGridViewTextBoxColumn";
+            this.qtdAssociadaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtdPendenteDataGridViewTextBoxColumn
+            // 
+            this.qtdPendenteDataGridViewTextBoxColumn.DataPropertyName = "QtdPendente";
+            this.qtdPendenteDataGridViewTextBoxColumn.HeaderText = "Pendente";
+            this.qtdPendenteDataGridViewTextBoxColumn.Name = "qtdPendenteDataGridViewTextBoxColumn";
+            this.qtdPendenteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorMedioCompraDataGridViewTextBoxColumn
+            // 
+            this.valorMedioCompraDataGridViewTextBoxColumn.DataPropertyName = "ValorMedioCompra";
+            this.valorMedioCompraDataGridViewTextBoxColumn.HeaderText = "VM Compra";
+            this.valorMedioCompraDataGridViewTextBoxColumn.Name = "valorMedioCompraDataGridViewTextBoxColumn";
+            this.valorMedioCompraDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorMedioCompraRealDataGridViewTextBoxColumn
+            // 
+            this.valorMedioCompraRealDataGridViewTextBoxColumn.DataPropertyName = "ValorMedioCompraReal";
+            this.valorMedioCompraRealDataGridViewTextBoxColumn.HeaderText = "VM Real";
+            this.valorMedioCompraRealDataGridViewTextBoxColumn.Name = "valorMedioCompraRealDataGridViewTextBoxColumn";
+            this.valorMedioCompraRealDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lucroDataGridViewTextBoxColumn
+            // 
+            this.lucroDataGridViewTextBoxColumn.DataPropertyName = "Lucro";
+            this.lucroDataGridViewTextBoxColumn.HeaderText = "Lucro";
+            this.lucroDataGridViewTextBoxColumn.Name = "lucroDataGridViewTextBoxColumn";
+            this.lucroDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lucroRealDataGridViewTextBoxColumn
+            // 
+            this.lucroRealDataGridViewTextBoxColumn.DataPropertyName = "LucroReal";
+            this.lucroRealDataGridViewTextBoxColumn.HeaderText = "Lucro Real";
+            this.lucroRealDataGridViewTextBoxColumn.Name = "lucroRealDataGridViewTextBoxColumn";
+            this.lucroRealDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // entityDataSource1
             // 
@@ -424,10 +522,10 @@
             this.dgvOperacoes.MultiSelect = false;
             this.dgvOperacoes.Name = "dgvOperacoes";
             this.dgvOperacoes.ReadOnly = true;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvOperacoes.RowHeadersWidth = 25;
             this.dgvOperacoes.RowTemplate.Height = 24;
             this.dgvOperacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -521,10 +619,10 @@
             this.dgvAtivos.MultiSelect = false;
             this.dgvAtivos.Name = "dgvAtivos";
             this.dgvAtivos.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvAtivos.RowHeadersWidth = 25;
             this.dgvAtivos.RowTemplate.Height = 24;
             this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -733,8 +831,8 @@
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "Mes";
-            dataGridViewCellStyle19.Format = "MMM-yyyy";
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Format = "MMM-yyyy";
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn16.HeaderText = "Mes";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -937,9 +1035,9 @@
             // lCADataGridViewTextBoxColumn
             // 
             this.lCADataGridViewTextBoxColumn.DataPropertyName = "Mes";
-            dataGridViewCellStyle20.Format = "MMM yyyy";
-            dataGridViewCellStyle20.NullValue = null;
-            this.lCADataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.Format = "MMM yyyy";
+            dataGridViewCellStyle8.NullValue = null;
+            this.lCADataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.lCADataGridViewTextBoxColumn.HeaderText = "Mês";
             this.lCADataGridViewTextBoxColumn.Name = "lCADataGridViewTextBoxColumn";
             this.lCADataGridViewTextBoxColumn.ReadOnly = true;
@@ -1097,11 +1195,11 @@
             this.tlpResumo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 260F));
             this.tlpResumo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpResumo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpResumo.Controls.Add(this.dgvResumoAcoes, 0, 0);
-            this.tlpResumo.Controls.Add(this.dgvResumoFundos, 0, 1);
             this.tlpResumo.Controls.Add(this.chartResumoAcoes, 1, 0);
             this.tlpResumo.Controls.Add(this.chartResumoFundos, 1, 1);
             this.tlpResumo.Controls.Add(this.chartResumoTotal, 2, 0);
+            this.tlpResumo.Controls.Add(this.tableLayoutPanel1, 0, 1);
+            this.tlpResumo.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tlpResumo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpResumo.Location = new System.Drawing.Point(3, 3);
             this.tlpResumo.Name = "tlpResumo";
@@ -1111,75 +1209,9 @@
             this.tlpResumo.Size = new System.Drawing.Size(1043, 582);
             this.tlpResumo.TabIndex = 0;
             // 
-            // dgvResumoAcoes
-            // 
-            this.dgvResumoAcoes.AllowUserToAddRows = false;
-            this.dgvResumoAcoes.AllowUserToDeleteRows = false;
-            this.dgvResumoAcoes.AutoGenerateColumns = false;
-            this.dgvResumoAcoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResumoAcoes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.itemDataGridViewTextBoxColumn,
-            this.valorDataGridViewTextBoxColumn1});
-            this.dgvResumoAcoes.DataSource = this.bindingSourceAcoes;
-            this.dgvResumoAcoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvResumoAcoes.Location = new System.Drawing.Point(3, 3);
-            this.dgvResumoAcoes.Name = "dgvResumoAcoes";
-            this.dgvResumoAcoes.ReadOnly = true;
-            this.dgvResumoAcoes.RowTemplate.Height = 24;
-            this.dgvResumoAcoes.Size = new System.Drawing.Size(254, 285);
-            this.dgvResumoAcoes.TabIndex = 0;
-            this.dgvResumoAcoes.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvResumo_ColumnWidthChanged);
-            // 
-            // itemDataGridViewTextBoxColumn
-            // 
-            this.itemDataGridViewTextBoxColumn.DataPropertyName = "Item";
-            this.itemDataGridViewTextBoxColumn.HeaderText = "Item";
-            this.itemDataGridViewTextBoxColumn.Name = "itemDataGridViewTextBoxColumn";
-            this.itemDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valorDataGridViewTextBoxColumn1
-            // 
-            this.valorDataGridViewTextBoxColumn1.DataPropertyName = "Valor";
-            this.valorDataGridViewTextBoxColumn1.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn1.Name = "valorDataGridViewTextBoxColumn1";
-            this.valorDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
             // bindingSourceAcoes
             // 
             this.bindingSourceAcoes.DataSource = typeof(DataLayer.Patrimonio);
-            // 
-            // dgvResumoFundos
-            // 
-            this.dgvResumoFundos.AllowUserToAddRows = false;
-            this.dgvResumoFundos.AllowUserToDeleteRows = false;
-            this.dgvResumoFundos.AutoGenerateColumns = false;
-            this.dgvResumoFundos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResumoFundos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.itemDataGridViewTextBoxColumn1,
-            this.valorDataGridViewTextBoxColumn3});
-            this.dgvResumoFundos.DataSource = this.bindingSourceFundos;
-            this.dgvResumoFundos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvResumoFundos.Location = new System.Drawing.Point(3, 294);
-            this.dgvResumoFundos.Name = "dgvResumoFundos";
-            this.dgvResumoFundos.ReadOnly = true;
-            this.dgvResumoFundos.RowTemplate.Height = 24;
-            this.dgvResumoFundos.Size = new System.Drawing.Size(254, 285);
-            this.dgvResumoFundos.TabIndex = 1;
-            this.dgvResumoFundos.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvResumo_ColumnWidthChanged);
-            // 
-            // itemDataGridViewTextBoxColumn1
-            // 
-            this.itemDataGridViewTextBoxColumn1.DataPropertyName = "Item";
-            this.itemDataGridViewTextBoxColumn1.HeaderText = "Item";
-            this.itemDataGridViewTextBoxColumn1.Name = "itemDataGridViewTextBoxColumn1";
-            this.itemDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // valorDataGridViewTextBoxColumn3
-            // 
-            this.valorDataGridViewTextBoxColumn3.DataPropertyName = "Valor";
-            this.valorDataGridViewTextBoxColumn3.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn3.Name = "valorDataGridViewTextBoxColumn3";
-            this.valorDataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // bindingSourceFundos
             // 
@@ -1188,92 +1220,92 @@
             // chartResumoAcoes
             // 
             this.chartResumoAcoes.BackColor = System.Drawing.Color.Transparent;
-            chartArea13.BackColor = System.Drawing.Color.DimGray;
-            chartArea13.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea13.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea13.Name = "ChartArea1";
-            this.chartResumoAcoes.ChartAreas.Add(chartArea13);
+            chartArea4.BackColor = System.Drawing.Color.DimGray;
+            chartArea4.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea4.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea4.Name = "ChartArea1";
+            this.chartResumoAcoes.ChartAreas.Add(chartArea4);
             this.chartResumoAcoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend13.BackColor = System.Drawing.Color.Transparent;
-            legend13.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend13.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend13.ForeColor = System.Drawing.Color.White;
-            legend13.IsTextAutoFit = false;
-            legend13.Name = "Legend1";
-            this.chartResumoAcoes.Legends.Add(legend13);
+            legend4.BackColor = System.Drawing.Color.Transparent;
+            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend4.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend4.ForeColor = System.Drawing.Color.White;
+            legend4.IsTextAutoFit = false;
+            legend4.Name = "Legend1";
+            this.chartResumoAcoes.Legends.Add(legend4);
             this.chartResumoAcoes.Location = new System.Drawing.Point(263, 3);
             this.chartResumoAcoes.Name = "chartResumoAcoes";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series9.Color = System.Drawing.Color.Transparent;
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.chartResumoAcoes.Series.Add(series9);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Color = System.Drawing.Color.Transparent;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartResumoAcoes.Series.Add(series3);
             this.chartResumoAcoes.Size = new System.Drawing.Size(385, 285);
             this.chartResumoAcoes.TabIndex = 2;
             this.chartResumoAcoes.Text = "chart2";
-            title13.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title13.ForeColor = System.Drawing.Color.White;
-            title13.Name = "Title1";
-            title13.Text = "AAA";
-            this.chartResumoAcoes.Titles.Add(title13);
+            title4.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title4.ForeColor = System.Drawing.Color.White;
+            title4.Name = "Title1";
+            title4.Text = "AAA";
+            this.chartResumoAcoes.Titles.Add(title4);
             // 
             // chartResumoFundos
             // 
             this.chartResumoFundos.BackColor = System.Drawing.Color.Transparent;
-            chartArea14.BackColor = System.Drawing.Color.DimGray;
-            chartArea14.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea14.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea14.Name = "ChartArea1";
-            this.chartResumoFundos.ChartAreas.Add(chartArea14);
+            chartArea5.BackColor = System.Drawing.Color.DimGray;
+            chartArea5.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea5.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea5.Name = "ChartArea1";
+            this.chartResumoFundos.ChartAreas.Add(chartArea5);
             this.chartResumoFundos.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend14.BackColor = System.Drawing.Color.Transparent;
-            legend14.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend14.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend14.ForeColor = System.Drawing.Color.White;
-            legend14.IsTextAutoFit = false;
-            legend14.Name = "Legend1";
-            this.chartResumoFundos.Legends.Add(legend14);
+            legend5.BackColor = System.Drawing.Color.Transparent;
+            legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend5.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend5.ForeColor = System.Drawing.Color.White;
+            legend5.IsTextAutoFit = false;
+            legend5.Name = "Legend1";
+            this.chartResumoFundos.Legends.Add(legend5);
             this.chartResumoFundos.Location = new System.Drawing.Point(263, 294);
             this.chartResumoFundos.Name = "chartResumoFundos";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            this.chartResumoFundos.Series.Add(series10);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartResumoFundos.Series.Add(series4);
             this.chartResumoFundos.Size = new System.Drawing.Size(385, 285);
             this.chartResumoFundos.TabIndex = 3;
             this.chartResumoFundos.Text = "chart3";
-            title14.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title14.ForeColor = System.Drawing.Color.White;
-            title14.Name = "Title1";
-            title14.Text = "AAA";
-            this.chartResumoFundos.Titles.Add(title14);
+            title5.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title5.ForeColor = System.Drawing.Color.White;
+            title5.Name = "Title1";
+            title5.Text = "AAA";
+            this.chartResumoFundos.Titles.Add(title5);
             // 
             // chartResumoTotal
             // 
             this.chartResumoTotal.BackColor = System.Drawing.Color.Transparent;
-            chartArea15.BackColor = System.Drawing.Color.DimGray;
-            chartArea15.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea15.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea15.Name = "ChartArea1";
-            this.chartResumoTotal.ChartAreas.Add(chartArea15);
+            chartArea6.BackColor = System.Drawing.Color.DimGray;
+            chartArea6.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea6.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea6.Name = "ChartArea1";
+            this.chartResumoTotal.ChartAreas.Add(chartArea6);
             this.chartResumoTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend15.BackColor = System.Drawing.Color.Transparent;
-            legend15.ForeColor = System.Drawing.Color.White;
-            legend15.Name = "Legend1";
-            this.chartResumoTotal.Legends.Add(legend15);
+            legend6.BackColor = System.Drawing.Color.Transparent;
+            legend6.ForeColor = System.Drawing.Color.White;
+            legend6.Name = "Legend1";
+            this.chartResumoTotal.Legends.Add(legend6);
             this.chartResumoTotal.Location = new System.Drawing.Point(654, 3);
             this.chartResumoTotal.Name = "chartResumoTotal";
             this.tlpResumo.SetRowSpan(this.chartResumoTotal, 2);
             this.chartResumoTotal.Size = new System.Drawing.Size(386, 576);
             this.chartResumoTotal.TabIndex = 4;
             this.chartResumoTotal.Text = "chart4";
-            title15.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title15.ForeColor = System.Drawing.Color.White;
-            title15.Name = "Title1";
-            title15.Text = "AAA";
-            this.chartResumoTotal.Titles.Add(title15);
+            title6.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title6.ForeColor = System.Drawing.Color.White;
+            title6.Name = "Title1";
+            title6.Text = "AAA";
+            this.chartResumoTotal.Titles.Add(title6);
             // 
             // toolStrip1
             // 
@@ -1452,97 +1484,123 @@
             this.OFD.Filter = "Text Files|*.txt";
             this.OFD.Multiselect = true;
             // 
-            // operacaoIdDataGridViewTextBoxColumn
+            // tableLayoutPanel1
             // 
-            this.operacaoIdDataGridViewTextBoxColumn.DataPropertyName = "OperacaoId";
-            this.operacaoIdDataGridViewTextBoxColumn.HeaderText = "OperacaoId";
-            this.operacaoIdDataGridViewTextBoxColumn.Name = "operacaoIdDataGridViewTextBoxColumn";
-            this.operacaoIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.dgvResumoFundos, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 294);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 255F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 285);
+            this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // dataDataGridViewTextBoxColumn
+            // dgvResumoFundos
             // 
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dataDataGridViewTextBoxColumn.Width = 70;
+            this.dgvResumoFundos.AllowUserToAddRows = false;
+            this.dgvResumoFundos.AllowUserToDeleteRows = false;
+            this.dgvResumoFundos.AutoGenerateColumns = false;
+            this.dgvResumoFundos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResumoFundos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.itemDataGridViewTextBoxColumn1,
+            this.valorDataGridViewTextBoxColumn3});
+            this.dgvResumoFundos.DataSource = this.bindingSourceFundos;
+            this.dgvResumoFundos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvResumoFundos.Location = new System.Drawing.Point(3, 28);
+            this.dgvResumoFundos.Name = "dgvResumoFundos";
+            this.dgvResumoFundos.ReadOnly = true;
+            this.dgvResumoFundos.RowTemplate.Height = 24;
+            this.dgvResumoFundos.Size = new System.Drawing.Size(248, 254);
+            this.dgvResumoFundos.TabIndex = 2;
             // 
-            // qtdAntesDataGridViewTextBoxColumn
+            // itemDataGridViewTextBoxColumn1
             // 
-            this.qtdAntesDataGridViewTextBoxColumn.DataPropertyName = "QtdAntes";
-            this.qtdAntesDataGridViewTextBoxColumn.HeaderText = "Antes";
-            this.qtdAntesDataGridViewTextBoxColumn.Name = "qtdAntesDataGridViewTextBoxColumn";
-            this.qtdAntesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.itemDataGridViewTextBoxColumn1.DataPropertyName = "Item";
+            this.itemDataGridViewTextBoxColumn1.HeaderText = "Item";
+            this.itemDataGridViewTextBoxColumn1.Name = "itemDataGridViewTextBoxColumn1";
+            this.itemDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // qtdDataGridViewTextBoxColumn
+            // valorDataGridViewTextBoxColumn3
             // 
-            this.qtdDataGridViewTextBoxColumn.DataPropertyName = "Qtd";
-            this.qtdDataGridViewTextBoxColumn.HeaderText = "Venda";
-            this.qtdDataGridViewTextBoxColumn.Name = "qtdDataGridViewTextBoxColumn";
-            this.qtdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.valorDataGridViewTextBoxColumn3.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn3.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn3.Name = "valorDataGridViewTextBoxColumn3";
+            this.valorDataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // qtdAcumuladaDataGridViewTextBoxColumn
+            // tableLayoutPanel2
             // 
-            this.qtdAcumuladaDataGridViewTextBoxColumn.DataPropertyName = "QtdAcumulada";
-            this.qtdAcumuladaDataGridViewTextBoxColumn.HeaderText = "Depois";
-            this.qtdAcumuladaDataGridViewTextBoxColumn.Name = "qtdAcumuladaDataGridViewTextBoxColumn";
-            this.qtdAcumuladaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.dgvResumoAcoes, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(254, 285);
+            this.tableLayoutPanel2.TabIndex = 6;
             // 
-            // valorDataGridViewTextBoxColumn
+            // dgvResumoAcoes
             // 
-            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
-            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dgvResumoAcoes.AllowUserToAddRows = false;
+            this.dgvResumoAcoes.AllowUserToDeleteRows = false;
+            this.dgvResumoAcoes.AutoGenerateColumns = false;
+            this.dgvResumoAcoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResumoAcoes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.itemDataGridViewTextBoxColumn,
+            this.valorDataGridViewTextBoxColumn1});
+            this.dgvResumoAcoes.DataSource = this.bindingSourceAcoes;
+            this.dgvResumoAcoes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvResumoAcoes.Location = new System.Drawing.Point(3, 28);
+            this.dgvResumoAcoes.Name = "dgvResumoAcoes";
+            this.dgvResumoAcoes.ReadOnly = true;
+            this.dgvResumoAcoes.RowTemplate.Height = 24;
+            this.dgvResumoAcoes.Size = new System.Drawing.Size(248, 254);
+            this.dgvResumoAcoes.TabIndex = 1;
             // 
-            // valorRealDataGridViewTextBoxColumn
+            // itemDataGridViewTextBoxColumn
             // 
-            this.valorRealDataGridViewTextBoxColumn.DataPropertyName = "ValorReal";
-            this.valorRealDataGridViewTextBoxColumn.HeaderText = "Valor Real";
-            this.valorRealDataGridViewTextBoxColumn.Name = "valorRealDataGridViewTextBoxColumn";
-            this.valorRealDataGridViewTextBoxColumn.ReadOnly = true;
+            this.itemDataGridViewTextBoxColumn.DataPropertyName = "Item";
+            this.itemDataGridViewTextBoxColumn.HeaderText = "Item";
+            this.itemDataGridViewTextBoxColumn.Name = "itemDataGridViewTextBoxColumn";
+            this.itemDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // qtdAssociadaDataGridViewTextBoxColumn
+            // valorDataGridViewTextBoxColumn1
             // 
-            this.qtdAssociadaDataGridViewTextBoxColumn.DataPropertyName = "QtdAssociada";
-            this.qtdAssociadaDataGridViewTextBoxColumn.HeaderText = "Compras";
-            this.qtdAssociadaDataGridViewTextBoxColumn.Name = "qtdAssociadaDataGridViewTextBoxColumn";
-            this.qtdAssociadaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.valorDataGridViewTextBoxColumn1.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn1.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn1.Name = "valorDataGridViewTextBoxColumn1";
+            this.valorDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // qtdPendenteDataGridViewTextBoxColumn
+            // label1
             // 
-            this.qtdPendenteDataGridViewTextBoxColumn.DataPropertyName = "QtdPendente";
-            this.qtdPendenteDataGridViewTextBoxColumn.HeaderText = "Pendente";
-            this.qtdPendenteDataGridViewTextBoxColumn.Name = "qtdPendenteDataGridViewTextBoxColumn";
-            this.qtdPendenteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(248, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "AÇÕES";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // valorMedioCompraDataGridViewTextBoxColumn
+            // label2
             // 
-            this.valorMedioCompraDataGridViewTextBoxColumn.DataPropertyName = "ValorMedioCompra";
-            this.valorMedioCompraDataGridViewTextBoxColumn.HeaderText = "VM Compra";
-            this.valorMedioCompraDataGridViewTextBoxColumn.Name = "valorMedioCompraDataGridViewTextBoxColumn";
-            this.valorMedioCompraDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valorMedioCompraRealDataGridViewTextBoxColumn
-            // 
-            this.valorMedioCompraRealDataGridViewTextBoxColumn.DataPropertyName = "ValorMedioCompraReal";
-            this.valorMedioCompraRealDataGridViewTextBoxColumn.HeaderText = "VM Real";
-            this.valorMedioCompraRealDataGridViewTextBoxColumn.Name = "valorMedioCompraRealDataGridViewTextBoxColumn";
-            this.valorMedioCompraRealDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lucroDataGridViewTextBoxColumn
-            // 
-            this.lucroDataGridViewTextBoxColumn.DataPropertyName = "Lucro";
-            this.lucroDataGridViewTextBoxColumn.HeaderText = "Lucro";
-            this.lucroDataGridViewTextBoxColumn.Name = "lucroDataGridViewTextBoxColumn";
-            this.lucroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lucroRealDataGridViewTextBoxColumn
-            // 
-            this.lucroRealDataGridViewTextBoxColumn.DataPropertyName = "LucroReal";
-            this.lucroRealDataGridViewTextBoxColumn.HeaderText = "Lucro Real";
-            this.lucroRealDataGridViewTextBoxColumn.Name = "lucroRealDataGridViewTextBoxColumn";
-            this.lucroRealDataGridViewTextBoxColumn.ReadOnly = true;
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(248, 25);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "FUNDOS e SALDO EM CONTA";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmInvestimentos
             // 
@@ -1587,15 +1645,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMovimentos)).EndInit();
             this.tabPageResumo.ResumeLayout(false);
             this.tlpResumo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAcoes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResumoFundos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFundos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoAcoes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoFundos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoTotal)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResumoFundos)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1661,17 +1723,11 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabelLendoExtrato;
         private System.Windows.Forms.TabPage tabPageResumo;
         private System.Windows.Forms.TableLayoutPanel tlpResumo;
-        private System.Windows.Forms.DataGridView dgvResumoAcoes;
-        private System.Windows.Forms.DataGridView dgvResumoFundos;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartResumoAcoes;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartResumoFundos;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartResumoTotal;
         private System.Windows.Forms.BindingSource bindingSourceAcoes;
         private System.Windows.Forms.BindingSource bindingSourceFundos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn3;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvFundos;
         private System.Windows.Forms.TabPage tabPageLCA;
         private System.Windows.Forms.TableLayoutPanel tlpLCA;
@@ -1734,6 +1790,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn valorMedioCompraRealDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lucroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lucroRealDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataGridView dgvResumoFundos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.DataGridView dgvResumoAcoes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

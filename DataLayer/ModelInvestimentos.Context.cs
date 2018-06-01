@@ -12,6 +12,8 @@ namespace DataLayer
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class InvestimentosEntities : DbContext
     {
@@ -40,5 +42,11 @@ namespace DataLayer
         public virtual DbSet<LCA> LCAs { get; set; }
         public virtual DbSet<LCAMes> LCAMeses { get; set; }
         public virtual DbSet<LCAMovimento> LCAMovimentos { get; set; }
+        public virtual DbSet<SaldoEmConta> SaldosEmConta { get; set; }
+    
+        public virtual ObjectResult<sp_UltimoSaldo_Result> UltimoSaldo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_UltimoSaldo_Result>("UltimoSaldo");
+        }
     }
 }

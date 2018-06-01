@@ -165,6 +165,12 @@
     <Compile Include="Saida.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
+    <Compile Include="SaldoEmConta.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_UltimoSaldo_Result.cs">
+      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ModelInvestimentos.edmx">
