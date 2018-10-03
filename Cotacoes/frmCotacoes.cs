@@ -1,14 +1,15 @@
-﻿using DataLayer;
+﻿using Cotacoes.Properties;
+using DataLayer;
 using GridAndChartStyleLibrary;
 using Settings;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tulpep.NotificationWindow;
 
 namespace Cotacoes {
     public partial class frmCotacoes : Form {
@@ -58,10 +59,13 @@ namespace Cotacoes {
 
             GridStyles.FormatGridAsTotal(dgvTotal, dgvCotacoes);
 
-            foreach (ToolStripItem i in toolStripDropDownButtonFrequencia.DropDownItems)
+            foreach (ToolStripItem i in toolStripDropDownButtonFrequencia.DropDownItems) {
                 i.Click += FrequenciaButtonsClick;
-            foreach (ToolStripItem i in toolStripDropDownButtonAtivos.DropDownItems)
+            }
+
+            foreach (ToolStripItem i in toolStripDropDownButtonAtivos.DropDownItems) {
                 i.Click += AtivosButtonsClick;
+            }
 
             chart1.ChartAreas[0].AxisX.MajorGrid.LineColor =
             chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = dgvCotacoes.GridColor;
@@ -69,7 +73,10 @@ namespace Cotacoes {
         }
 
         private void frmCotacoes_Resize(object sender, EventArgs e) {
-            if (WindowState != FormWindowState.Minimized) return;
+            if (WindowState != FormWindowState.Minimized) {
+                return;
+            }
+
             notifyIcon1.Visible = true;
             notifyIcon1.ShowBalloonTip(3000);
             ShowInTaskbar = false;
@@ -89,7 +96,10 @@ namespace Cotacoes {
         #region TIMER
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
-            if (DesignMode) return;
+            if (DesignMode) {
+                return;
+            }
+
             var agora = DateTime.Now;
             if (toolStripMenuItemDesligado.Checked ||
                      agora.Hour < 10 || agora.Hour > 17 ||
@@ -98,8 +108,9 @@ namespace Cotacoes {
                 DefinirFrequencia(toolStripMenuItemDesligado);
                 CarregarDados(true);
             }
-            else
+            else {
                 DefinirFrequencia(toolStripMenuItem5minutos);
+            }
         }
 
         private void AtualizarDados(object state) {
@@ -127,8 +138,9 @@ namespace Cotacoes {
                         if (!value) {
                             Erros++;
                         }
-                        else if (DateTime.Now.Hour >= 17 && DateTime.Now.Minute >= 12)
+                        else if (DateTime.Now.Hour >= 17 && DateTime.Now.Minute >= 12) {
                             DefinirFrequencia(toolStripMenuItemDesligado);
+                        }
                     }));
                 }
             }
@@ -138,10 +150,12 @@ namespace Cotacoes {
             AjustarTimer(0);
             if (MessageBox.Show(@"Erro ao atualizar cotações. Suspender acesso?",
                 @"Cotações", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.No)
+                MessageBoxIcon.Question) == DialogResult.No) {
                 DefinirFrequencia();
-            else
+            }
+            else {
                 DefinirFrequencia(toolStripMenuItemDesligado);
+            }
         }
 
         /// <summary>
@@ -151,27 +165,34 @@ namespace Cotacoes {
         private void DefinirFrequencia(ToolStripMenuItem botao = null) {
             if (botao == null) {
                 foreach (ToolStripItem i in toolStripDropDownButtonFrequencia.DropDownItems) {
-                    if (i is ToolStripMenuItem && ((ToolStripMenuItem)i).Checked)
+                    if (i is ToolStripMenuItem && ((ToolStripMenuItem)i).Checked) {
                         botao = (ToolStripMenuItem)i;
+                    }
                 }
             }
 
-            foreach (ToolStripItem i in toolStripDropDownButtonFrequencia.DropDownItems)
-                if (i is ToolStripMenuItem)
+            foreach (ToolStripItem i in toolStripDropDownButtonFrequencia.DropDownItems) {
+                if (i is ToolStripMenuItem) {
                     ((ToolStripMenuItem)i).Checked = (i == botao);
+                }
+            }
+
             AjustarTimer(Convert.ToInt32(botao.Tag));
             toolStripDropDownButtonFrequencia.Text = $@"Frequência: {botao.Text}";
-            if ((string)botao.Tag == "0")
+            if ((string)botao.Tag == "0") {
                 AtualizarGrafico();
+            }
         }
 
         private void AjustarTimer(int period) {
             period = period == 0 ? Timeout.Infinite : period * 60 * 1000;
             var dueTime = period == Timeout.Infinite ? Timeout.Infinite : 0;
-            if (_updateTimer == null)
+            if (_updateTimer == null) {
                 _updateTimer = new System.Threading.Timer(AtualizarDados, null, dueTime, period);
-            else
+            }
+            else {
                 _updateTimer.Change(dueTime, period);
+            }
         }
 
         #endregion TIMER
@@ -179,12 +200,11 @@ namespace Cotacoes {
         #region DADOS E ATUALIZAÇÕES
         private void CarregarDados(bool recarregarListaDeAtivos = false) {
             if (recarregarListaDeAtivos) {
-                var x = AtivosEmExibicao();
-                bindingSourceCotacoes.DataSource = x; //AtivosEmExibicao();
+                bindingSourceCotacoes.DataSource = AtivosEmExibicao();
             }
-
-            else
+            else {
                 dgvCotacoes.Refresh();
+            }
 
             AtualizarGrafico();
 
@@ -200,7 +220,30 @@ namespace Cotacoes {
                 (dgvCotacoes.RowTemplate.Height + 2) *
                 Math.Min(10, bindingSourceCotacoes.Count);
 
-            if (oldHeight == newHeight) return;
+            var y = AtivosEmExibicao();
+            if (y.Any(a => a.AlertaVenda > 1.00m && a.AlertaVenda < 1.004m)) {
+                var x = y.Where(a => a.AlertaVenda > 1.00m && a.AlertaVenda < 1.004m)
+                    .Select(a => $"{a.Codigo} - Compra: {a.ValorMedioCompra:c2} - Atual: {a.LastTrade:c2}");
+                var popup = new PopupNotifier {
+                    Size = new Size(450, 75 * x.Count()),
+                    Delay = 10000,
+                    Image = Resources.alert_icon,
+                    HeaderColor = Color.Red,
+                    TitleColor = Color.Red,
+                    TitleFont = new Font("Segoe UI Semibold", 18),
+                    TitlePadding = new Padding(10),
+                    TitleText = "Alerta de Venda de Ações",
+                    ContentFont = new Font("Segoe UI", 14),
+                    ContentText = x.Aggregate((current, next) => current + "\n" + next),
+                    ContentPadding = new Padding(10)
+                };
+                popup.Popup();
+            }
+
+            if (oldHeight == newHeight) {
+                return;
+            }
+
             tableLayoutPanel1.RowStyles[0].Height = newHeight;
             Height = Height - oldHeight + newHeight;
         }
@@ -208,7 +251,10 @@ namespace Cotacoes {
         private List<AtivoCotacao> AtivosEmExibicao() {
             var opcao = AtivosTipos.Correntes;
             foreach (ToolStripItem i in toolStripDropDownButtonAtivos.DropDownItems) {
-                if (!(i is ToolStripMenuItem item) || !item.Checked) continue;
+                if (!(i is ToolStripMenuItem item) || !item.Checked) {
+                    continue;
+                }
+
                 opcao = (AtivosTipos)int.Parse((string)i.Tag);
                 break;
             }
@@ -223,22 +269,27 @@ namespace Cotacoes {
             double chartMax = 0;
             double chartMin = 1000;
 
-            if (dgvCotacoes.SelectedRows.Count == 0)
+            if (dgvCotacoes.SelectedRows.Count == 0) {
                 foreach (DataGridViewCell cell in dgvCotacoes.SelectedCells) {
                     AtualizarGraficoAcao(cell.OwningRow, ref chartMin, ref chartMax);
                 }
-            else
+            }
+            else {
                 foreach (DataGridViewRow row in dgvCotacoes.SelectedRows) {
                     AtualizarGraficoAcao(row, ref chartMin, ref chartMax);
                 }
+            }
+
             ChartMinMax.ChartSetYAxisMinMax(chart1, chartMin, chartMax);
         }
 
         private void AtualizarGraficoAcao(DataGridViewRow row, ref double chartMin, ref double chartMax) {
             var codigo = row.Cells[0].Value.ToString();
             var ativo = FinanceData.AtivoPorCodigo(codigo);
-            if (!ativo.HasTrades)
+            if (!ativo.HasTrades) {
                 ativo.AtualizarCotacao();
+            }
+
             var serie = chart1.Series.Add(codigo);
             serie.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             foreach (var trade in ativo.Cotacoes) {
@@ -278,8 +329,9 @@ namespace Cotacoes {
             var botao = (ToolStripButton)sender;
             botao.Enabled = false;
 
-            if (botao.Name.Contains("Todos"))
+            if (botao.Name.Contains("Todos")) {
                 ativos = (List<AtivoCotacao>)bindingSourceCotacoes.DataSource;
+            }
             else {
                 ativos = new List<AtivoCotacao>();
                 ativos.AddRange(from DataGridViewRow row in dgvCotacoes.SelectedRows
@@ -296,9 +348,13 @@ namespace Cotacoes {
             OFD.DefaultExt = "csv";
             OFD.Filter = @"CSV iles|*.csv";
             OFD.Multiselect = true;
-            if (OFD.ShowDialog() != DialogResult.OK) return;
-            foreach (var fileName in OFD.FileNames)
+            if (OFD.ShowDialog() != DialogResult.OK) {
+                return;
+            }
+
+            foreach (var fileName in OFD.FileNames) {
                 FinanceData.AtualizarPorExtrato(fileName);
+            }
         }
 
         #endregion TOOLBAR
@@ -333,8 +389,9 @@ namespace Cotacoes {
         }
 
         private void dgvCotacoes_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
-            if (dgvTotal.ColumnCount > 0)
+            if (dgvTotal.ColumnCount > 0) {
                 dgvTotal.Columns[e.Column.Index].Width = e.Column.Width;
+            }
         }
 
         private void dgvCotacoes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) {

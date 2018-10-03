@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvestimentos));
             this.tlpAcoes = new System.Windows.Forms.TableLayoutPanel();
             this.dgvVendas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
@@ -144,11 +144,21 @@
             this.valorAtualDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageResumo = new System.Windows.Forms.TabPage();
             this.tlpResumo = new System.Windows.Forms.TableLayoutPanel();
-            this.bindingSourceAcoes = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSourceFundos = new System.Windows.Forms.BindingSource(this.components);
             this.chartResumoAcoes = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartResumoFundos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartResumoTotal = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvResumoFundos = new System.Windows.Forms.DataGridView();
+            this.itemDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceFundos = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvResumoAcoes = new System.Windows.Forms.DataGridView();
+            this.itemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceAcoes = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNovaConta = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -168,16 +178,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvResumoFundos = new System.Windows.Forms.DataGridView();
-            this.itemDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvResumoAcoes = new System.Windows.Forms.DataGridView();
-            this.itemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tlpAcoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFundos)).BeginInit();
@@ -203,16 +203,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMovimentos)).BeginInit();
             this.tabPageResumo.SuspendLayout();
             this.tlpResumo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAcoes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFundos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoAcoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoFundos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoTotal)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoFundos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFundos)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAcoes)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpAcoes
@@ -522,10 +522,10 @@
             this.dgvOperacoes.MultiSelect = false;
             this.dgvOperacoes.Name = "dgvOperacoes";
             this.dgvOperacoes.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOperacoes.RowHeadersWidth = 25;
             this.dgvOperacoes.RowTemplate.Height = 24;
             this.dgvOperacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -619,10 +619,10 @@
             this.dgvAtivos.MultiSelect = false;
             this.dgvAtivos.Name = "dgvAtivos";
             this.dgvAtivos.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAtivos.RowHeadersWidth = 25;
             this.dgvAtivos.RowTemplate.Height = 24;
             this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -831,8 +831,8 @@
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "Mes";
-            dataGridViewCellStyle7.Format = "MMM-yyyy";
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Format = "MMM-yyyy";
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn16.HeaderText = "Mes";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -1035,9 +1035,9 @@
             // lCADataGridViewTextBoxColumn
             // 
             this.lCADataGridViewTextBoxColumn.DataPropertyName = "Mes";
-            dataGridViewCellStyle8.Format = "MMM yyyy";
-            dataGridViewCellStyle8.NullValue = null;
-            this.lCADataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Format = "MMM yyyy";
+            dataGridViewCellStyle4.NullValue = null;
+            this.lCADataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.lCADataGridViewTextBoxColumn.HeaderText = "Mês";
             this.lCADataGridViewTextBoxColumn.Name = "lCADataGridViewTextBoxColumn";
             this.lCADataGridViewTextBoxColumn.ReadOnly = true;
@@ -1209,103 +1209,222 @@
             this.tlpResumo.Size = new System.Drawing.Size(1043, 582);
             this.tlpResumo.TabIndex = 0;
             // 
-            // bindingSourceAcoes
-            // 
-            this.bindingSourceAcoes.DataSource = typeof(DataLayer.Patrimonio);
-            // 
-            // bindingSourceFundos
-            // 
-            this.bindingSourceFundos.DataSource = typeof(DataLayer.Patrimonio);
-            // 
             // chartResumoAcoes
             // 
             this.chartResumoAcoes.BackColor = System.Drawing.Color.Transparent;
-            chartArea4.BackColor = System.Drawing.Color.DimGray;
-            chartArea4.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea4.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea4.Name = "ChartArea1";
-            this.chartResumoAcoes.ChartAreas.Add(chartArea4);
+            chartArea1.BackColor = System.Drawing.Color.DimGray;
+            chartArea1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea1.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea1.Name = "ChartArea1";
+            this.chartResumoAcoes.ChartAreas.Add(chartArea1);
             this.chartResumoAcoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.BackColor = System.Drawing.Color.Transparent;
-            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend4.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend4.ForeColor = System.Drawing.Color.White;
-            legend4.IsTextAutoFit = false;
-            legend4.Name = "Legend1";
-            this.chartResumoAcoes.Legends.Add(legend4);
+            legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend1.ForeColor = System.Drawing.Color.White;
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.chartResumoAcoes.Legends.Add(legend1);
             this.chartResumoAcoes.Location = new System.Drawing.Point(263, 3);
             this.chartResumoAcoes.Name = "chartResumoAcoes";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Color = System.Drawing.Color.Transparent;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartResumoAcoes.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Color = System.Drawing.Color.Transparent;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartResumoAcoes.Series.Add(series1);
             this.chartResumoAcoes.Size = new System.Drawing.Size(385, 285);
             this.chartResumoAcoes.TabIndex = 2;
             this.chartResumoAcoes.Text = "chart2";
-            title4.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title4.ForeColor = System.Drawing.Color.White;
-            title4.Name = "Title1";
-            title4.Text = "AAA";
-            this.chartResumoAcoes.Titles.Add(title4);
+            title1.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.ForeColor = System.Drawing.Color.White;
+            title1.Name = "Title1";
+            title1.Text = "AAA";
+            this.chartResumoAcoes.Titles.Add(title1);
             // 
             // chartResumoFundos
             // 
             this.chartResumoFundos.BackColor = System.Drawing.Color.Transparent;
-            chartArea5.BackColor = System.Drawing.Color.DimGray;
-            chartArea5.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea5.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea5.Name = "ChartArea1";
-            this.chartResumoFundos.ChartAreas.Add(chartArea5);
+            chartArea2.BackColor = System.Drawing.Color.DimGray;
+            chartArea2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea2.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea2.Name = "ChartArea1";
+            this.chartResumoFundos.ChartAreas.Add(chartArea2);
             this.chartResumoFundos.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.BackColor = System.Drawing.Color.Transparent;
-            legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend5.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend5.ForeColor = System.Drawing.Color.White;
-            legend5.IsTextAutoFit = false;
-            legend5.Name = "Legend1";
-            this.chartResumoFundos.Legends.Add(legend5);
+            legend2.BackColor = System.Drawing.Color.Transparent;
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend2.ForeColor = System.Drawing.Color.White;
+            legend2.IsTextAutoFit = false;
+            legend2.Name = "Legend1";
+            this.chartResumoFundos.Legends.Add(legend2);
             this.chartResumoFundos.Location = new System.Drawing.Point(263, 294);
             this.chartResumoFundos.Name = "chartResumoFundos";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartResumoFundos.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartResumoFundos.Series.Add(series2);
             this.chartResumoFundos.Size = new System.Drawing.Size(385, 285);
             this.chartResumoFundos.TabIndex = 3;
             this.chartResumoFundos.Text = "chart3";
-            title5.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title5.ForeColor = System.Drawing.Color.White;
-            title5.Name = "Title1";
-            title5.Text = "AAA";
-            this.chartResumoFundos.Titles.Add(title5);
+            title2.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.ForeColor = System.Drawing.Color.White;
+            title2.Name = "Title1";
+            title2.Text = "AAA";
+            this.chartResumoFundos.Titles.Add(title2);
             // 
             // chartResumoTotal
             // 
             this.chartResumoTotal.BackColor = System.Drawing.Color.Transparent;
-            chartArea6.BackColor = System.Drawing.Color.DimGray;
-            chartArea6.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea6.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea6.Name = "ChartArea1";
-            this.chartResumoTotal.ChartAreas.Add(chartArea6);
+            chartArea3.BackColor = System.Drawing.Color.DimGray;
+            chartArea3.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea3.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea3.BorderColor = System.Drawing.Color.White;
+            chartArea3.Name = "ChartArea1";
+            this.chartResumoTotal.ChartAreas.Add(chartArea3);
             this.chartResumoTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.BackColor = System.Drawing.Color.Transparent;
-            legend6.ForeColor = System.Drawing.Color.White;
-            legend6.Name = "Legend1";
-            this.chartResumoTotal.Legends.Add(legend6);
+            legend3.BackColor = System.Drawing.Color.Transparent;
+            legend3.ForeColor = System.Drawing.Color.White;
+            legend3.Name = "Legend1";
+            this.chartResumoTotal.Legends.Add(legend3);
             this.chartResumoTotal.Location = new System.Drawing.Point(654, 3);
             this.chartResumoTotal.Name = "chartResumoTotal";
             this.tlpResumo.SetRowSpan(this.chartResumoTotal, 2);
             this.chartResumoTotal.Size = new System.Drawing.Size(386, 576);
             this.chartResumoTotal.TabIndex = 4;
             this.chartResumoTotal.Text = "chart4";
-            title6.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title6.ForeColor = System.Drawing.Color.White;
-            title6.Name = "Title1";
-            title6.Text = "AAA";
-            this.chartResumoTotal.Titles.Add(title6);
+            title3.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.ForeColor = System.Drawing.Color.White;
+            title3.Name = "Title1";
+            title3.Text = "AAA";
+            this.chartResumoTotal.Titles.Add(title3);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
+            this.tableLayoutPanel1.Controls.Add(this.dgvResumoFundos, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 294);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 255F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 285);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // dgvResumoFundos
+            // 
+            this.dgvResumoFundos.AllowUserToAddRows = false;
+            this.dgvResumoFundos.AllowUserToDeleteRows = false;
+            this.dgvResumoFundos.AutoGenerateColumns = false;
+            this.dgvResumoFundos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResumoFundos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.itemDataGridViewTextBoxColumn1,
+            this.valorDataGridViewTextBoxColumn3});
+            this.dgvResumoFundos.DataSource = this.bindingSourceFundos;
+            this.dgvResumoFundos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvResumoFundos.Location = new System.Drawing.Point(3, 28);
+            this.dgvResumoFundos.Name = "dgvResumoFundos";
+            this.dgvResumoFundos.ReadOnly = true;
+            this.dgvResumoFundos.RowTemplate.Height = 24;
+            this.dgvResumoFundos.Size = new System.Drawing.Size(248, 254);
+            this.dgvResumoFundos.TabIndex = 2;
+            // 
+            // itemDataGridViewTextBoxColumn1
+            // 
+            this.itemDataGridViewTextBoxColumn1.DataPropertyName = "Item";
+            this.itemDataGridViewTextBoxColumn1.HeaderText = "Item";
+            this.itemDataGridViewTextBoxColumn1.Name = "itemDataGridViewTextBoxColumn1";
+            this.itemDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // valorDataGridViewTextBoxColumn3
+            // 
+            this.valorDataGridViewTextBoxColumn3.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn3.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn3.Name = "valorDataGridViewTextBoxColumn3";
+            this.valorDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // bindingSourceFundos
+            // 
+            this.bindingSourceFundos.DataSource = typeof(DataLayer.Patrimonio);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(248, 25);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "FUNDOS e SALDO EM CONTA";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.dgvResumoAcoes, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(254, 285);
+            this.tableLayoutPanel2.TabIndex = 6;
+            // 
+            // dgvResumoAcoes
+            // 
+            this.dgvResumoAcoes.AllowUserToAddRows = false;
+            this.dgvResumoAcoes.AllowUserToDeleteRows = false;
+            this.dgvResumoAcoes.AutoGenerateColumns = false;
+            this.dgvResumoAcoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResumoAcoes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.itemDataGridViewTextBoxColumn,
+            this.valorDataGridViewTextBoxColumn1});
+            this.dgvResumoAcoes.DataSource = this.bindingSourceAcoes;
+            this.dgvResumoAcoes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvResumoAcoes.Location = new System.Drawing.Point(3, 28);
+            this.dgvResumoAcoes.Name = "dgvResumoAcoes";
+            this.dgvResumoAcoes.ReadOnly = true;
+            this.dgvResumoAcoes.RowTemplate.Height = 24;
+            this.dgvResumoAcoes.Size = new System.Drawing.Size(248, 254);
+            this.dgvResumoAcoes.TabIndex = 1;
+            // 
+            // itemDataGridViewTextBoxColumn
+            // 
+            this.itemDataGridViewTextBoxColumn.DataPropertyName = "Item";
+            this.itemDataGridViewTextBoxColumn.HeaderText = "Item";
+            this.itemDataGridViewTextBoxColumn.Name = "itemDataGridViewTextBoxColumn";
+            this.itemDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorDataGridViewTextBoxColumn1
+            // 
+            this.valorDataGridViewTextBoxColumn1.DataPropertyName = "Valor";
+            this.valorDataGridViewTextBoxColumn1.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn1.Name = "valorDataGridViewTextBoxColumn1";
+            this.valorDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // bindingSourceAcoes
+            // 
+            this.bindingSourceAcoes.DataSource = typeof(DataLayer.Patrimonio);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(248, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "AÇÕES";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // toolStrip1
             // 
@@ -1484,124 +1603,6 @@
             this.OFD.Filter = "Text Files|*.txt";
             this.OFD.Multiselect = true;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvResumoFundos, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 294);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 255F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 285);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // dgvResumoFundos
-            // 
-            this.dgvResumoFundos.AllowUserToAddRows = false;
-            this.dgvResumoFundos.AllowUserToDeleteRows = false;
-            this.dgvResumoFundos.AutoGenerateColumns = false;
-            this.dgvResumoFundos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResumoFundos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.itemDataGridViewTextBoxColumn1,
-            this.valorDataGridViewTextBoxColumn3});
-            this.dgvResumoFundos.DataSource = this.bindingSourceFundos;
-            this.dgvResumoFundos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvResumoFundos.Location = new System.Drawing.Point(3, 28);
-            this.dgvResumoFundos.Name = "dgvResumoFundos";
-            this.dgvResumoFundos.ReadOnly = true;
-            this.dgvResumoFundos.RowTemplate.Height = 24;
-            this.dgvResumoFundos.Size = new System.Drawing.Size(248, 254);
-            this.dgvResumoFundos.TabIndex = 2;
-            // 
-            // itemDataGridViewTextBoxColumn1
-            // 
-            this.itemDataGridViewTextBoxColumn1.DataPropertyName = "Item";
-            this.itemDataGridViewTextBoxColumn1.HeaderText = "Item";
-            this.itemDataGridViewTextBoxColumn1.Name = "itemDataGridViewTextBoxColumn1";
-            this.itemDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // valorDataGridViewTextBoxColumn3
-            // 
-            this.valorDataGridViewTextBoxColumn3.DataPropertyName = "Valor";
-            this.valorDataGridViewTextBoxColumn3.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn3.Name = "valorDataGridViewTextBoxColumn3";
-            this.valorDataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.dgvResumoAcoes, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(254, 285);
-            this.tableLayoutPanel2.TabIndex = 6;
-            // 
-            // dgvResumoAcoes
-            // 
-            this.dgvResumoAcoes.AllowUserToAddRows = false;
-            this.dgvResumoAcoes.AllowUserToDeleteRows = false;
-            this.dgvResumoAcoes.AutoGenerateColumns = false;
-            this.dgvResumoAcoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResumoAcoes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.itemDataGridViewTextBoxColumn,
-            this.valorDataGridViewTextBoxColumn1});
-            this.dgvResumoAcoes.DataSource = this.bindingSourceAcoes;
-            this.dgvResumoAcoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvResumoAcoes.Location = new System.Drawing.Point(3, 28);
-            this.dgvResumoAcoes.Name = "dgvResumoAcoes";
-            this.dgvResumoAcoes.ReadOnly = true;
-            this.dgvResumoAcoes.RowTemplate.Height = 24;
-            this.dgvResumoAcoes.Size = new System.Drawing.Size(248, 254);
-            this.dgvResumoAcoes.TabIndex = 1;
-            // 
-            // itemDataGridViewTextBoxColumn
-            // 
-            this.itemDataGridViewTextBoxColumn.DataPropertyName = "Item";
-            this.itemDataGridViewTextBoxColumn.HeaderText = "Item";
-            this.itemDataGridViewTextBoxColumn.Name = "itemDataGridViewTextBoxColumn";
-            this.itemDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valorDataGridViewTextBoxColumn1
-            // 
-            this.valorDataGridViewTextBoxColumn1.DataPropertyName = "Valor";
-            this.valorDataGridViewTextBoxColumn1.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn1.Name = "valorDataGridViewTextBoxColumn1";
-            this.valorDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "AÇÕES";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(248, 25);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "FUNDOS e SALDO EM CONTA";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // frmInvestimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -1645,19 +1646,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLCAMovimentos)).EndInit();
             this.tabPageResumo.ResumeLayout(false);
             this.tlpResumo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAcoes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFundos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoAcoes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoFundos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartResumoTotal)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoFundos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceFundos)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAcoes)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }

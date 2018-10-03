@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataLayer;
 using System.Text.RegularExpressions;
+using TestesWinForm.Properties;
+using Tulpep.NotificationWindow;
 
 namespace TestesWinForm {
     public partial class frmTestes : Form {
@@ -21,7 +23,7 @@ namespace TestesWinForm {
         }
 
         private void TextBox2_LostFocus(object sender, EventArgs e) {
-            entityBindingNavigator1.UpdateContextButtons();
+
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e) {
@@ -29,10 +31,7 @@ namespace TestesWinForm {
         }
 
         private void frmTestes_FormClosing(object sender, FormClosingEventArgs e) {
-            if (entityBindingNavigator1.HasChanges) {
-                MessageBox.Show("Alterações pendentes");
-                e.Cancel = true;
-            }
+
         }
 
         private void textBox2_Validating(object sender, CancelEventArgs e) {
@@ -57,6 +56,25 @@ namespace TestesWinForm {
 
         private void frmTestes_Validating(object sender, CancelEventArgs e) {
             MessageBox.Show("Form");
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            var x = "aaaa\nbbbbb" ;
+            var popup = new PopupNotifier {
+                ContentFont = new Font("Segoe UI", 14),
+                TitleFont = new Font("Segoe UI Semibold", 18),
+                Image = Resources.alert_icon,
+                TitleText = "Alerta de Ações",
+                ContentText = $"Ações a serem vendidas:\n\n{x}",
+                ContentPadding = new Padding(10),
+                TitlePadding = new Padding(10),
+                Delay = 10000,
+                Size = new Size(450, 200),
+                HeaderColor = Color.Red,
+                TitleColor = Color.Red                
+            };
+            popup.Popup();
+           
         }
     }
 }

@@ -52,6 +52,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tulpep.NotificationWindow, Version=1.1.25.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.25\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="frmTestes.cs">
@@ -99,6 +102,9 @@
       <Project>{3053fbd4-02a4-49ab-8bb6-f6a813155a8e}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alert-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

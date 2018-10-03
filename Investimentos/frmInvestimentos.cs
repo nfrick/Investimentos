@@ -115,8 +115,9 @@ namespace Investimentos {
             var conta = SettingsManager.GetSetting("Conta");
             toolStripComboBoxConta.SelectedIndex = conta == null ? 0 : int.Parse(conta);
             using (var ctx = new InvestimentosEntities()) {
-                if (!ctx.Contas.ToList().Any())
+                if (!ctx.Contas.ToList().Any()) {
                     OpenFrmConta(new Conta());
+                }
             }
         }
 
@@ -164,7 +165,10 @@ namespace Investimentos {
         private void dgvOperacoes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
             var op = (Operacao)dgvOperacoes.SelectedRows[0].DataBoundItem;
             var frm = GetFrmEditarOperacao(op);
-            if (frm.ShowDialog() == DialogResult.Cancel) return;
+            if (frm.ShowDialog() == DialogResult.Cancel) {
+                return;
+            }
+
             RefreshDataAcoes();
         }
 
@@ -172,8 +176,9 @@ namespace Investimentos {
             var dgv = (DataGridView)sender;
             var col = Convert.ToInt32(dgv.Tag); // coluna com valor que controla a cor
             var row = dgv.Rows[e.RowIndex];
-            if (Convert.ToDecimal(row.Cells[col].Value) <= 0)
+            if (Convert.ToDecimal(row.Cells[col].Value) <= 0) {
                 row.DefaultCellStyle.ForeColor = Color.Orange;
+            }
         }
 
         private void dgvVendas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
@@ -222,7 +227,7 @@ namespace Investimentos {
             var serie = chart.Series.Add("AAA");
             serie.ChartType = SeriesChartType.Pie;
             serie.Font = new Font("Segoe UI", 7);
-            foreach (var d in data) {
+            foreach (var d in data.OrderBy(d => d.Valor)) {
                 var dp = serie.Points.Add((double)d.Valor);
                 dp.LegendText = d.Item;
                 dp.AxisLabel = $"{d.Valor / total:P0}";
@@ -240,7 +245,7 @@ namespace Investimentos {
             chart.Visible = true;
             var total = data.Sum(d => d.Valor);
             chart.Titles[0].Text = $"Total: {total:N2}";
-            foreach (var d in data) {
+            foreach (var d in data.Where(d => d.Valor > 0).OrderByDescending(d => d.Valor)) {
                 var serie = chart.Series.Add(d.Item);
                 serie.ChartType = SeriesChartType.StackedColumn100;
                 serie.Font = new Font("Segoe UI", 7);
@@ -265,14 +270,16 @@ namespace Investimentos {
             var conta = (Conta)dgvContas.CurrentRow.DataBoundItem;
             var op = new Operacao() { AtivoDaConta = ativo, ContaId = conta.ContaId };
             var frm = GetFrmEditarOperacao(op);
-            if (frm.ShowDialog() == DialogResult.Cancel)
+            if (frm.ShowDialog() == DialogResult.Cancel) {
                 return;
+            }
 
             var row = dgvAtivos.Rows
                 .Cast<DataGridViewRow>()
                 .FirstOrDefault(r => r.Cells["Codigo"].Value.ToString().Equals(op.Codigo));
-            if (row != null)
+            if (row != null) {
                 dgvAtivos.Rows[row.Index].Selected = true;
+            }
 
             var tipo = (OperacaoTipo)frm.comboBoxOperacao.SelectedItem;
             var operacoes = entityDataSource1.DbContext.Set<Operacao>();
@@ -299,9 +306,13 @@ namespace Investimentos {
             var frm = new frmConta {
                 Conta = conta
             };
-            if (frm.ShowDialog() != DialogResult.OK) return;
-            if (conta.ContaId == 0)
+            if (frm.ShowDialog() != DialogResult.OK) {
+                return;
+            }
+
+            if (conta.ContaId == 0) {
                 entityDataSource1.DbContext.Set<Conta>().Add(conta);
+            }
 
             RefreshSalvar();
             ContaComboPopulate();
@@ -317,14 +328,26 @@ namespace Investimentos {
         private void frmInvestimentos_FormClosing(object sender, FormClosingEventArgs e) {
             SettingsManager.SetSetting("Conta", toolStripComboBoxConta.SelectedIndex.ToString());
             var tracker = entityDataSource1.DbContext.ChangeTracker;
-            if (!tracker.HasChanges()) return;
+            if (!tracker.HasChanges()) {
+                return;
+            }
+
             var adds = tracker.Entries().Count(entry => entry.State == EntityState.Added);
             var dels = tracker.Entries().Count(entry => entry.State == EntityState.Deleted);
             var edits = tracker.Entries().Count(entry => entry.State == EntityState.Modified);
             var sb = new StringBuilder("Alterações pendentes:\n\n");
-            if (adds > 0) sb.Append($"\t* Adições: {adds}\n");
-            if (edits > 0) sb.Append($"\t* Edições: {edits}\n");
-            if (dels > 0) sb.Append($"\t* Deleções: {dels}\n");
+            if (adds > 0) {
+                sb.Append($"\t* Adições: {adds}\n");
+            }
+
+            if (edits > 0) {
+                sb.Append($"\t* Edições: {edits}\n");
+            }
+
+            if (dels > 0) {
+                sb.Append($"\t* Deleções: {dels}\n");
+            }
+
             sb.Append("\nDeseja salvar antes de sair?");
             switch (MessageBox.Show(sb.ToString(), @"Investimentos", MessageBoxButtons.YesNoCancel,
                 MessageBoxIcon.Question)) {
@@ -342,7 +365,10 @@ namespace Investimentos {
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
             var tabLabel = tabControl1.SelectedTab.Text;
             foreach (ToolStripItem item in toolStrip1.Items) {
-                if (item.Tag == null) continue;
+                if (item.Tag == null) {
+                    continue;
+                }
+
                 var tag = item.Tag.ToString();
                 item.Visible = (tag.Contains(tabLabel));
             }
@@ -437,7 +463,10 @@ namespace Investimentos {
                         do {
                             // Ler até achar o inicio dos dados do Fundo ou achar o fim do arquivo
                             line = streamReader.ReadLine();
-                            if (line != null) continue;
+                            if (line != null) {
+                                continue;
+                            }
+
                             RefreshDataFundos();
                             return 0;
                         } while (!line.Trim().StartsWith("BB"));
@@ -457,8 +486,9 @@ namespace Investimentos {
                         // Localiza a ContaFundo, criando se necessário
                         var contaFundo = conta.Fundos.FirstOrDefault(f => f.FundoCNPJ == fundoCNPJ) ??
                             new ContaFundo() { Fundo = fundo };
-                        if (contaFundo.ContaFundoId == 0)
+                        if (contaFundo.ContaFundoId == 0) {
                             conta.Fundos.Add(contaFundo);
+                        }
 
                         // Mover até inicio dos Movimentos
                         do {
@@ -477,7 +507,10 @@ namespace Investimentos {
                         do {
                             //if (string.IsNullOrEmpty(line)) continue;
                             if (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal,
-                                out data)) continue;
+                                out data)) {
+                                continue;
+                            }
+
                             contaMes.Movimentos.Add(CreateMovimento(line));
                         } while (!(line = GetNextLine(streamReader)).Contains("SALDO ATUAL"));
                         // Adiciona o saldo atual (última linha)
@@ -555,9 +588,15 @@ namespace Investimentos {
 
                     // Ler movimentos
                     do {
-                        if (string.IsNullOrEmpty(line)) continue;
+                        if (string.IsNullOrEmpty(line)) {
+                            continue;
+                        }
+
                         if (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal,
-                            out DateTime data)) continue;
+                            out DateTime data)) {
+                            continue;
+                        }
+
                         lcaMes.LCAMovimentos.Add(CreateLCAMovimento(line));
                     } while (!(line = GetNextLine(streamReader)).Contains("Saldo Atual"));
                     // Adiciona o saldo atual (última linha)
@@ -581,13 +620,19 @@ namespace Investimentos {
 
         private static string GetNextLine(TextReader stream) {
             string linha;
-            while ((linha = stream.ReadLine().Trim()) == "") ;
+            while ((linha = stream.ReadLine().Trim()) == "") {
+                ;
+            }
+
             return linha;
         }
 
         private static string ReadUntil(TextReader stream, string text) {
             string linha;
-            while (!(linha = stream.ReadLine().Trim()).Contains(text)) ;
+            while (!(linha = stream.ReadLine().Trim()).Contains(text)) {
+                ;
+            }
+
             return linha;
         }
 
@@ -628,8 +673,14 @@ namespace Investimentos {
         }
 
         private static decimal? ToDecimalNull(string line, int start, int length) {
-            if (start > line.Length) return null;
-            if (start + length > line.Length) length = line.Length - start;
+            if (start > line.Length) {
+                return null;
+            }
+
+            if (start + length > line.Length) {
+                length = line.Length - start;
+            }
+
             var text = line.Substring(start, length).Trim();
             return decimal.TryParse(text, out decimal valor) ? (decimal?)valor : null;
         }
