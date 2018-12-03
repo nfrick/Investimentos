@@ -28,21 +28,21 @@ namespace Investimentos {
         private void frmInvestimentos_Load(object sender, EventArgs e) {
 
             // AÇÕES
-            dgvOperacoes.Columns[0].Visible = false;
-            dgvVendas.Columns[0].Visible = false;
             GridStyles.FormatGrid(dgvAtivos);
             GridStyles.FormatColumns(dgvAtivos, GridStyles.StyleInteger, 60, 1);
             GridStyles.FormatColumns(dgvAtivos, GridStyles.StyleCurrency, 70, 2);
             GridStyles.FormatColumns(dgvAtivos, GridStyles.StyleCurrency, 80, 3);
 
             GridStyles.FormatGrid(dgvOperacoes);
-            dgvOperacoes.Columns[2].Width = 150;
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleDateTimeShort, 75, 1);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 60, 3, 4);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 70, 5, 6, 8);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 85, 7);
+            dgvOperacoes.Columns[0].Visible = false;
+            //dgvOperacoes.Columns[2].Width = 120;
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleDateTimeShort, 65, 1);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 70, 3, 4);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 80, 5, 6, 8);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 95, 7);
 
             GridStyles.FormatGrid(dgvVendas, 13);
+            dgvVendas.Columns[0].Visible = false;
             dgvVendas.Columns[1].DefaultCellStyle = GridStyles.StyleDateTime;
             GridStyles.FormatColumns(dgvVendas, GridStyles.StyleInteger, 75, 2, 3, 4, 6, 7);
             GridStyles.FormatColumns(dgvVendas, GridStyles.StyleCurrency, 80, 5, 8, 9, 10);

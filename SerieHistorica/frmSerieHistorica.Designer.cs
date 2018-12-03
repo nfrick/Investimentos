@@ -162,6 +162,7 @@
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
             this.chart1.DoubleClick += new System.EventHandler(this.chart1_DoubleClick);
+            this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             // 
             // tableLayoutPanel2
             // 
@@ -354,7 +355,7 @@
             this.toolStripComboBoxTermino});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(759, 28);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonLerSerie

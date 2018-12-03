@@ -28,14 +28,14 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.invertBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsPNGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ColorDialog = new System.Windows.Forms.ColorDialog();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.invertBackgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemCustomize = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
+            this.ColorDialog = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -94,6 +94,7 @@
             this.chart1.Size = new System.Drawing.Size(1226, 671);
             this.chart1.TabIndex = 4;
             this.chart1.Text = "chart1";
+            this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             // 
             // contextMenu
             // 
@@ -107,13 +108,6 @@
             this.contextMenu.Name = "contextMenu";
             this.contextMenu.Size = new System.Drawing.Size(199, 88);
             // 
-            // invertBackgroundToolStripMenuItem
-            // 
-            this.invertBackgroundToolStripMenuItem.Name = "invertBackgroundToolStripMenuItem";
-            this.invertBackgroundToolStripMenuItem.Size = new System.Drawing.Size(198, 24);
-            this.invertBackgroundToolStripMenuItem.Text = "Invert background";
-            this.invertBackgroundToolStripMenuItem.Click += new System.EventHandler(this.invertBackgroundToolStripMenuItem_Click);
-            // 
             // saveAsPNGToolStripMenuItem
             // 
             this.saveAsPNGToolStripMenuItem.Name = "saveAsPNGToolStripMenuItem";
@@ -121,14 +115,17 @@
             this.saveAsPNGToolStripMenuItem.Text = "Save as PNG";
             this.saveAsPNGToolStripMenuItem.Click += new System.EventHandler(this.saveAsPNGToolStripMenuItem_Click);
             // 
-            // ColorDialog
-            // 
-            this.ColorDialog.AnyColor = true;
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(195, 6);
+            // 
+            // invertBackgroundToolStripMenuItem
+            // 
+            this.invertBackgroundToolStripMenuItem.Name = "invertBackgroundToolStripMenuItem";
+            this.invertBackgroundToolStripMenuItem.Size = new System.Drawing.Size(198, 24);
+            this.invertBackgroundToolStripMenuItem.Text = "Invert background";
+            this.invertBackgroundToolStripMenuItem.Click += new System.EventHandler(this.invertBackgroundToolStripMenuItem_Click);
             // 
             // toolStripMenuItemCustomize
             // 
@@ -141,6 +138,10 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(195, 6);
+            // 
+            // ColorDialog
+            // 
+            this.ColorDialog.AnyColor = true;
             // 
             // frmGrafico
             // 

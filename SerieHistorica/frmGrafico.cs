@@ -5,6 +5,9 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SerieHistorica {
     public partial class frmGrafico : Form {
+        Point? prevPosition = null;
+        ToolTip tooltip = new ToolTip();
+
         public frmGrafico() {
             InitializeComponent();
         }
@@ -57,6 +60,25 @@ namespace SerieHistorica {
             frm.Location = new Point(Location.X + Width - 10, Location.Y + Height - frm.Height);
             frm.ShowDialog();
             
+        }
+
+        private void chart1_MouseMove(object sender, MouseEventArgs e) {
+            var pos = e.Location;
+            if (prevPosition.HasValue && pos == prevPosition.Value)
+                return;
+
+            tooltip.RemoveAll();
+            prevPosition = pos;
+            var results = chart1.HitTest(pos.X, pos.Y, false,
+                ChartElementType.DataPoint);  //.PlottingArea);
+            foreach (var result in results) {
+                if (result.ChartElementType != ChartElementType.DataPoint) continue;
+                var xVal = result.ChartArea.AxisX.PixelPositionToValue(pos.X);
+                var yVal = result.ChartArea.AxisY.PixelPositionToValue(pos.Y);
+                var hora = (new DateTime(1899, 12, 31)).AddDays(xVal).ToString("dd/MM/yy");
+
+                tooltip.Show($"{hora} - {yVal:C2}", this.chart1, pos.X, pos.Y - 15);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -11,6 +12,10 @@ using GridAndChartStyleLibrary;
 
 namespace SerieHistorica {
     public partial class frmSerieHistorica : Form {
+
+        Point? prevPosition = null;
+        ToolTip tooltip = new ToolTip();
+
         public frmSerieHistorica() {
             InitializeComponent();
 
@@ -170,6 +175,25 @@ namespace SerieHistorica {
             var frm = new frmGrafico();
             GerarGrafico(frm.chart1);
             frm.Show();
+        }
+
+        private void chart1_MouseMove(object sender, MouseEventArgs e) {
+            var pos = e.Location;
+            if (prevPosition.HasValue && pos == prevPosition.Value)
+                return;
+            
+            tooltip.RemoveAll();
+            prevPosition = pos;
+            var results = chart1.HitTest(pos.X, pos.Y, false,
+                ChartElementType.DataPoint);  //.PlottingArea);
+            foreach (var result in results) {
+                if (result.ChartElementType != ChartElementType.DataPoint) continue;
+                var xVal = result.ChartArea.AxisX.PixelPositionToValue(pos.X);
+                var yVal = result.ChartArea.AxisY.PixelPositionToValue(pos.Y);
+                var dia = (new DateTime(1899,12,31)).AddDays(xVal).ToString("dd/MM/yy");
+
+                tooltip.Show($"{dia} - {yVal:C2}", this.chart1, pos.X, pos.Y - 15);
+            }
         }
     }
 }

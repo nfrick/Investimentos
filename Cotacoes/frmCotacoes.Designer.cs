@@ -24,18 +24,50 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCotacoes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvCotacoes = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastTradeDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastTradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.previousCloseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.changePercentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayLowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayHighDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtdTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patrimonioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorMedioCompraReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LucroReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtdVendavel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LucroImediato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceCotacoes = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelAtualizadoEm = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelErros = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvTotal = new System.Windows.Forms.DataGridView();
+            this.col0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col7DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col8DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col9DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col10DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col11DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col12DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col13DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col14DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceTotal = new System.Windows.Forms.BindingSource(this.components);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -56,39 +88,8 @@
             this.toolStripButtonLerExtrato = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.col0DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col7DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col8DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col9DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col10DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col11DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col12DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col13DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col14DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceTotal = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSourceCotacoes = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastTradeDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastTradeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.previousCloseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.changePercentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.openDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayLowDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayHighDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtdTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patrimonioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorMedioCompraReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LucroReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtdVendavel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LucroImediato = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotacoes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -96,10 +97,9 @@
             this.toolStripContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTotal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvCotacoes
@@ -137,6 +137,133 @@
             this.dgvCotacoes.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCotacoes_CellMouseClick);
             this.dgvCotacoes.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvCotacoes_ColumnWidthChanged);
             this.dgvCotacoes.SelectionChanged += new System.EventHandler(this.dgvCotacoes_SelectionChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Ativo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // lastTradeDateDataGridViewTextBoxColumn
+            // 
+            this.lastTradeDateDataGridViewTextBoxColumn.DataPropertyName = "LastTradeDate";
+            this.lastTradeDateDataGridViewTextBoxColumn.HeaderText = "Last Trade Date";
+            this.lastTradeDateDataGridViewTextBoxColumn.Name = "lastTradeDateDataGridViewTextBoxColumn";
+            this.lastTradeDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastTradeDateDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // trendDataGridViewTextBoxColumn
+            // 
+            this.trendDataGridViewTextBoxColumn.DataPropertyName = "Trend";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.trendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.trendDataGridViewTextBoxColumn.HeaderText = "";
+            this.trendDataGridViewTextBoxColumn.Name = "trendDataGridViewTextBoxColumn";
+            this.trendDataGridViewTextBoxColumn.ReadOnly = true;
+            this.trendDataGridViewTextBoxColumn.Width = 5;
+            // 
+            // lastTradeDataGridViewTextBoxColumn
+            // 
+            this.lastTradeDataGridViewTextBoxColumn.DataPropertyName = "LastTrade";
+            this.lastTradeDataGridViewTextBoxColumn.HeaderText = "Last Trade";
+            this.lastTradeDataGridViewTextBoxColumn.Name = "lastTradeDataGridViewTextBoxColumn";
+            this.lastTradeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lastTradeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // previousCloseDataGridViewTextBoxColumn
+            // 
+            this.previousCloseDataGridViewTextBoxColumn.DataPropertyName = "PreviousClose";
+            this.previousCloseDataGridViewTextBoxColumn.HeaderText = "Previous Close";
+            this.previousCloseDataGridViewTextBoxColumn.Name = "previousCloseDataGridViewTextBoxColumn";
+            this.previousCloseDataGridViewTextBoxColumn.ReadOnly = true;
+            this.previousCloseDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // changePercentDataGridViewTextBoxColumn
+            // 
+            this.changePercentDataGridViewTextBoxColumn.DataPropertyName = "ChangePercent";
+            this.changePercentDataGridViewTextBoxColumn.HeaderText = "Change %";
+            this.changePercentDataGridViewTextBoxColumn.Name = "changePercentDataGridViewTextBoxColumn";
+            this.changePercentDataGridViewTextBoxColumn.ReadOnly = true;
+            this.changePercentDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // openDataGridViewTextBoxColumn
+            // 
+            this.openDataGridViewTextBoxColumn.DataPropertyName = "Open";
+            this.openDataGridViewTextBoxColumn.HeaderText = "Open";
+            this.openDataGridViewTextBoxColumn.Name = "openDataGridViewTextBoxColumn";
+            this.openDataGridViewTextBoxColumn.ReadOnly = true;
+            this.openDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // dayLowDataGridViewTextBoxColumn
+            // 
+            this.dayLowDataGridViewTextBoxColumn.DataPropertyName = "DayLow";
+            this.dayLowDataGridViewTextBoxColumn.HeaderText = "Day Low";
+            this.dayLowDataGridViewTextBoxColumn.Name = "dayLowDataGridViewTextBoxColumn";
+            this.dayLowDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dayLowDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // dayHighDataGridViewTextBoxColumn
+            // 
+            this.dayHighDataGridViewTextBoxColumn.DataPropertyName = "DayHigh";
+            this.dayHighDataGridViewTextBoxColumn.HeaderText = "Day High";
+            this.dayHighDataGridViewTextBoxColumn.Name = "dayHighDataGridViewTextBoxColumn";
+            this.dayHighDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dayHighDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // qtdTotalDataGridViewTextBoxColumn
+            // 
+            this.qtdTotalDataGridViewTextBoxColumn.DataPropertyName = "QtdTotal";
+            this.qtdTotalDataGridViewTextBoxColumn.HeaderText = "Qtd Ações";
+            this.qtdTotalDataGridViewTextBoxColumn.Name = "qtdTotalDataGridViewTextBoxColumn";
+            this.qtdTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            this.qtdTotalDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // patrimonioDataGridViewTextBoxColumn
+            // 
+            this.patrimonioDataGridViewTextBoxColumn.DataPropertyName = "Patrimonio";
+            this.patrimonioDataGridViewTextBoxColumn.HeaderText = "Patrimônio";
+            this.patrimonioDataGridViewTextBoxColumn.Name = "patrimonioDataGridViewTextBoxColumn";
+            this.patrimonioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.patrimonioDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // ValorMedioCompraReal
+            // 
+            this.ValorMedioCompraReal.DataPropertyName = "ValorMedioCompraReal";
+            this.ValorMedioCompraReal.HeaderText = "Valor Médio Compra";
+            this.ValorMedioCompraReal.Name = "ValorMedioCompraReal";
+            this.ValorMedioCompraReal.ReadOnly = true;
+            this.ValorMedioCompraReal.Width = 70;
+            // 
+            // LucroReal
+            // 
+            this.LucroReal.DataPropertyName = "LucroReal";
+            this.LucroReal.HeaderText = "Lucro Real";
+            this.LucroReal.Name = "LucroReal";
+            this.LucroReal.ReadOnly = true;
+            this.LucroReal.Width = 70;
+            // 
+            // QtdVendavel
+            // 
+            this.QtdVendavel.DataPropertyName = "QtdVendavel";
+            this.QtdVendavel.HeaderText = "Qtd Vendável";
+            this.QtdVendavel.Name = "QtdVendavel";
+            this.QtdVendavel.ReadOnly = true;
+            this.QtdVendavel.Width = 70;
+            // 
+            // LucroImediato
+            // 
+            this.LucroImediato.DataPropertyName = "LucroImediato";
+            this.LucroImediato.HeaderText = "Lucro Imediato";
+            this.LucroImediato.Name = "LucroImediato";
+            this.LucroImediato.ReadOnly = true;
+            this.LucroImediato.Width = 70;
+            // 
+            // bindingSourceCotacoes
+            // 
+            this.bindingSourceCotacoes.AllowNew = false;
+            this.bindingSourceCotacoes.DataSource = typeof(DataLayer.AtivoCotacao);
             // 
             // statusStrip1
             // 
@@ -242,6 +369,115 @@
             this.dgvTotal.TabIndex = 2;
             this.dgvTotal.SelectionChanged += new System.EventHandler(this.dgvTotal_SelectionChanged);
             // 
+            // col0DataGridViewTextBoxColumn
+            // 
+            this.col0DataGridViewTextBoxColumn.DataPropertyName = "Col0";
+            this.col0DataGridViewTextBoxColumn.HeaderText = "Col0";
+            this.col0DataGridViewTextBoxColumn.Name = "col0DataGridViewTextBoxColumn";
+            this.col0DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col1DataGridViewTextBoxColumn
+            // 
+            this.col1DataGridViewTextBoxColumn.DataPropertyName = "Col1";
+            this.col1DataGridViewTextBoxColumn.HeaderText = "Col1";
+            this.col1DataGridViewTextBoxColumn.Name = "col1DataGridViewTextBoxColumn";
+            this.col1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col2DataGridViewTextBoxColumn
+            // 
+            this.col2DataGridViewTextBoxColumn.DataPropertyName = "Col2";
+            this.col2DataGridViewTextBoxColumn.HeaderText = "Col2";
+            this.col2DataGridViewTextBoxColumn.Name = "col2DataGridViewTextBoxColumn";
+            this.col2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col3DataGridViewTextBoxColumn
+            // 
+            this.col3DataGridViewTextBoxColumn.DataPropertyName = "Col3";
+            this.col3DataGridViewTextBoxColumn.HeaderText = "Col3";
+            this.col3DataGridViewTextBoxColumn.Name = "col3DataGridViewTextBoxColumn";
+            this.col3DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col4DataGridViewTextBoxColumn
+            // 
+            this.col4DataGridViewTextBoxColumn.DataPropertyName = "Col4";
+            this.col4DataGridViewTextBoxColumn.HeaderText = "Col4";
+            this.col4DataGridViewTextBoxColumn.Name = "col4DataGridViewTextBoxColumn";
+            this.col4DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col5DataGridViewTextBoxColumn
+            // 
+            this.col5DataGridViewTextBoxColumn.DataPropertyName = "Col5";
+            this.col5DataGridViewTextBoxColumn.HeaderText = "Col5";
+            this.col5DataGridViewTextBoxColumn.Name = "col5DataGridViewTextBoxColumn";
+            this.col5DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col6DataGridViewTextBoxColumn
+            // 
+            this.col6DataGridViewTextBoxColumn.DataPropertyName = "Col6";
+            this.col6DataGridViewTextBoxColumn.HeaderText = "Col6";
+            this.col6DataGridViewTextBoxColumn.Name = "col6DataGridViewTextBoxColumn";
+            this.col6DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col7DataGridViewTextBoxColumn
+            // 
+            this.col7DataGridViewTextBoxColumn.DataPropertyName = "Col7";
+            this.col7DataGridViewTextBoxColumn.HeaderText = "Col7";
+            this.col7DataGridViewTextBoxColumn.Name = "col7DataGridViewTextBoxColumn";
+            this.col7DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col8DataGridViewTextBoxColumn
+            // 
+            this.col8DataGridViewTextBoxColumn.DataPropertyName = "Col8";
+            this.col8DataGridViewTextBoxColumn.HeaderText = "Col8";
+            this.col8DataGridViewTextBoxColumn.Name = "col8DataGridViewTextBoxColumn";
+            this.col8DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col9DataGridViewTextBoxColumn
+            // 
+            this.col9DataGridViewTextBoxColumn.DataPropertyName = "Col9";
+            this.col9DataGridViewTextBoxColumn.HeaderText = "Col9";
+            this.col9DataGridViewTextBoxColumn.Name = "col9DataGridViewTextBoxColumn";
+            this.col9DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col10DataGridViewTextBoxColumn
+            // 
+            this.col10DataGridViewTextBoxColumn.DataPropertyName = "Col10";
+            this.col10DataGridViewTextBoxColumn.HeaderText = "Col10";
+            this.col10DataGridViewTextBoxColumn.Name = "col10DataGridViewTextBoxColumn";
+            this.col10DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col11DataGridViewTextBoxColumn
+            // 
+            this.col11DataGridViewTextBoxColumn.DataPropertyName = "Col11";
+            this.col11DataGridViewTextBoxColumn.HeaderText = "Col11";
+            this.col11DataGridViewTextBoxColumn.Name = "col11DataGridViewTextBoxColumn";
+            this.col11DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col12DataGridViewTextBoxColumn
+            // 
+            this.col12DataGridViewTextBoxColumn.DataPropertyName = "Col12";
+            this.col12DataGridViewTextBoxColumn.HeaderText = "Col12";
+            this.col12DataGridViewTextBoxColumn.Name = "col12DataGridViewTextBoxColumn";
+            this.col12DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col13DataGridViewTextBoxColumn
+            // 
+            this.col13DataGridViewTextBoxColumn.DataPropertyName = "Col13";
+            this.col13DataGridViewTextBoxColumn.HeaderText = "Col13";
+            this.col13DataGridViewTextBoxColumn.Name = "col13DataGridViewTextBoxColumn";
+            this.col13DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // col14DataGridViewTextBoxColumn
+            // 
+            this.col14DataGridViewTextBoxColumn.DataPropertyName = "Col14";
+            this.col14DataGridViewTextBoxColumn.HeaderText = "Col14";
+            this.col14DataGridViewTextBoxColumn.Name = "col14DataGridViewTextBoxColumn";
+            this.col14DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bindingSourceTotal
+            // 
+            this.bindingSourceTotal.DataSource = typeof(DataLayer.AtivoCotacaoTotal);
+            // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Black;
@@ -294,6 +530,7 @@
             this.chart1.Size = new System.Drawing.Size(1275, 407);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
+            this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             // 
             // toolStrip1
             // 
@@ -462,242 +699,6 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
             // 
-            // col0DataGridViewTextBoxColumn
-            // 
-            this.col0DataGridViewTextBoxColumn.DataPropertyName = "Col0";
-            this.col0DataGridViewTextBoxColumn.HeaderText = "Col0";
-            this.col0DataGridViewTextBoxColumn.Name = "col0DataGridViewTextBoxColumn";
-            this.col0DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col1DataGridViewTextBoxColumn
-            // 
-            this.col1DataGridViewTextBoxColumn.DataPropertyName = "Col1";
-            this.col1DataGridViewTextBoxColumn.HeaderText = "Col1";
-            this.col1DataGridViewTextBoxColumn.Name = "col1DataGridViewTextBoxColumn";
-            this.col1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col2DataGridViewTextBoxColumn
-            // 
-            this.col2DataGridViewTextBoxColumn.DataPropertyName = "Col2";
-            this.col2DataGridViewTextBoxColumn.HeaderText = "Col2";
-            this.col2DataGridViewTextBoxColumn.Name = "col2DataGridViewTextBoxColumn";
-            this.col2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col3DataGridViewTextBoxColumn
-            // 
-            this.col3DataGridViewTextBoxColumn.DataPropertyName = "Col3";
-            this.col3DataGridViewTextBoxColumn.HeaderText = "Col3";
-            this.col3DataGridViewTextBoxColumn.Name = "col3DataGridViewTextBoxColumn";
-            this.col3DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col4DataGridViewTextBoxColumn
-            // 
-            this.col4DataGridViewTextBoxColumn.DataPropertyName = "Col4";
-            this.col4DataGridViewTextBoxColumn.HeaderText = "Col4";
-            this.col4DataGridViewTextBoxColumn.Name = "col4DataGridViewTextBoxColumn";
-            this.col4DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col5DataGridViewTextBoxColumn
-            // 
-            this.col5DataGridViewTextBoxColumn.DataPropertyName = "Col5";
-            this.col5DataGridViewTextBoxColumn.HeaderText = "Col5";
-            this.col5DataGridViewTextBoxColumn.Name = "col5DataGridViewTextBoxColumn";
-            this.col5DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col6DataGridViewTextBoxColumn
-            // 
-            this.col6DataGridViewTextBoxColumn.DataPropertyName = "Col6";
-            this.col6DataGridViewTextBoxColumn.HeaderText = "Col6";
-            this.col6DataGridViewTextBoxColumn.Name = "col6DataGridViewTextBoxColumn";
-            this.col6DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col7DataGridViewTextBoxColumn
-            // 
-            this.col7DataGridViewTextBoxColumn.DataPropertyName = "Col7";
-            this.col7DataGridViewTextBoxColumn.HeaderText = "Col7";
-            this.col7DataGridViewTextBoxColumn.Name = "col7DataGridViewTextBoxColumn";
-            this.col7DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col8DataGridViewTextBoxColumn
-            // 
-            this.col8DataGridViewTextBoxColumn.DataPropertyName = "Col8";
-            this.col8DataGridViewTextBoxColumn.HeaderText = "Col8";
-            this.col8DataGridViewTextBoxColumn.Name = "col8DataGridViewTextBoxColumn";
-            this.col8DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col9DataGridViewTextBoxColumn
-            // 
-            this.col9DataGridViewTextBoxColumn.DataPropertyName = "Col9";
-            this.col9DataGridViewTextBoxColumn.HeaderText = "Col9";
-            this.col9DataGridViewTextBoxColumn.Name = "col9DataGridViewTextBoxColumn";
-            this.col9DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col10DataGridViewTextBoxColumn
-            // 
-            this.col10DataGridViewTextBoxColumn.DataPropertyName = "Col10";
-            this.col10DataGridViewTextBoxColumn.HeaderText = "Col10";
-            this.col10DataGridViewTextBoxColumn.Name = "col10DataGridViewTextBoxColumn";
-            this.col10DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col11DataGridViewTextBoxColumn
-            // 
-            this.col11DataGridViewTextBoxColumn.DataPropertyName = "Col11";
-            this.col11DataGridViewTextBoxColumn.HeaderText = "Col11";
-            this.col11DataGridViewTextBoxColumn.Name = "col11DataGridViewTextBoxColumn";
-            this.col11DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col12DataGridViewTextBoxColumn
-            // 
-            this.col12DataGridViewTextBoxColumn.DataPropertyName = "Col12";
-            this.col12DataGridViewTextBoxColumn.HeaderText = "Col12";
-            this.col12DataGridViewTextBoxColumn.Name = "col12DataGridViewTextBoxColumn";
-            this.col12DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col13DataGridViewTextBoxColumn
-            // 
-            this.col13DataGridViewTextBoxColumn.DataPropertyName = "Col13";
-            this.col13DataGridViewTextBoxColumn.HeaderText = "Col13";
-            this.col13DataGridViewTextBoxColumn.Name = "col13DataGridViewTextBoxColumn";
-            this.col13DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // col14DataGridViewTextBoxColumn
-            // 
-            this.col14DataGridViewTextBoxColumn.DataPropertyName = "Col14";
-            this.col14DataGridViewTextBoxColumn.HeaderText = "Col14";
-            this.col14DataGridViewTextBoxColumn.Name = "col14DataGridViewTextBoxColumn";
-            this.col14DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bindingSourceTotal
-            // 
-            this.bindingSourceTotal.DataSource = typeof(DataLayer.AtivoCotacaoTotal);
-            // 
-            // bindingSourceCotacoes
-            // 
-            this.bindingSourceCotacoes.AllowNew = false;
-            this.bindingSourceCotacoes.DataSource = typeof(DataLayer.AtivoCotacao);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Ativo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // lastTradeDateDataGridViewTextBoxColumn
-            // 
-            this.lastTradeDateDataGridViewTextBoxColumn.DataPropertyName = "LastTradeDate";
-            this.lastTradeDateDataGridViewTextBoxColumn.HeaderText = "Last Trade Date";
-            this.lastTradeDateDataGridViewTextBoxColumn.Name = "lastTradeDateDataGridViewTextBoxColumn";
-            this.lastTradeDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastTradeDateDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // trendDataGridViewTextBoxColumn
-            // 
-            this.trendDataGridViewTextBoxColumn.DataPropertyName = "Trend";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.trendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.trendDataGridViewTextBoxColumn.HeaderText = "";
-            this.trendDataGridViewTextBoxColumn.Name = "trendDataGridViewTextBoxColumn";
-            this.trendDataGridViewTextBoxColumn.ReadOnly = true;
-            this.trendDataGridViewTextBoxColumn.Width = 5;
-            // 
-            // lastTradeDataGridViewTextBoxColumn
-            // 
-            this.lastTradeDataGridViewTextBoxColumn.DataPropertyName = "LastTrade";
-            this.lastTradeDataGridViewTextBoxColumn.HeaderText = "Last Trade";
-            this.lastTradeDataGridViewTextBoxColumn.Name = "lastTradeDataGridViewTextBoxColumn";
-            this.lastTradeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastTradeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // previousCloseDataGridViewTextBoxColumn
-            // 
-            this.previousCloseDataGridViewTextBoxColumn.DataPropertyName = "PreviousClose";
-            this.previousCloseDataGridViewTextBoxColumn.HeaderText = "Previous Close";
-            this.previousCloseDataGridViewTextBoxColumn.Name = "previousCloseDataGridViewTextBoxColumn";
-            this.previousCloseDataGridViewTextBoxColumn.ReadOnly = true;
-            this.previousCloseDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // changePercentDataGridViewTextBoxColumn
-            // 
-            this.changePercentDataGridViewTextBoxColumn.DataPropertyName = "ChangePercent";
-            this.changePercentDataGridViewTextBoxColumn.HeaderText = "Change %";
-            this.changePercentDataGridViewTextBoxColumn.Name = "changePercentDataGridViewTextBoxColumn";
-            this.changePercentDataGridViewTextBoxColumn.ReadOnly = true;
-            this.changePercentDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // openDataGridViewTextBoxColumn
-            // 
-            this.openDataGridViewTextBoxColumn.DataPropertyName = "Open";
-            this.openDataGridViewTextBoxColumn.HeaderText = "Open";
-            this.openDataGridViewTextBoxColumn.Name = "openDataGridViewTextBoxColumn";
-            this.openDataGridViewTextBoxColumn.ReadOnly = true;
-            this.openDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // dayLowDataGridViewTextBoxColumn
-            // 
-            this.dayLowDataGridViewTextBoxColumn.DataPropertyName = "DayLow";
-            this.dayLowDataGridViewTextBoxColumn.HeaderText = "Day Low";
-            this.dayLowDataGridViewTextBoxColumn.Name = "dayLowDataGridViewTextBoxColumn";
-            this.dayLowDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dayLowDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // dayHighDataGridViewTextBoxColumn
-            // 
-            this.dayHighDataGridViewTextBoxColumn.DataPropertyName = "DayHigh";
-            this.dayHighDataGridViewTextBoxColumn.HeaderText = "Day High";
-            this.dayHighDataGridViewTextBoxColumn.Name = "dayHighDataGridViewTextBoxColumn";
-            this.dayHighDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dayHighDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // qtdTotalDataGridViewTextBoxColumn
-            // 
-            this.qtdTotalDataGridViewTextBoxColumn.DataPropertyName = "QtdTotal";
-            this.qtdTotalDataGridViewTextBoxColumn.HeaderText = "Qtd Ações";
-            this.qtdTotalDataGridViewTextBoxColumn.Name = "qtdTotalDataGridViewTextBoxColumn";
-            this.qtdTotalDataGridViewTextBoxColumn.ReadOnly = true;
-            this.qtdTotalDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // patrimonioDataGridViewTextBoxColumn
-            // 
-            this.patrimonioDataGridViewTextBoxColumn.DataPropertyName = "Patrimonio";
-            this.patrimonioDataGridViewTextBoxColumn.HeaderText = "Patrimônio";
-            this.patrimonioDataGridViewTextBoxColumn.Name = "patrimonioDataGridViewTextBoxColumn";
-            this.patrimonioDataGridViewTextBoxColumn.ReadOnly = true;
-            this.patrimonioDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // ValorMedioCompraReal
-            // 
-            this.ValorMedioCompraReal.DataPropertyName = "ValorMedioCompraReal";
-            this.ValorMedioCompraReal.HeaderText = "Valor Médio Compra";
-            this.ValorMedioCompraReal.Name = "ValorMedioCompraReal";
-            this.ValorMedioCompraReal.ReadOnly = true;
-            this.ValorMedioCompraReal.Width = 70;
-            // 
-            // LucroReal
-            // 
-            this.LucroReal.DataPropertyName = "LucroReal";
-            this.LucroReal.HeaderText = "Lucro Real";
-            this.LucroReal.Name = "LucroReal";
-            this.LucroReal.ReadOnly = true;
-            this.LucroReal.Width = 70;
-            // 
-            // QtdVendavel
-            // 
-            this.QtdVendavel.DataPropertyName = "QtdVendavel";
-            this.QtdVendavel.HeaderText = "Qtd Vendável";
-            this.QtdVendavel.Name = "QtdVendavel";
-            this.QtdVendavel.ReadOnly = true;
-            this.QtdVendavel.Width = 70;
-            // 
-            // LucroImediato
-            // 
-            this.LucroImediato.DataPropertyName = "LucroImediato";
-            this.LucroImediato.HeaderText = "Lucro Imediato";
-            this.LucroImediato.Name = "LucroImediato";
-            this.LucroImediato.ReadOnly = true;
-            this.LucroImediato.Width = 70;
-            // 
             // frmCotacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -713,6 +714,7 @@
             this.Load += new System.EventHandler(this.frmCotacoes_Load);
             this.Resize += new System.EventHandler(this.frmCotacoes_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotacoes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
@@ -724,11 +726,10 @@
             this.toolStripContainer1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTotal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).EndInit();
             this.ResumeLayout(false);
 
         }

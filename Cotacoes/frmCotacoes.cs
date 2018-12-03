@@ -9,11 +9,15 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using Tulpep.NotificationWindow;
 
 namespace Cotacoes {
     public partial class frmCotacoes : Form {
         private System.Threading.Timer _updateTimer;
+
+        Point? prevPosition = null;
+        ToolTip tooltip = new ToolTip();
 
         #region FORM
         public frmCotacoes() {
@@ -221,7 +225,7 @@ namespace Cotacoes {
                 Math.Min(10, bindingSourceCotacoes.Count);
 
             var y = AtivosEmExibicao();
-            if (y.Any(a => a.AlertaVenda > 1.00m && a.AlertaVenda < 1.004m)) {
+            if (y.Any(a => a.AlertaVenda >= 1.00m && a.AlertaVenda < 1.004m)) {
                 var x = y.Where(a => a.AlertaVenda > 1.00m && a.AlertaVenda < 1.004m)
                     .Select(a => $"{a.Codigo} - Compra: {a.ValorMedioCompra:c2} - Atual: {a.LastTrade:c2}");
                 var popup = new PopupNotifier {
@@ -400,5 +404,23 @@ namespace Cotacoes {
 
         #endregion DATAGRIDVIEW
 
+        private void chart1_MouseMove(object sender, MouseEventArgs e) {
+            var pos = e.Location;
+            if (prevPosition.HasValue && pos == prevPosition.Value)
+                return;
+
+            tooltip.RemoveAll();
+            prevPosition = pos;
+            var results = chart1.HitTest(pos.X, pos.Y, false,
+                ChartElementType.DataPoint);  //.PlottingArea);
+            foreach (var result in results) {
+                if (result.ChartElementType != ChartElementType.DataPoint) continue;
+                var xVal = result.ChartArea.AxisX.PixelPositionToValue(pos.X);
+                var yVal = result.ChartArea.AxisY.PixelPositionToValue(pos.Y);
+                var hora = (new DateTime(1899, 12, 31)).AddDays(xVal).ToString("hh:mm");
+
+                tooltip.Show($"{hora} - {yVal:C2}", this.chart1, pos.X, pos.Y - 15);
+            }
+        }
     }
 }
