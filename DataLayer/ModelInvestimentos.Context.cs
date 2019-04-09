@@ -48,5 +48,27 @@ namespace DataLayer
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_UltimoSaldo_Result>("UltimoSaldo");
         }
+    
+        public virtual int sp_PatrimonioPorMes(Nullable<int> contaID)
+        {
+            var contaIDParameter = contaID.HasValue ?
+                new ObjectParameter("ContaID", contaID) :
+                new ObjectParameter("ContaID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_PatrimonioPorMes", contaIDParameter);
+        }
+    
+        public virtual ObjectResult<sp_SituacaoImpostoRenda_Result> sp_SituacaoImpostoRenda(Nullable<int> contaID, Nullable<int> ano)
+        {
+            var contaIDParameter = contaID.HasValue ?
+                new ObjectParameter("ContaID", contaID) :
+                new ObjectParameter("ContaID", typeof(int));
+    
+            var anoParameter = ano.HasValue ?
+                new ObjectParameter("Ano", ano) :
+                new ObjectParameter("Ano", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SituacaoImpostoRenda_Result>("sp_SituacaoImpostoRenda", contaIDParameter, anoParameter);
+        }
     }
 }

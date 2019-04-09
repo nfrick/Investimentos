@@ -4,6 +4,7 @@ using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Sockets;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace DataLayer {
 
@@ -29,6 +30,12 @@ namespace DataLayer {
             });
 
         public IEnumerable<Patrimonio> PatrimonioTotal => AtivosNaoZerados.Concat(FundosNaoZerados).OrderByDescending(a => a.Valor);
+
+        public IEnumerable<sp_SituacaoImpostoRenda_Result> ImpostoRenda(int Ano) {
+            using (var ctx = new InvestimentosEntities()) {
+                return ctx.sp_SituacaoImpostoRenda(ContaId, Ano).ToList();
+            }
+        }
     }
 
     public class Patrimonio {
@@ -36,4 +43,9 @@ namespace DataLayer {
         public decimal Valor { get; set; }
     }
 
+    public class IR {
+        public string Codigo { get; set; }
+        public int Qtd { get; set; }
+        public decimal Preco { get; set; }
+    }
 }

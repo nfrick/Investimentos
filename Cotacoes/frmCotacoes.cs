@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Tulpep.NotificationWindow;
 
+// How to use async and Parllel - https://www.youtube.com/watch?v=ZTKGRJy5P2M&t=1474s
+
 namespace Cotacoes {
     public partial class frmCotacoes : Form {
         private System.Threading.Timer _updateTimer;
@@ -117,13 +119,12 @@ namespace Cotacoes {
             }
         }
 
-        private void AtualizarDados(object state) {
+        private async void AtualizarDados(object state) {
             // do your stuff here
             try {
                 var ativos = (List<AtivoCotacao>)bindingSourceCotacoes.DataSource;
-                Parallel.ForEach(ativos, (ativo) => {
-                    ativo.AtualizarCotacao();
-                });
+                var progress = CreateProgress();
+                toolStripStatusLabelDuracao.Text = await AtualizarCotacoes(ativos, progress);
                 ResultadoAtualizacao = true;
             }
             catch (Exception) {
@@ -328,7 +329,7 @@ namespace Cotacoes {
             CarregarDados(true);
         }
 
-        private void toolStripButtonAtualizar_Click(object sender, EventArgs e) {
+        private async void toolStripButtonAtualizar_Click(object sender, EventArgs e) {
             List<AtivoCotacao> ativos;
             var botao = (ToolStripButton)sender;
             botao.Enabled = false;
@@ -341,11 +342,38 @@ namespace Cotacoes {
                 ativos.AddRange(from DataGridViewRow row in dgvCotacoes.SelectedRows
                                 select FinanceData.AtivoPorCodigo((string)row.Cells[0].Value));
             }
-            Parallel.ForEach(ativos, (ativo) => {
-                ativo.AtualizarCotacao();
-            });
+
+            var progress = CreateProgress();
+            toolStripStatusLabelDuracao.Text = await AtualizarCotacoes(ativos, progress);
             CarregarDados();
+            toolStripProgressBar1.Value = 0;
             botao.Enabled = true;
+        }
+
+        private Progress<ProgressUpdate> CreateProgress() {
+            var progress = new Progress<ProgressUpdate>();
+            progress.ProgressChanged += ReportProgress;
+            return progress;
+        }
+
+        private void ReportProgress(object sender, ProgressUpdate e) {
+            //toolStripProgressBar1.Value = e.PercentageDone;
+        }
+
+        public static async Task<string> AtualizarCotacoes(List<AtivoCotacao> ativos,
+            IProgress<ProgressUpdate> progress) {
+            var prog = new ProgressUpdate(ativos.Count());
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            await Task.Run(() => {
+                Parallel.ForEach<AtivoCotacao>(ativos, (ativo) => {
+                    ativo.AtualizarCotacao();
+                    prog.Increment();
+                    progress.Report(prog);
+                });
+            });
+
+            watch.Stop();
+            return $"Duração: {watch.ElapsedMilliseconds / 1000:F2} s";
         }
 
         private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
@@ -422,5 +450,20 @@ namespace Cotacoes {
                 tooltip.Show($"{hora} - {yVal:C2}", this.chart1, pos.X, pos.Y - 15);
             }
         }
+    }
+
+    public class ProgressUpdate {
+        public int Count { get; set; } = 0;
+        public int Done { get; set; } = 0;
+
+        public ProgressUpdate(int count) {
+            Count = count;
+        }
+
+        public void Increment() {
+            Done++;
+        }
+
+        public int PercentageDone => 100 * Done / Count;
     }
 }

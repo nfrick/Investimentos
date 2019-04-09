@@ -195,7 +195,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
             <PropertyRef Name="Item" />
           </Key>
           <Property Name="ContaId" Type="int" Nullable="false" />
-          <Property Name="Item" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Item" Type="varchar" MaxLength="14" Nullable="false" />
           <Property Name="Valor" Type="money" />
         </EntityType>
         <Association Name="FK_tbAssociacoes_tbEntradas">
@@ -382,6 +382,13 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_PatrimonioPorMes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContaID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SituacaoImpostoRenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContaID" Type="int" Mode="In" />
+          <Parameter Name="Ano" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="InvestimentosModelStoreContainer">
           <EntitySet Name="tbAssociacoes" EntityType="Self.tbAssociacoes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAtivos" EntityType="Self.tbAtivos" Schema="dbo" store:Type="Tables" />
@@ -587,6 +594,13 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
             <End Role="Conta" EntitySet="Contas" />
             <End Role="SaldoEmConta" EntitySet="SaldosEmConta" />
           </AssociationSet>
+          <FunctionImport Name="sp_PatrimonioPorMes">
+          <Parameter Name="ContaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SituacaoImpostoRenda" ReturnType="Collection(InvestimentosModel.sp_SituacaoImpostoRenda_Result)">
+            <Parameter Name="ContaID" Mode="In" Type="Int32" />
+            <Parameter Name="Ano" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="Conta">
           <Key>
@@ -1030,7 +1044,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
             <PropertyRef Name="Item" />
           </Key>
           <Property Name="ContaId" Type="Int32" Nullable="false" />
-          <Property Name="Item" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Item" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
           <Property Name="Valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="Conta" Relationship="InvestimentosModel.ContavwSaldoEmConta" FromRole="SaldoEmConta" ToRole="Conta" />
         </EntityType>
@@ -1046,6 +1060,11 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="sp_SituacaoImpostoRenda_Result">
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="5" />
+          <Property Type="Int32" Name="Qtd" Nullable="true" />
+          <Property Type="Decimal" Name="Preco" Nullable="false" Precision="10" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1251,6 +1270,16 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_PatrimonioPorMes" FunctionName="InvestimentosModel.Store.sp_PatrimonioPorMes" />
+          <FunctionImportMapping FunctionImportName="sp_SituacaoImpostoRenda" FunctionName="InvestimentosModel.Store.sp_SituacaoImpostoRenda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InvestimentosModel.sp_SituacaoImpostoRenda_Result">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Qtd" ColumnName="Qtd" />
+                <ScalarProperty Name="Preco" ColumnName="Preco" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

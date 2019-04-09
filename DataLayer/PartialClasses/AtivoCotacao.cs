@@ -103,7 +103,7 @@ namespace DataLayer {
 
         public decimal ValorMedioCompraReal => JaNegociado ? _valorMedioCompra(true) : 0;
 
-        public decimal? AlertaVenda => LastTrade == 0 ? 10m : LastTrade / ValorMedioCompraReal;
+        public decimal? AlertaVenda => LastTrade == 0 || ValorMedioCompraReal == 0 ? 10m : LastTrade / ValorMedioCompraReal;
 
         private decimal _valorMedioCompra(bool real) =>
            _operacoes.AsEnumerable()

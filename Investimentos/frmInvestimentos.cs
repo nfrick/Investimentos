@@ -15,7 +15,17 @@ using System.Windows.Forms.DataVisualization.Charting;
 namespace Investimentos {
 
     public enum posicao {
-        Papel, Nada, Cotação, VarPercent, QtdComprada, Compra, Venda, QtdVendida, Max, Min, Fech
+        Papel,
+        Nada,
+        Cotação,
+        VarPercent,
+        QtdComprada,
+        Compra,
+        Venda,
+        QtdVendida,
+        Max,
+        Min,
+        Fech
     }
 
     public partial class frmInvestimentos : Form {
@@ -35,10 +45,10 @@ namespace Investimentos {
 
             GridStyles.FormatGrid(dgvOperacoes);
             dgvOperacoes.Columns[0].Visible = false;
-            //dgvOperacoes.Columns[2].Width = 120;
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleDateTimeShort, 65, 1);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 70, 3, 4);
-            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 80, 5, 6, 8);
+            //dgvOperacoes.Columns[2].Width = 200;
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleDateTimeShort, 70, 1);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleInteger, 65, 3, 4);
+            GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 78, 5, 6, 8);
             GridStyles.FormatColumns(dgvOperacoes, GridStyles.StyleCurrency, 95, 7);
 
             GridStyles.FormatGrid(dgvVendas, 13);
@@ -90,7 +100,7 @@ namespace Investimentos {
             GridStyles.FormatColumns(dgvResumoAcoes, GridStyles.StyleCurrency, 90, 1);
             GridStyles.FormatColumns(dgvResumoFundos, GridStyles.StyleCurrency, 90, 1);
             dgvResumoAcoes.SelectionMode =
-            dgvResumoFundos.SelectionMode = DataGridViewSelectionMode.CellSelect;
+                dgvResumoFundos.SelectionMode = DataGridViewSelectionMode.CellSelect;
 
             // 50 = vertical scroll bar width
             var w0 = 50 + dgvAtivos.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
@@ -163,7 +173,7 @@ namespace Investimentos {
         }
 
         private void dgvOperacoes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
-            var op = (Operacao)dgvOperacoes.SelectedRows[0].DataBoundItem;
+            var op = (Operacao) dgvOperacoes.SelectedRows[0].DataBoundItem;
             var frm = GetFrmEditarOperacao(op);
             if (frm.ShowDialog() == DialogResult.Cancel) {
                 return;
@@ -173,7 +183,7 @@ namespace Investimentos {
         }
 
         private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            var dgv = (DataGridView)sender;
+            var dgv = (DataGridView) sender;
             var col = Convert.ToInt32(dgv.Tag); // coluna com valor que controla a cor
             var row = dgv.Rows[e.RowIndex];
             if (Convert.ToDecimal(row.Cells[col].Value) <= 0) {
@@ -183,7 +193,7 @@ namespace Investimentos {
 
         private void dgvVendas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
             var frm = new frmAssociarCompraComVenda {
-                Saida = (Saida)dgvVendas.SelectedRows[0].DataBoundItem,
+                Saida = (Saida) dgvVendas.SelectedRows[0].DataBoundItem,
                 eds = entityDataSource1
             };
             frm.ShowDialog();
@@ -193,21 +203,24 @@ namespace Investimentos {
         private frmEditarOperacao GetFrmEditarOperacao(Operacao op) {
             var ativos = entityDataSource1.CreateView(entityDataSource1.EntitySets["Ativos"]);
             var tipos = entityDataSource1.CreateView(entityDataSource1.EntitySets["OperacoesTipos"]);
-            var frm = new frmEditarOperacao { Operacao = op, AtivosLista = ativos, TiposLista = tipos };
+            var frm = new frmEditarOperacao {Operacao = op, AtivosLista = ativos, TiposLista = tipos};
             return frm;
         }
 
         #region toolstrip
+
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
-            var conta = ((Conta)toolStripComboBoxConta.SelectedItem);
+            var conta = ((Conta) toolStripComboBoxConta.SelectedItem);
             var row = (dgvContas.Rows
                 .Cast<DataGridViewRow>()
-                .First(r => (int)r.Cells[0].Value == conta.ContaId)).Index;
+                .First(r => (int) r.Cells[0].Value == conta.ContaId)).Index;
             dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
 
             BindDataSourceAndPopulatePieChart(conta.AtivosNaoZerados, "Ações");
             BindDataSourceAndPopulatePieChart(conta.FundosNaoZerados, "Fundos");
             PopulateColumnChart(conta.PatrimonioTotal, chartResumoTotal);
+
+            GetAcoesImpostoRenda();
         }
 
         private void BindDataSourceAndPopulatePieChart(IEnumerable<Patrimonio> data,
@@ -228,7 +241,7 @@ namespace Investimentos {
             serie.ChartType = SeriesChartType.Pie;
             serie.Font = new Font("Segoe UI", 7);
             foreach (var d in data.OrderBy(d => d.Valor)) {
-                var dp = serie.Points.Add((double)d.Valor);
+                var dp = serie.Points.Add((double) d.Valor);
                 dp.LegendText = d.Item;
                 dp.AxisLabel = $"{d.Valor / total:P0}";
                 chart.ApplyPaletteColors();
@@ -250,7 +263,7 @@ namespace Investimentos {
                 serie.ChartType = SeriesChartType.StackedColumn100;
                 serie.Font = new Font("Segoe UI", 7);
                 serie.Label = $"{d.Valor / total:P0}";
-                serie.Points.AddY((double)d.Valor);
+                serie.Points.AddY((double) d.Valor);
                 chart.ApplyPaletteColors();
                 serie.LabelForeColor = ColorFunctions.ContrastColor(serie.Color);
             }
@@ -266,9 +279,9 @@ namespace Investimentos {
         }
 
         private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
-            var ativo = (AtivoDaConta)dgvAtivos.SelectedRows[0].DataBoundItem;
-            var conta = (Conta)dgvContas.CurrentRow.DataBoundItem;
-            var op = new Operacao() { AtivoDaConta = ativo, ContaId = conta.ContaId };
+            var ativo = (AtivoDaConta) dgvAtivos.SelectedRows[0].DataBoundItem;
+            var conta = (Conta) dgvContas.CurrentRow.DataBoundItem;
+            var op = new Operacao() {AtivoDaConta = ativo, ContaId = conta.ContaId};
             var frm = GetFrmEditarOperacao(op);
             if (frm.ShowDialog() == DialogResult.Cancel) {
                 return;
@@ -281,7 +294,7 @@ namespace Investimentos {
                 dgvAtivos.Rows[row.Index].Selected = true;
             }
 
-            var tipo = (OperacaoTipo)frm.comboBoxOperacao.SelectedItem;
+            var tipo = (OperacaoTipo) frm.comboBoxOperacao.SelectedItem;
             var operacoes = entityDataSource1.DbContext.Set<Operacao>();
             if (tipo.IsEntrada) {
                 operacoes.Add(op.ToEntrada);
@@ -293,13 +306,13 @@ namespace Investimentos {
         }
 
         private void toolStripButtonResumoVendas_Click(object sender, EventArgs e) {
-            var frm = new frmBalanco() { Conta = ((Conta)dgvContas.CurrentRow.DataBoundItem).ContaId };
+            var frm = new frmBalanco() {Conta = ((Conta) dgvContas.CurrentRow.DataBoundItem).ContaId};
             frm.ShowDialog();
         }
 
         private void toolStripButtonConta_Click(object sender, EventArgs e) {
             var btn = sender as ToolStripButton;
-            OpenFrmConta(btn.Tag.ToString() == "new" ? new Conta() : (Conta)dgvContas.CurrentRow.DataBoundItem);
+            OpenFrmConta(btn.Tag.ToString() == "new" ? new Conta() : (Conta) dgvContas.CurrentRow.DataBoundItem);
         }
 
         private void OpenFrmConta(Conta conta) {
@@ -427,19 +440,19 @@ namespace Investimentos {
         }
 
         private int LerExtratoAcoes(string fileName) {
-            var seps = new[] { "\r\n" };
+            var seps = new[] {"\r\n"};
             var readText = File.ReadAllText(fileName);
             var lines = readText.Split(seps, StringSplitOptions.RemoveEmptyEntries);
 
-            var conta = (Conta)toolStripComboBoxConta.SelectedItem;
+            var conta = (Conta) toolStripComboBoxConta.SelectedItem;
             var ativos = conta.AtivosDaConta;
 
             foreach (var line in lines) {
                 var cotacao = line.Split(';');
-                var papel = cotacao[(int)posicao.Papel];
+                var papel = cotacao[(int) posicao.Papel];
                 var ativo = ativos.FirstOrDefault(a => a.Ativo.Codigo == papel);
                 if (ativo != null) {
-                    ativo.CotacaoAtual = decimal.Parse(cotacao[(int)posicao.Cotação]);
+                    ativo.CotacaoAtual = decimal.Parse(cotacao[(int) posicao.Cotação]);
                 }
             }
             dgvAtivos.Refresh();
@@ -451,7 +464,7 @@ namespace Investimentos {
         }
 
         private int LerExtratoFundos(string fileName) {
-            var conta = (Conta)toolStripComboBoxConta.SelectedItem;
+            var conta = (Conta) toolStripComboBoxConta.SelectedItem;
             var fundos = entityDataSource1.DbContext.Set<Fundo>();
 
             const int bufferSize = 128;
@@ -476,7 +489,7 @@ namespace Investimentos {
                         // Localiza o Fundo, criando ou atualizando o nome caso necessário
                         var fundo = fundos.Local.FirstOrDefault(f => f.CNPJ == fundoCNPJ);
                         if (fundo == null) {
-                            fundo = new Fundo() { Nome = fundoNome, CNPJ = fundoCNPJ };
+                            fundo = new Fundo() {Nome = fundoNome, CNPJ = fundoCNPJ};
                             fundos.Add(fundo);
                         }
                         else if (fundo.Nome != fundoNome) {
@@ -485,7 +498,7 @@ namespace Investimentos {
 
                         // Localiza a ContaFundo, criando se necessário
                         var contaFundo = conta.Fundos.FirstOrDefault(f => f.FundoCNPJ == fundoCNPJ) ??
-                            new ContaFundo() { Fundo = fundo };
+                                         new ContaFundo() {Fundo = fundo};
                         if (contaFundo.ContaFundoId == 0) {
                             conta.Fundos.Add(contaFundo);
                         }
@@ -496,11 +509,11 @@ namespace Investimentos {
                         } while (!(line = GetNextLine(streamReader)).Contains("SALDO ANTERIOR"));
 
                         // Cria o Fundo-Mes
-                        var fundoMes = new FundoMes() { Fundo = fundo };
+                        var fundoMes = new FundoMes() {Fundo = fundo};
                         fundo.Meses.Add(fundoMes);
 
                         // Cria o Conta-Mes
-                        var contaMes = new ContaMes() { ContaFundo = contaFundo, FundoMes = fundoMes };
+                        var contaMes = new ContaMes() {ContaFundo = contaFundo, FundoMes = fundoMes};
 
                         // Ler movimentos
                         DateTime data;
@@ -525,12 +538,13 @@ namespace Investimentos {
                         do {
                             line = GetNextLine(streamReader);
                         } while (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR,
-                                     DateTimeStyles.AssumeLocal, out data));
+                            DateTimeStyles.AssumeLocal, out data));
 
                         // Ler até achar o valor atual da cota
                         do {
                             line = GetNextLine(streamReader);
-                        } while (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal, out data));
+                        } while (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal,
+                            out data));
                         fundoMes.CotaValor = GetValor(line);
 
                         // Mover até inicio dos rendimentos
@@ -554,7 +568,7 @@ namespace Investimentos {
         }
 
         private int LerExtratoLCA(string fileName) {
-            var conta = (Conta)toolStripComboBoxConta.SelectedItem;
+            var conta = (Conta) toolStripComboBoxConta.SelectedItem;
             var LCAs = entityDataSource1.DbContext.Set<LCA>();
 
             const int bufferSize = 128;
@@ -570,10 +584,10 @@ namespace Investimentos {
                     // Localiza a LCA, criando se necessário
                     var lca = LCAs.Local.FirstOrDefault(l => l.Numero == lcaNumero);
                     if (lca == null) {
-                        lca = new LCA { Numero = lcaNumero, Conta = conta };
+                        lca = new LCA {Numero = lcaNumero, Conta = conta};
                         lca.Aplicacao = DateTime.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
                         lca.ValorEmissao = decimal.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
-                        var saldo = GetNextLine(streamReader);  // skip that line
+                        var saldo = GetNextLine(streamReader); // skip that line
                         lca.Taxa = decimal.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
                         lca.Vencimento = DateTime.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
                         LCAs.Add(lca);
@@ -583,7 +597,7 @@ namespace Investimentos {
                     line = ReadUntil(streamReader, "EXTRATO REF AO MÊS");
 
                     // Cria o Mes
-                    var lcaMes = new LCAMes { LCA = lca, Mes = DateTime.Parse($"01/{line.Substring(18).Trim()}") };
+                    var lcaMes = new LCAMes {LCA = lca, Mes = DateTime.Parse($"01/{line.Substring(18).Trim()}")};
                     lca.LCAMeses.Add(lcaMes);
 
                     // Ler movimentos
@@ -623,7 +637,6 @@ namespace Investimentos {
             while ((linha = stream.ReadLine().Trim()) == "") {
                 ;
             }
-
             return linha;
         }
 
@@ -632,7 +645,6 @@ namespace Investimentos {
             while (!(linha = stream.ReadLine().Trim()).Contains(text)) {
                 ;
             }
-
             return linha;
         }
 
@@ -640,7 +652,7 @@ namespace Investimentos {
             GetValor(GetNextLine(stream));
 
         private static decimal GetValor(string linha) {
-            var valores = linha.Split(new[] { ' ' }).Where(x => !string.IsNullOrEmpty(x)).ToArray();
+            var valores = linha.Split(new[] {' '}).Where(x => !string.IsNullOrEmpty(x)).ToArray();
             return decimal.Parse(valores[valores.Length - 1]);
         }
 
@@ -682,12 +694,45 @@ namespace Investimentos {
             }
 
             var text = line.Substring(start, length).Trim();
-            return decimal.TryParse(text, out decimal valor) ? (decimal?)valor : null;
+            return decimal.TryParse(text, out decimal valor) ? (decimal?) valor : null;
         }
 
         private void dgvResumo_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
-            var dgv = ((DataGridView)sender).Name == "dgvResumoAcoes" ? dgvResumoFundos : dgvResumoAcoes;
+            var dgv = ((DataGridView) sender).Name == "dgvResumoAcoes" ? dgvResumoFundos : dgvResumoAcoes;
             dgv.Columns[e.Column.Index].Width = e.Column.Width;
+        }
+
+        private void nupAno_ValueChanged(object sender, EventArgs e) {
+            GetAcoesImpostoRenda();
+        }
+
+        private void GetAcoesImpostoRenda() {
+            var conta = ((Conta) toolStripComboBoxConta.SelectedItem);
+            listViewImpostoRenda.Items.Clear();
+            var IR = conta.ImpostoRenda((int) nupAno.Value);
+            decimal total = 0;
+            foreach (var i in IR) {
+                var it = listViewImpostoRenda.Items.Add(i.Codigo);
+                var qtd = (decimal) i.Qtd;
+                var valor = qtd * i.Preco;
+                total += valor;
+                it.SubItems.Add(qtd.ToString("#,###"));
+                it.SubItems.Add(i.Preco.ToString("F2"));
+                it.SubItems.Add(valor.ToString("#,###.00"));
+            }
+            var item = listViewImpostoRenda.Items.Add("TOTAL");
+            item.SubItems.Add("");
+            item.SubItems.Add("");
+            item.SubItems.Add(total.ToString("#,###.00"));
+        }
+
+        private void buttonImpostoRendaExport_Click(object sender, EventArgs e) {
+            var sb = new StringBuilder();
+            foreach (ListViewItem item in listViewImpostoRenda.Items) {
+                sb.AppendFormat("{0}\t{1}\t{2}\t{3}\n", 
+                    item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text, item.SubItems[3].Text);
+            }
+            System.Windows.Forms.Clipboard.SetText(sb.ToString());
         }
     }
 }

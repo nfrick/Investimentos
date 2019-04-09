@@ -130,6 +130,7 @@
     <None Include="Properties\DataSources\DataLayer.ContaFundo.datasource" />
     <None Include="Properties\DataSources\DataLayer.Entrada.datasource" />
     <None Include="Properties\DataSources\DataLayer.Patrimonio.datasource" />
+    <None Include="Properties\DataSources\DataLayer.sp_ImpostoRenda_Result.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

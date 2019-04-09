@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCotacoes));
             this.dgvCotacoes = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +48,7 @@
             this.bindingSourceCotacoes = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelAtualizadoEm = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelDuracao = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelErros = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -88,6 +89,7 @@
             this.toolStripButtonLerExtrato = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.OFD = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotacoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotacoes)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -157,8 +159,8 @@
             // trendDataGridViewTextBoxColumn
             // 
             this.trendDataGridViewTextBoxColumn.DataPropertyName = "Trend";
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.trendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Wingdings", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.trendDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.trendDataGridViewTextBoxColumn.HeaderText = "";
             this.trendDataGridViewTextBoxColumn.Name = "trendDataGridViewTextBoxColumn";
             this.trendDataGridViewTextBoxColumn.ReadOnly = true;
@@ -271,23 +273,31 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelAtualizadoEm,
-            this.toolStripStatusLabelErros});
+            this.toolStripStatusLabelDuracao,
+            this.toolStripStatusLabelErros,
+            this.toolStripProgressBar1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1283, 25);
+            this.statusStrip1.Size = new System.Drawing.Size(1283, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabelAtualizadoEm
             // 
             this.toolStripStatusLabelAtualizadoEm.Name = "toolStripStatusLabelAtualizadoEm";
-            this.toolStripStatusLabelAtualizadoEm.Size = new System.Drawing.Size(109, 20);
+            this.toolStripStatusLabelAtualizadoEm.Size = new System.Drawing.Size(86, 17);
             this.toolStripStatusLabelAtualizadoEm.Text = "Atualizado em:";
+            // 
+            // toolStripStatusLabelDuracao
+            // 
+            this.toolStripStatusLabelDuracao.Name = "toolStripStatusLabelDuracao";
+            this.toolStripStatusLabelDuracao.Size = new System.Drawing.Size(54, 17);
+            this.toolStripStatusLabelDuracao.Text = "Duração:";
             // 
             // toolStripStatusLabelErros
             // 
             this.toolStripStatusLabelErros.Name = "toolStripStatusLabelErros";
-            this.toolStripStatusLabelErros.Size = new System.Drawing.Size(57, 20);
+            this.toolStripStatusLabelErros.Size = new System.Drawing.Size(45, 17);
             this.toolStripStatusLabelErros.Text = "Erros: 0";
             // 
             // toolStripContainer1
@@ -301,7 +311,7 @@
             // 
             this.toolStripContainer1.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1283, 748);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1283, 754);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -330,7 +340,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 143F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1283, 748);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1283, 754);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dgvTotal
@@ -486,48 +496,48 @@
             this.chart1.BorderSkin.BorderColor = System.Drawing.Color.White;
             this.chart1.BorderSkin.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.chart1.BorderSkin.PageColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.IsLabelAutoFit = false;
-            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisX.LabelStyle.Format = "HH:mm";
-            chartArea1.AxisX.LineColor = System.Drawing.Color.White;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY.IsLabelAutoFit = false;
-            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY.LabelStyle.Format = "N2";
-            chartArea1.AxisY.LineColor = System.Drawing.Color.White;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.White;
-            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            chartArea1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
-            chartArea1.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            chartArea1.ShadowColor = System.Drawing.Color.White;
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea6.AxisX.IsLabelAutoFit = false;
+            chartArea6.AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea6.AxisX.LabelStyle.Format = "HH:mm";
+            chartArea6.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea6.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea6.AxisY.IsLabelAutoFit = false;
+            chartArea6.AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea6.AxisY.LabelStyle.Format = "N2";
+            chartArea6.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            chartArea6.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            chartArea6.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea6.Name = "ChartArea1";
+            chartArea6.ShadowColor = System.Drawing.Color.White;
+            this.chart1.ChartAreas.Add(chartArea6);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Alignment = System.Drawing.StringAlignment.Center;
-            legend1.BackColor = System.Drawing.Color.Black;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend1.ForeColor = System.Drawing.Color.White;
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend6.Alignment = System.Drawing.StringAlignment.Center;
+            legend6.BackColor = System.Drawing.Color.Black;
+            legend6.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend6.ForeColor = System.Drawing.Color.White;
+            legend6.IsTextAutoFit = false;
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(4, 337);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.LabelBackColor = System.Drawing.Color.Black;
-            series1.LabelForeColor = System.Drawing.Color.White;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1275, 407);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series6.LabelBackColor = System.Drawing.Color.Black;
+            series6.LabelForeColor = System.Drawing.Color.White;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chart1.Series.Add(series6);
+            this.chart1.Size = new System.Drawing.Size(1275, 413);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -546,20 +556,20 @@
             this.toolStripButtonLerExtrato});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(918, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(757, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(51, 25);
+            this.toolStripLabel1.Size = new System.Drawing.Size(42, 22);
             this.toolStripLabel1.Text = "Conta:";
             // 
             // toolStripComboBoxConta
             // 
             this.toolStripComboBoxConta.AutoSize = false;
             this.toolStripComboBoxConta.Name = "toolStripComboBoxConta";
-            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 28);
+            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 23);
             this.toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
             // 
             // toolStripDropDownButtonAtivos
@@ -573,7 +583,7 @@
             this.toolStripDropDownButtonAtivos.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonAtivos.Image")));
             this.toolStripDropDownButtonAtivos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonAtivos.Name = "toolStripDropDownButtonAtivos";
-            this.toolStripDropDownButtonAtivos.Size = new System.Drawing.Size(131, 25);
+            this.toolStripDropDownButtonAtivos.Size = new System.Drawing.Size(107, 22);
             this.toolStripDropDownButtonAtivos.Text = "Ativos Correntes";
             // 
             // toolStripMenuItemCorrentes
@@ -581,21 +591,21 @@
             this.toolStripMenuItemCorrentes.Checked = true;
             this.toolStripMenuItemCorrentes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolStripMenuItemCorrentes.Name = "toolStripMenuItemCorrentes";
-            this.toolStripMenuItemCorrentes.Size = new System.Drawing.Size(192, 26);
+            this.toolStripMenuItemCorrentes.Size = new System.Drawing.Size(161, 22);
             this.toolStripMenuItemCorrentes.Tag = "2";
             this.toolStripMenuItemCorrentes.Text = "Ativos Correntes";
             // 
             // ToolStripMenuItemJaNegociados
             // 
             this.ToolStripMenuItemJaNegociados.Name = "ToolStripMenuItemJaNegociados";
-            this.ToolStripMenuItemJaNegociados.Size = new System.Drawing.Size(192, 26);
+            this.ToolStripMenuItemJaNegociados.Size = new System.Drawing.Size(161, 22);
             this.ToolStripMenuItemJaNegociados.Tag = "1";
             this.ToolStripMenuItemJaNegociados.Text = "Já Negociados";
             // 
             // toolStripMenuItemTodos
             // 
             this.toolStripMenuItemTodos.Name = "toolStripMenuItemTodos";
-            this.toolStripMenuItemTodos.Size = new System.Drawing.Size(192, 26);
+            this.toolStripMenuItemTodos.Size = new System.Drawing.Size(161, 22);
             this.toolStripMenuItemTodos.Tag = "0";
             this.toolStripMenuItemTodos.Text = "Todos os Ativos";
             // 
@@ -613,47 +623,47 @@
             this.toolStripDropDownButtonFrequencia.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonFrequencia.Image")));
             this.toolStripDropDownButtonFrequencia.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonFrequencia.Name = "toolStripDropDownButtonFrequencia";
-            this.toolStripDropDownButtonFrequencia.Size = new System.Drawing.Size(167, 25);
+            this.toolStripDropDownButtonFrequencia.Size = new System.Drawing.Size(137, 22);
             this.toolStripDropDownButtonFrequencia.Text = "Frequência: 5 minutos";
             this.toolStripDropDownButtonFrequencia.ToolTipText = "Frequência de atualização";
             // 
             // toolStripMenuItem1minuto
             // 
             this.toolStripMenuItem1minuto.Name = "toolStripMenuItem1minuto";
-            this.toolStripMenuItem1minuto.Size = new System.Drawing.Size(157, 26);
+            this.toolStripMenuItem1minuto.Size = new System.Drawing.Size(133, 22);
             this.toolStripMenuItem1minuto.Tag = "1";
             this.toolStripMenuItem1minuto.Text = "1 minuto";
             // 
             // toolStripMenuItem5minutos
             // 
             this.toolStripMenuItem5minutos.Name = "toolStripMenuItem5minutos";
-            this.toolStripMenuItem5minutos.Size = new System.Drawing.Size(157, 26);
+            this.toolStripMenuItem5minutos.Size = new System.Drawing.Size(133, 22);
             this.toolStripMenuItem5minutos.Tag = "5";
             this.toolStripMenuItem5minutos.Text = "5 minutos";
             // 
             // toolStripMenuItem10minutos
             // 
             this.toolStripMenuItem10minutos.Name = "toolStripMenuItem10minutos";
-            this.toolStripMenuItem10minutos.Size = new System.Drawing.Size(157, 26);
+            this.toolStripMenuItem10minutos.Size = new System.Drawing.Size(133, 22);
             this.toolStripMenuItem10minutos.Tag = "10";
             this.toolStripMenuItem10minutos.Text = "10 minutos";
             // 
             // toolStripMenuItem15minutos
             // 
             this.toolStripMenuItem15minutos.Name = "toolStripMenuItem15minutos";
-            this.toolStripMenuItem15minutos.Size = new System.Drawing.Size(157, 26);
+            this.toolStripMenuItem15minutos.Size = new System.Drawing.Size(133, 22);
             this.toolStripMenuItem15minutos.Tag = "15";
             this.toolStripMenuItem15minutos.Text = "15 minutos";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(154, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(130, 6);
             // 
             // toolStripMenuItemDesligado
             // 
             this.toolStripMenuItemDesligado.Name = "toolStripMenuItemDesligado";
-            this.toolStripMenuItemDesligado.Size = new System.Drawing.Size(157, 26);
+            this.toolStripMenuItemDesligado.Size = new System.Drawing.Size(133, 22);
             this.toolStripMenuItemDesligado.Tag = "0";
             this.toolStripMenuItemDesligado.Text = "Desligado";
             // 
@@ -664,7 +674,7 @@
             this.toolStripButtonAtualizarSelecionados.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAtualizarSelecionados.Image")));
             this.toolStripButtonAtualizarSelecionados.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAtualizarSelecionados.Name = "toolStripButtonAtualizarSelecionados";
-            this.toolStripButtonAtualizarSelecionados.Size = new System.Drawing.Size(205, 25);
+            this.toolStripButtonAtualizarSelecionados.Size = new System.Drawing.Size(162, 22);
             this.toolStripButtonAtualizarSelecionados.Text = "Atualizar ativos selecionados";
             this.toolStripButtonAtualizarSelecionados.Click += new System.EventHandler(this.toolStripButtonAtualizar_Click);
             // 
@@ -675,7 +685,7 @@
             this.toolStripButtonAtualizarTodos.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAtualizarTodos.Image")));
             this.toolStripButtonAtualizarTodos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAtualizarTodos.Name = "toolStripButtonAtualizarTodos";
-            this.toolStripButtonAtualizarTodos.Size = new System.Drawing.Size(176, 25);
+            this.toolStripButtonAtualizarTodos.Size = new System.Drawing.Size(139, 22);
             this.toolStripButtonAtualizarTodos.Text = "Atualizar todos os ativos";
             this.toolStripButtonAtualizarTodos.Click += new System.EventHandler(this.toolStripButtonAtualizar_Click);
             // 
@@ -685,7 +695,7 @@
             this.toolStripButtonLerExtrato.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLerExtrato.Image")));
             this.toolStripButtonLerExtrato.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLerExtrato.Name = "toolStripButtonLerExtrato";
-            this.toolStripButtonLerExtrato.Size = new System.Drawing.Size(84, 25);
+            this.toolStripButtonLerExtrato.Size = new System.Drawing.Size(66, 22);
             this.toolStripButtonLerExtrato.Text = "Ler Extrato";
             this.toolStripButtonLerExtrato.Click += new System.EventHandler(this.toolStripButtonLerExtrato_Click);
             // 
@@ -699,9 +709,14 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
             // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
             // frmCotacoes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 801);
             this.Controls.Add(this.toolStripContainer1);
@@ -795,6 +810,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LucroReal;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtdVendavel;
         private System.Windows.Forms.DataGridViewTextBoxColumn LucroImediato;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDuracao;
+        public System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
     }
 }
 

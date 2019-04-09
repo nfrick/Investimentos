@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvestimentos));
             this.tlpAcoes = new System.Windows.Forms.TableLayoutPanel();
             this.dgvVendas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
@@ -76,6 +76,15 @@
             this.RendimentoPercentual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RendimentoMensal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvOperacoes = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtdReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorOperacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taxas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvAtivos = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -150,6 +159,8 @@
             this.valorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceAcoes = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.tabImpostoRenda = new System.Windows.Forms.TabPage();
+            this.nupAno = new System.Windows.Forms.NumericUpDown();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNovaConta = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -169,15 +180,12 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtdReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorOperacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Taxas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listViewImpostoRenda = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonImpostoRendaExport = new System.Windows.Forms.Button();
             this.tlpAcoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVendas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFundos)).BeginInit();
@@ -212,14 +220,16 @@
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAcoes)).BeginInit();
+            this.tabImpostoRenda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupAno)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpAcoes
             // 
             this.tlpAcoes.ColumnCount = 2;
-            this.tlpAcoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
-            this.tlpAcoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 833F));
+            this.tlpAcoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 328F));
+            this.tlpAcoes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 715F));
             this.tlpAcoes.Controls.Add(this.dgvVendas, 0, 1);
             this.tlpAcoes.Controls.Add(this.dgvOperacoes, 1, 0);
             this.tlpAcoes.Controls.Add(this.dgvAtivos, 0, 0);
@@ -230,7 +240,7 @@
             this.tlpAcoes.RowCount = 2;
             this.tlpAcoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tlpAcoes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.tlpAcoes.Size = new System.Drawing.Size(1043, 582);
+            this.tlpAcoes.Size = new System.Drawing.Size(1043, 586);
             this.tlpAcoes.TabIndex = 5;
             // 
             // dgvVendas
@@ -383,7 +393,7 @@
             this.dgvFundos.Name = "dgvFundos";
             this.dgvFundos.ReadOnly = true;
             this.dgvFundos.RowTemplate.Height = 24;
-            this.dgvFundos.Size = new System.Drawing.Size(356, 279);
+            this.dgvFundos.Size = new System.Drawing.Size(356, 281);
             this.dgvFundos.TabIndex = 3;
             // 
             // fundoNomeDataGridViewTextBoxColumn
@@ -433,7 +443,7 @@
             this.dgvLCAs.Name = "dgvLCAs";
             this.dgvLCAs.ReadOnly = true;
             this.dgvLCAs.RowTemplate.Height = 24;
-            this.dgvLCAs.Size = new System.Drawing.Size(524, 279);
+            this.dgvLCAs.Size = new System.Drawing.Size(524, 281);
             this.dgvLCAs.TabIndex = 3;
             // 
             // Numero
@@ -518,23 +528,90 @@
             this.dgvOperacoes.DataMember = "Contas.AtivosDaConta.Operacoes";
             this.dgvOperacoes.DataSource = this.entityDataSource1;
             this.dgvOperacoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvOperacoes.Location = new System.Drawing.Point(213, 3);
+            this.dgvOperacoes.Location = new System.Drawing.Point(331, 3);
             this.dgvOperacoes.MultiSelect = false;
             this.dgvOperacoes.Name = "dgvOperacoes";
             this.dgvOperacoes.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvOperacoes.RowHeadersWidth = 25;
             this.dgvOperacoes.RowTemplate.Height = 24;
             this.dgvOperacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvOperacoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOperacoes.Size = new System.Drawing.Size(827, 294);
+            this.dgvOperacoes.Size = new System.Drawing.Size(709, 294);
             this.dgvOperacoes.TabIndex = 1;
             this.dgvOperacoes.Tag = "3";
             this.dgvOperacoes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
             this.dgvOperacoes.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOperacoes_CellMouseDoubleClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "OperacaoId";
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Data";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Data";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 63;
+            // 
+            // Tipo
+            // 
+            this.Tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tipo.DataPropertyName = "OperacaoTipo";
+            this.Tipo.HeaderText = "Operação";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // QtdReal
+            // 
+            this.QtdReal.DataPropertyName = "QtdComSinal";
+            this.QtdReal.HeaderText = "Qtd";
+            this.QtdReal.Name = "QtdReal";
+            this.QtdReal.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "QtdAcumulada";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Acum.";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Valor";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Valor Nominal";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "ValorReal";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Valor Real";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // ValorOperacao
+            // 
+            this.ValorOperacao.DataPropertyName = "ValorOperacao";
+            this.ValorOperacao.HeaderText = "Valor Operação";
+            this.ValorOperacao.Name = "ValorOperacao";
+            this.ValorOperacao.ReadOnly = true;
+            // 
+            // Taxas
+            // 
+            this.Taxas.DataPropertyName = "CustoOperacao";
+            this.Taxas.HeaderText = "Custos";
+            this.Taxas.Name = "Taxas";
+            this.Taxas.ReadOnly = true;
             // 
             // dgvAtivos
             // 
@@ -553,14 +630,14 @@
             this.dgvAtivos.MultiSelect = false;
             this.dgvAtivos.Name = "dgvAtivos";
             this.dgvAtivos.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvAtivos.RowHeadersWidth = 25;
             this.dgvAtivos.RowTemplate.Height = 24;
             this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAtivos.Size = new System.Drawing.Size(204, 294);
+            this.dgvAtivos.Size = new System.Drawing.Size(322, 294);
             this.dgvAtivos.TabIndex = 0;
             // 
             // Codigo
@@ -572,6 +649,7 @@
             // 
             // dataGridViewTextBoxColumn3
             // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "QtdTotal";
             this.dataGridViewTextBoxColumn3.HeaderText = "Qtd";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -686,6 +764,7 @@
             this.tabControl1.Controls.Add(this.tabPageFundos);
             this.tabControl1.Controls.Add(this.tabPageLCA);
             this.tabControl1.Controls.Add(this.tabPageResumo);
+            this.tabControl1.Controls.Add(this.tabImpostoRenda);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
@@ -701,10 +780,10 @@
             this.tabPageAcoes.Controls.Add(this.tlpAcoes);
             this.tabPageAcoes.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageAcoes.ForeColor = System.Drawing.SystemColors.Control;
-            this.tabPageAcoes.Location = new System.Drawing.Point(4, 32);
+            this.tabPageAcoes.Location = new System.Drawing.Point(4, 28);
             this.tabPageAcoes.Name = "tabPageAcoes";
             this.tabPageAcoes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAcoes.Size = new System.Drawing.Size(1049, 588);
+            this.tabPageAcoes.Size = new System.Drawing.Size(1049, 592);
             this.tabPageAcoes.TabIndex = 0;
             this.tabPageAcoes.Text = "Ações";
             // 
@@ -713,10 +792,10 @@
             this.tabPageFundos.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.tabPageFundos.Controls.Add(this.tlpFundosMain);
             this.tabPageFundos.ForeColor = System.Drawing.SystemColors.Control;
-            this.tabPageFundos.Location = new System.Drawing.Point(4, 32);
+            this.tabPageFundos.Location = new System.Drawing.Point(4, 28);
             this.tabPageFundos.Name = "tabPageFundos";
             this.tabPageFundos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFundos.Size = new System.Drawing.Size(1049, 588);
+            this.tabPageFundos.Size = new System.Drawing.Size(1049, 592);
             this.tabPageFundos.TabIndex = 1;
             this.tabPageFundos.Text = "Fundos";
             // 
@@ -732,7 +811,7 @@
             this.tlpFundosMain.RowCount = 2;
             this.tlpFundosMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpFundosMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpFundosMain.Size = new System.Drawing.Size(1043, 582);
+            this.tlpFundosMain.Size = new System.Drawing.Size(1043, 586);
             this.tlpFundosMain.TabIndex = 3;
             // 
             // dgvFundosMeses
@@ -755,18 +834,18 @@
             this.dgvFundosMeses.DataMember = "Contas.Fundos.ContasMeses";
             this.dgvFundosMeses.DataSource = this.entityDataSource1;
             this.dgvFundosMeses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvFundosMeses.Location = new System.Drawing.Point(3, 294);
+            this.dgvFundosMeses.Location = new System.Drawing.Point(3, 296);
             this.dgvFundosMeses.Name = "dgvFundosMeses";
             this.dgvFundosMeses.ReadOnly = true;
             this.dgvFundosMeses.RowTemplate.Height = 24;
-            this.dgvFundosMeses.Size = new System.Drawing.Size(1037, 285);
+            this.dgvFundosMeses.Size = new System.Drawing.Size(1037, 287);
             this.dgvFundosMeses.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "Mes";
-            dataGridViewCellStyle3.Format = "MMM-yyyy";
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Format = "MMM-yyyy";
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTextBoxColumn16.HeaderText = "Mes";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -846,7 +925,7 @@
             this.tlpFundosTop.Name = "tlpFundosTop";
             this.tlpFundosTop.RowCount = 1;
             this.tlpFundosTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFundosTop.Size = new System.Drawing.Size(1037, 285);
+            this.tlpFundosTop.Size = new System.Drawing.Size(1037, 287);
             this.tlpFundosTop.TabIndex = 2;
             // 
             // dgvMovimentos
@@ -869,7 +948,7 @@
             this.dgvMovimentos.Name = "dgvMovimentos";
             this.dgvMovimentos.ReadOnly = true;
             this.dgvMovimentos.RowTemplate.Height = 24;
-            this.dgvMovimentos.Size = new System.Drawing.Size(669, 279);
+            this.dgvMovimentos.Size = new System.Drawing.Size(669, 281);
             this.dgvMovimentos.TabIndex = 2;
             // 
             // dataDataGridViewTextBoxColumn2
@@ -917,10 +996,10 @@
             // tabPageLCA
             // 
             this.tabPageLCA.Controls.Add(this.tlpLCA);
-            this.tabPageLCA.Location = new System.Drawing.Point(4, 32);
+            this.tabPageLCA.Location = new System.Drawing.Point(4, 28);
             this.tabPageLCA.Name = "tabPageLCA";
             this.tabPageLCA.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLCA.Size = new System.Drawing.Size(1049, 588);
+            this.tabPageLCA.Size = new System.Drawing.Size(1049, 592);
             this.tabPageLCA.TabIndex = 3;
             this.tabPageLCA.Text = "LCA";
             this.tabPageLCA.UseVisualStyleBackColor = true;
@@ -937,7 +1016,7 @@
             this.tlpLCA.RowCount = 2;
             this.tlpLCA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpLCA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpLCA.Size = new System.Drawing.Size(1043, 582);
+            this.tlpLCA.Size = new System.Drawing.Size(1043, 586);
             this.tlpLCA.TabIndex = 4;
             // 
             // dgvLCAMeses
@@ -959,19 +1038,19 @@
             this.dgvLCAMeses.DataMember = "Contas.LCAs.LCAMeses";
             this.dgvLCAMeses.DataSource = this.entityDataSource1;
             this.dgvLCAMeses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLCAMeses.Location = new System.Drawing.Point(3, 294);
+            this.dgvLCAMeses.Location = new System.Drawing.Point(3, 296);
             this.dgvLCAMeses.Name = "dgvLCAMeses";
             this.dgvLCAMeses.ReadOnly = true;
             this.dgvLCAMeses.RowTemplate.Height = 24;
-            this.dgvLCAMeses.Size = new System.Drawing.Size(1037, 285);
+            this.dgvLCAMeses.Size = new System.Drawing.Size(1037, 287);
             this.dgvLCAMeses.TabIndex = 1;
             // 
             // lCADataGridViewTextBoxColumn
             // 
             this.lCADataGridViewTextBoxColumn.DataPropertyName = "Mes";
-            dataGridViewCellStyle4.Format = "MMM yyyy";
-            dataGridViewCellStyle4.NullValue = null;
-            this.lCADataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Format = "MMM yyyy";
+            dataGridViewCellStyle12.NullValue = null;
+            this.lCADataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.lCADataGridViewTextBoxColumn.HeaderText = "Mês";
             this.lCADataGridViewTextBoxColumn.Name = "lCADataGridViewTextBoxColumn";
             this.lCADataGridViewTextBoxColumn.ReadOnly = true;
@@ -1044,7 +1123,7 @@
             this.tlpLCATop.Name = "tlpLCATop";
             this.tlpLCATop.RowCount = 1;
             this.tlpLCATop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpLCATop.Size = new System.Drawing.Size(1037, 285);
+            this.tlpLCATop.Size = new System.Drawing.Size(1037, 287);
             this.tlpLCATop.TabIndex = 2;
             // 
             // dgvLCAMovimentos
@@ -1067,7 +1146,7 @@
             this.dgvLCAMovimentos.Name = "dgvLCAMovimentos";
             this.dgvLCAMovimentos.ReadOnly = true;
             this.dgvLCAMovimentos.RowTemplate.Height = 24;
-            this.dgvLCAMovimentos.Size = new System.Drawing.Size(501, 279);
+            this.dgvLCAMovimentos.Size = new System.Drawing.Size(501, 281);
             this.dgvLCAMovimentos.TabIndex = 2;
             // 
             // dataDataGridViewTextBoxColumn1
@@ -1116,10 +1195,10 @@
             // 
             this.tabPageResumo.BackColor = System.Drawing.Color.Black;
             this.tabPageResumo.Controls.Add(this.tlpResumo);
-            this.tabPageResumo.Location = new System.Drawing.Point(4, 32);
+            this.tabPageResumo.Location = new System.Drawing.Point(4, 28);
             this.tabPageResumo.Name = "tabPageResumo";
             this.tabPageResumo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageResumo.Size = new System.Drawing.Size(1049, 588);
+            this.tabPageResumo.Size = new System.Drawing.Size(1049, 592);
             this.tabPageResumo.TabIndex = 2;
             this.tabPageResumo.Text = "Resumo";
             // 
@@ -1140,99 +1219,99 @@
             this.tlpResumo.RowCount = 2;
             this.tlpResumo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpResumo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpResumo.Size = new System.Drawing.Size(1043, 582);
+            this.tlpResumo.Size = new System.Drawing.Size(1043, 586);
             this.tlpResumo.TabIndex = 0;
             // 
             // chartResumoAcoes
             // 
             this.chartResumoAcoes.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.BackColor = System.Drawing.Color.DimGray;
-            chartArea1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea1.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea1.Name = "ChartArea1";
-            this.chartResumoAcoes.ChartAreas.Add(chartArea1);
+            chartArea7.BackColor = System.Drawing.Color.DimGray;
+            chartArea7.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea7.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea7.Name = "ChartArea1";
+            this.chartResumoAcoes.ChartAreas.Add(chartArea7);
             this.chartResumoAcoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.BackColor = System.Drawing.Color.Transparent;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend1.ForeColor = System.Drawing.Color.White;
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chartResumoAcoes.Legends.Add(legend1);
+            legend7.BackColor = System.Drawing.Color.Transparent;
+            legend7.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend7.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend7.ForeColor = System.Drawing.Color.White;
+            legend7.IsTextAutoFit = false;
+            legend7.Name = "Legend1";
+            this.chartResumoAcoes.Legends.Add(legend7);
             this.chartResumoAcoes.Location = new System.Drawing.Point(263, 3);
             this.chartResumoAcoes.Name = "chartResumoAcoes";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Color = System.Drawing.Color.Transparent;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartResumoAcoes.Series.Add(series1);
-            this.chartResumoAcoes.Size = new System.Drawing.Size(385, 285);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series5.Color = System.Drawing.Color.Transparent;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartResumoAcoes.Series.Add(series5);
+            this.chartResumoAcoes.Size = new System.Drawing.Size(385, 287);
             this.chartResumoAcoes.TabIndex = 2;
             this.chartResumoAcoes.Text = "chart2";
-            title1.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.ForeColor = System.Drawing.Color.White;
-            title1.Name = "Title1";
-            title1.Text = "AAA";
-            this.chartResumoAcoes.Titles.Add(title1);
+            title7.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title7.ForeColor = System.Drawing.Color.White;
+            title7.Name = "Title1";
+            title7.Text = "AAA";
+            this.chartResumoAcoes.Titles.Add(title7);
             // 
             // chartResumoFundos
             // 
             this.chartResumoFundos.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.BackColor = System.Drawing.Color.DimGray;
-            chartArea2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea2.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea2.Name = "ChartArea1";
-            this.chartResumoFundos.ChartAreas.Add(chartArea2);
+            chartArea8.BackColor = System.Drawing.Color.DimGray;
+            chartArea8.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea8.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea8.Name = "ChartArea1";
+            this.chartResumoFundos.ChartAreas.Add(chartArea8);
             this.chartResumoFundos.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.BackColor = System.Drawing.Color.Transparent;
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend2.ForeColor = System.Drawing.Color.White;
-            legend2.IsTextAutoFit = false;
-            legend2.Name = "Legend1";
-            this.chartResumoFundos.Legends.Add(legend2);
-            this.chartResumoFundos.Location = new System.Drawing.Point(263, 294);
+            legend8.BackColor = System.Drawing.Color.Transparent;
+            legend8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend8.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend8.ForeColor = System.Drawing.Color.White;
+            legend8.IsTextAutoFit = false;
+            legend8.Name = "Legend1";
+            this.chartResumoFundos.Legends.Add(legend8);
+            this.chartResumoFundos.Location = new System.Drawing.Point(263, 296);
             this.chartResumoFundos.Name = "chartResumoFundos";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartResumoFundos.Series.Add(series2);
-            this.chartResumoFundos.Size = new System.Drawing.Size(385, 285);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chartResumoFundos.Series.Add(series6);
+            this.chartResumoFundos.Size = new System.Drawing.Size(385, 287);
             this.chartResumoFundos.TabIndex = 3;
             this.chartResumoFundos.Text = "chart3";
-            title2.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.ForeColor = System.Drawing.Color.White;
-            title2.Name = "Title1";
-            title2.Text = "AAA";
-            this.chartResumoFundos.Titles.Add(title2);
+            title8.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title8.ForeColor = System.Drawing.Color.White;
+            title8.Name = "Title1";
+            title8.Text = "AAA";
+            this.chartResumoFundos.Titles.Add(title8);
             // 
             // chartResumoTotal
             // 
             this.chartResumoTotal.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.BackColor = System.Drawing.Color.DimGray;
-            chartArea3.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea3.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea3.BorderColor = System.Drawing.Color.White;
-            chartArea3.Name = "ChartArea1";
-            this.chartResumoTotal.ChartAreas.Add(chartArea3);
+            chartArea9.BackColor = System.Drawing.Color.DimGray;
+            chartArea9.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea9.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea9.BorderColor = System.Drawing.Color.White;
+            chartArea9.Name = "ChartArea1";
+            this.chartResumoTotal.ChartAreas.Add(chartArea9);
             this.chartResumoTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.BackColor = System.Drawing.Color.Transparent;
-            legend3.ForeColor = System.Drawing.Color.White;
-            legend3.Name = "Legend1";
-            this.chartResumoTotal.Legends.Add(legend3);
+            legend9.BackColor = System.Drawing.Color.Transparent;
+            legend9.ForeColor = System.Drawing.Color.White;
+            legend9.Name = "Legend1";
+            this.chartResumoTotal.Legends.Add(legend9);
             this.chartResumoTotal.Location = new System.Drawing.Point(654, 3);
             this.chartResumoTotal.Name = "chartResumoTotal";
             this.tlpResumo.SetRowSpan(this.chartResumoTotal, 2);
-            this.chartResumoTotal.Size = new System.Drawing.Size(386, 576);
+            this.chartResumoTotal.Size = new System.Drawing.Size(386, 580);
             this.chartResumoTotal.TabIndex = 4;
             this.chartResumoTotal.Text = "chart4";
-            title3.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title3.ForeColor = System.Drawing.Color.White;
-            title3.Name = "Title1";
-            title3.Text = "AAA";
-            this.chartResumoTotal.Titles.Add(title3);
+            title9.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title9.ForeColor = System.Drawing.Color.White;
+            title9.Name = "Title1";
+            title9.Text = "AAA";
+            this.chartResumoTotal.Titles.Add(title9);
             // 
             // tableLayoutPanel1
             // 
@@ -1241,12 +1320,12 @@
             this.tableLayoutPanel1.Controls.Add(this.dgvResumoFundos, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 294);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 296);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 255F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 285);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 287);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // dgvResumoFundos
@@ -1264,8 +1343,9 @@
             this.dgvResumoFundos.Name = "dgvResumoFundos";
             this.dgvResumoFundos.ReadOnly = true;
             this.dgvResumoFundos.RowTemplate.Height = 24;
-            this.dgvResumoFundos.Size = new System.Drawing.Size(248, 254);
+            this.dgvResumoFundos.Size = new System.Drawing.Size(248, 256);
             this.dgvResumoFundos.TabIndex = 2;
+            this.dgvResumoFundos.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvResumo_ColumnWidthChanged);
             // 
             // itemDataGridViewTextBoxColumn1
             // 
@@ -1309,7 +1389,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(254, 285);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(254, 287);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // dgvResumoAcoes
@@ -1327,8 +1407,9 @@
             this.dgvResumoAcoes.Name = "dgvResumoAcoes";
             this.dgvResumoAcoes.ReadOnly = true;
             this.dgvResumoAcoes.RowTemplate.Height = 24;
-            this.dgvResumoAcoes.Size = new System.Drawing.Size(248, 254);
+            this.dgvResumoAcoes.Size = new System.Drawing.Size(248, 256);
             this.dgvResumoAcoes.TabIndex = 1;
+            this.dgvResumoAcoes.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgvResumo_ColumnWidthChanged);
             // 
             // itemDataGridViewTextBoxColumn
             // 
@@ -1360,6 +1441,38 @@
             this.label1.Text = "AÇÕES";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tabImpostoRenda
+            // 
+            this.tabImpostoRenda.BackColor = System.Drawing.Color.Black;
+            this.tabImpostoRenda.Controls.Add(this.buttonImpostoRendaExport);
+            this.tabImpostoRenda.Controls.Add(this.listViewImpostoRenda);
+            this.tabImpostoRenda.Controls.Add(this.nupAno);
+            this.tabImpostoRenda.ForeColor = System.Drawing.Color.White;
+            this.tabImpostoRenda.Location = new System.Drawing.Point(4, 28);
+            this.tabImpostoRenda.Name = "tabImpostoRenda";
+            this.tabImpostoRenda.Padding = new System.Windows.Forms.Padding(3);
+            this.tabImpostoRenda.Size = new System.Drawing.Size(1049, 592);
+            this.tabImpostoRenda.TabIndex = 4;
+            this.tabImpostoRenda.Text = "Imposto Renda";
+            // 
+            // nupAno
+            // 
+            this.nupAno.Location = new System.Drawing.Point(17, 15);
+            this.nupAno.Maximum = new decimal(new int[] {
+            2019,
+            0,
+            0,
+            0});
+            this.nupAno.Name = "nupAno";
+            this.nupAno.Size = new System.Drawing.Size(63, 26);
+            this.nupAno.TabIndex = 0;
+            this.nupAno.Value = new decimal(new int[] {
+            2019,
+            0,
+            0,
+            0});
+            this.nupAno.ValueChanged += new System.EventHandler(this.nupAno_ValueChanged);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
@@ -1382,7 +1495,7 @@
             this.toolStripProgressBar1});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(690, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(590, 28);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonNovaConta
@@ -1392,7 +1505,7 @@
             this.toolStripButtonNovaConta.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaConta.Image")));
             this.toolStripButtonNovaConta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNovaConta.Name = "toolStripButtonNovaConta";
-            this.toolStripButtonNovaConta.Size = new System.Drawing.Size(91, 25);
+            this.toolStripButtonNovaConta.Size = new System.Drawing.Size(74, 25);
             this.toolStripButtonNovaConta.Tag = "new";
             this.toolStripButtonNovaConta.Text = "Nova Conta";
             this.toolStripButtonNovaConta.ToolTipText = "Nova Conta";
@@ -1410,7 +1523,7 @@
             this.toolStripButtonEditarConta.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEditarConta.Image")));
             this.toolStripButtonEditarConta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditarConta.Name = "toolStripButtonEditarConta";
-            this.toolStripButtonEditarConta.Size = new System.Drawing.Size(95, 25);
+            this.toolStripButtonEditarConta.Size = new System.Drawing.Size(76, 25);
             this.toolStripButtonEditarConta.Tag = "edit";
             this.toolStripButtonEditarConta.Text = "Editar Conta";
             this.toolStripButtonEditarConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
@@ -1423,7 +1536,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(51, 25);
+            this.toolStripLabel1.Size = new System.Drawing.Size(42, 25);
             this.toolStripLabel1.Text = "Conta:";
             this.toolStripLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -1432,7 +1545,7 @@
             this.toolStripComboBoxConta.AutoSize = false;
             this.toolStripComboBoxConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBoxConta.Name = "toolStripComboBoxConta";
-            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 28);
+            this.toolStripComboBoxConta.Size = new System.Drawing.Size(90, 23);
             this.toolStripComboBoxConta.Sorted = true;
             this.toolStripComboBoxConta.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxConta_SelectedIndexChanged);
             // 
@@ -1450,7 +1563,7 @@
             this.toolStripButtonNovaOperacao.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNovaOperacao.Image")));
             this.toolStripButtonNovaOperacao.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNovaOperacao.Name = "toolStripButtonNovaOperacao";
-            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(117, 25);
+            this.toolStripButtonNovaOperacao.Size = new System.Drawing.Size(93, 25);
             this.toolStripButtonNovaOperacao.Tag = "Ações";
             this.toolStripButtonNovaOperacao.Text = "Nova Operação";
             this.toolStripButtonNovaOperacao.Click += new System.EventHandler(this.toolStripButtonNovaOperacao_Click);
@@ -1470,7 +1583,7 @@
             this.toolStripButtonSalvar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSalvar.Image")));
             this.toolStripButtonSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSalvar.Name = "toolStripButtonSalvar";
-            this.toolStripButtonSalvar.Size = new System.Drawing.Size(55, 25);
+            this.toolStripButtonSalvar.Size = new System.Drawing.Size(43, 25);
             this.toolStripButtonSalvar.Text = "Salvar";
             this.toolStripButtonSalvar.Visible = false;
             this.toolStripButtonSalvar.Click += new System.EventHandler(this.toolStripButtonSalvar_Click);
@@ -1489,7 +1602,7 @@
             this.toolStripButtonBalanco.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonBalanco.Image")));
             this.toolStripButtonBalanco.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBalanco.Name = "toolStripButtonBalanco";
-            this.toolStripButtonBalanco.Size = new System.Drawing.Size(66, 25);
+            this.toolStripButtonBalanco.Size = new System.Drawing.Size(53, 25);
             this.toolStripButtonBalanco.Tag = "Ações";
             this.toolStripButtonBalanco.Text = "Balanço";
             this.toolStripButtonBalanco.Click += new System.EventHandler(this.toolStripButtonResumoVendas_Click);
@@ -1501,7 +1614,7 @@
             this.toolStripButtonLerExtrato.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLerExtrato.Image")));
             this.toolStripButtonLerExtrato.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLerExtrato.Name = "toolStripButtonLerExtrato";
-            this.toolStripButtonLerExtrato.Size = new System.Drawing.Size(84, 25);
+            this.toolStripButtonLerExtrato.Size = new System.Drawing.Size(66, 25);
             this.toolStripButtonLerExtrato.Tag = "Ações;Fundos;LCA";
             this.toolStripButtonLerExtrato.Text = "Ler Extrato";
             this.toolStripButtonLerExtrato.Click += new System.EventHandler(this.toolStripButtonLerExtrato_Click);
@@ -1509,7 +1622,7 @@
             // toolStripLabelLendoExtrato
             // 
             this.toolStripLabelLendoExtrato.Name = "toolStripLabelLendoExtrato";
-            this.toolStripLabelLendoExtrato.Size = new System.Drawing.Size(101, 25);
+            this.toolStripLabelLendoExtrato.Size = new System.Drawing.Size(79, 25);
             this.toolStripLabelLendoExtrato.Text = "Lendo extrato";
             this.toolStripLabelLendoExtrato.Visible = false;
             // 
@@ -1537,76 +1650,60 @@
             this.OFD.Filter = "Text Files|*.txt";
             this.OFD.Multiselect = true;
             // 
-            // Column1
+            // listViewImpostoRenda
             // 
-            this.Column1.DataPropertyName = "OperacaoId";
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 70;
+            this.listViewImpostoRenda.BackColor = System.Drawing.Color.Black;
+            this.listViewImpostoRenda.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.listViewImpostoRenda.ForeColor = System.Drawing.Color.LightGreen;
+            this.listViewImpostoRenda.Location = new System.Drawing.Point(17, 47);
+            this.listViewImpostoRenda.Name = "listViewImpostoRenda";
+            this.listViewImpostoRenda.Size = new System.Drawing.Size(322, 278);
+            this.listViewImpostoRenda.TabIndex = 2;
+            this.listViewImpostoRenda.UseCompatibleStateImageBehavior = false;
+            this.listViewImpostoRenda.View = System.Windows.Forms.View.Details;
             // 
-            // dataGridViewTextBoxColumn8
+            // columnHeader1
             // 
-            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Data";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Data";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 75;
+            this.columnHeader1.Text = "Código";
+            this.columnHeader1.Width = 65;
             // 
-            // Tipo
+            // columnHeader2
             // 
-            this.Tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Tipo.DataPropertyName = "OperacaoTipo";
-            this.Tipo.HeaderText = "Operação";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
+            this.columnHeader2.Text = "Qtd";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader2.Width = 65;
             // 
-            // QtdReal
+            // columnHeader3
             // 
-            this.QtdReal.DataPropertyName = "QtdComSinal";
-            this.QtdReal.HeaderText = "Qtd";
-            this.QtdReal.Name = "QtdReal";
-            this.QtdReal.ReadOnly = true;
+            this.columnHeader3.Text = "Preço";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader3.Width = 65;
             // 
-            // dataGridViewTextBoxColumn6
+            // columnHeader4
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "QtdAcumulada";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Acum.";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.columnHeader4.Text = "Total";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader4.Width = 100;
             // 
-            // dataGridViewTextBoxColumn10
+            // buttonImpostoRendaExport
             // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Valor";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Valor Nominal";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "ValorReal";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Valor Real";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // ValorOperacao
-            // 
-            this.ValorOperacao.DataPropertyName = "ValorOperacao";
-            this.ValorOperacao.HeaderText = "Valor Operação";
-            this.ValorOperacao.Name = "ValorOperacao";
-            this.ValorOperacao.ReadOnly = true;
-            // 
-            // Taxas
-            // 
-            this.Taxas.DataPropertyName = "CustoOperacao";
-            this.Taxas.HeaderText = "Custos";
-            this.Taxas.Name = "Taxas";
-            this.Taxas.ReadOnly = true;
+            this.buttonImpostoRendaExport.BackColor = System.Drawing.Color.Gainsboro;
+            this.buttonImpostoRendaExport.ForeColor = System.Drawing.Color.Black;
+            this.buttonImpostoRendaExport.Location = new System.Drawing.Point(183, 15);
+            this.buttonImpostoRendaExport.Name = "buttonImpostoRendaExport";
+            this.buttonImpostoRendaExport.Size = new System.Drawing.Size(154, 26);
+            this.buttonImpostoRendaExport.TabIndex = 3;
+            this.buttonImpostoRendaExport.Text = "Copiar para Clipboard";
+            this.buttonImpostoRendaExport.UseVisualStyleBackColor = false;
+            this.buttonImpostoRendaExport.Click += new System.EventHandler(this.buttonImpostoRendaExport_Click);
             // 
             // frmInvestimentos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1063, 659);
@@ -1658,6 +1755,8 @@
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAcoes)).EndInit();
+            this.tabImpostoRenda.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nupAno)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -1802,6 +1901,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorOperacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Taxas;
+        private System.Windows.Forms.TabPage tabImpostoRenda;
+        private System.Windows.Forms.NumericUpDown nupAno;
+        private System.Windows.Forms.ListView listViewImpostoRenda;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Button buttonImpostoRendaExport;
     }
 }
 
