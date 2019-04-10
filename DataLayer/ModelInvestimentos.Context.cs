@@ -44,20 +44,6 @@ namespace DataLayer
         public virtual DbSet<LCAMovimento> LCAMovimentos { get; set; }
         public virtual DbSet<SaldoEmConta> SaldosEmConta { get; set; }
     
-        public virtual ObjectResult<sp_UltimoSaldo_Result> UltimoSaldo()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_UltimoSaldo_Result>("UltimoSaldo");
-        }
-    
-        public virtual int sp_PatrimonioPorMes(Nullable<int> contaID)
-        {
-            var contaIDParameter = contaID.HasValue ?
-                new ObjectParameter("ContaID", contaID) :
-                new ObjectParameter("ContaID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_PatrimonioPorMes", contaIDParameter);
-        }
-    
         public virtual ObjectResult<sp_SituacaoImpostoRenda_Result> sp_SituacaoImpostoRenda(Nullable<int> contaID, Nullable<int> ano)
         {
             var contaIDParameter = contaID.HasValue ?

@@ -171,9 +171,6 @@
     <Compile Include="sp_SituacaoImpostoRenda_Result.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_UltimoSaldo_Result.cs">
-      <DependentUpon>ModelInvestimentos.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ModelInvestimentos.edmx">

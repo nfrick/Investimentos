@@ -382,9 +382,6 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="sp_PatrimonioPorMes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ContaID" Type="int" Mode="In" />
-        </Function>
         <Function Name="sp_SituacaoImpostoRenda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ContaID" Type="int" Mode="In" />
           <Parameter Name="Ano" Type="int" Mode="In" />
@@ -588,15 +585,11 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
             <End Role="tbLCAMes" EntitySet="LCAMeses" />
             <End Role="tbLCAMovimento" EntitySet="LCAMovimentos" />
           </AssociationSet>
-          <FunctionImport Name="UltimoSaldo" ReturnType="Collection(InvestimentosModel.sp_UltimoSaldo_Result)" />
           <EntitySet Name="SaldosEmConta" EntityType="InvestimentosModel.SaldoEmConta" />
           <AssociationSet Name="ContavwSaldoEmConta" Association="InvestimentosModel.ContavwSaldoEmConta">
             <End Role="Conta" EntitySet="Contas" />
             <End Role="SaldoEmConta" EntitySet="SaldosEmConta" />
           </AssociationSet>
-          <FunctionImport Name="sp_PatrimonioPorMes">
-          <Parameter Name="ContaID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="sp_SituacaoImpostoRenda" ReturnType="Collection(InvestimentosModel.sp_SituacaoImpostoRenda_Result)">
             <Parameter Name="ContaID" Mode="In" Type="Int32" />
             <Parameter Name="Ano" Mode="In" Type="Int32" />
@@ -1034,10 +1027,6 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="sp_UltimoSaldo_Result">
-          <Property Type="DateTime" Name="Data" Nullable="false" />
-          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="19" />
-        </ComplexType>
         <EntityType Name="SaldoEmConta">
           <Key>
             <PropertyRef Name="ContaId" />
@@ -1270,7 +1259,6 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_PatrimonioPorMes" FunctionName="InvestimentosModel.Store.sp_PatrimonioPorMes" />
           <FunctionImportMapping FunctionImportName="sp_SituacaoImpostoRenda" FunctionName="InvestimentosModel.Store.sp_SituacaoImpostoRenda">
             <ResultMapping>
               <ComplexTypeMapping TypeName="InvestimentosModel.sp_SituacaoImpostoRenda_Result">
