@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataLayer;
+using GridAndChartStyleLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -7,8 +9,6 @@ using System.IO.Compression;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using DataLayer;
-using GridAndChartStyleLibrary;
 
 namespace SerieHistorica {
     public partial class frmSerieHistorica : Form {
@@ -32,12 +32,22 @@ namespace SerieHistorica {
         private void frmSerieHistorica_Load(object sender, EventArgs e) {
             GridStyles.FormatGrid(dgvAtivos);
             GridStyles.FormatGrid(dgvSerieHistorica);
-            GridStyles.FormatColumns(dgvSerieHistorica, 1, 0, GridStyles.StyleCurrency, 60);
-            dgvSerieHistorica.Columns[0].Width = 90;
+            GridStyles.FormatColumns(dgvSerieHistorica, 1, 0, GridStyles.StyleCurrency, 70);
+            dgvSerieHistorica.Columns[0].Width = 120;
+
+            SetFontSize(dgvAtivos, 14);
+            SetFontSize(dgvSerieHistorica, 14);
 
             // 55 = vertical scroll bar width
             Width = 55 + dgvAtivos.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) +
                 55 + dgvSerieHistorica.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
+        }
+
+        private void SetFontSize(DataGridView dgv, float size) {
+            var font = new Font("Segoe UI", 14);
+            for (var i = 0; i < dgv.ColumnCount; i++) {
+                dgv.Columns[i].DefaultCellStyle.Font = font;
+            }
         }
 
         private void toolStripComboBoxAnos_SelectedIndexChanged(object sender, EventArgs e) {
@@ -80,7 +90,10 @@ namespace SerieHistorica {
                 foreach (DataGridViewRow row in sortedRows) {
                     var ativo = row.Cells[0].Value.ToString();
                     if (!ctx.Ativos.Find(ativo).CotacoesDiarias
-                        .Any(s => InYearRange(s.Data, anoInicio, anoTermino))) continue;
+                        .Any(s => InYearRange(s.Data, anoInicio, anoTermino))) {
+                        continue;
+                    }
+
                     {
                         var serie = chart.Series.Add(ativo);
                         serie.ChartType = SeriesChartType.Line;
@@ -107,12 +120,17 @@ namespace SerieHistorica {
             ofd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             ofd.Filter = @"Arquivos|*.zip;*.txt";
             ofd.Multiselect = true;
-            if (ofd.ShowDialog() == DialogResult.Cancel)
+            if (ofd.ShowDialog() == DialogResult.Cancel) {
                 return;
+            }
+
             bgWorker.RunWorkerAsync(ofd.FileNames);
             entityDataSource1.Refresh();
             if (MessageBox.Show(@"Deletar arquivo(s)?", @"Ler Série", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
-                DialogResult.No) return;
+                DialogResult.No) {
+                return;
+            }
+
             foreach (var arquivo in ofd.FileNames) {
                 File.Delete(arquivo);
             }
@@ -123,8 +141,9 @@ namespace SerieHistorica {
             var linhas = new List<string>();
             foreach (var arquivo in arquivos) {
                 bgWorker.ReportProgress(1, arquivo);
-                if (arquivo.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase))
+                if (arquivo.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     linhas.AddRange(File.ReadLines(arquivo));
+                }
                 else {
                     using (var archive = ZipFile.OpenRead(arquivo)) {
                         foreach (var entry in archive.Entries) {
@@ -154,8 +173,9 @@ namespace SerieHistorica {
             using (var stream = entry.Open()) {
                 using (var sr = new StreamReader(stream)) {
                     string line;
-                    while ((line = sr.ReadLine()) != null)
+                    while ((line = sr.ReadLine()) != null) {
                         lines.Add(line);
+                    }
                 }
             }
             return lines;
@@ -179,18 +199,22 @@ namespace SerieHistorica {
 
         private void chart1_MouseMove(object sender, MouseEventArgs e) {
             var pos = e.Location;
-            if (prevPosition.HasValue && pos == prevPosition.Value)
+            if (prevPosition.HasValue && pos == prevPosition.Value) {
                 return;
-            
+            }
+
             tooltip.RemoveAll();
             prevPosition = pos;
             var results = chart1.HitTest(pos.X, pos.Y, false,
                 ChartElementType.DataPoint);  //.PlottingArea);
             foreach (var result in results) {
-                if (result.ChartElementType != ChartElementType.DataPoint) continue;
+                if (result.ChartElementType != ChartElementType.DataPoint) {
+                    continue;
+                }
+
                 var xVal = result.ChartArea.AxisX.PixelPositionToValue(pos.X);
                 var yVal = result.ChartArea.AxisY.PixelPositionToValue(pos.Y);
-                var dia = (new DateTime(1899,12,31)).AddDays(xVal).ToString("dd/MM/yy");
+                var dia = (new DateTime(1899, 12, 31)).AddDays(xVal).ToString("dd/MM/yy");
 
                 tooltip.Show($"{dia} - {yVal:C2}", this.chart1, pos.X, pos.Y - 15);
             }

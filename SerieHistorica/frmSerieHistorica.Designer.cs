@@ -76,13 +76,15 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1072, 681);
+            this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1205, 734);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(1072, 709);
+            this.toolStripContainer1.Size = new System.Drawing.Size(1205, 762);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -100,11 +102,12 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1072, 681);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1205, 734);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // chart1
@@ -143,7 +146,8 @@
             legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(3, 343);
+            this.chart1.Location = new System.Drawing.Point(2, 369);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
             series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
@@ -158,7 +162,7 @@
             series1.XValueMember = "Data";
             series1.YValueMembers = "PrecoUltimo";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1066, 335);
+            this.chart1.Size = new System.Drawing.Size(1201, 363);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
             this.chart1.DoubleClick += new System.EventHandler(this.chart1_DoubleClick);
@@ -167,16 +171,17 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.Controls.Add(this.dgvSerieHistorica, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.dgvAtivos, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1066, 334);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1201, 363);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // dgvSerieHistorica
@@ -208,7 +213,8 @@
             this.dgvSerieHistorica.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSerieHistorica.EnableHeadersVisualStyles = false;
             this.dgvSerieHistorica.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvSerieHistorica.Location = new System.Drawing.Point(403, 3);
+            this.dgvSerieHistorica.Location = new System.Drawing.Point(352, 2);
+            this.dgvSerieHistorica.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSerieHistorica.Name = "dgvSerieHistorica";
             this.dgvSerieHistorica.ReadOnly = true;
             this.dgvSerieHistorica.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -221,8 +227,9 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvSerieHistorica.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSerieHistorica.RowHeadersWidth = 20;
+            this.dgvSerieHistorica.RowTemplate.Height = 30;
             this.dgvSerieHistorica.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSerieHistorica.Size = new System.Drawing.Size(660, 328);
+            this.dgvSerieHistorica.Size = new System.Drawing.Size(847, 359);
             this.dgvSerieHistorica.TabIndex = 5;
             // 
             // dataDataGridViewTextBoxColumn
@@ -304,7 +311,8 @@
             this.dgvAtivos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAtivos.EnableHeadersVisualStyles = false;
             this.dgvAtivos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvAtivos.Location = new System.Drawing.Point(3, 3);
+            this.dgvAtivos.Location = new System.Drawing.Point(2, 2);
+            this.dgvAtivos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAtivos.Name = "dgvAtivos";
             this.dgvAtivos.ReadOnly = true;
             this.dgvAtivos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -317,8 +325,9 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAtivos.RowHeadersWidth = 20;
+            this.dgvAtivos.RowTemplate.Height = 30;
             this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAtivos.Size = new System.Drawing.Size(394, 328);
+            this.dgvAtivos.Size = new System.Drawing.Size(346, 359);
             this.dgvAtivos.TabIndex = 4;
             this.dgvAtivos.SelectionChanged += new System.EventHandler(this.dgvAtivos_SelectionChanged);
             // 
@@ -329,7 +338,7 @@
             this.codigoDataGridViewTextBoxColumn2.HeaderText = "Ativo";
             this.codigoDataGridViewTextBoxColumn2.Name = "codigoDataGridViewTextBoxColumn2";
             this.codigoDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.codigoDataGridViewTextBoxColumn2.Width = 77;
+            this.codigoDataGridViewTextBoxColumn2.Width = 61;
             // 
             // nomeDataGridViewTextBoxColumn
             // 
@@ -355,7 +364,7 @@
             this.toolStripComboBoxTermino});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(759, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(720, 28);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonLerSerie
@@ -366,7 +375,7 @@
             this.toolStripButtonLerSerie.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLerSerie.Image")));
             this.toolStripButtonLerSerie.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLerSerie.Name = "toolStripButtonLerSerie";
-            this.toolStripButtonLerSerie.Size = new System.Drawing.Size(70, 25);
+            this.toolStripButtonLerSerie.Size = new System.Drawing.Size(55, 25);
             this.toolStripButtonLerSerie.Text = "Ler Série";
             this.toolStripButtonLerSerie.Click += new System.EventHandler(this.toolStripButtonLerSerie_Click);
             // 
@@ -392,7 +401,7 @@
             this.toolStripLabel2.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripLabel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(81, 25);
+            this.toolStripLabel2.Size = new System.Drawing.Size(64, 25);
             this.toolStripLabel2.Tag = "";
             this.toolStripLabel2.Text = "Gráfico: de";
             // 
@@ -409,7 +418,7 @@
             this.toolStripLabel3.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripLabel3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(30, 25);
+            this.toolStripLabel3.Size = new System.Drawing.Size(23, 25);
             this.toolStripLabel3.Tag = "";
             this.toolStripLabel3.Text = "até";
             // 
@@ -430,11 +439,12 @@
             // 
             // frmSerieHistorica
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 709);
+            this.ClientSize = new System.Drawing.Size(1205, 762);
             this.Controls.Add(this.toolStripContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmSerieHistorica";
             this.Text = "Série Histórica de Cotações";
             this.Load += new System.EventHandler(this.frmSerieHistorica_Load);
