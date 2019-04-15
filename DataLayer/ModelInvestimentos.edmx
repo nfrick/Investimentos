@@ -1053,6 +1053,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="5" />
           <Property Type="Int32" Name="Qtd" Nullable="true" />
           <Property Type="Decimal" Name="Preco" Nullable="false" Precision="10" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="10" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>

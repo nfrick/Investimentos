@@ -26,10 +26,6 @@ namespace TestesWinForm {
 
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e) {
-            MessageBox.Show("teste");
-        }
-
         private void frmTestes_FormClosing(object sender, FormClosingEventArgs e) {
 
         }

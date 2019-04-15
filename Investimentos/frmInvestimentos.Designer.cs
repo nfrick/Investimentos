@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title13 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title14 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title15 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvestimentos));
             this.tlpAcoes = new System.Windows.Forms.TableLayoutPanel();
             this.dgvVendas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
@@ -160,12 +160,9 @@
             this.bindingSourceAcoes = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.tabImpostoRenda = new System.Windows.Forms.TabPage();
-            this.buttonImpostoRendaExport = new System.Windows.Forms.Button();
-            this.listViewImpostoRenda = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.labelIRTotal = new System.Windows.Forms.Label();
+            this.labelTotal = new System.Windows.Forms.Label();
+            this.dgvImpostoRenda = new System.Windows.Forms.DataGridView();
             this.nupAno = new System.Windows.Forms.NumericUpDown();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonNovaConta = new System.Windows.Forms.ToolStripButton();
@@ -183,6 +180,7 @@
             this.toolStripButtonLerExtrato = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabelLendoExtrato = new System.Windows.Forms.ToolStripLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.toolStripButtonCopyToClipboard = new System.Windows.Forms.ToolStripButton();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OFD = new System.Windows.Forms.OpenFileDialog();
@@ -221,6 +219,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAcoes)).BeginInit();
             this.tabImpostoRenda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvImpostoRenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupAno)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -532,10 +531,10 @@
             this.dgvOperacoes.MultiSelect = false;
             this.dgvOperacoes.Name = "dgvOperacoes";
             this.dgvOperacoes.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvOperacoes.RowHeadersWidth = 25;
             this.dgvOperacoes.RowTemplate.Height = 24;
             this.dgvOperacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -630,10 +629,10 @@
             this.dgvAtivos.MultiSelect = false;
             this.dgvAtivos.Name = "dgvAtivos";
             this.dgvAtivos.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvAtivos.RowHeadersWidth = 25;
             this.dgvAtivos.RowTemplate.Height = 24;
             this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -844,8 +843,8 @@
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "Mes";
-            dataGridViewCellStyle3.Format = "MMM-yyyy";
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Format = "MMM-yyyy";
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewTextBoxColumn16.HeaderText = "Mes";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -1048,9 +1047,9 @@
             // lCADataGridViewTextBoxColumn
             // 
             this.lCADataGridViewTextBoxColumn.DataPropertyName = "Mes";
-            dataGridViewCellStyle4.Format = "MMM yyyy";
-            dataGridViewCellStyle4.NullValue = null;
-            this.lCADataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Format = "MMM yyyy";
+            dataGridViewCellStyle20.NullValue = null;
+            this.lCADataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
             this.lCADataGridViewTextBoxColumn.HeaderText = "Mês";
             this.lCADataGridViewTextBoxColumn.Name = "lCADataGridViewTextBoxColumn";
             this.lCADataGridViewTextBoxColumn.ReadOnly = true;
@@ -1225,93 +1224,93 @@
             // chartResumoAcoes
             // 
             this.chartResumoAcoes.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.BackColor = System.Drawing.Color.DimGray;
-            chartArea1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea1.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea1.Name = "ChartArea1";
-            this.chartResumoAcoes.ChartAreas.Add(chartArea1);
+            chartArea13.BackColor = System.Drawing.Color.DimGray;
+            chartArea13.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea13.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea13.Name = "ChartArea1";
+            this.chartResumoAcoes.ChartAreas.Add(chartArea13);
             this.chartResumoAcoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.BackColor = System.Drawing.Color.Transparent;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend1.ForeColor = System.Drawing.Color.White;
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.chartResumoAcoes.Legends.Add(legend1);
+            legend13.BackColor = System.Drawing.Color.Transparent;
+            legend13.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend13.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend13.ForeColor = System.Drawing.Color.White;
+            legend13.IsTextAutoFit = false;
+            legend13.Name = "Legend1";
+            this.chartResumoAcoes.Legends.Add(legend13);
             this.chartResumoAcoes.Location = new System.Drawing.Point(263, 3);
             this.chartResumoAcoes.Name = "chartResumoAcoes";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Color = System.Drawing.Color.Transparent;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartResumoAcoes.Series.Add(series1);
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series9.Color = System.Drawing.Color.Transparent;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            this.chartResumoAcoes.Series.Add(series9);
             this.chartResumoAcoes.Size = new System.Drawing.Size(385, 287);
             this.chartResumoAcoes.TabIndex = 2;
             this.chartResumoAcoes.Text = "chart2";
-            title1.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.ForeColor = System.Drawing.Color.White;
-            title1.Name = "Title1";
-            title1.Text = "AAA";
-            this.chartResumoAcoes.Titles.Add(title1);
+            title13.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title13.ForeColor = System.Drawing.Color.White;
+            title13.Name = "Title1";
+            title13.Text = "AAA";
+            this.chartResumoAcoes.Titles.Add(title13);
             // 
             // chartResumoFundos
             // 
             this.chartResumoFundos.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.BackColor = System.Drawing.Color.DimGray;
-            chartArea2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea2.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea2.Name = "ChartArea1";
-            this.chartResumoFundos.ChartAreas.Add(chartArea2);
+            chartArea14.BackColor = System.Drawing.Color.DimGray;
+            chartArea14.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea14.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea14.Name = "ChartArea1";
+            this.chartResumoFundos.ChartAreas.Add(chartArea14);
             this.chartResumoFundos.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.BackColor = System.Drawing.Color.Transparent;
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend2.ForeColor = System.Drawing.Color.White;
-            legend2.IsTextAutoFit = false;
-            legend2.Name = "Legend1";
-            this.chartResumoFundos.Legends.Add(legend2);
+            legend14.BackColor = System.Drawing.Color.Transparent;
+            legend14.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend14.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend14.ForeColor = System.Drawing.Color.White;
+            legend14.IsTextAutoFit = false;
+            legend14.Name = "Legend1";
+            this.chartResumoFundos.Legends.Add(legend14);
             this.chartResumoFundos.Location = new System.Drawing.Point(263, 296);
             this.chartResumoFundos.Name = "chartResumoFundos";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartResumoFundos.Series.Add(series2);
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            this.chartResumoFundos.Series.Add(series10);
             this.chartResumoFundos.Size = new System.Drawing.Size(385, 287);
             this.chartResumoFundos.TabIndex = 3;
             this.chartResumoFundos.Text = "chart3";
-            title2.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.ForeColor = System.Drawing.Color.White;
-            title2.Name = "Title1";
-            title2.Text = "AAA";
-            this.chartResumoFundos.Titles.Add(title2);
+            title14.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title14.ForeColor = System.Drawing.Color.White;
+            title14.Name = "Title1";
+            title14.Text = "AAA";
+            this.chartResumoFundos.Titles.Add(title14);
             // 
             // chartResumoTotal
             // 
             this.chartResumoTotal.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.BackColor = System.Drawing.Color.DimGray;
-            chartArea3.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea3.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea3.BorderColor = System.Drawing.Color.White;
-            chartArea3.Name = "ChartArea1";
-            this.chartResumoTotal.ChartAreas.Add(chartArea3);
+            chartArea15.BackColor = System.Drawing.Color.DimGray;
+            chartArea15.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea15.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea15.BorderColor = System.Drawing.Color.White;
+            chartArea15.Name = "ChartArea1";
+            this.chartResumoTotal.ChartAreas.Add(chartArea15);
             this.chartResumoTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.BackColor = System.Drawing.Color.Transparent;
-            legend3.ForeColor = System.Drawing.Color.White;
-            legend3.Name = "Legend1";
-            this.chartResumoTotal.Legends.Add(legend3);
+            legend15.BackColor = System.Drawing.Color.Transparent;
+            legend15.ForeColor = System.Drawing.Color.White;
+            legend15.Name = "Legend1";
+            this.chartResumoTotal.Legends.Add(legend15);
             this.chartResumoTotal.Location = new System.Drawing.Point(654, 3);
             this.chartResumoTotal.Name = "chartResumoTotal";
             this.tlpResumo.SetRowSpan(this.chartResumoTotal, 2);
             this.chartResumoTotal.Size = new System.Drawing.Size(386, 580);
             this.chartResumoTotal.TabIndex = 4;
             this.chartResumoTotal.Text = "chart4";
-            title3.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title3.ForeColor = System.Drawing.Color.White;
-            title3.Name = "Title1";
-            title3.Text = "AAA";
-            this.chartResumoTotal.Titles.Add(title3);
+            title15.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title15.ForeColor = System.Drawing.Color.White;
+            title15.Name = "Title1";
+            title15.Text = "AAA";
+            this.chartResumoTotal.Titles.Add(title15);
             // 
             // tableLayoutPanel1
             // 
@@ -1444,8 +1443,9 @@
             // tabImpostoRenda
             // 
             this.tabImpostoRenda.BackColor = System.Drawing.Color.Black;
-            this.tabImpostoRenda.Controls.Add(this.buttonImpostoRendaExport);
-            this.tabImpostoRenda.Controls.Add(this.listViewImpostoRenda);
+            this.tabImpostoRenda.Controls.Add(this.labelIRTotal);
+            this.tabImpostoRenda.Controls.Add(this.labelTotal);
+            this.tabImpostoRenda.Controls.Add(this.dgvImpostoRenda);
             this.tabImpostoRenda.Controls.Add(this.nupAno);
             this.tabImpostoRenda.ForeColor = System.Drawing.Color.White;
             this.tabImpostoRenda.Location = new System.Drawing.Point(4, 28);
@@ -1455,60 +1455,38 @@
             this.tabImpostoRenda.TabIndex = 4;
             this.tabImpostoRenda.Text = "Imposto Renda";
             // 
-            // buttonImpostoRendaExport
+            // labelIRTotal
             // 
-            this.buttonImpostoRendaExport.BackColor = System.Drawing.Color.Gainsboro;
-            this.buttonImpostoRendaExport.ForeColor = System.Drawing.Color.Black;
-            this.buttonImpostoRendaExport.Location = new System.Drawing.Point(183, 15);
-            this.buttonImpostoRendaExport.Name = "buttonImpostoRendaExport";
-            this.buttonImpostoRendaExport.Size = new System.Drawing.Size(154, 26);
-            this.buttonImpostoRendaExport.TabIndex = 3;
-            this.buttonImpostoRendaExport.Text = "Copiar para Clipboard";
-            this.buttonImpostoRendaExport.UseVisualStyleBackColor = false;
-            this.buttonImpostoRendaExport.Click += new System.EventHandler(this.buttonImpostoRendaExport_Click);
+            this.labelIRTotal.Location = new System.Drawing.Point(223, 15);
+            this.labelIRTotal.Name = "labelIRTotal";
+            this.labelIRTotal.Size = new System.Drawing.Size(104, 19);
+            this.labelIRTotal.TabIndex = 6;
+            this.labelIRTotal.Text = "label4";
+            this.labelIRTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // listViewImpostoRenda
+            // labelTotal
             // 
-            this.listViewImpostoRenda.BackColor = System.Drawing.Color.Black;
-            this.listViewImpostoRenda.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.listViewImpostoRenda.ForeColor = System.Drawing.Color.LightGreen;
-            this.listViewImpostoRenda.Location = new System.Drawing.Point(17, 47);
-            this.listViewImpostoRenda.Name = "listViewImpostoRenda";
-            this.listViewImpostoRenda.Size = new System.Drawing.Size(322, 278);
-            this.listViewImpostoRenda.TabIndex = 2;
-            this.listViewImpostoRenda.UseCompatibleStateImageBehavior = false;
-            this.listViewImpostoRenda.View = System.Windows.Forms.View.Details;
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Location = new System.Drawing.Point(165, 17);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(38, 19);
+            this.labelTotal.TabIndex = 5;
+            this.labelTotal.Text = "Total";
             // 
-            // columnHeader1
+            // dgvImpostoRenda
             // 
-            this.columnHeader1.Text = "Código";
-            this.columnHeader1.Width = 65;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Qtd";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader2.Width = 65;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Preço";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader3.Width = 65;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Total";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader4.Width = 100;
+            this.dgvImpostoRenda.AllowUserToAddRows = false;
+            this.dgvImpostoRenda.AllowUserToDeleteRows = false;
+            this.dgvImpostoRenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvImpostoRenda.Location = new System.Drawing.Point(21, 47);
+            this.dgvImpostoRenda.Name = "dgvImpostoRenda";
+            this.dgvImpostoRenda.ReadOnly = true;
+            this.dgvImpostoRenda.Size = new System.Drawing.Size(306, 278);
+            this.dgvImpostoRenda.TabIndex = 4;
             // 
             // nupAno
             // 
-            this.nupAno.Location = new System.Drawing.Point(17, 15);
+            this.nupAno.Location = new System.Drawing.Point(21, 15);
             this.nupAno.Maximum = new decimal(new int[] {
             2019,
             0,
@@ -1543,7 +1521,8 @@
             this.toolStripButtonBalanco,
             this.toolStripButtonLerExtrato,
             this.toolStripLabelLendoExtrato,
-            this.toolStripProgressBar1});
+            this.toolStripProgressBar1,
+            this.toolStripButtonCopyToClipboard});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(590, 28);
@@ -1683,6 +1662,19 @@
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 25);
             this.toolStripProgressBar1.Visible = false;
             // 
+            // toolStripButtonCopyToClipboard
+            // 
+            this.toolStripButtonCopyToClipboard.BackColor = System.Drawing.Color.PeachPuff;
+            this.toolStripButtonCopyToClipboard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonCopyToClipboard.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCopyToClipboard.Image")));
+            this.toolStripButtonCopyToClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCopyToClipboard.Name = "toolStripButtonCopyToClipboard";
+            this.toolStripButtonCopyToClipboard.Size = new System.Drawing.Size(127, 25);
+            this.toolStripButtonCopyToClipboard.Tag = "Imposto Renda";
+            this.toolStripButtonCopyToClipboard.Text = "Copiar para Clipboard";
+            this.toolStripButtonCopyToClipboard.Visible = false;
+            this.toolStripButtonCopyToClipboard.Click += new System.EventHandler(this.toolStripCopyToClipboard_Click);
+            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "OperacaoTipo";
@@ -1756,6 +1748,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumoAcoes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceAcoes)).EndInit();
             this.tabImpostoRenda.ResumeLayout(false);
+            this.tabImpostoRenda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvImpostoRenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupAno)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -1903,12 +1897,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Taxas;
         private System.Windows.Forms.TabPage tabImpostoRenda;
         private System.Windows.Forms.NumericUpDown nupAno;
-        private System.Windows.Forms.ListView listViewImpostoRenda;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.Button buttonImpostoRendaExport;
+        private System.Windows.Forms.DataGridView dgvImpostoRenda;
+        private System.Windows.Forms.Label labelIRTotal;
+        private System.Windows.Forms.Label labelTotal;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCopyToClipboard;
     }
 }
 

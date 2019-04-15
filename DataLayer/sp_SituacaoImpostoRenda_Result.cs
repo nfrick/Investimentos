@@ -16,5 +16,6 @@ namespace DataLayer
         public string Codigo { get; set; }
         public Nullable<int> Qtd { get; set; }
         public decimal Preco { get; set; }
+        public decimal Total { get; set; }
     }
 }

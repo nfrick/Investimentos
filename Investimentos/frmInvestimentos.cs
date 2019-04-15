@@ -2,6 +2,7 @@
 using GridAndChartStyleLibrary;
 using Settings;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Drawing;
@@ -101,6 +102,9 @@ namespace Investimentos {
             GridStyles.FormatColumns(dgvResumoFundos, GridStyles.StyleCurrency, 90, 1);
             dgvResumoAcoes.SelectionMode =
                 dgvResumoFundos.SelectionMode = DataGridViewSelectionMode.CellSelect;
+
+            // IMPOSTO DE RENDA
+            GridStyles.FormatGrid(dgvImpostoRenda);
 
             // 50 = vertical scroll bar width
             var w0 = 50 + dgvAtivos.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
@@ -714,31 +718,25 @@ namespace Investimentos {
 
         private void GetAcoesImpostoRenda() {
             var conta = ((Conta)toolStripComboBoxConta.SelectedItem);
-            listViewImpostoRenda.Items.Clear();
             var IR = conta.ImpostoRenda((int)nupAno.Value);
-            decimal total = 0;
-            foreach (var i in IR) {
-                var it = listViewImpostoRenda.Items.Add(i.Codigo);
-                var qtd = (decimal)i.Qtd;
-                var valor = qtd * i.Preco;
-                total += valor;
-                it.SubItems.Add(qtd.ToString("#,###"));
-                it.SubItems.Add(i.Preco.ToString("F2"));
-                it.SubItems.Add(valor.ToString("#,###.00"));
-            }
-            var item = listViewImpostoRenda.Items.Add("TOTAL");
-            item.SubItems.Add("");
-            item.SubItems.Add("");
-            item.SubItems.Add(total.ToString("#,###.00"));
+
+            dgvImpostoRenda.DataSource = IR;
+            dgvImpostoRenda.Columns[0].Width = 70;
+            GridStyles.FormatColumn(dgvImpostoRenda.Columns[1], GridStyles.StyleInteger, 60);
+            GridStyles.FormatColumn(dgvImpostoRenda.Columns[2], GridStyles.StyleCurrency, 60);
+            GridStyles.FormatColumn(dgvImpostoRenda.Columns[3], GridStyles.StyleCurrency, 90);
+            labelIRTotal.Text = IR.Sum(t => t.Total).ToString("#,###.00");
         }
 
-        private void buttonImpostoRendaExport_Click(object sender, EventArgs e) {
+        private void toolStripCopyToClipboard_Click(object sender, EventArgs e) {
             var sb = new StringBuilder();
-            foreach (ListViewItem item in listViewImpostoRenda.Items) {
-                sb.AppendFormat("{0}\t{1}\t{2}\t{3}\n",
-                    item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text, item.SubItems[3].Text);
+            var source = (IEnumerable)dgvImpostoRenda.DataSource;
+            foreach (sp_SituacaoImpostoRenda_Result item in source) {
+                sb.AppendFormat("{0}\t{1}\t{2:#,###.00}\t{3:#,###.00}\n",
+                    item.Codigo, item.Qtd, item.Preco, item.Total);
             }
-            System.Windows.Forms.Clipboard.SetText(sb.ToString());
+            sb.AppendFormat("TOTAL\t\t{0}", labelIRTotal.Text);
+            Clipboard.SetText(sb.ToString());
         }
     }
 }
