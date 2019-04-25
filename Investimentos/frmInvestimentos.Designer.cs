@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title13 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title14 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title15 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvestimentos));
             this.tlpAcoes = new System.Windows.Forms.TableLayoutPanel();
             this.dgvVendas = new DataGridViewWithButtons.VBControls.DataGridViewWithButtons();
@@ -394,6 +394,7 @@
             this.dgvFundos.RowTemplate.Height = 24;
             this.dgvFundos.Size = new System.Drawing.Size(356, 281);
             this.dgvFundos.TabIndex = 3;
+            this.dgvFundos.SelectionChanged += new System.EventHandler(this.dgvFundos_SelectionChanged);
             // 
             // fundoNomeDataGridViewTextBoxColumn
             // 
@@ -444,6 +445,7 @@
             this.dgvLCAs.RowTemplate.Height = 24;
             this.dgvLCAs.Size = new System.Drawing.Size(524, 281);
             this.dgvLCAs.TabIndex = 3;
+            this.dgvLCAs.SelectionChanged += new System.EventHandler(this.dgvLCAs_SelectionChanged);
             // 
             // Numero
             // 
@@ -531,10 +533,10 @@
             this.dgvOperacoes.MultiSelect = false;
             this.dgvOperacoes.Name = "dgvOperacoes";
             this.dgvOperacoes.ReadOnly = true;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOperacoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvOperacoes.RowHeadersWidth = 25;
             this.dgvOperacoes.RowTemplate.Height = 24;
             this.dgvOperacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -629,15 +631,16 @@
             this.dgvAtivos.MultiSelect = false;
             this.dgvAtivos.Name = "dgvAtivos";
             this.dgvAtivos.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAtivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvAtivos.RowHeadersWidth = 25;
             this.dgvAtivos.RowTemplate.Height = 24;
             this.dgvAtivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAtivos.Size = new System.Drawing.Size(322, 294);
             this.dgvAtivos.TabIndex = 0;
+            this.dgvAtivos.SelectionChanged += new System.EventHandler(this.dgvAtivos_SelectionChanged);
             // 
             // Codigo
             // 
@@ -843,8 +846,8 @@
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "Mes";
-            dataGridViewCellStyle19.Format = "MMM-yyyy";
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle11.Format = "MMM-yyyy";
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTextBoxColumn16.HeaderText = "Mes";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
@@ -1047,9 +1050,9 @@
             // lCADataGridViewTextBoxColumn
             // 
             this.lCADataGridViewTextBoxColumn.DataPropertyName = "Mes";
-            dataGridViewCellStyle20.Format = "MMM yyyy";
-            dataGridViewCellStyle20.NullValue = null;
-            this.lCADataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle12.Format = "MMM yyyy";
+            dataGridViewCellStyle12.NullValue = null;
+            this.lCADataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
             this.lCADataGridViewTextBoxColumn.HeaderText = "Mês";
             this.lCADataGridViewTextBoxColumn.Name = "lCADataGridViewTextBoxColumn";
             this.lCADataGridViewTextBoxColumn.ReadOnly = true;
@@ -1224,93 +1227,93 @@
             // chartResumoAcoes
             // 
             this.chartResumoAcoes.BackColor = System.Drawing.Color.Transparent;
-            chartArea13.BackColor = System.Drawing.Color.DimGray;
-            chartArea13.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea13.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea13.Name = "ChartArea1";
-            this.chartResumoAcoes.ChartAreas.Add(chartArea13);
+            chartArea7.BackColor = System.Drawing.Color.DimGray;
+            chartArea7.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea7.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea7.Name = "ChartArea1";
+            this.chartResumoAcoes.ChartAreas.Add(chartArea7);
             this.chartResumoAcoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend13.BackColor = System.Drawing.Color.Transparent;
-            legend13.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend13.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend13.ForeColor = System.Drawing.Color.White;
-            legend13.IsTextAutoFit = false;
-            legend13.Name = "Legend1";
-            this.chartResumoAcoes.Legends.Add(legend13);
+            legend7.BackColor = System.Drawing.Color.Transparent;
+            legend7.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend7.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend7.ForeColor = System.Drawing.Color.White;
+            legend7.IsTextAutoFit = false;
+            legend7.Name = "Legend1";
+            this.chartResumoAcoes.Legends.Add(legend7);
             this.chartResumoAcoes.Location = new System.Drawing.Point(263, 3);
             this.chartResumoAcoes.Name = "chartResumoAcoes";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series9.Color = System.Drawing.Color.Transparent;
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.chartResumoAcoes.Series.Add(series9);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series5.Color = System.Drawing.Color.Transparent;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartResumoAcoes.Series.Add(series5);
             this.chartResumoAcoes.Size = new System.Drawing.Size(385, 287);
             this.chartResumoAcoes.TabIndex = 2;
             this.chartResumoAcoes.Text = "chart2";
-            title13.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title13.ForeColor = System.Drawing.Color.White;
-            title13.Name = "Title1";
-            title13.Text = "AAA";
-            this.chartResumoAcoes.Titles.Add(title13);
+            title7.Font = new System.Drawing.Font("Segoe UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title7.ForeColor = System.Drawing.Color.White;
+            title7.Name = "Title1";
+            title7.Text = "AAA";
+            this.chartResumoAcoes.Titles.Add(title7);
             // 
             // chartResumoFundos
             // 
             this.chartResumoFundos.BackColor = System.Drawing.Color.Transparent;
-            chartArea14.BackColor = System.Drawing.Color.DimGray;
-            chartArea14.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea14.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea14.Name = "ChartArea1";
-            this.chartResumoFundos.ChartAreas.Add(chartArea14);
+            chartArea8.BackColor = System.Drawing.Color.DimGray;
+            chartArea8.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea8.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea8.Name = "ChartArea1";
+            this.chartResumoFundos.ChartAreas.Add(chartArea8);
             this.chartResumoFundos.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend14.BackColor = System.Drawing.Color.Transparent;
-            legend14.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend14.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend14.ForeColor = System.Drawing.Color.White;
-            legend14.IsTextAutoFit = false;
-            legend14.Name = "Legend1";
-            this.chartResumoFundos.Legends.Add(legend14);
+            legend8.BackColor = System.Drawing.Color.Transparent;
+            legend8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend8.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend8.ForeColor = System.Drawing.Color.White;
+            legend8.IsTextAutoFit = false;
+            legend8.Name = "Legend1";
+            this.chartResumoFundos.Legends.Add(legend8);
             this.chartResumoFundos.Location = new System.Drawing.Point(263, 296);
             this.chartResumoFundos.Name = "chartResumoFundos";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            this.chartResumoFundos.Series.Add(series10);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chartResumoFundos.Series.Add(series6);
             this.chartResumoFundos.Size = new System.Drawing.Size(385, 287);
             this.chartResumoFundos.TabIndex = 3;
             this.chartResumoFundos.Text = "chart3";
-            title14.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title14.ForeColor = System.Drawing.Color.White;
-            title14.Name = "Title1";
-            title14.Text = "AAA";
-            this.chartResumoFundos.Titles.Add(title14);
+            title8.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title8.ForeColor = System.Drawing.Color.White;
+            title8.Name = "Title1";
+            title8.Text = "AAA";
+            this.chartResumoFundos.Titles.Add(title8);
             // 
             // chartResumoTotal
             // 
             this.chartResumoTotal.BackColor = System.Drawing.Color.Transparent;
-            chartArea15.BackColor = System.Drawing.Color.DimGray;
-            chartArea15.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
-            chartArea15.BackSecondaryColor = System.Drawing.Color.Black;
-            chartArea15.BorderColor = System.Drawing.Color.White;
-            chartArea15.Name = "ChartArea1";
-            this.chartResumoTotal.ChartAreas.Add(chartArea15);
+            chartArea9.BackColor = System.Drawing.Color.DimGray;
+            chartArea9.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.Center;
+            chartArea9.BackSecondaryColor = System.Drawing.Color.Black;
+            chartArea9.BorderColor = System.Drawing.Color.White;
+            chartArea9.Name = "ChartArea1";
+            this.chartResumoTotal.ChartAreas.Add(chartArea9);
             this.chartResumoTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend15.BackColor = System.Drawing.Color.Transparent;
-            legend15.ForeColor = System.Drawing.Color.White;
-            legend15.Name = "Legend1";
-            this.chartResumoTotal.Legends.Add(legend15);
+            legend9.BackColor = System.Drawing.Color.Transparent;
+            legend9.ForeColor = System.Drawing.Color.White;
+            legend9.Name = "Legend1";
+            this.chartResumoTotal.Legends.Add(legend9);
             this.chartResumoTotal.Location = new System.Drawing.Point(654, 3);
             this.chartResumoTotal.Name = "chartResumoTotal";
             this.tlpResumo.SetRowSpan(this.chartResumoTotal, 2);
             this.chartResumoTotal.Size = new System.Drawing.Size(386, 580);
             this.chartResumoTotal.TabIndex = 4;
             this.chartResumoTotal.Text = "chart4";
-            title15.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title15.ForeColor = System.Drawing.Color.White;
-            title15.Name = "Title1";
-            title15.Text = "AAA";
-            this.chartResumoTotal.Titles.Add(title15);
+            title9.Font = new System.Drawing.Font("Segoe UI Semilight", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title9.ForeColor = System.Drawing.Color.White;
+            title9.Name = "Title1";
+            title9.Text = "AAA";
+            this.chartResumoTotal.Titles.Add(title9);
             // 
             // tableLayoutPanel1
             // 

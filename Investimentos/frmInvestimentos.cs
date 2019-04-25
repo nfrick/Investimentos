@@ -4,6 +4,7 @@ using Settings;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Drawing;
 using System.Globalization;
@@ -135,6 +136,54 @@ namespace Investimentos {
             }
         }
 
+        private void frmInvestimentos_FormClosing(object sender, FormClosingEventArgs e) {
+            SettingsManager.SetSetting("Conta", toolStripComboBoxConta.SelectedIndex.ToString());
+            var tracker = entityDataSource1.DbContext.ChangeTracker;
+            if (!tracker.HasChanges()) {
+                return;
+            }
+
+            var adds = tracker.Entries().Count(entry => entry.State == EntityState.Added);
+            var dels = tracker.Entries().Count(entry => entry.State == EntityState.Deleted);
+            var edits = tracker.Entries().Count(entry => entry.State == EntityState.Modified);
+            var sb = new StringBuilder("Alterações pendentes:\n\n");
+            if (adds > 0) {
+                sb.Append($"\t* Adições: {adds}\n");
+            }
+
+            if (edits > 0) {
+                sb.Append($"\t* Edições: {edits}\n");
+            }
+
+            if (dels > 0) {
+                sb.Append($"\t* Deleções: {dels}\n");
+            }
+
+            sb.Append("\nDeseja salvar antes de sair?");
+            switch (MessageBox.Show(sb.ToString(), @"Investimentos", MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Question)) {
+                case DialogResult.Yes:
+                    entityDataSource1.SaveChanges();
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+                default:
+                    break; // do nothing
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
+            var tabLabel = tabControl1.SelectedTab.Text;
+            foreach (ToolStripItem item in toolStrip1.Items) {
+                if (item.Tag == null) {
+                    continue;
+                }
+                var tag = item.Tag.ToString();
+                item.Visible = (tag.Contains(tabLabel));
+            }
+        }
+
         private void RefreshDataAcoes() {
             dgvAtivos.SaveCurrentRow();
             dgvOperacoes.SaveCurrentRow();
@@ -162,18 +211,6 @@ namespace Investimentos {
             dgvLCAMovimentos.Refresh();
             dgvLCAs.RestoreCurrentRow(0);
             RefreshSalvar();
-        }
-
-        private void RefreshSalvar() {
-            var tracker = entityDataSource1.DbContext.ChangeTracker;
-            toolStripButtonSalvar.Visible = tracker.HasChanges();
-            toolStripSeparatorSalvar.Visible = tracker.HasChanges();
-
-            var alts = tracker.Entries().Count(entry => entry.State == EntityState.Added ||
-                                                        entry.State == EntityState.Deleted ||
-                                                        entry.State == EntityState.Modified);
-
-            toolStripButtonSalvar.Text = $" Salvar {alts} alteraç" + (alts == 1 ? "ão" : "ões");
         }
 
         private void dgvOperacoes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
@@ -211,8 +248,7 @@ namespace Investimentos {
             return frm;
         }
 
-        #region toolstrip
-
+        #region TOOLSTRIP --------------------------------------
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
             var conta = ((Conta)toolStripComboBoxConta.SelectedItem);
             var row = (dgvContas.Rows
@@ -346,55 +382,16 @@ namespace Investimentos {
             RefreshSalvar();
         }
 
-        #endregion
-
-        private void frmInvestimentos_FormClosing(object sender, FormClosingEventArgs e) {
-            SettingsManager.SetSetting("Conta", toolStripComboBoxConta.SelectedIndex.ToString());
+        private void RefreshSalvar() {
             var tracker = entityDataSource1.DbContext.ChangeTracker;
-            if (!tracker.HasChanges()) {
-                return;
-            }
+            toolStripButtonSalvar.Visible = tracker.HasChanges();
+            toolStripSeparatorSalvar.Visible = tracker.HasChanges();
 
-            var adds = tracker.Entries().Count(entry => entry.State == EntityState.Added);
-            var dels = tracker.Entries().Count(entry => entry.State == EntityState.Deleted);
-            var edits = tracker.Entries().Count(entry => entry.State == EntityState.Modified);
-            var sb = new StringBuilder("Alterações pendentes:\n\n");
-            if (adds > 0) {
-                sb.Append($"\t* Adições: {adds}\n");
-            }
+            var alts = tracker.Entries().Count(entry => entry.State == EntityState.Added ||
+                                                        entry.State == EntityState.Deleted ||
+                                                        entry.State == EntityState.Modified);
 
-            if (edits > 0) {
-                sb.Append($"\t* Edições: {edits}\n");
-            }
-
-            if (dels > 0) {
-                sb.Append($"\t* Deleções: {dels}\n");
-            }
-
-            sb.Append("\nDeseja salvar antes de sair?");
-            switch (MessageBox.Show(sb.ToString(), @"Investimentos", MessageBoxButtons.YesNoCancel,
-                MessageBoxIcon.Question)) {
-                case DialogResult.Yes:
-                    entityDataSource1.SaveChanges();
-                    break;
-                case DialogResult.Cancel:
-                    e.Cancel = true;
-                    break;
-                default:
-                    break; // do nothing
-            }
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
-            var tabLabel = tabControl1.SelectedTab.Text;
-            foreach (ToolStripItem item in toolStrip1.Items) {
-                if (item.Tag == null) {
-                    continue;
-                }
-
-                var tag = item.Tag.ToString();
-                item.Visible = (tag.Contains(tabLabel));
-            }
+            toolStripButtonSalvar.Text = $" Salvar {alts} alteraç" + (alts == 1 ? "ão" : "ões");
         }
 
         private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
@@ -449,6 +446,19 @@ namespace Investimentos {
             toolStrip1.Refresh();
         }
 
+        private void toolStripCopyToClipboard_Click(object sender, EventArgs e) {
+            var sb = new StringBuilder();
+            var source = (IEnumerable)dgvImpostoRenda.DataSource;
+            foreach (sp_SituacaoImpostoRenda_Result item in source) {
+                sb.AppendFormat("{0}\t{1}\t{2:#,###.00}\t{3:#,###.00}\n",
+                    item.Codigo, item.Qtd, item.Preco, item.Total);
+            }
+            sb.AppendFormat("TOTAL\t\t{0}", labelIRTotal.Text);
+            Clipboard.SetText(sb.ToString());
+        }
+        #endregion TOOLSTRIP -----------------------------------------------
+
+        #region LEITURA DE EXTRATO --------------------------------------------
         private int LerExtratoAcoes(string fileName) {
             var seps = new[] { "\r\n" };
             var readText = File.ReadAllText(fileName);
@@ -706,6 +716,7 @@ namespace Investimentos {
             var text = line.Substring(start, length).Trim();
             return decimal.TryParse(text, out decimal valor) ? (decimal?)valor : null;
         }
+        #endregion LEITURA DE EXTRATO -------------------------------
 
         private void dgvResumo_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
             var dgv = ((DataGridView)sender).Name == "dgvResumoAcoes" ? dgvResumoFundos : dgvResumoAcoes;
@@ -728,15 +739,23 @@ namespace Investimentos {
             labelIRTotal.Text = IR.Sum(t => t.Total).ToString("#,###.00");
         }
 
-        private void toolStripCopyToClipboard_Click(object sender, EventArgs e) {
-            var sb = new StringBuilder();
-            var source = (IEnumerable)dgvImpostoRenda.DataSource;
-            foreach (sp_SituacaoImpostoRenda_Result item in source) {
-                sb.AppendFormat("{0}\t{1}\t{2:#,###.00}\t{3:#,###.00}\n",
-                    item.Codigo, item.Qtd, item.Preco, item.Total);
-            }
-            sb.AppendFormat("TOTAL\t\t{0}", labelIRTotal.Text);
-            Clipboard.SetText(sb.ToString());
+        private void dgvAtivos_SelectionChanged(object sender, EventArgs e) {
+            OrderByDate(dgvOperacoes);
+            OrderByDate(dgvVendas);
+        }
+
+        private void OrderByDate(DataGridView dgv) {
+            dgv.Sort(dgv.Columns[0], ListSortDirection.Descending);
+        }
+
+        private void dgvFundos_SelectionChanged(object sender, EventArgs e) {
+            OrderByDate(dgvMovimentos);
+            OrderByDate(dgvFundosMeses);
+        }
+
+        private void dgvLCAs_SelectionChanged(object sender, EventArgs e) {
+            OrderByDate(dgvLCAMeses);
+            OrderByDate(dgvLCAMovimentos);
         }
     }
 }
