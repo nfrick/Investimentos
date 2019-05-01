@@ -37,6 +37,7 @@ namespace Investimentos {
             InitializeComponent();
         }
 
+        #region FORM --------------------------------------------
         private void frmInvestimentos_Load(object sender, EventArgs e) {
 
             // AÇÕES
@@ -172,6 +173,7 @@ namespace Investimentos {
                     break; // do nothing
             }
         }
+        #endregion FORM -----------------------------------------
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
             var tabLabel = tabControl1.SelectedTab.Text;
@@ -184,33 +186,36 @@ namespace Investimentos {
             }
         }
 
-        private void RefreshDataAcoes() {
-            dgvAtivos.SaveCurrentRow();
-            dgvOperacoes.SaveCurrentRow();
-            dgvVendas.SaveCurrentRow();
-            entityDataSource1.Refresh();
-            dgvAtivos.RestoreCurrentRow(0);
-            dgvOperacoes.RestoreCurrentRow(1);
-            dgvVendas.RestoreCurrentRow(1);
-            RefreshSalvar();
+        #region DATAGRID GENÉRICAS ----------------------------
+        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            var dgv = (DataGridView)sender;
+            var col = Convert.ToInt32(dgv.Tag); // coluna com valor que controla a cor
+            var row = dgv.Rows[e.RowIndex];
+            if (Convert.ToDecimal(row.Cells[col].Value) <= 0) {
+                row.DefaultCellStyle.ForeColor = Color.Orange;
+            }
         }
 
-        private void RefreshDataFundos() {
-            dgvFundos.SaveCurrentRow();
-            entityDataSource1.Refresh();
-            dgvFundosMeses.Refresh();
-            dgvMovimentos.Refresh();
-            dgvFundos.RestoreCurrentRow(0);
-            RefreshSalvar();
+        private static void OrderByDate(DataGridView dgv) {
+            dgv.Sort(dgv.Columns[0], ListSortDirection.Descending);
         }
 
-        private void RefreshDataLCA() {
-            dgvLCAs.SaveCurrentRow();
-            entityDataSource1.Refresh();
-            dgvLCAMeses.Refresh();
-            dgvLCAMovimentos.Refresh();
-            dgvLCAs.RestoreCurrentRow(0);
-            RefreshSalvar();
+        private void ForceRowSelection(DataGridView dgv) {
+            // Forces children grids to sort
+            if (dgv.Rows.Count < 2) {
+                return;
+            }
+
+            dgv.Rows[1].Selected = true;
+            dgv.Rows[0].Selected = true;
+        }
+
+        #endregion DATAGRID GENÉRICAS -------------------------
+
+        #region TAB FUNDOS --------------------------------------------
+        private void dgvFundos_SelectionChanged(object sender, EventArgs e) {
+            OrderByDate(dgvMovimentos);
+            OrderByDate(dgvFundosMeses);
         }
 
         private void dgvOperacoes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
@@ -221,15 +226,6 @@ namespace Investimentos {
             }
 
             RefreshDataAcoes();
-        }
-
-        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            var dgv = (DataGridView)sender;
-            var col = Convert.ToInt32(dgv.Tag); // coluna com valor que controla a cor
-            var row = dgv.Rows[e.RowIndex];
-            if (Convert.ToDecimal(row.Cells[col].Value) <= 0) {
-                row.DefaultCellStyle.ForeColor = Color.Orange;
-            }
         }
 
         private void dgvVendas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
@@ -248,25 +244,55 @@ namespace Investimentos {
             return frm;
         }
 
-        #region TOOLSTRIP --------------------------------------
-        private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
-            var conta = ((Conta)toolStripComboBoxConta.SelectedItem);
-            var row = (dgvContas.Rows
-                .Cast<DataGridViewRow>()
-                .First(r => (int)r.Cells[0].Value == conta.ContaId)).Index;
-            dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
+        private void RefreshDataFundos() {
+            dgvFundos.SaveCurrentRow();
+            entityDataSource1.Refresh();
+            dgvFundosMeses.Refresh();
+            dgvMovimentos.Refresh();
+            dgvFundos.RestoreCurrentRow(0);
+            RefreshSalvar();
+        }
+        #endregion TAB FUNDOS -----------------------------------------
 
-            BindDataSourceAndPopulatePieChart(conta.AtivosNaoZerados, "Ações");
-            BindDataSourceAndPopulatePieChart(conta.FundosNaoZerados, "Fundos");
-            PopulateColumnChart(conta.PatrimonioTotal, chartResumoTotal);
+        #region TAB AÇÕES --------------------------------------------
+        private void dgvAtivos_SelectionChanged(object sender, EventArgs e) {
+            OrderByDate(dgvOperacoes);
+            OrderByDate(dgvVendas);
+        }
 
-            nupAno.Value = nupAno.Maximum = nupAno.Minimum = DateTime.Now.Year;
-            using (var ctx = new InvestimentosEntities()) {
-                var ops = ctx.Operacoes.Where(o => o.ContaId == conta.ContaId);
-                nupAno.Minimum = ops.Any() ? ops.Min(o => o.Data.Year) + 1 : DateTime.Now.Year;
-            }
+        private void RefreshDataAcoes() {
+            dgvAtivos.SaveCurrentRow();
+            dgvOperacoes.SaveCurrentRow();
+            dgvVendas.SaveCurrentRow();
+            entityDataSource1.Refresh();
+            dgvAtivos.RestoreCurrentRow(0);
+            dgvOperacoes.RestoreCurrentRow(1);
+            dgvVendas.RestoreCurrentRow(1);
+            RefreshSalvar();
+        }
+        #endregion TAB AÇÕES -----------------------------------------
 
-            GetAcoesImpostoRenda();
+        #region TAB LCA --------------------------------------------
+        private void dgvLCAs_SelectionChanged(object sender, EventArgs e) {
+            OrderByDate(dgvLCAMeses);
+            OrderByDate(dgvLCAMovimentos);
+        }
+
+        private void RefreshDataLCA() {
+            dgvLCAs.SaveCurrentRow();
+            entityDataSource1.Refresh();
+            dgvLCAMeses.Refresh();
+            dgvLCAMovimentos.Refresh();
+            dgvLCAs.RestoreCurrentRow(0);
+            RefreshSalvar();
+        }
+
+        #endregion TAB LCA -----------------------------------------
+
+        #region TAB RESUMO --------------------------------------------
+        private void dgvResumo_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
+            var dgv = ((DataGridView)sender).Name == "dgvResumoAcoes" ? dgvResumoFundos : dgvResumoAcoes;
+            dgv.Columns[e.Column.Index].Width = e.Column.Width;
         }
 
         private void BindDataSourceAndPopulatePieChart(IEnumerable<Patrimonio> data,
@@ -313,6 +339,50 @@ namespace Investimentos {
                 chart.ApplyPaletteColors();
                 serie.LabelForeColor = ColorFunctions.ContrastColor(serie.Color);
             }
+        }
+
+        #endregion TAB RESUMO -----------------------------------------
+
+        #region TAB IMPOSTO RENDA --------------------------------------------
+        private void nupAno_ValueChanged(object sender, EventArgs e) {
+            GetAcoesImpostoRenda();
+        }
+
+        private void GetAcoesImpostoRenda() {
+            var conta = ((Conta)toolStripComboBoxConta.SelectedItem);
+            var IR = conta.ImpostoRenda((int)nupAno.Value);
+
+            dgvImpostoRenda.DataSource = IR;
+            dgvImpostoRenda.Columns[0].Width = 70;
+            GridStyles.FormatColumn(dgvImpostoRenda.Columns[1], GridStyles.StyleInteger, 60);
+            GridStyles.FormatColumn(dgvImpostoRenda.Columns[2], GridStyles.StyleCurrency, 60);
+            GridStyles.FormatColumn(dgvImpostoRenda.Columns[3], GridStyles.StyleCurrency, 90);
+            labelIRTotal.Text = IR.Sum(t => t.Total).ToString("#,###.00");
+        }
+        #endregion TAB IMPOSTO RENDA -----------------------------------------
+
+        #region TOOLSTRIP --------------------------------------
+        private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
+            var conta = ((Conta)toolStripComboBoxConta.SelectedItem);
+            var row = (dgvContas.Rows
+                .Cast<DataGridViewRow>()
+                .First(r => (int)r.Cells[0].Value == conta.ContaId)).Index;
+            dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
+
+            BindDataSourceAndPopulatePieChart(conta.AtivosNaoZerados, "Ações");
+            BindDataSourceAndPopulatePieChart(conta.FundosNaoZerados, "Fundos");
+            PopulateColumnChart(conta.PatrimonioTotal, chartResumoTotal);
+
+            nupAno.Value = nupAno.Maximum = nupAno.Minimum = DateTime.Now.Year;
+            using (var ctx = new InvestimentosEntities()) {
+                var ops = ctx.Operacoes.Where(o => o.ContaId == conta.ContaId);
+                nupAno.Minimum = ops.Any() ? ops.Min(o => o.Data.Year) + 1 : DateTime.Now.Year;
+            }
+
+            GetAcoesImpostoRenda();
+            ForceRowSelection(dgvAtivos);
+            ForceRowSelection(dgvFundos);
+            ForceRowSelection(dgvLCAs);
         }
 
         private void ContaComboPopulate() {
@@ -496,13 +566,33 @@ namespace Investimentos {
                         do {
                             // Ler até achar o inicio dos dados do Fundo ou achar o fim do arquivo
                             line = streamReader.ReadLine();
-                            if (line != null) {
+                            if (line == null) {
+                                RefreshDataFundos();
+                                return 0;
+                            }
+                            line = line.Trim();
+                            if (!line.StartsWith("Agência")) {
                                 continue;
                             }
 
-                            RefreshDataFundos();
-                            return 0;
-                        } while (!line.Trim().StartsWith("BB"));
+                            // Verifica se a conta do extrato é a conta selecionada.
+                            var contax = line.Split(new[] { ' ' }).Last();
+                            var contaz = contax.Replace("-", "");
+                            if (conta.ContaCorrente == contaz) {
+                                continue;
+                            }
+
+                            conta = toolStripComboBoxConta.Items
+                                .Cast<Conta>().FirstOrDefault(c => c.ContaCorrente == contaz);
+                            if (conta != null) {
+                                toolStripComboBoxConta.SelectedItem = conta;
+                            }
+                            else {
+                                MessageBox.Show($"Conta {contax} não encontrada.",
+                                    "Extrato Fundos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return 0;
+                            }
+                        } while (!line.StartsWith("BB"));
                         var fundoCNPJ = GetCNPJ(line.Substring(68, 18).Trim());
                         var fundoNome = line.Substring(0, 40).Trim();
 
@@ -718,44 +808,5 @@ namespace Investimentos {
         }
         #endregion LEITURA DE EXTRATO -------------------------------
 
-        private void dgvResumo_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e) {
-            var dgv = ((DataGridView)sender).Name == "dgvResumoAcoes" ? dgvResumoFundos : dgvResumoAcoes;
-            dgv.Columns[e.Column.Index].Width = e.Column.Width;
-        }
-
-        private void nupAno_ValueChanged(object sender, EventArgs e) {
-            GetAcoesImpostoRenda();
-        }
-
-        private void GetAcoesImpostoRenda() {
-            var conta = ((Conta)toolStripComboBoxConta.SelectedItem);
-            var IR = conta.ImpostoRenda((int)nupAno.Value);
-
-            dgvImpostoRenda.DataSource = IR;
-            dgvImpostoRenda.Columns[0].Width = 70;
-            GridStyles.FormatColumn(dgvImpostoRenda.Columns[1], GridStyles.StyleInteger, 60);
-            GridStyles.FormatColumn(dgvImpostoRenda.Columns[2], GridStyles.StyleCurrency, 60);
-            GridStyles.FormatColumn(dgvImpostoRenda.Columns[3], GridStyles.StyleCurrency, 90);
-            labelIRTotal.Text = IR.Sum(t => t.Total).ToString("#,###.00");
-        }
-
-        private void dgvAtivos_SelectionChanged(object sender, EventArgs e) {
-            OrderByDate(dgvOperacoes);
-            OrderByDate(dgvVendas);
-        }
-
-        private void OrderByDate(DataGridView dgv) {
-            dgv.Sort(dgv.Columns[0], ListSortDirection.Descending);
-        }
-
-        private void dgvFundos_SelectionChanged(object sender, EventArgs e) {
-            OrderByDate(dgvMovimentos);
-            OrderByDate(dgvFundosMeses);
-        }
-
-        private void dgvLCAs_SelectionChanged(object sender, EventArgs e) {
-            OrderByDate(dgvLCAMeses);
-            OrderByDate(dgvLCAMovimentos);
-        }
     }
 }
