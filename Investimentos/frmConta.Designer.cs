@@ -42,7 +42,7 @@
             this.labelNome.AutoSize = true;
             this.labelNome.Location = new System.Drawing.Point(12, 9);
             this.labelNome.Name = "labelNome";
-            this.labelNome.Size = new System.Drawing.Size(66, 28);
+            this.labelNome.Size = new System.Drawing.Size(53, 21);
             this.labelNome.TabIndex = 0;
             this.labelNome.Text = "Nome";
             // 
@@ -51,7 +51,7 @@
             this.labelAgencia.AutoSize = true;
             this.labelAgencia.Location = new System.Drawing.Point(13, 49);
             this.labelAgencia.Name = "labelAgencia";
-            this.labelAgencia.Size = new System.Drawing.Size(82, 28);
+            this.labelAgencia.Size = new System.Drawing.Size(65, 21);
             this.labelAgencia.TabIndex = 1;
             this.labelAgencia.Text = "Agência";
             // 
@@ -60,7 +60,7 @@
             this.labelContaCorrente.AutoSize = true;
             this.labelContaCorrente.Location = new System.Drawing.Point(14, 89);
             this.labelContaCorrente.Name = "labelContaCorrente";
-            this.labelContaCorrente.Size = new System.Drawing.Size(64, 28);
+            this.labelContaCorrente.Size = new System.Drawing.Size(51, 21);
             this.labelContaCorrente.TabIndex = 2;
             this.labelContaCorrente.Text = "Conta";
             // 
@@ -69,7 +69,7 @@
             this.labelSenha.AutoSize = true;
             this.labelSenha.Location = new System.Drawing.Point(14, 129);
             this.labelSenha.Name = "labelSenha";
-            this.labelSenha.Size = new System.Drawing.Size(65, 28);
+            this.labelSenha.Size = new System.Drawing.Size(53, 21);
             this.labelSenha.TabIndex = 3;
             this.labelSenha.Text = "Senha";
             // 
@@ -78,7 +78,7 @@
             this.labelInfo.AutoSize = true;
             this.labelInfo.Location = new System.Drawing.Point(14, 169);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(46, 28);
+            this.labelInfo.Size = new System.Drawing.Size(37, 21);
             this.labelInfo.TabIndex = 4;
             this.labelInfo.Text = "Info";
             // 
@@ -86,7 +86,7 @@
             // 
             this.textBoxNome.Location = new System.Drawing.Point(111, 6);
             this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.Size = new System.Drawing.Size(109, 34);
+            this.textBoxNome.Size = new System.Drawing.Size(109, 29);
             this.textBoxNome.TabIndex = 0;
             this.textBoxNome.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -94,7 +94,7 @@
             // 
             this.textBoxSenha.Location = new System.Drawing.Point(111, 126);
             this.textBoxSenha.Name = "textBoxSenha";
-            this.textBoxSenha.Size = new System.Drawing.Size(109, 34);
+            this.textBoxSenha.Size = new System.Drawing.Size(109, 29);
             this.textBoxSenha.TabIndex = 3;
             this.textBoxSenha.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -137,23 +137,23 @@
             this.maskedTextBoxAgencia.Location = new System.Drawing.Point(111, 47);
             this.maskedTextBoxAgencia.Mask = "0000-0";
             this.maskedTextBoxAgencia.Name = "maskedTextBoxAgencia";
-            this.maskedTextBoxAgencia.Size = new System.Drawing.Size(109, 34);
+            this.maskedTextBoxAgencia.Size = new System.Drawing.Size(109, 29);
             this.maskedTextBoxAgencia.TabIndex = 7;
             this.maskedTextBoxAgencia.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // maskedTextBoxContaCorrente
             // 
             this.maskedTextBoxContaCorrente.Location = new System.Drawing.Point(111, 86);
-            this.maskedTextBoxContaCorrente.Mask = "90000-0";
+            this.maskedTextBoxContaCorrente.Mask = "90000-&";
             this.maskedTextBoxContaCorrente.Name = "maskedTextBoxContaCorrente";
-            this.maskedTextBoxContaCorrente.Size = new System.Drawing.Size(109, 34);
+            this.maskedTextBoxContaCorrente.Size = new System.Drawing.Size(109, 29);
             this.maskedTextBoxContaCorrente.TabIndex = 8;
             this.maskedTextBoxContaCorrente.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // frmConta
             // 
             this.AcceptButton = this.buttonOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancelar;
             this.ClientSize = new System.Drawing.Size(486, 284);

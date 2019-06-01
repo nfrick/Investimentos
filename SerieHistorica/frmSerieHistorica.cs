@@ -30,24 +30,14 @@ namespace SerieHistorica {
         }
 
         private void frmSerieHistorica_Load(object sender, EventArgs e) {
-            GridStyles.FormatGrid(dgvAtivos);
-            GridStyles.FormatGrid(dgvSerieHistorica);
+            GridStyles.FormatGrid(dgvAtivos, 14);
+            GridStyles.FormatGrid(dgvSerieHistorica, 14);
             GridStyles.FormatColumns(dgvSerieHistorica, 1, 0, GridStyles.StyleCurrency, 70);
             dgvSerieHistorica.Columns[0].Width = 120;
-
-            SetFontSize(dgvAtivos, 14);
-            SetFontSize(dgvSerieHistorica, 14);
 
             // 55 = vertical scroll bar width
             Width = 55 + dgvAtivos.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) +
                 55 + dgvSerieHistorica.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
-        }
-
-        private void SetFontSize(DataGridView dgv, float size) {
-            var font = new Font("Segoe UI", 14);
-            for (var i = 0; i < dgv.ColumnCount; i++) {
-                dgv.Columns[i].DefaultCellStyle.Font = font;
-            }
         }
 
         private void toolStripComboBoxAnos_SelectedIndexChanged(object sender, EventArgs e) {

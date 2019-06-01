@@ -104,13 +104,7 @@ namespace GridAndChartStyleLibrary {
             };
         }
 
-        public static void FormatGrid(DataGridView dgv, int cols = 0) {
-            if (cols > 0) {
-                // Remove extra columns that "magically" appear
-                while (dgv.ColumnCount > cols) {
-                    dgv.Columns.RemoveAt(dgv.ColumnCount - 1);
-                }
-            }
+        public static void FormatGrid(DataGridView dgv, int size = 10, int cols = 0) {
             dgv.AlternatingRowsDefaultCellStyle = StyleAlternate;
             dgv.BackgroundColor = Color.Black;
             dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -123,8 +117,17 @@ namespace GridAndChartStyleLibrary {
             dgv.RowHeadersWidth = 20;
             dgv.DefaultCellStyle = StyleBase;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            var font = new Font("Segoe UI", size);
             foreach (DataGridViewColumn col in dgv.Columns) {
                 col.Width = col.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
+                col.DefaultCellStyle.Font = font;
+            }
+
+            if (cols <= 0) return;
+            // Remove extra columns that "magically" appear
+            while (dgv.ColumnCount > cols) {
+                dgv.Columns.RemoveAt(dgv.ColumnCount - 1);
             }
         }
 
