@@ -305,7 +305,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvTotal;
         private System.Windows.Forms.DataGridView dgvBalanco;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdRealDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qtd;

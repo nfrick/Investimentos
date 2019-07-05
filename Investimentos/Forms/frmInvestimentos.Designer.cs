@@ -1803,8 +1803,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorSalvar;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdPrevistaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtdRealDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripButtonSalvar;
@@ -1841,7 +1839,6 @@
         private System.Windows.Forms.TableLayoutPanel tlpLCATop;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvLCAs;
         private DataGridViewWithButtons.VBControls.DataGridViewWithButtons dgvLCAMovimentos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn4;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
