@@ -17,7 +17,7 @@ namespace Investimentos {
 
             textBoxNome.Text = Conta.Nome;
             textBoxAgencia.Text = Conta.Agencia;
-            textBoxContaCorrente.Text = Conta.ContaEdicao;
+            textBoxContaCorrente.Text = Conta.ContaCorrente;
             textBoxOperacao.Text = Conta.Operacao;
             textBoxSenha.Text = Conta.Senha;
             textBoxInfo.Text = Conta.Info;
@@ -26,7 +26,7 @@ namespace Investimentos {
         private void buttonOK_Click(object sender, EventArgs e) {
             Conta.Nome = textBoxNome.Text;
             Conta.Agencia = textBoxAgencia.Text;
-            Conta.ContaEdicao = textBoxContaCorrente.Text;
+            Conta.ContaCorrente = textBoxContaCorrente.Text;
             Conta.Operacao = textBoxOperacao.Text;
             Conta.Senha = textBoxSenha.Text;
             Conta.Info = textBoxInfo.Text;

@@ -1,19 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Net.Sockets;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace DataLayer {
 
     public partial class Conta {
 
-        public string ContaEdicao {
-            get => ContaCorrente.PadLeft(6);
-            set => ContaCorrente = value.Trim();
-        }
         public decimal LucroTotal => Saidas.Sum(o => o.Lucro);
         public decimal LucroTotalReal => Saidas.Sum(o => o.LucroReal);
 

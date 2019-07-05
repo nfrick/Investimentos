@@ -80,6 +80,7 @@ namespace DataLayer {
                     return cotacao;
                 }
                 catch (System.Net.WebException ex) {
+                    Console.WriteLine(ex.Message);
                     return null;
                 }
             }
