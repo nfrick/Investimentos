@@ -28,6 +28,7 @@ namespace DataLayer
         public string Nome { get; set; }
         public string Agencia { get; set; }
         public string ContaCorrente { get; set; }
+        public string Operacao { get; set; }
         public string Senha { get; set; }
         public string Info { get; set; }
     

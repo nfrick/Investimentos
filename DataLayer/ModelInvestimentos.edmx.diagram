@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="43af98fc1a5541c5afd92cab742ad0e0" Name="Diagram1" ZoomLevel="90">
         <EntityTypeShape EntityType="InvestimentosModel.OperacaoTipo" Width="1.5" PointX="6.5" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="InvestimentosModel.Conta" Width="1.5" PointX="11.625" PointY="9.375" FillColor="128, 255, 128" />
+        <EntityTypeShape EntityType="InvestimentosModel.Conta" Width="1.5" PointX="11.625" PointY="9" FillColor="128, 255, 128" />
         <EntityTypeShape EntityType="InvestimentosModel.AtivoDaConta" Width="1.5" PointX="6.625" PointY="9.5" />
         <AssociationConnector Association="InvestimentosModel.ContaAtivo" />
         <EntityTypeShape EntityType="InvestimentosModel.Ativo" Width="1.5" PointX="6.625" PointY="7.25" FillColor="255, 192, 192" />
@@ -39,7 +39,7 @@
         <AssociationConnector Association="InvestimentosModel.FK_tbMovimentos_tbContasMeses" />
         <AssociationConnector Association="InvestimentosModel.FK_tbResultados_tbFundos" />
         <AssociationConnector Association="InvestimentosModel.AtivoDaContaAtivo" />
-        <EntityTypeShape EntityType="InvestimentosModel.LCA" Width="1.5" PointX="14.125" PointY="9.625" FillColor="255, 192, 128" />
+        <EntityTypeShape EntityType="InvestimentosModel.LCA" Width="1.5" PointX="14" PointY="9.625" FillColor="255, 192, 128" />
         <EntityTypeShape EntityType="InvestimentosModel.LCAMes" Width="1.5" PointX="16.375" PointY="9.25" FillColor="255, 192, 128" />
         <EntityTypeShape EntityType="InvestimentosModel.LCAMovimento" Width="1.5" PointX="18.625" PointY="9.5" FillColor="255, 192, 128" />
         <AssociationConnector Association="InvestimentosModel.FK_tbLCA_tbContas" />

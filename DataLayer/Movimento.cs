@@ -20,6 +20,7 @@ namespace DataLayer
         public string Historico { get; set; }
         public decimal Valor { get; set; }
         public decimal ImpostoRenda { get; set; }
+        public decimal IOF { get; set; }
         public decimal CotaQtd { get; set; }
         public Nullable<decimal> CotaValor { get; set; }
     

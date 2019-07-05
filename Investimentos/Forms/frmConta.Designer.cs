@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.labelNome = new System.Windows.Forms.Label();
             this.labelAgencia = new System.Windows.Forms.Label();
             this.labelContaCorrente = new System.Windows.Forms.Label();
@@ -33,8 +34,12 @@
             this.textBoxInfo = new System.Windows.Forms.TextBox();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
-            this.maskedTextBoxAgencia = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBoxContaCorrente = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxAgencia = new System.Windows.Forms.TextBox();
+            this.textBoxContaCorrente = new System.Windows.Forms.TextBox();
+            this.textBoxOperacao = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNome
@@ -49,7 +54,7 @@
             // labelAgencia
             // 
             this.labelAgencia.AutoSize = true;
-            this.labelAgencia.Location = new System.Drawing.Point(13, 49);
+            this.labelAgencia.Location = new System.Drawing.Point(12, 44);
             this.labelAgencia.Name = "labelAgencia";
             this.labelAgencia.Size = new System.Drawing.Size(65, 21);
             this.labelAgencia.TabIndex = 1;
@@ -58,7 +63,7 @@
             // labelContaCorrente
             // 
             this.labelContaCorrente.AutoSize = true;
-            this.labelContaCorrente.Location = new System.Drawing.Point(14, 89);
+            this.labelContaCorrente.Location = new System.Drawing.Point(14, 77);
             this.labelContaCorrente.Name = "labelContaCorrente";
             this.labelContaCorrente.Size = new System.Drawing.Size(51, 21);
             this.labelContaCorrente.TabIndex = 2;
@@ -67,44 +72,44 @@
             // labelSenha
             // 
             this.labelSenha.AutoSize = true;
-            this.labelSenha.Location = new System.Drawing.Point(14, 129);
+            this.labelSenha.Location = new System.Drawing.Point(12, 148);
             this.labelSenha.Name = "labelSenha";
             this.labelSenha.Size = new System.Drawing.Size(53, 21);
-            this.labelSenha.TabIndex = 3;
+            this.labelSenha.TabIndex = 4;
             this.labelSenha.Text = "Senha";
             // 
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Location = new System.Drawing.Point(14, 169);
+            this.labelInfo.Location = new System.Drawing.Point(14, 181);
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(37, 21);
-            this.labelInfo.TabIndex = 4;
+            this.labelInfo.TabIndex = 5;
             this.labelInfo.Text = "Info";
             // 
             // textBoxNome
             // 
             this.textBoxNome.Location = new System.Drawing.Point(111, 6);
             this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.Size = new System.Drawing.Size(109, 29);
-            this.textBoxNome.TabIndex = 0;
-            this.textBoxNome.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.textBoxNome.Size = new System.Drawing.Size(181, 29);
+            this.textBoxNome.TabIndex = 6;
+            this.textBoxNome.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNome_Validating);
             // 
             // textBoxSenha
             // 
-            this.textBoxSenha.Location = new System.Drawing.Point(111, 126);
+            this.textBoxSenha.Location = new System.Drawing.Point(111, 146);
             this.textBoxSenha.Name = "textBoxSenha";
-            this.textBoxSenha.Size = new System.Drawing.Size(109, 29);
-            this.textBoxSenha.TabIndex = 3;
-            this.textBoxSenha.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.textBoxSenha.Size = new System.Drawing.Size(181, 29);
+            this.textBoxSenha.TabIndex = 10;
+            this.textBoxSenha.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSenha_Validating);
             // 
             // textBoxInfo
             // 
-            this.textBoxInfo.Location = new System.Drawing.Point(111, 166);
+            this.textBoxInfo.Location = new System.Drawing.Point(111, 181);
             this.textBoxInfo.Multiline = true;
             this.textBoxInfo.Name = "textBoxInfo";
             this.textBoxInfo.Size = new System.Drawing.Size(363, 106);
-            this.textBoxInfo.TabIndex = 4;
+            this.textBoxInfo.TabIndex = 11;
             // 
             // buttonCancelar
             // 
@@ -114,7 +119,7 @@
             this.buttonCancelar.Location = new System.Drawing.Point(419, 56);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(55, 42);
-            this.buttonCancelar.TabIndex = 6;
+            this.buttonCancelar.TabIndex = 13;
             this.buttonCancelar.Text = "û";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
@@ -127,28 +132,48 @@
             this.buttonOK.Location = new System.Drawing.Point(419, 12);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(55, 42);
-            this.buttonOK.TabIndex = 5;
+            this.buttonOK.TabIndex = 12;
             this.buttonOK.Text = "ü";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // maskedTextBoxAgencia
+            // textBoxAgencia
             // 
-            this.maskedTextBoxAgencia.Location = new System.Drawing.Point(111, 47);
-            this.maskedTextBoxAgencia.Mask = "0000-0";
-            this.maskedTextBoxAgencia.Name = "maskedTextBoxAgencia";
-            this.maskedTextBoxAgencia.Size = new System.Drawing.Size(109, 29);
-            this.maskedTextBoxAgencia.TabIndex = 7;
-            this.maskedTextBoxAgencia.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.textBoxAgencia.Location = new System.Drawing.Point(111, 41);
+            this.textBoxAgencia.Name = "textBoxAgencia";
+            this.textBoxAgencia.Size = new System.Drawing.Size(181, 29);
+            this.textBoxAgencia.TabIndex = 7;
+            this.textBoxAgencia.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAgencia_Validating);
             // 
-            // maskedTextBoxContaCorrente
+            // textBoxContaCorrente
             // 
-            this.maskedTextBoxContaCorrente.Location = new System.Drawing.Point(111, 86);
-            this.maskedTextBoxContaCorrente.Mask = "90000-&";
-            this.maskedTextBoxContaCorrente.Name = "maskedTextBoxContaCorrente";
-            this.maskedTextBoxContaCorrente.Size = new System.Drawing.Size(109, 29);
-            this.maskedTextBoxContaCorrente.TabIndex = 8;
-            this.maskedTextBoxContaCorrente.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.textBoxContaCorrente.Location = new System.Drawing.Point(111, 76);
+            this.textBoxContaCorrente.Name = "textBoxContaCorrente";
+            this.textBoxContaCorrente.Size = new System.Drawing.Size(181, 29);
+            this.textBoxContaCorrente.TabIndex = 8;
+            this.textBoxContaCorrente.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxConta_Validating);
+            // 
+            // textBoxOperacao
+            // 
+            this.textBoxOperacao.Location = new System.Drawing.Point(111, 111);
+            this.textBoxOperacao.Name = "textBoxOperacao";
+            this.textBoxOperacao.Size = new System.Drawing.Size(181, 29);
+            this.textBoxOperacao.TabIndex = 9;
+            this.textBoxOperacao.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxOperacao_Validating);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 114);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Operação";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.DataMember = "";
             // 
             // frmConta
             // 
@@ -156,9 +181,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancelar;
-            this.ClientSize = new System.Drawing.Size(486, 284);
-            this.Controls.Add(this.maskedTextBoxContaCorrente);
-            this.Controls.Add(this.maskedTextBoxAgencia);
+            this.ClientSize = new System.Drawing.Size(486, 305);
+            this.Controls.Add(this.textBoxOperacao);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxContaCorrente);
+            this.Controls.Add(this.textBoxAgencia);
             this.Controls.Add(this.buttonCancelar);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.textBoxInfo);
@@ -175,6 +202,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conta de Investimento";
             this.Load += new System.EventHandler(this.frmConta_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,7 +220,10 @@
         private System.Windows.Forms.TextBox textBoxInfo;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonOK;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxAgencia;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxContaCorrente;
+        private System.Windows.Forms.TextBox textBoxAgencia;
+        private System.Windows.Forms.TextBox textBoxContaCorrente;
+        private System.Windows.Forms.TextBox textBoxOperacao;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

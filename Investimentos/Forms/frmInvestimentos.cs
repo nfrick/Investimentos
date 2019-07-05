@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,7 +30,6 @@ namespace Investimentos {
     }
 
     public partial class frmInvestimentos : Form {
-        private static readonly IFormatProvider FormatPT_BR = new CultureInfo("pt-BR");
 
         public frmInvestimentos() {
             InitializeComponent();
@@ -67,17 +65,21 @@ namespace Investimentos {
             GridStyles.FormatColumns(dgvFundos, GridStyles.StyleCurrency, 80, 2);
 
             GridStyles.FormatGrid(dgvFundosMeses);
+            // 0mes, 1saldo, 2qtd cotas, 3valor cota, 4rend bruto, 5ir, 6iof, 7rendliquido, 8rend mes, rend ano, rend12 meses
             dgvFundosMeses.Columns[0].Width = 85;
+            GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleCurrency, 85, 1, 4, 7);
+            dgvFundosMeses.Columns[1].Width = 95;
             GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleNumber(6), 115, 2);
             GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleNumber(9), 115, 3);
-            GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleCurrency, 85, 1, 4, 5, 6);
-            dgvFundosMeses.Columns[1].Width = 95;
-            GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleNumber(4), 80, 7, 8, 9);
+            GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleCurrency, 70, 5, 6);
+            GridStyles.FormatColumns(dgvFundosMeses, GridStyles.StyleNumber(4), 80, 8, 9, 10);
 
+            //data, historico, valor, IR, IOF, Qtd Cotas, Valor Cota
             GridStyles.FormatGrid(dgvMovimentos);
-            GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleCurrency, 90, 2, 3);
-            GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleCurrency, 95, 4);
-            GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleNumber(6), 105, 5);
+            GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleCurrency, 90, 2);
+            GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleCurrency, 70, 3, 4);
+            GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleNumber(4), 100, 5);
+            GridStyles.FormatColumns(dgvMovimentos, GridStyles.StyleNumber(6), 100, 6);
 
             // LCA
             GridStyles.FormatGrid(dgvLCAs);
@@ -182,7 +184,7 @@ namespace Investimentos {
                     continue;
                 }
                 var tag = item.Tag.ToString();
-                item.Visible = (tag.Contains(tabLabel));
+                item.Visible = tag == "all" || tag.Contains(tabLabel);
             }
         }
 
@@ -197,7 +199,17 @@ namespace Investimentos {
         }
 
         private static void OrderByDate(DataGridView dgv) {
-            dgv.Sort(dgv.Columns[0], ListSortDirection.Descending);
+            try {
+                if (dgv.RowCount == 0) {
+                    return;
+                }
+
+                dgv.Sort(dgv.Columns[0], ListSortDirection.Descending);
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+            }
+
         }
 
         private void ForceRowSelection(DataGridView dgv) {
@@ -394,6 +406,7 @@ namespace Investimentos {
             cbx.SelectedIndex = currentIndex == -1 ? 0 : currentIndex;
         }
 
+        #region TOOLSTRIP AÇÕES --------------------------------------
         private void toolStripButtonNovaOperacao_Click(object sender, EventArgs e) {
             var ativo = (AtivoDaConta)dgvAtivos.SelectedRows[0].DataBoundItem;
             var conta = (Conta)dgvContas.CurrentRow.DataBoundItem;
@@ -425,7 +438,9 @@ namespace Investimentos {
             var frm = new frmBalanco() { Conta = ((Conta)dgvContas.CurrentRow.DataBoundItem).ContaId };
             frm.ShowDialog();
         }
+        #endregion TOOLSTRIP AÇÕES --------------------------------------
 
+        #region TOOLSTRIP CONTA --------------------------------------
         private void toolStripButtonConta_Click(object sender, EventArgs e) {
             var btn = sender as ToolStripButton;
             OpenFrmConta(btn.Tag.ToString() == "new" ? new Conta() : (Conta)dgvContas.CurrentRow.DataBoundItem);
@@ -446,7 +461,9 @@ namespace Investimentos {
             RefreshSalvar();
             ContaComboPopulate();
         }
+        #endregion TOOLSTRIP CONTA --------------------------------------
 
+        #region TOOLSTRIP SALVAR --------------------------------------
         private void toolStripButtonSalvar_Click(object sender, EventArgs e) {
             entityDataSource1.SaveChanges();
             RefreshSalvar();
@@ -463,6 +480,7 @@ namespace Investimentos {
 
             toolStripButtonSalvar.Text = $" Salvar {alts} alteraç" + (alts == 1 ? "ão" : "ões");
         }
+        #endregion TOOLSTRIP SALVAR --------------------------------------
 
         private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
             ToggleLeitura();
@@ -474,7 +492,7 @@ namespace Investimentos {
             }
             else {
                 OFD.DefaultExt = "txt";
-                OFD.Filter = @"Text files|*.txt";
+                OFD.Filter = @"Text files|*.txt|PDF files|*.pdf";
                 OFD.Multiselect = true;
             }
 
@@ -485,16 +503,19 @@ namespace Investimentos {
             toolStripProgressBar1.Value = 0;
             toolStripProgressBar1.Maximum = OFD.FileNames.Length;
 
-            Func<string, int> leitor;
+            Action<string> leitor;
+            Action refresher = null;
             switch (tabLabel) {
                 case "Ações":
                     leitor = LerExtratoAcoes;
                     break;
                 case "Fundos":
                     leitor = LerExtratoFundos;
+                    refresher = RefreshDataFundos;
                     break;
                 case "LCA":
                     leitor = LerExtratoLCA;
+                    refresher = RefreshDataLCA;
                     break;
                 default:
                     ToggleLeitura();
@@ -507,6 +528,8 @@ namespace Investimentos {
                 leitor(file);
             }
             ToggleLeitura();
+
+            refresher?.Invoke();
         }
 
         private void ToggleLeitura() {
@@ -529,9 +552,9 @@ namespace Investimentos {
         #endregion TOOLSTRIP -----------------------------------------------
 
         #region LEITURA DE EXTRATO --------------------------------------------
-        private int LerExtratoAcoes(string fileName) {
+        private void LerExtratoAcoes(string filename) {
             var seps = new[] { "\r\n" };
-            var readText = File.ReadAllText(fileName);
+            var readText = File.ReadAllText(filename);
             var lines = readText.Split(seps, StringSplitOptions.RemoveEmptyEntries);
 
             var conta = (Conta)toolStripComboBoxConta.SelectedItem;
@@ -546,267 +569,99 @@ namespace Investimentos {
                 }
             }
             dgvAtivos.Refresh();
-            return 0;
         }
 
-        private static string GetCNPJ(string input) {
-            return new string(input.Where(char.IsDigit).ToArray());
+        private void LerExtratoFundos(string filename) {
+            if (filename.EndsWith("txt")) {
+                LerExtratoFundosBB(filename);
+            }
+            else {
+                LerExtratoFundosCEF(filename);
+            }
         }
 
-        private int LerExtratoFundos(string fileName) {
-            var conta = (Conta)toolStripComboBoxConta.SelectedItem;
-            var fundos = entityDataSource1.DbContext.Set<Fundo>();
+        private bool SelecionaConta(string contacorrente, out Conta conta) {
+            conta = toolStripComboBoxConta.Items
+                .Cast<Conta>().FirstOrDefault(c => c.ContaCorrente == contacorrente);
+            if (conta == null) {
+                MessageBox.Show($"Conta {contacorrente} não encontrada.", "Extrato Fundos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            toolStripComboBoxConta.SelectedItem = contacorrente;
+            return true;
+        }
 
-            const int bufferSize = 128;
+        private void LerExtratoFundosBB(string filename) {
 
-            using (var fileStream = File.OpenRead(fileName)) {
-                using (var streamReader = new StreamReader(fileStream, Encoding.Default, true, bufferSize)) {
-                    do {
-                        string line;
-                        do {
-                            // Ler até achar o inicio dos dados do Fundo ou achar o fim do arquivo
-                            line = streamReader.ReadLine();
-                            if (line == null) {
-                                RefreshDataFundos();
-                                return 0;
-                            }
-                            line = line.Trim();
-                            if (!line.StartsWith("Agência")) {
-                                continue;
-                            }
+            var extrato = new ExtratoBBeader(filename);
 
-                            // Verifica se a conta do extrato é a conta selecionada.
-                            var contax = line.Split(new[] { ' ' }).Last();
-                            var contaz = contax.Replace("-", "");
-                            if (conta.ContaCorrente == contaz) {
-                                continue;
-                            }
+            if (!SelecionaConta(extrato.ContaCorrente, out Conta conta)) {
+                return;
+            }
 
-                            conta = toolStripComboBoxConta.Items
-                                .Cast<Conta>().FirstOrDefault(c => c.ContaCorrente == contaz);
-                            if (conta != null) {
-                                toolStripComboBoxConta.SelectedItem = conta;
-                            }
-                            else {
-                                MessageBox.Show($"Conta {contax} não encontrada.",
-                                    "Extrato Fundos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                return 0;
-                            }
-                        } while (!line.StartsWith("BB"));
-                        var fundoCNPJ = GetCNPJ(line.Substring(68, 18).Trim());
-                        var fundoNome = line.Substring(0, 40).Trim();
+            var fundosNoDatabase = entityDataSource1.DbContext.Set<Fundo>().Local;
 
-                        // Localiza o Fundo, criando ou atualizando o nome caso necessário
-                        var fundo = fundos.Local.FirstOrDefault(f => f.CNPJ == fundoCNPJ);
-                        if (fundo == null) {
-                            fundo = new Fundo() { Nome = fundoNome, CNPJ = fundoCNPJ };
-                            fundos.Add(fundo);
-                        }
-                        else if (fundo.Nome != fundoNome) {
-                            fundo.Nome = fundoNome;
-                        }
-
-                        // Localiza a ContaFundo, criando se necessário
-                        var contaFundo = conta.Fundos.FirstOrDefault(f => f.FundoCNPJ == fundoCNPJ) ??
-                                         new ContaFundo() { Fundo = fundo };
-                        if (contaFundo.ContaFundoId == 0) {
-                            conta.Fundos.Add(contaFundo);
-                        }
-
-                        // Mover até inicio dos Movimentos
-                        do {
-                            // nothing
-                        } while (!(line = GetNextLine(streamReader)).Contains("SALDO ANTERIOR"));
-
-                        // Cria o Fundo-Mes
-                        var fundoMes = new FundoMes() { Fundo = fundo };
-                        fundo.Meses.Add(fundoMes);
-
-                        // Cria o Conta-Mes
-                        var contaMes = new ContaMes() { ContaFundo = contaFundo, FundoMes = fundoMes };
-
-                        // Ler movimentos
-                        DateTime data;
-                        do {
-                            //if (string.IsNullOrEmpty(line)) continue;
-                            if (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal,
-                                out data)) {
-                                continue;
-                            }
-
-                            contaMes.Movimentos.Add(CreateMovimento(line));
-                        } while (!(line = GetNextLine(streamReader)).Contains("SALDO ATUAL"));
-                        // Adiciona o saldo atual (última linha)
-                        contaMes.Movimentos.Add(CreateMovimento(line));
-                        contaMes.CotaQtd = contaMes.Movimentos.Last().CotaQtd;
-
-                        // Preenche o mês no Fundo-Mes
-                        var mes = DateTime.Parse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal);
-                        fundoMes.Mes = mes.AddDays(1 - mes.Day);
-
-                        // Ler até achar o valor anterior da cota
-                        do {
-                            line = GetNextLine(streamReader);
-                        } while (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR,
-                            DateTimeStyles.AssumeLocal, out data));
-
-                        // Ler até achar o valor atual da cota
-                        do {
-                            line = GetNextLine(streamReader);
-                        } while (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal,
-                            out data));
-                        fundoMes.CotaValor = GetValor(line);
-
-                        // Mover até inicio dos rendimentos
-                        do {
-                        } while (!(line = GetNextLine(streamReader)).StartsWith("No mês:"));
-
-                        fundoMes.RendimentoMes = GetValor(line);
-                        fundoMes.RendimentoAno = GetValor(streamReader);
-                        fundoMes.Rendimento12Meses = GetValor(streamReader);
-
-                        // Mover até o rendimento bruto
-                        do {
-                        } while (!(line = GetNextLine(streamReader)).StartsWith("RENDIMENTO BRUTO"));
-                        contaMes.RendimentoBruto = GetValor(line);
-
-                        contaFundo.ContasMeses.Add(contaMes);
-
-                    } while (true);
+            foreach (var fundoNoExtrato in extrato.FundosNoExtrato) {
+                var fundo = fundosNoDatabase.FirstOrDefault(f => f.CNPJ == fundoNoExtrato.CNPJ) ??
+                            fundoNoExtrato.CreateFundo();
+                if (fundo.FundoId == 0) {
+                    fundosNoDatabase.Add(fundo);
                 }
-            }
-        }
-
-        private int LerExtratoLCA(string fileName) {
-            var conta = (Conta)toolStripComboBoxConta.SelectedItem;
-            var LCAs = entityDataSource1.DbContext.Set<LCA>();
-
-            const int bufferSize = 128;
-
-            using (var fileStream = File.OpenRead(fileName)) {
-                using (var streamReader = new StreamReader(fileStream, Encoding.Default, true, bufferSize)) {
-
-                    string line;
-                    // Ler até achar o inicio dos dados
-                    line = ReadUntil(streamReader, "NÚMERO");
-                    var lcaNumero = line.Substring(18).Trim();
-
-                    // Localiza a LCA, criando se necessário
-                    var lca = LCAs.Local.FirstOrDefault(l => l.Numero == lcaNumero);
-                    if (lca == null) {
-                        lca = new LCA { Numero = lcaNumero, Conta = conta };
-                        lca.Aplicacao = DateTime.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
-                        lca.ValorEmissao = decimal.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
-                        var saldo = GetNextLine(streamReader); // skip that line
-                        lca.Taxa = decimal.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
-                        lca.Vencimento = DateTime.Parse(GetNextLine(streamReader).Substring(18).Trim(), FormatPT_BR);
-                        LCAs.Add(lca);
-                    }
-
-                    // Localiza o mês
-                    line = ReadUntil(streamReader, "EXTRATO REF AO MÊS");
-
-                    // Cria o Mes
-                    var lcaMes = new LCAMes { LCA = lca, Mes = DateTime.Parse($"01/{line.Substring(18).Trim()}") };
-                    lca.LCAMeses.Add(lcaMes);
-
-                    // Ler movimentos
-                    do {
-                        if (string.IsNullOrEmpty(line)) {
-                            continue;
-                        }
-
-                        if (!DateTime.TryParse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal,
-                            out DateTime data)) {
-                            continue;
-                        }
-
-                        lcaMes.LCAMovimentos.Add(CreateLCAMovimento(line));
-                    } while (!(line = GetNextLine(streamReader)).Contains("Saldo Atual"));
-                    // Adiciona o saldo atual (última linha)
-                    lcaMes.LCAMovimentos.Add(CreateLCAMovimento(line));
-
-                    // Localiza o mês
-                    line = ReadUntil(streamReader, "SALDO ANTERIOR");
-                    lcaMes.SaldoAnterior = GetValor(line);
-                    lcaMes.Aplicacoes = GetValor(streamReader);
-                    lcaMes.Resgates = GetValor(streamReader);
-                    lcaMes.RendimentoBruto = GetValor(streamReader);
-                    lcaMes.ImpostoRenda = GetValor(streamReader);
-                    lcaMes.IOF = GetValor(streamReader);
-                    lcaMes.RendimentoLiquido = GetValor(streamReader);
-                    lcaMes.SaldoAtual = GetValor(streamReader);
-                    RefreshDataLCA();
+                else if (fundo.Nome != fundoNoExtrato.Nome) {
+                    fundo.Nome = fundoNoExtrato.Nome;
                 }
+
+                fundoNoExtrato.UpdateFundoMes(fundo);
+
+                // Localiza a ContaFundo, criando se necessário
+                var contaFundo = conta.Fundos.FirstOrDefault(f => f.FundoCNPJ == fundoNoExtrato.CNPJ) ??
+                                 new ContaFundo() { Fundo = fundo };
+                if (contaFundo.ContaFundoId == 0) {
+                    conta.Fundos.Add(contaFundo);
+                }
+
+                fundoNoExtrato.UpdateContaMes(contaFundo);
             }
-            return 0;
         }
 
-        private static string GetNextLine(TextReader stream) {
-            string linha;
-            while ((linha = stream.ReadLine().Trim()) == "") {
-                ;
-            }
-            return linha;
-        }
+        private void LerExtratoFundosCEF(string filename) {
+            var extrato = new ExtratoCEFReader(filename);
 
-        private static string ReadUntil(TextReader stream, string text) {
-            string linha;
-            while (!(linha = stream.ReadLine().Trim()).Contains(text)) {
-                ;
-            }
-            return linha;
-        }
-
-        private static decimal GetValor(TextReader stream) =>
-            GetValor(GetNextLine(stream));
-
-        private static decimal GetValor(string linha) {
-            var valores = linha.Split(new[] { ' ' }).Where(x => !string.IsNullOrEmpty(x)).ToArray();
-            return decimal.Parse(valores[valores.Length - 1]);
-        }
-
-        private static Movimento CreateMovimento(string line) {
-            return new Movimento() {
-                Data = DateTime.Parse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal),
-                Historico = line.Substring(11, 22).Trim().ToLower(),
-                Valor = ToDecimal(line, 38, 12),
-                ImpostoRenda = ToDecimal(line, 50, 16),
-                CotaQtd = ToDecimal(line, 95, 19),
-                CotaValor = ToDecimalNull(line, 117, 20)
-            };
-        }
-
-        private static LCAMovimento CreateLCAMovimento(string line) {
-            return new LCAMovimento() {
-                Data = DateTime.Parse(line.Substring(0, 10), FormatPT_BR, DateTimeStyles.AssumeLocal),
-                Historico = line.Substring(11, 20).Trim().ToLower(),
-                ValorCapital = ToDecimal(line, 38, 11),
-                ImpostoRenda = ToDecimal(line, 48, 12),
-                IOF = ToDecimal(line, 60, 12),
-                Rendimentos = ToDecimal(line, 72, 15),
-                ValorMovimento = ToDecimal(line, 88, 16),
-                ValorAtual = int.Parse(line.Substring(103, 13)) / 100.0m
-            };
-        }
-
-        private static decimal ToDecimal(string line, int start, int length) {
-            return ToDecimalNull(line, start, length) ?? 0.0m;
-        }
-
-        private static decimal? ToDecimalNull(string line, int start, int length) {
-            if (start > line.Length) {
-                return null;
+            if (!SelecionaConta(extrato.ContaCorrente, out Conta conta)) {
+                return;
             }
 
-            if (start + length > line.Length) {
-                length = line.Length - start;
+            var fundosNoDatabase = entityDataSource1.DbContext.Set<Fundo>().Local;
+
+            var fundo = fundosNoDatabase.FirstOrDefault(f => f.CNPJ == extrato.CNPJ) ??
+                        extrato.CreateFundo();
+            if (fundo.FundoId == 0) {
+                fundosNoDatabase.Add(fundo);
+            }
+            //else if (fundo.Nome != fundoNoExtrato.Nome) {
+            //    fundo.Nome = fundoNoExtrato.Nome;
+            //}
+
+            extrato.UpdateFundoMes(fundo.Meses.FirstOrDefault(m => m.Mes == extrato.Mes));
+
+            // Localiza a ContaFundo, criando se necessário
+            var contaFundo = conta.Fundos.FirstOrDefault(f => f.FundoCNPJ == extrato.CNPJ) ??
+                                 new ContaFundo() { Fundo = fundo };
+            if (contaFundo.ContaFundoId == 0) {
+                conta.Fundos.Add(contaFundo);
             }
 
-            var text = line.Substring(start, length).Trim();
-            return decimal.TryParse(text, out decimal valor) ? (decimal?)valor : null;
+            var contaMes = extrato.UpdateContaMes(contaFundo.ContasMeses
+                .FirstOrDefault(c => c.Mes == extrato.Mes));
+            if (contaMes.ContaMesId == 0) {
+                contaFundo.ContasMeses.Add(contaMes);
+            }
+        }
+
+        private void LerExtratoLCA(string filename) {
+            ExtratoLCAReader.LerExtratoLCA(filename, (Conta)toolStripComboBoxConta.SelectedItem, entityDataSource1);
         }
         #endregion LEITURA DE EXTRATO -------------------------------
-
     }
 }

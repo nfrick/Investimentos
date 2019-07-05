@@ -110,6 +110,7 @@
             this.contaMesIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RendimentoBruto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImpostoRenda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RendimentoLiquido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contaFundoIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fundoMesIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,6 +121,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IOF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageLCA = new System.Windows.Forms.TabPage();
@@ -389,6 +391,7 @@
             this.dgvFundos.DataSource = this.entityDataSource1;
             this.dgvFundos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFundos.Location = new System.Drawing.Point(3, 3);
+            this.dgvFundos.MultiSelect = false;
             this.dgvFundos.Name = "dgvFundos";
             this.dgvFundos.ReadOnly = true;
             this.dgvFundos.RowTemplate.Height = 24;
@@ -440,6 +443,7 @@
             this.dgvLCAs.DataSource = this.entityDataSource1;
             this.dgvLCAs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLCAs.Location = new System.Drawing.Point(3, 3);
+            this.dgvLCAs.MultiSelect = false;
             this.dgvLCAs.Name = "dgvLCAs";
             this.dgvLCAs.ReadOnly = true;
             this.dgvLCAs.RowTemplate.Height = 24;
@@ -829,6 +833,7 @@
             this.contaMesIdDataGridViewTextBoxColumn,
             this.RendimentoBruto,
             this.ImpostoRenda,
+            this.dataGridViewTextBoxColumn17,
             this.RendimentoLiquido,
             this.contaFundoIdDataGridViewTextBoxColumn,
             this.fundoMesIdDataGridViewTextBoxColumn,
@@ -837,6 +842,7 @@
             this.dgvFundosMeses.DataSource = this.entityDataSource1;
             this.dgvFundosMeses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFundosMeses.Location = new System.Drawing.Point(3, 296);
+            this.dgvFundosMeses.MultiSelect = false;
             this.dgvFundosMeses.Name = "dgvFundosMeses";
             this.dgvFundosMeses.ReadOnly = true;
             this.dgvFundosMeses.RowTemplate.Height = 24;
@@ -886,6 +892,13 @@
             this.ImpostoRenda.HeaderText = "I.R.";
             this.ImpostoRenda.Name = "ImpostoRenda";
             this.ImpostoRenda.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "IOF";
+            this.dataGridViewTextBoxColumn17.HeaderText = "IOF";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
             // 
             // RendimentoLiquido
             // 
@@ -941,12 +954,14 @@
             this.dataGridViewTextBoxColumn7,
             this.valorDataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn9,
+            this.IOF,
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13});
             this.dgvMovimentos.DataMember = "Contas.Fundos.ContasMeses.Movimentos";
             this.dgvMovimentos.DataSource = this.entityDataSource1;
             this.dgvMovimentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMovimentos.Location = new System.Drawing.Point(365, 3);
+            this.dgvMovimentos.MultiSelect = false;
             this.dgvMovimentos.Name = "dgvMovimentos";
             this.dgvMovimentos.ReadOnly = true;
             this.dgvMovimentos.RowTemplate.Height = 24;
@@ -980,6 +995,13 @@
             this.dataGridViewTextBoxColumn9.HeaderText = "I.R.";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // IOF
+            // 
+            this.IOF.DataPropertyName = "IOF";
+            this.IOF.HeaderText = "IOF";
+            this.IOF.Name = "IOF";
+            this.IOF.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn12
             // 
@@ -1041,6 +1063,7 @@
             this.dgvLCAMeses.DataSource = this.entityDataSource1;
             this.dgvLCAMeses.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLCAMeses.Location = new System.Drawing.Point(3, 296);
+            this.dgvLCAMeses.MultiSelect = false;
             this.dgvLCAMeses.Name = "dgvLCAMeses";
             this.dgvLCAMeses.ReadOnly = true;
             this.dgvLCAMeses.RowTemplate.Height = 24;
@@ -1145,6 +1168,7 @@
             this.dgvLCAMovimentos.DataSource = this.entityDataSource1;
             this.dgvLCAMovimentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLCAMovimentos.Location = new System.Drawing.Point(533, 3);
+            this.dgvLCAMovimentos.MultiSelect = false;
             this.dgvLCAMovimentos.Name = "dgvLCAMovimentos";
             this.dgvLCAMovimentos.ReadOnly = true;
             this.dgvLCAMovimentos.RowTemplate.Height = 24;
@@ -1528,7 +1552,7 @@
             this.toolStripButtonCopyToClipboard});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(978, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(590, 28);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonNovaConta
@@ -1539,7 +1563,7 @@
             this.toolStripButtonNovaConta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNovaConta.Name = "toolStripButtonNovaConta";
             this.toolStripButtonNovaConta.Size = new System.Drawing.Size(74, 25);
-            this.toolStripButtonNovaConta.Tag = "new";
+            this.toolStripButtonNovaConta.Tag = "all";
             this.toolStripButtonNovaConta.Text = "Nova Conta";
             this.toolStripButtonNovaConta.ToolTipText = "Nova Conta";
             this.toolStripButtonNovaConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
@@ -1557,7 +1581,7 @@
             this.toolStripButtonEditarConta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEditarConta.Name = "toolStripButtonEditarConta";
             this.toolStripButtonEditarConta.Size = new System.Drawing.Size(76, 25);
-            this.toolStripButtonEditarConta.Tag = "edit";
+            this.toolStripButtonEditarConta.Tag = "all";
             this.toolStripButtonEditarConta.Text = "Editar Conta";
             this.toolStripButtonEditarConta.Click += new System.EventHandler(this.toolStripButtonConta_Click);
             // 
@@ -1802,22 +1826,6 @@
         private System.Windows.Forms.OpenFileDialog OFD;
         private System.Windows.Forms.TableLayoutPanel tlpFundosMain;
         private System.Windows.Forms.TableLayoutPanel tlpFundosTop;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SaldoAtual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contaMesIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RendimentoBruto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ImpostoRenda;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RendimentoLiquido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contaFundoIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fundoMesIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rendimentoBrutoDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripLabel toolStripLabelLendoExtrato;
         private System.Windows.Forms.TabPage tabPageResumo;
         private System.Windows.Forms.TableLayoutPanel tlpResumo;
@@ -1904,6 +1912,24 @@
         private System.Windows.Forms.Label labelIRTotal;
         private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopyToClipboard;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IOF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaldoAtual;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contaMesIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RendimentoBruto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImpostoRenda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RendimentoLiquido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contaFundoIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fundoMesIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rendimentoBrutoDataGridViewTextBoxColumn;
     }
 }
 
