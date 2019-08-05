@@ -1,0 +1,75 @@
+﻿@model DataLayer.Conta
+
+@{
+    ViewBag.Title = "Deletar Conta";
+}
+
+<h2>Deletar Conta @Model.Nome</h2>
+
+<h3>Tem certeza?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @{
+                var img = $@"/Images/{@Model.Banco}.jpg";
+            }
+            <img src="@img" alt="@Model.ContaCorrente" class="image-responsive" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Agencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContaCorrente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContaCorrente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Operacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Operacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Senha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Info)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        @Html.Partial(("Buttons/_DeleteConfirm"))
+    }
+</div>

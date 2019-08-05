@@ -114,8 +114,8 @@ namespace Investimentos {
             return Convert.ToDecimal(valor, FormatPT_BR);
         }
 
-        public void UpdateFundoMes(FundoMes fundoMes) {
-            _fundoMes = fundoMes ?? new FundoMes();
+        public void UpdateFundoMes(Fundo fundo) {
+            _fundoMes = fundo.Meses.FirstOrDefault(m => m.Mes == Mes) ?? new FundoMes(){Fundo = fundo};
             var rendimentos = LinetoArray(TextAsArray[_linhaRentabilidade]);
             _fundoMes.Mes = Mes;
             _fundoMes.RendimentoMes = ToDecimal(rendimentos.ElementAt(0));

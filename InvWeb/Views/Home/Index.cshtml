@@ -1,31 +1,181 @@
-﻿@{
+﻿@using InvWeb.DTOs
+@*@model IEnumerable<ContaDto>*@
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
     <h1>INVESTIMENTOS</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p><a href="@Url.Action("Index", "Contas")" class="btn btn-primary btn-lg">Contas &raquo;</a></p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
+<div id="contas" class="row">
+    @*@foreach (var conta in @Model) {
+            <div class="col-md-4">
+                <table class="table table-hover">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>
+                                @{
+                                    var img = $@"/Images/{conta.Banco}.jpg";
+                                }
+                                <img src="@img" alt="@conta.ContaCorrente" class="image-responsive" />
+                            </th>
+                            <th>
+                                <h4>
+                                    <a href="@Url.Action("Details", "Contas", new {id = conta.ContaId})">@conta.Nome</a>
+                                </h4>
+                            </th>
+                            <th class="text-right">
+                                <h4>
+                                    @conta.Total.ToString("N2")
+                                </h4>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var tipo in conta.Patrimonio) {
+                            <tr class="table-dark">
+                                <td colspan="2">
+                                    <strong>@tipo.Tipo</strong>
+                                </td>
+                                <td class="text-right">
+                                    <strong>@tipo.Total.ToString("N2")</strong>
+                                </td>
+                            </tr>
+                            foreach (var p in tipo.Itens) {
+                                    <tr>
+                                        <td colspan="2" style="text-indent: 5%">
+                                            @p.Item
+                                        </td>
+                                        <td class="text-right">
+                                            @p.Valor.ToString("N2")
+                                        </td>
+                                    </tr>
+                                }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }*@
+</div>
+
+<div id="outros" class="row">
+    <div class="col-md-6">
+        <h2>Série Histórica</h2>
         <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <p>
+            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Série Histórica &raquo;</a>
+        </p>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
+    <div class="col-md-6">
+        <h2>Cotações em Tempo Real</h2>
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <p>
+            <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Cotações &raquo;</a>
+        </p>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        $('document').ready(function () {
+            var div = $('div#contas');
+            div.empty();
+            var html = '';
+            $.ajax({
+                type: "GET",
+                //dataType: "jsonp",
+                url: 'http://localhost:5697/API/Contas',
+                cache: false,
+                success: function (data) {
+                    $.each(data,
+                        function (key, conta) {
+                            html += CreateContaTable(conta);
+                        });
+                    div.append(html);
+                }
+            });
+
+            $(document).on("click", "tr", function () {
+                var id = $(this).attr('id');
+                var criteria = "[class~='" + id + "']";
+                $(criteria).fadeToggle();
+            });
+        });
+
+
+        function CreateContaTable(conta) {
+            var id = conta.nome.toId();
+            return '' +
+                '<div class="col-md-4">' +
+                '<table class="table table-hover">' +
+                '<thead class="table-primary">' +
+                '<tr class "tr-conta" id="' + id + '">' +
+                '<th>' +
+                '<img src="/Images/' + conta.banco + '.jpg" alt="" class="image-responsive" />' +
+                '</th>' +
+                '<th>' +
+                '<h4>' + conta.nome + '</h4>' +
+                '</th>' +
+                '<th class="text-right">' +
+                '<h4>' + numberWithSeps(conta.total) + '</h4>' +
+                '</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody>' +
+                CreatePatrimonio(conta, id) +
+                '</tbody>' +
+                '</table>' +
+                '</div>';
+        }
+
+        function CreatePatrimonio(conta, classe) {
+            var x = '';
+            $.each(conta.patrimonio,
+                function (key, pat) {
+                    var id = (classe + '-' + pat.tipo).toId();
+                    x += '<tr id="' + id + '" class="' + classe + ' table-dark" style="display: none">' +
+                        '<td colspan="2">' +
+                        '<strong>' + pat.tipo + '</strong>' +
+                        '</td>' +
+                        '<td class="text-right">' +
+                        '<strong>' + numberWithSeps(pat.total) + '</strong>' +
+                        '</td>' +
+                        '</tr>' +
+                        CreateItens(pat, id);
+                });
+            return x;
+        }
+
+        function CreateItens(pat, classe) {
+            var x = '';
+            $.each(pat.itens,
+                function (key, item) {
+                    x += '<tr class="' + classe + ' tr-item" style="display: none">' +
+                        '<td colspan="2" style="text-indent: 5%">' +
+                        item.item +
+                        '</td>' +
+                        '<td class="text-right">' +
+                        numberWithSeps(item.valor) +
+                        '</td>' +
+                        '</tr>';
+                });
+            return x;
+        }
+
+        function numberWithSeps(num) {
+            return parseFloat(num).toFixed(0).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        String.prototype.toId = function() {
+            return this.replaceAll(" ", "-").toLowerCase();
+        }
+
+        String.prototype.replaceAll = function(search, replacement) {
+            return this.replace(new RegExp(search, 'g'), replacement);
+        }
+    </script>
+}

@@ -177,17 +177,6 @@ namespace Investimentos {
         }
         #endregion FORM -----------------------------------------
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
-            var tabLabel = tabControl1.SelectedTab.Text;
-            foreach (ToolStripItem item in toolStrip1.Items) {
-                if (item.Tag == null) {
-                    continue;
-                }
-                var tag = item.Tag.ToString();
-                item.Visible = tag == "all" || tag.Contains(tabLabel);
-            }
-        }
-
         #region DATAGRID GENÉRICAS ----------------------------
         private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             var dgv = (DataGridView)sender;
@@ -223,6 +212,18 @@ namespace Investimentos {
         }
 
         #endregion DATAGRID GENÉRICAS -------------------------
+
+        #region TABS ==========================================
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
+            var tabLabel = tabControl1.SelectedTab.Text;
+            foreach (ToolStripItem item in toolStrip1.Items) {
+                if (item.Tag == null) {
+                    continue;
+                }
+                var tag = item.Tag.ToString();
+                item.Visible = tag == "all" || tag.Contains(tabLabel);
+            }
+        }
 
         #region TAB FUNDOS --------------------------------------------
         private void dgvFundos_SelectionChanged(object sender, EventArgs e) {
@@ -373,6 +374,8 @@ namespace Investimentos {
         }
         #endregion TAB IMPOSTO RENDA -----------------------------------------
 
+        #endregion TABS ========================================
+
         #region TOOLSTRIP --------------------------------------
         private void toolStripComboBoxConta_SelectedIndexChanged(object sender, EventArgs e) {
             var conta = ((Conta)toolStripComboBoxConta.SelectedItem);
@@ -443,7 +446,7 @@ namespace Investimentos {
         #region TOOLSTRIP CONTA --------------------------------------
         private void toolStripButtonConta_Click(object sender, EventArgs e) {
             var btn = sender as ToolStripButton;
-            OpenFrmConta(btn.Tag.ToString() == "new" ? new Conta() : (Conta)dgvContas.CurrentRow.DataBoundItem);
+            OpenFrmConta(btn.Text == "Nova Conta" ? new Conta() : (Conta)dgvContas.CurrentRow.DataBoundItem);
         }
 
         private void OpenFrmConta(Conta conta) {
@@ -643,7 +646,7 @@ namespace Investimentos {
             //    fundo.Nome = fundoNoExtrato.Nome;
             //}
 
-            extrato.UpdateFundoMes(fundo.Meses.FirstOrDefault(m => m.Mes == extrato.Mes));
+            extrato.UpdateFundoMes(fundo);
 
             // Localiza a ContaFundo, criando se necessário
             var contaFundo = conta.Fundos.FirstOrDefault(f => f.FundoCNPJ == extrato.CNPJ) ??

@@ -172,6 +172,7 @@
     <Compile Include="sp_SituacaoImpostoRenda_Result.cs">
       <DependentUpon>ModelInvestimentos.tt</DependentUpon>
     </Compile>
+    <Compile Include="ValidationClasses\ValidationUniqueClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ModelInvestimentos.edmx">

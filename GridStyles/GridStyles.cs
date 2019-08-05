@@ -72,6 +72,11 @@ namespace GridAndChartStyleLibrary {
             Format = "dd/MM HH:mm"
         };
 
+        public static DataGridViewCellStyle StyleYearAndMonth { get; } = new DataGridViewCellStyle(StyleBase) {
+            Alignment = DataGridViewContentAlignment.MiddleLeft,
+            Format = "yyyy-MM"
+        };
+
         public static DataGridViewCellStyle StyleCurrency { get; } = new DataGridViewCellStyle(StyleBase) {
             Alignment = DataGridViewContentAlignment.MiddleRight,
             Format = "N2"

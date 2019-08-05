@@ -26,6 +26,7 @@ namespace DataLayer
     
         public int ContaId { get; set; }
         public string Nome { get; set; }
+        public string Banco { get; set; }
         public string Agencia { get; set; }
         public string ContaCorrente { get; set; }
         public string Operacao { get; set; }

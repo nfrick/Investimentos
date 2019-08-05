@@ -1,0 +1,113 @@
+﻿@model InvWeb.DTOs.ContaDto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Conta <strong>@Model.Nome</strong></h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <hr />
+        <dl class="dl-horizontal">
+            <dd>
+                @{
+                    var img = $@"/Images/{@Model.Banco}.jpg";
+                }
+                <img src="@img" alt="@Model.ContaCorrente" class="image-responsive" />
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Banco)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Banco)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Agencia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Agencia)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ContaCorrente)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ContaCorrente)
+            </dd>
+
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.Operacao)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Operacao)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Senha)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Senha)
+                </dd>
+
+                @if (!string.IsNullOrEmpty(Model.Info)) {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Info)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Info)
+                    </dd>
+                }
+            *@
+        </dl>
+
+        @Html.Partial("Buttons/_DetailsEdit", Model.ContaId)
+    </div>
+    <div class="col-md-6">
+        <table class="table table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <th>
+                        <h4>
+                            T O T A L
+                        </h4>
+                    </th>
+                    <th class="text-right">
+                        <h4>
+                            @Html.DisplayFor(model => model.Total)
+                        </h4>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tipo in Model.Patrimonio) {
+                    <tr class="table-dark">
+                        <td>
+                            <strong>@tipo.Tipo</strong>
+                        </td>
+                        <td class="text-right">
+                            <strong>@tipo.Total.ToString("N2")</strong>
+                        </td>
+                    </tr>
+                    foreach (var p in tipo.Itens) {
+                        <tr>
+                            <td style="text-indent: 5%">
+                                @p.Item
+                            </td>
+                            <td class="text-right">
+                                @p.Valor.ToString("N2")
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

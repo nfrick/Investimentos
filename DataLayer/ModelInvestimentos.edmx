@@ -27,8 +27,9 @@
           </Key>
           <Property Name="ContaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Banco" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="Agencia" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="ContaCorrente" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="ContaCorrente" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Operacao" Type="varchar" MaxLength="3" />
           <Property Name="Senha" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="Info" Type="nvarchar" MaxLength="50" />
@@ -60,7 +61,7 @@
           <Property Name="Tipo" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="SinalPositivo" Type="bit" Nullable="false" />
           <Property Name="Sinal" Type="int" Nullable="false" />
-          <Property Name="IncideTaxa" Type="bit" Nullable="false" />
+          <Property Name="IncideTaxa" Type="bit" />
         </EntityType>
         <EntityType Name="tbSaidas">
           <Key>
@@ -261,9 +262,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tbContasMeses_tbFundosMeses">
-          <End Role="tbFundosMeses" Type="Self.tbFundosMeses" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="tbFundosMeses" Type="Self.tbFundosMeses" Multiplicity="1" />
           <End Role="tbContasMeses" Type="Self.tbContasMeses" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbFundosMeses">
@@ -323,9 +322,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tbMovimentos_tbContasMeses">
-          <End Role="tbContasMeses" Type="Self.tbContasMeses" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="tbContasMeses" Type="Self.tbContasMeses" Multiplicity="1" />
           <End Role="tbMovimentos" Type="Self.tbMovimentos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbContasMeses">
@@ -603,8 +600,9 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
           </Key>
           <Property Name="ContaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Banco" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="Agencia" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="ContaCorrente" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="ContaCorrente" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Operacao" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="Senha" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="Info" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1079,6 +1077,7 @@ warning 6002: The table/view 'Investimentos2.dbo.vwSaldoEmConta' does not have a
           <EntitySetMapping Name="Contas">
             <EntityTypeMapping TypeName="InvestimentosModel.Conta">
               <MappingFragment StoreEntitySet="tbContas">
+                <ScalarProperty Name="Banco" ColumnName="Banco" />
                 <ScalarProperty Name="Operacao" ColumnName="Operacao" />
                 <ScalarProperty Name="Info" ColumnName="Info" />
                 <ScalarProperty Name="Senha" ColumnName="Senha" />

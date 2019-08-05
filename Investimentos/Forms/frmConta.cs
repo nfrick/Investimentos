@@ -16,6 +16,7 @@ namespace Investimentos {
             }
 
             textBoxNome.Text = Conta.Nome;
+            textBoxBanco.Text = Conta.Banco;
             textBoxAgencia.Text = Conta.Agencia;
             textBoxContaCorrente.Text = Conta.ContaCorrente;
             textBoxOperacao.Text = Conta.Operacao;
@@ -25,6 +26,7 @@ namespace Investimentos {
 
         private void buttonOK_Click(object sender, EventArgs e) {
             Conta.Nome = textBoxNome.Text;
+            Conta.Banco = textBoxBanco.Text;
             Conta.Agencia = textBoxAgencia.Text;
             Conta.ContaCorrente = textBoxContaCorrente.Text;
             Conta.Operacao = textBoxOperacao.Text;
@@ -36,6 +38,14 @@ namespace Investimentos {
             TrimInput(sender);
             e.Cancel = ValidateIsEmpty(sender) || ValidateLargerThan(sender, 10);
             if(!e.Cancel) errorProvider1.Clear();
+            EnableOKButton(e.Cancel);
+        }
+
+
+        private void textBoxBanco_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            TrimInput(sender);
+            e.Cancel = ValidateIsEmpty(sender) || ValidateLargerThan(sender, 3);
+            if (!e.Cancel) errorProvider1.Clear();
             EnableOKButton(e.Cancel);
         }
 

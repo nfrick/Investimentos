@@ -39,6 +39,8 @@
             this.textBoxOperacao = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxBanco = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,43 +50,43 @@
             this.labelNome.Location = new System.Drawing.Point(12, 9);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(53, 21);
-            this.labelNome.TabIndex = 0;
+            this.labelNome.TabIndex = 9;
             this.labelNome.Text = "Nome";
             // 
             // labelAgencia
             // 
             this.labelAgencia.AutoSize = true;
-            this.labelAgencia.Location = new System.Drawing.Point(12, 44);
+            this.labelAgencia.Location = new System.Drawing.Point(12, 76);
             this.labelAgencia.Name = "labelAgencia";
             this.labelAgencia.Size = new System.Drawing.Size(65, 21);
-            this.labelAgencia.TabIndex = 1;
+            this.labelAgencia.TabIndex = 11;
             this.labelAgencia.Text = "Agência";
             // 
             // labelContaCorrente
             // 
             this.labelContaCorrente.AutoSize = true;
-            this.labelContaCorrente.Location = new System.Drawing.Point(14, 77);
+            this.labelContaCorrente.Location = new System.Drawing.Point(14, 109);
             this.labelContaCorrente.Name = "labelContaCorrente";
             this.labelContaCorrente.Size = new System.Drawing.Size(51, 21);
-            this.labelContaCorrente.TabIndex = 2;
+            this.labelContaCorrente.TabIndex = 12;
             this.labelContaCorrente.Text = "Conta";
             // 
             // labelSenha
             // 
             this.labelSenha.AutoSize = true;
-            this.labelSenha.Location = new System.Drawing.Point(12, 148);
+            this.labelSenha.Location = new System.Drawing.Point(12, 180);
             this.labelSenha.Name = "labelSenha";
             this.labelSenha.Size = new System.Drawing.Size(53, 21);
-            this.labelSenha.TabIndex = 4;
+            this.labelSenha.TabIndex = 14;
             this.labelSenha.Text = "Senha";
             // 
             // labelInfo
             // 
             this.labelInfo.AutoSize = true;
-            this.labelInfo.Location = new System.Drawing.Point(14, 181);
+            this.labelInfo.Location = new System.Drawing.Point(14, 213);
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(37, 21);
-            this.labelInfo.TabIndex = 5;
+            this.labelInfo.TabIndex = 15;
             this.labelInfo.Text = "Info";
             // 
             // textBoxNome
@@ -92,24 +94,24 @@
             this.textBoxNome.Location = new System.Drawing.Point(111, 6);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(181, 29);
-            this.textBoxNome.TabIndex = 6;
+            this.textBoxNome.TabIndex = 0;
             this.textBoxNome.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxNome_Validating);
             // 
             // textBoxSenha
             // 
-            this.textBoxSenha.Location = new System.Drawing.Point(111, 146);
+            this.textBoxSenha.Location = new System.Drawing.Point(111, 176);
             this.textBoxSenha.Name = "textBoxSenha";
             this.textBoxSenha.Size = new System.Drawing.Size(181, 29);
-            this.textBoxSenha.TabIndex = 10;
+            this.textBoxSenha.TabIndex = 5;
             this.textBoxSenha.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSenha_Validating);
             // 
             // textBoxInfo
             // 
-            this.textBoxInfo.Location = new System.Drawing.Point(111, 181);
+            this.textBoxInfo.Location = new System.Drawing.Point(111, 210);
             this.textBoxInfo.Multiline = true;
             this.textBoxInfo.Name = "textBoxInfo";
             this.textBoxInfo.Size = new System.Drawing.Size(363, 106);
-            this.textBoxInfo.TabIndex = 11;
+            this.textBoxInfo.TabIndex = 6;
             // 
             // buttonCancelar
             // 
@@ -119,7 +121,7 @@
             this.buttonCancelar.Location = new System.Drawing.Point(419, 56);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(55, 42);
-            this.buttonCancelar.TabIndex = 13;
+            this.buttonCancelar.TabIndex = 8;
             this.buttonCancelar.Text = "û";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
@@ -132,42 +134,42 @@
             this.buttonOK.Location = new System.Drawing.Point(419, 12);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(55, 42);
-            this.buttonOK.TabIndex = 12;
+            this.buttonOK.TabIndex = 7;
             this.buttonOK.Text = "ü";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // textBoxAgencia
             // 
-            this.textBoxAgencia.Location = new System.Drawing.Point(111, 41);
+            this.textBoxAgencia.Location = new System.Drawing.Point(111, 74);
             this.textBoxAgencia.Name = "textBoxAgencia";
             this.textBoxAgencia.Size = new System.Drawing.Size(181, 29);
-            this.textBoxAgencia.TabIndex = 7;
+            this.textBoxAgencia.TabIndex = 2;
             this.textBoxAgencia.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAgencia_Validating);
             // 
             // textBoxContaCorrente
             // 
-            this.textBoxContaCorrente.Location = new System.Drawing.Point(111, 76);
+            this.textBoxContaCorrente.Location = new System.Drawing.Point(111, 108);
             this.textBoxContaCorrente.Name = "textBoxContaCorrente";
             this.textBoxContaCorrente.Size = new System.Drawing.Size(181, 29);
-            this.textBoxContaCorrente.TabIndex = 8;
+            this.textBoxContaCorrente.TabIndex = 3;
             this.textBoxContaCorrente.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxConta_Validating);
             // 
             // textBoxOperacao
             // 
-            this.textBoxOperacao.Location = new System.Drawing.Point(111, 111);
+            this.textBoxOperacao.Location = new System.Drawing.Point(111, 142);
             this.textBoxOperacao.Name = "textBoxOperacao";
             this.textBoxOperacao.Size = new System.Drawing.Size(181, 29);
-            this.textBoxOperacao.TabIndex = 9;
+            this.textBoxOperacao.TabIndex = 4;
             this.textBoxOperacao.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxOperacao_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 114);
+            this.label1.Location = new System.Drawing.Point(14, 146);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 21);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 13;
             this.label1.Text = "Operação";
             // 
             // errorProvider1
@@ -175,13 +177,32 @@
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.DataMember = "";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 21);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Banco";
+            // 
+            // textBoxBanco
+            // 
+            this.textBoxBanco.Location = new System.Drawing.Point(111, 40);
+            this.textBoxBanco.Name = "textBoxBanco";
+            this.textBoxBanco.Size = new System.Drawing.Size(181, 29);
+            this.textBoxBanco.TabIndex = 1;
+            this.textBoxBanco.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxBanco_Validating);
+            // 
             // frmConta
             // 
             this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancelar;
-            this.ClientSize = new System.Drawing.Size(486, 305);
+            this.ClientSize = new System.Drawing.Size(486, 325);
+            this.Controls.Add(this.textBoxBanco);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxOperacao);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxContaCorrente);
@@ -225,5 +246,7 @@
         private System.Windows.Forms.TextBox textBoxOperacao;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxBanco;
     }
 }
