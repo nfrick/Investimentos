@@ -13,27 +13,44 @@ using System.Windows.Forms.DataVisualization.Charting;
 namespace SerieHistorica {
     public partial class frmSerieHistorica : Form {
 
-        Point? _prevPosition = null;
-        ToolTip _tooltip = new ToolTip();
+        private Point? _prevPosition = null;
+        private readonly ToolTip _tooltip = new ToolTip();
 
         public frmSerieHistorica() {
             InitializeComponent();
 
             // Must setup year range selection before loading form
-            var anos = entityDataSource1.DbContext.Set<DataLayer.CotacaoDiaria>().Select(s => s.Data.Year.ToString()).Distinct().OrderBy(a => a).ToArray();
+            var datas = EDS.EntitySets["CotacoesDiarias"].Cast<CotacaoDiaria>().Select(c=>c.Data).Distinct();
+            var anos = datas.Select(d => d.Year.ToString()).Distinct().OrderBy(a => a).ToArray();
             toolStripComboBoxInicio.Items.AddRange(anos);
             toolStripComboBoxInicio.SelectedIndex = 0;
             toolStripComboBoxTermino.Items.AddRange(anos);
             toolStripComboBoxTermino.SelectedIndex = anos.Length - 1;
             toolStripComboBoxInicio.SelectedIndexChanged += toolStripComboBoxAnos_SelectedIndexChanged;
             toolStripComboBoxTermino.SelectedIndexChanged += toolStripComboBoxAnos_SelectedIndexChanged;
+
+            monthCalendarDatas.MinDate = datas.Min();
+            monthCalendarDatas.MaxDate = datas.Max();
         }
 
         private void frmSerieHistorica_Load(object sender, EventArgs e) {
-            GridStyles.FormatGrid(dgvAtivos, 14);
-            GridStyles.FormatGrid(dgvSerieHistorica, 14);
-            GridStyles.FormatColumns(dgvSerieHistorica, 1, 0, GridStyles.StyleCurrency, 70);
-            dgvSerieHistorica.Columns[0].Width = 120;
+            dgvAtivos.SetFont(12);
+            dgvSerieHistorica.SetFont(12);
+            dgvSerieHistorica.Columns[0].Visible = false;
+            dgvSerieHistorica.FormatColumn("Data", dgvSerieHistorica.StyleDateLong, 120);
+            dgvSerieHistorica.FormatColumn("Abertura", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumn("Máximo", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumn("Mínimo", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumn("Médio", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumn("Último", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumn("M.O. Compra", dgvSerieHistorica.StyleCurrency, 70);
+            dgvSerieHistorica.FormatColumn("M.O. Venda", dgvSerieHistorica.StyleCurrency, 70);
+
+            dgvSelection.CopyFormatFrom(dgvSerieHistorica);
+            for (var col = 0; col < dgvSerieHistorica.Columns.Count; col++) {
+                dgvSelection.Columns[col].DataPropertyName = dgvSerieHistorica.Columns[col].DataPropertyName;
+            }
+            dgvSelection.Columns[0].Visible = true;
 
             // 55 = vertical scroll bar width
             Width = 55 + dgvAtivos.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) +
@@ -51,7 +68,8 @@ namespace SerieHistorica {
 
         private void dgvAtivos_SelectionChanged(object sender, EventArgs e) {
             GerarGrafico(this.chart1);
-            dgvSerieHistorica.Sort(dgvSerieHistorica.Columns[0], ListSortDirection.Descending);
+            dgvSerieHistorica.Sort(dgvSerieHistorica.Columns[1], ListSortDirection.Descending);
+            PopulateDGV();
         }
 
 
@@ -101,15 +119,15 @@ namespace SerieHistorica {
         }
 
         private void LerArquivoParaDatabase(IEnumerable<string> linhas) {
-            var ativos = entityDataSource1.DbContext.Set<Ativo>().ToList();
+            var ativos = EDS.DbContext.Set<Ativo>().ToList();
             var serie = from linha in linhas
                         join ativo in ativos
                         on linha.Substring(12, 12).Trim() equals ativo.Codigo
                         where linha.StartsWith("01")
                               && linha.Substring(24, 3) == "010"
                         select new CotacaoDiaria(linha);
-            entityDataSource1.DbContext.Set<CotacaoDiaria>().AddRange(serie);
-            entityDataSource1.SaveChanges();
+            EDS.DbContext.Set<CotacaoDiaria>().AddRange(serie);
+            EDS.SaveChanges();
         }
 
         //https://stackoverflow.com/questions/23989677/file-readalllines-or-stream-reader
@@ -128,7 +146,7 @@ namespace SerieHistorica {
 
         private void bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             toolStripLabel1.Text = string.Empty;
-            entityDataSource1.Refresh();
+            EDS.Refresh();
         }
 
         private void bgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e) {
@@ -158,9 +176,9 @@ namespace SerieHistorica {
             using (var ctx = new InvestimentosEntities()) {
                 var sortedRows =
                 (from DataGridViewRow row in dgvAtivos.SelectedRows
-                    where !row.IsNewRow
-                    orderby row.Index
-                    select row).ToList<DataGridViewRow>();
+                 where !row.IsNewRow
+                 orderby row.Index
+                 select row).ToList<DataGridViewRow>();
 
                 foreach (DataGridViewRow row in sortedRows) {
                     var ativo = row.Cells[0].Value.ToString();
@@ -214,5 +232,47 @@ namespace SerieHistorica {
             }
         }
         #endregion
+
+        #region DATAS SELECIONADAS ----------------
+        private void monthCalendarDatas_MouseDown(object sender, MouseEventArgs e) {
+            MonthCalendar.HitTestInfo info = monthCalendarDatas.HitTest(e.Location);
+            if (info.HitArea != MonthCalendar.HitArea.Date) {
+                return;
+            }
+
+            if (monthCalendarDatas.BoldedDates.Contains(info.Time)) {
+                monthCalendarDatas.RemoveBoldedDate(info.Time);
+            }
+            else {
+                monthCalendarDatas.AddBoldedDate(info.Time);
+            }
+
+            monthCalendarDatas.UpdateBoldedDates();
+            PopulateDGV();
+        }
+
+        private void buttonDatesClear_Click(object sender, EventArgs e) {
+            monthCalendarDatas.RemoveAllBoldedDates();
+            PopulateDGV();
+        }
+
+        private void PopulateDGV() {
+            var datas = monthCalendarDatas.BoldedDates.ToArray();
+            if (!datas.Any()) {
+                bindingSource1.DataSource = null;
+                return;
+            }
+
+            var q = new List<CotacaoDiaria>();
+            foreach (var row in dgvAtivos.SelectedRows.Cast<DataGridViewRow>()) {
+                var acao = (Ativo) row.DataBoundItem;
+                q.AddRange(acao.CotacoesDiarias.Where(c => datas.Contains(c.Data)));
+            }
+
+            var bindingList = EDS.CreateView(q);
+            bindingSource1.DataSource = bindingList;
+        }
+
+        #endregion DATAS SELECIONADAS ----------------
     }
 }

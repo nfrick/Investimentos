@@ -1,8 +1,8 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using Newtonsoft.Json;
 
 namespace DataLayer {
     public partial class AtivoCotacao {
@@ -20,12 +20,16 @@ namespace DataLayer {
 
         public void AtualizarCotacao(bool reset = false) {
             var offTime = DateTime.Now.Hour < 10 || DateTime.Now.Hour >= 17;
-            if (reset || offTime)
+            if (reset || offTime) {
                 Cotacoes.Clear();
+            }
 
             if (offTime) {
                 var cotacao5 = ObterCotacao(5);
-                if (cotacao5 == null) return;
+                if (cotacao5 == null) {
+                    return;
+                }
+
                 var serie = cotacao5.TimeSeries;
                 var data = serie.ElementAt(0).Key.Date;
                 foreach (var cot in serie.Where(c => c.Key.Date == data)) {
@@ -34,7 +38,10 @@ namespace DataLayer {
             }
             else {
                 var cotacao1 = ObterCotacao(1);
-                if (cotacao1 == null) return;
+                if (cotacao1 == null) {
+                    return;
+                }
+
                 var serie = cotacao1.TimeSeries.Take(60);
                 if (!Cotacoes.Any()) {
                     var horaInicio = DateTime.Today + new TimeSpan(10, 0, 0);
@@ -49,13 +56,16 @@ namespace DataLayer {
                         if (cotacao5 != null) {
                             var fechamento = cotacao5.TimeSeries
                                 .First(c => c.Key.CompareTo(horaInicio) <= 0);
-                            if (!Cotacoes.ContainsKey(horaInicio))
+                            if (!Cotacoes.ContainsKey(horaInicio)) {
                                 Cotacoes.Add(horaInicio, fechamento.Value);
+                            }
+
                             foreach (var cot in cotacao5.TimeSeries
                                 .SkipWhile(c => c.Key.CompareTo(maisAntigo) > 0)
                                 .TakeWhile(c => c.Key.CompareTo(horaInicio) > 0)) {
-                                if (!Cotacoes.ContainsKey(cot.Key))
+                                if (!Cotacoes.ContainsKey(cot.Key)) {
                                     Cotacoes.Add(cot.Key, cot.Value);
+                                }
                             }
                         }
                     }
@@ -115,40 +125,42 @@ namespace DataLayer {
                     (current, operacao) => (current * operacao.QtdAntes +
                                 (real ? operacao.ValorOperacaoComTaxasReal : operacao.ValorOperacaoComTaxas)) / operacao.QtdAcumulada);
 
-    public decimal Patrimonio => LastTrade * QtdTotal;
+        public decimal Patrimonio => LastTrade * QtdTotal;
 
-    public decimal Lucro => (LastTrade - ValorMedioCompra) * QtdTotal;
+        public decimal Lucro => (LastTrade - ValorMedioCompra) * QtdTotal;
 
-    public decimal LucroReal => ((decimal)LastTrade - ValorMedioCompraReal) * QtdTotal;
+        public decimal LucroReal => (LastTrade - ValorMedioCompraReal) * QtdTotal;
 
-    public bool HasTrades => Cotacoes.Any();
+        public bool HasTrades => Cotacoes.Any();
 
-    public decimal? Open => HasTrades ? (decimal?)Cotacoes.First().Value.open : 0;
+        public decimal? Open => HasTrades ? Cotacoes.First().Value.open : 0;
 
-    public decimal? PreviousClose => HasTrades ? (decimal?)Cotacoes.ElementAt(0).Value.close : 0;
+        public decimal? PreviousClose => HasTrades ? Cotacoes.ElementAt(0).Value.close : 0;
 
-    public decimal LastTrade => HasTrades ? Cotacoes.Last().Value.close : 0;
+        public decimal LastTrade => HasTrades ? Cotacoes.Last().Value.close : 0;
 
-    public DateTime? LastTradeDate => HasTrades ? (DateTime?)Cotacoes.Last().Key : null;
+        public DateTime? LastTradeDate => HasTrades ? (DateTime?)Cotacoes.Last().Key : null;
 
-    public decimal? PreviousTrade => Cotacoes.Count > 1 ? (decimal?)Cotacoes.ElementAt(Cotacoes.Count - 2).Value.close : 0;
+        public decimal? PreviousTrade => Cotacoes.Count > 1 ? Cotacoes.ElementAt(Cotacoes.Count - 2).Value.close : 0;
 
-    public string Trend {
-        get {
-            if (LastTrade == 0 || PreviousTrade == 0)
-                return TrendNone;
-            return LastTrade > PreviousTrade ? TrendUp :
+        public string Trend {
+            get {
+                if (LastTrade == 0 || PreviousTrade == 0) {
+                    return TrendNone;
+                }
+
+                return LastTrade > PreviousTrade ? TrendUp :
                 (LastTrade < PreviousTrade ? TrendDown :
                     TrendNeutral);
+            }
         }
+
+        public double DayLow => (double)(HasTrades ? Cotacoes.Min(c => c.Value.low) : 0);
+
+        public double DayHigh => (double)(HasTrades ? Cotacoes.Max(c => c.Value.high) : 0);
+
+        public decimal? Change => LastTrade - Open;
+
+        public decimal? ChangePercent => HasTrades ? Change / Open : 0;
     }
-
-    public double DayLow => (double)(HasTrades ? Cotacoes.Min(c => c.Value.low) : 0);
-
-    public double DayHigh => (double)(HasTrades ? Cotacoes.Max(c => c.Value.high) : 0);
-
-    public decimal? Change => LastTrade - Open;
-
-    public decimal? ChangePercent => HasTrades ? Change / Open : 0;
-}
 }

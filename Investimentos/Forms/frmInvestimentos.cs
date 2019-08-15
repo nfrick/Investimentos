@@ -141,7 +141,7 @@ namespace Investimentos {
 
         private void frmInvestimentos_FormClosing(object sender, FormClosingEventArgs e) {
             SettingsManager.SetSetting("Conta", toolStripComboBoxConta.SelectedIndex.ToString());
-            var tracker = entityDataSource1.DbContext.ChangeTracker;
+            var tracker = EDS.DbContext.ChangeTracker;
             if (!tracker.HasChanges()) {
                 return;
             }
@@ -166,7 +166,7 @@ namespace Investimentos {
             switch (MessageBox.Show(sb.ToString(), @"Investimentos", MessageBoxButtons.YesNoCancel,
                 MessageBoxIcon.Question)) {
                 case DialogResult.Yes:
-                    entityDataSource1.SaveChanges();
+                    EDS.SaveChanges();
                     break;
                 case DialogResult.Cancel:
                     e.Cancel = true;
@@ -216,7 +216,7 @@ namespace Investimentos {
         #region TABS ==========================================
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e) {
             var tabLabel = tabControl1.SelectedTab.Text;
-            foreach (ToolStripItem item in toolStrip1.Items) {
+            foreach (ToolStripItem item in toolStripMenu.Items) {
                 if (item.Tag == null) {
                     continue;
                 }
@@ -244,22 +244,22 @@ namespace Investimentos {
         private void dgvVendas_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
             var frm = new frmAssociarCompraComVenda {
                 Saida = (Saida)dgvVendas.SelectedRows[0].DataBoundItem,
-                eds = entityDataSource1
+                eds = EDS
             };
             frm.ShowDialog();
             RefreshDataAcoes();
         }
 
         private frmEditarOperacao GetFrmEditarOperacao(Operacao op) {
-            var ativos = entityDataSource1.CreateView(entityDataSource1.EntitySets["Ativos"]);
-            var tipos = entityDataSource1.CreateView(entityDataSource1.EntitySets["OperacoesTipos"]);
+            var ativos = EDS.CreateView(EDS.EntitySets["Ativos"]);
+            var tipos = EDS.CreateView(EDS.EntitySets["OperacoesTipos"]);
             var frm = new frmEditarOperacao { Operacao = op, AtivosLista = ativos, TiposLista = tipos };
             return frm;
         }
 
         private void RefreshDataFundos() {
             dgvFundos.SaveCurrentRow();
-            entityDataSource1.Refresh();
+            EDS.Refresh();
             dgvFundosMeses.Refresh();
             dgvMovimentos.Refresh();
             dgvFundos.RestoreCurrentRow(0);
@@ -277,7 +277,7 @@ namespace Investimentos {
             dgvAtivos.SaveCurrentRow();
             dgvOperacoes.SaveCurrentRow();
             dgvVendas.SaveCurrentRow();
-            entityDataSource1.Refresh();
+            EDS.Refresh();
             dgvAtivos.RestoreCurrentRow(0);
             dgvOperacoes.RestoreCurrentRow(1);
             dgvVendas.RestoreCurrentRow(1);
@@ -293,7 +293,7 @@ namespace Investimentos {
 
         private void RefreshDataLCA() {
             dgvLCAs.SaveCurrentRow();
-            entityDataSource1.Refresh();
+            EDS.Refresh();
             dgvLCAMeses.Refresh();
             dgvLCAMovimentos.Refresh();
             dgvLCAs.RestoreCurrentRow(0);
@@ -310,7 +310,7 @@ namespace Investimentos {
 
         private void BindDataSourceAndPopulatePieChart(IEnumerable<Patrimonio> data,
             string fonte) {
-            var bs = fonte == "Ações" ? bindingSourceAcoes : bindingSourceFundos;
+            var bs = fonte == "Ações" ? bsAcoes : bsFundos;
             var dgv = fonte == "Ações" ? dgvResumoAcoes : dgvResumoFundos;
             var chart = fonte == "Ações" ? chartResumoAcoes : chartResumoFundos;
             if (!data.Any()) {
@@ -384,8 +384,8 @@ namespace Investimentos {
                 .First(r => (int)r.Cells[0].Value == conta.ContaId)).Index;
             dgvContas.CurrentCell = dgvContas.Rows[row].Cells[0];
 
-            BindDataSourceAndPopulatePieChart(conta.AtivosNaoZerados, "Ações");
-            BindDataSourceAndPopulatePieChart(conta.FundosNaoZerados, "Fundos");
+            BindDataSourceAndPopulatePieChart(conta.PatrimonioAtivosNaoZerados, "Ações");
+            BindDataSourceAndPopulatePieChart(conta.PatrimonioFundosNaoZerados, "Fundos");
             PopulateColumnChart(conta.PatrimonioTotal, chartResumoTotal);
 
             nupAno.Value = nupAno.Maximum = nupAno.Minimum = DateTime.Now.Year;
@@ -403,7 +403,7 @@ namespace Investimentos {
         private void ContaComboPopulate() {
             var cbx = toolStripComboBoxConta.ComboBox;
             var currentIndex = cbx.SelectedIndex;
-            cbx.DataSource = entityDataSource1.CreateView(entityDataSource1.EntitySets["Contas"]);
+            cbx.DataSource = EDS.CreateView(EDS.EntitySets["Contas"]);
             cbx.DisplayMember = "Nome";
             cbx.ValueMember = "ContaId";
             cbx.SelectedIndex = currentIndex == -1 ? 0 : currentIndex;
@@ -427,7 +427,7 @@ namespace Investimentos {
             }
 
             var tipo = (OperacaoTipo)frm.comboBoxOperacao.SelectedItem;
-            var operacoes = entityDataSource1.DbContext.Set<Operacao>();
+            var operacoes = EDS.DbContext.Set<Operacao>();
             if (tipo.IsEntrada) {
                 operacoes.Add(op.ToEntrada);
             }
@@ -458,7 +458,7 @@ namespace Investimentos {
             }
 
             if (conta.ContaId == 0) {
-                entityDataSource1.DbContext.Set<Conta>().Add(conta);
+                EDS.DbContext.Set<Conta>().Add(conta);
             }
 
             RefreshSalvar();
@@ -468,12 +468,12 @@ namespace Investimentos {
 
         #region TOOLSTRIP SALVAR --------------------------------------
         private void toolStripButtonSalvar_Click(object sender, EventArgs e) {
-            entityDataSource1.SaveChanges();
+            EDS.SaveChanges();
             RefreshSalvar();
         }
 
         private void RefreshSalvar() {
-            var tracker = entityDataSource1.DbContext.ChangeTracker;
+            var tracker = EDS.DbContext.ChangeTracker;
             toolStripButtonSalvar.Visible = tracker.HasChanges();
             toolStripSeparatorSalvar.Visible = tracker.HasChanges();
 
@@ -485,6 +485,7 @@ namespace Investimentos {
         }
         #endregion TOOLSTRIP SALVAR --------------------------------------
 
+        #region TOOLSTRIP LEITURA
         private void toolStripButtonLerExtrato_Click(object sender, EventArgs e) {
             ToggleLeitura();
             var tabLabel = tabControl1.SelectedTab.Text;
@@ -539,8 +540,9 @@ namespace Investimentos {
             toolStripButtonLerExtrato.Visible = !toolStripButtonLerExtrato.Visible;
             toolStripLabelLendoExtrato.Visible = !toolStripLabelLendoExtrato.Visible;
             toolStripProgressBar1.Visible = !toolStripProgressBar1.Visible;
-            toolStrip1.Refresh();
+            toolStripMenu.Refresh();
         }
+        #endregion TOOLSTRIP LEITURA
 
         private void toolStripCopyToClipboard_Click(object sender, EventArgs e) {
             var sb = new StringBuilder();
@@ -603,7 +605,7 @@ namespace Investimentos {
                 return;
             }
 
-            var fundosNoDatabase = entityDataSource1.DbContext.Set<Fundo>().Local;
+            var fundosNoDatabase = EDS.DbContext.Set<Fundo>().Local;
 
             foreach (var fundoNoExtrato in extrato.FundosNoExtrato) {
                 var fundo = fundosNoDatabase.FirstOrDefault(f => f.CNPJ == fundoNoExtrato.CNPJ) ??
@@ -635,7 +637,7 @@ namespace Investimentos {
                 return;
             }
 
-            var fundosNoDatabase = entityDataSource1.DbContext.Set<Fundo>().Local;
+            var fundosNoDatabase = EDS.DbContext.Set<Fundo>().Local;
 
             var fundo = fundosNoDatabase.FirstOrDefault(f => f.CNPJ == extrato.CNPJ) ??
                         extrato.CreateFundo();
@@ -663,7 +665,7 @@ namespace Investimentos {
         }
 
         private void LerExtratoLCA(string filename) {
-            ExtratoLCAReader.LerExtratoLCA(filename, (Conta)toolStripComboBoxConta.SelectedItem, entityDataSource1);
+            ExtratoLCAReader.LerExtratoLCA(filename, (Conta)toolStripComboBoxConta.SelectedItem, EDS);
         }
         #endregion LEITURA DE EXTRATO -------------------------------
     }

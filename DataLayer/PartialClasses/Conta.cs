@@ -11,21 +11,55 @@ namespace DataLayer {
 
         public decimal LucroTotalReal => Saidas.Sum(o => o.LucroReal);
 
-        public IEnumerable<Patrimonio> AtivosNaoZerados => AtivosDaConta.Where(a => a.QtdTotal > 0)
-            .Select(a => new Patrimonio { Tipo = "Ações", Item = a.Codigo, Valor = a.Patrimonio });
+        public IEnumerable<AtivoDaConta> AtivosNaoZerados => AtivosDaConta.Where(a => a.QtdTotal > 0);
 
-        public IEnumerable<Patrimonio> FundosNaoZerados => Fundos.Where(f => f.Saldo > 0)
+        public IEnumerable<Patrimonio> PatrimonioAtivosNaoZerados => AtivosNaoZerados
+            .Select(a => new Patrimonio { Tipo = "Ações", Item = a.Codigo, Valor = a.Patrimonio })
+            .OrderBy(p=>p.Item);
+
+        public IEnumerable<Patrimonio> PatrimonioAtivosTotal {
+            get {
+                var total = new List<Patrimonio> {
+                    new Patrimonio {
+                        Tipo = "Total Ações",
+                        Item = null,
+                        Valor = AtivosNaoZerados.Sum(a => a.Patrimonio)
+                    }
+                };
+
+                return total;
+            }
+        }
+
+        public IEnumerable<ContaFundo> FundosNaoZerados => Fundos.Where(f => f.Saldo > 0);
+
+        public IEnumerable<Patrimonio> PatrimonioFundosNaoZerados => FundosNaoZerados
             .Select(f => new Patrimonio { Tipo = "Fundos", Item = f.FundoNome.Substring(3), Valor = f.Saldo })
-            .Concat(SaldoEmContaCorrente);
+            .OrderBy(p => p.Item)
+            .Concat(PatrimonioSaldoEmContaCorrente);
 
-        public IEnumerable<Patrimonio> SaldoEmContaCorrente =>
+        public IEnumerable<Patrimonio> PatrimonioFundosTotal {
+            get {
+                var total = new List<Patrimonio> {
+                    new Patrimonio {
+                        Tipo = "Total Fundos",
+                        Item = null,
+                        Valor = FundosNaoZerados.Sum(f => f.Saldo)
+                    }
+                };
+
+                return total;
+            }
+        }
+
+        public IEnumerable<Patrimonio> PatrimonioSaldoEmContaCorrente =>
             SaldosEmConta.Select(s => new Patrimonio {
                 Tipo = "Saldo em Conta",
                 Item = s.Item,
                 Valor = s.Valor
             });
 
-        public IEnumerable<Patrimonio> PatrimonioTotal => AtivosNaoZerados.Concat(FundosNaoZerados).OrderByDescending(a => a.Valor);
+        public IEnumerable<Patrimonio> PatrimonioTotal => PatrimonioAtivosNaoZerados.Concat(PatrimonioFundosNaoZerados).OrderByDescending(a => a.Valor);
 
         public IEnumerable<sp_SituacaoImpostoRenda_Result> ImpostoRenda(int Ano) {
             using (var ctx = new InvestimentosEntities()) {

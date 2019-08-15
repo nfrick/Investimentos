@@ -28,6 +28,7 @@ namespace DataLayer {
             return lista;
 
         }
+
         public AtivoCotacaoTotal(IReadOnlyCollection<AtivoCotacao> cotacoes) {
             Col0 = "TOTAL";
             Col10 = cotacoes.Sum(c => c.Patrimonio);
@@ -45,7 +46,6 @@ namespace DataLayer {
             Col9 = null;
             Col11 = null;
             Col13 = null;
-
         }
     }
 }
