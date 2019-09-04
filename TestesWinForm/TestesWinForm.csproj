@@ -97,10 +97,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EF6Winforms\EF6WinForms\EF6Winforms.csproj">
-      <Project>{BC070117-CAD0-4B62-AB0E-5F6B4955F164}</Project>
-      <Name>EF6Winforms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{3053fbd4-02a4-49ab-8bb6-f6a813155a8e}</Project>
       <Name>DataLayer</Name>

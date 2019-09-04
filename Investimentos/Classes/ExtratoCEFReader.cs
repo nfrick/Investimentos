@@ -72,7 +72,7 @@ namespace Investimentos {
                     .Select(r => r.Trim()).Where(r => !string.IsNullOrEmpty(r))
                     .ToArray();
 
-                var linhasIndexadas = TextAsArray.Select((v, i) => new {Index = i, Value = v});
+                var linhasIndexadas = TextAsArray.Select((v, i) => new { Index = i, Value = v });
 
                 _linhaIdConta = 2 + linhasIndexadas
                                     .First(p => p.Value.StartsWith("Cliente")).Index;
@@ -108,14 +108,17 @@ namespace Investimentos {
         }
 
         private static decimal ToDecimal(string input) {
-            var valor = char.IsLetter(input.Last())
-                ? input.Substring(0, input.Length - 1)
-                : input;
-            return Convert.ToDecimal(valor, FormatPT_BR);
+            if (char.IsDigit(input.Last())) {
+                return Convert.ToDecimal(input, FormatPT_BR);
+            }
+            var valor = Convert.ToDecimal(input.Substring(0, input.Length - 1), FormatPT_BR);
+            if(input.Last() == 'D' || input.Last() == '-') 
+                valor *= -1m ;
+            return valor;
         }
 
         public void UpdateFundoMes(Fundo fundo) {
-            _fundoMes = fundo.Meses.FirstOrDefault(m => m.Mes == Mes) ?? new FundoMes(){Fundo = fundo};
+            _fundoMes = fundo.Meses.FirstOrDefault(m => m.Mes == Mes) ?? new FundoMes() { Fundo = fundo };
             var rendimentos = LinetoArray(TextAsArray[_linhaRentabilidade]);
             _fundoMes.Mes = Mes;
             _fundoMes.RendimentoMes = ToDecimal(rendimentos.ElementAt(0));

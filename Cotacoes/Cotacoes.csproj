@@ -133,10 +133,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EF6Winforms\EF6WinForms\EF6Winforms.csproj">
-      <Project>{bc070117-cad0-4b62-ab0e-5f6b4955f164}</Project>
-      <Name>EF6Winforms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataGridViewWithButtons\DataGridViewWithButtons.vbproj">
       <Project>{b1417376-6b4e-432d-b2c1-911f3362098a}</Project>
       <Name>DataGridViewWithButtons</Name>
