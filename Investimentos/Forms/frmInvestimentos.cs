@@ -181,9 +181,11 @@ namespace Investimentos {
         private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             var dgv = (DataGridView)sender;
             var col = Convert.ToInt32(dgv.Tag); // coluna com valor que controla a cor
+            var color = col > 0 ? Color.Orange : Color.DarkGray;
+            col = Math.Abs(col);
             var row = dgv.Rows[e.RowIndex];
             if (Convert.ToDecimal(row.Cells[col].Value) <= 0) {
-                row.DefaultCellStyle.ForeColor = Color.Orange;
+                row.DefaultCellStyle.ForeColor = color;
             }
         }
 

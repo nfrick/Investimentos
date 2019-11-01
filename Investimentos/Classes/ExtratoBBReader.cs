@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Investimentos {
 
@@ -20,9 +21,15 @@ namespace Investimentos {
                 .Select(r => r.Trim()).Where(r => !string.IsNullOrEmpty(r))
                 .ToArray();
 
+            var searchCNPJ = new Regex(@"((\d{2}.\d{3}.\d{3}\/\d{4}-\d{2})|(\d{14})$)");
+
             FundosNoExtrato = TextAsArray.Select((t, i) => i)
-                .Where(i => TextAsArray[i].StartsWith("BB"))
+                .Where(i => searchCNPJ.IsMatch(TextAsArray[i]))
                 .Select(i => new FundoNoExtrato(TextAsArray, i));
+
+            //FundosNoExtrato = TextAsArray.Select((t, i) => i)
+            //    .Where(i => TextAsArray[i].StartsWith("BB"))
+            //    .Select(i => new FundoNoExtrato(TextAsArray, i));
         }
     }
 
